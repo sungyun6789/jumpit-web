@@ -1,11 +1,18 @@
 import styled from '@emotion/styled';
 
+import Header from '../base/Header';
+
 interface Props {
   children: React.ReactNode;
 }
 
 const BasicLayout = ({ children }: Props) => {
-  return <Block>{children}</Block>;
+  return (
+    <>
+      <Header />
+      <Block>{children}</Block>
+    </>
+  );
 };
 
 export default BasicLayout;
