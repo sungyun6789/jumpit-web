@@ -7,9 +7,9 @@ import SearchInput from '../search/SearchInput';
 const Header = () => {
   return (
     <Block>
-      <Link href="/">
+      <LogoLink href="/">
         <Image src="/koLogo.svg" width={72} height={32} alt="logo" />
-      </Link>
+      </LogoLink>
 
       <SearchInput />
     </Block>
@@ -25,4 +25,8 @@ const Block = styled.header`
   justify-content: space-between;
   align-items: center;
   height: 64px;
+`;
+
+const LogoLink = styled(Link)`
+  height: 33px;
 `;
