@@ -45,7 +45,7 @@ const Input = styled.input`
   border: none;
   padding: 0px 40px 0px 44px;
   outline: none;
-  letter-spacing: 0.8px;
+  font-family: inherit;
 
   ::placeholder {
     color: #929292;
