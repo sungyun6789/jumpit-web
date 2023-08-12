@@ -1,10 +1,11 @@
-import '@/styles/globals.css';
+import '~/styles/globals.css';
 
-import BasicLayout from '@/components/layout/BasicLayout';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
 import type { AppProps } from 'next/app';
+
+import BasicLayout from '~/components/layout/BasicLayout';
 
 const queryClient = new QueryClient();
 
