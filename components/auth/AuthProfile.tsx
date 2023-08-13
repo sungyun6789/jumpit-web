@@ -1,13 +1,36 @@
 import styled from '@emotion/styled';
 import Image from 'next/image';
+import Link from 'next/link';
+
+import { mont } from '~/pages/_app';
 
 const SOCIALS = ['naver', 'google', 'github', 'apple'];
 
 const AuthProfile = () => {
-  const isLogin = true;
+  const isLogin = false;
 
   return isLogin ? (
-    <></>
+    <LoginBox>
+      <LoginBoxContent>
+        <GreetingMessageBox>
+          <Greeting>박성윤님 반가워요</Greeting>
+          <LogoutButton>로그아웃</LogoutButton>
+        </GreetingMessageBox>
+
+        <Email className={mont.className}>sungyun5423@gmail.com</Email>
+
+        <LoginMenu>
+          <MenuLink href="/resumes">
+            <p>📝</p>
+            <p>이력서 작성</p>
+          </MenuLink>
+          <MenuLink href="/myjumpit">
+            <p>😎</p>
+            <p>마이점핏</p>
+          </MenuLink>
+        </LoginMenu>
+      </LoginBoxContent>
+    </LoginBox>
   ) : (
     <UnLoginBox>
       <UnLoginBoxContent>
@@ -77,4 +100,58 @@ const SNSButton = styled.button`
   border: none;
   background: none;
   cursor: pointer;
+`;
+
+const LoginBox = styled(UnLoginBox)`
+  background-color: #fafafa;
+`;
+
+const LoginBoxContent = styled.div`
+  height: 168px;
+`;
+
+const GreetingMessageBox = styled.div`
+  display: flex;
+  gap: 10px;
+  height: 22px;
+`;
+
+const Greeting = styled.p`
+  font-size: 17px;
+  color: #222222;
+`;
+
+const LogoutButton = styled.button`
+  font-size: 13px;
+  color: #999999;
+  border: none;
+  background: none;
+`;
+
+const Email = styled.p`
+  color: #666666;
+  line-height: 16px;
+  margin: 10px 0px 24px;
+`;
+
+const LoginMenu = styled.div`
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 0px;
+  background-color: #fff;
+
+  a:nth-child(1) {
+    border-right: 1px solid #d8d8d8;
+  }
+`;
+
+const MenuLink = styled(Link)`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  height: 50px;
+  width: 50%;
+  font-size: 16px;
 `;
