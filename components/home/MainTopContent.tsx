@@ -30,11 +30,13 @@ const MainTopContent = () => {
             </AuthBoxContent>
           </AuthBox>
           <NoticeBox>
-            <NoticeTitle className={mont.className}>Notice</NoticeTitle>
-            <NoticeList>
-              <NoticeContent>[공지] 개인정보 처리방침 개정에 대해 안내드립니다.(20230822)</NoticeContent>
-              <NoticeDate>2023-08</NoticeDate>
-            </NoticeList>
+            <NoticeHeight>
+              <NoticeTitle className={mont.className}>Notice</NoticeTitle>
+              <NoticeList>
+                <NoticeContent>[공지] 개인정보 처리방침 개정에 대해 안내드립니다.(20230822)</NoticeContent>
+                <NoticeDate>2023-08</NoticeDate>
+              </NoticeList>
+            </NoticeHeight>
           </NoticeBox>
         </div>
       </Block>
@@ -124,6 +126,10 @@ const NoticeBox = styled.div`
   border: 1px solid #e4e4e4;
   border-radius: 4px;
   margin-top: 20px;
+`;
+
+const NoticeHeight = styled.div`
+  height: 50px;
 `;
 
 const NoticeTitle = styled.h1`
