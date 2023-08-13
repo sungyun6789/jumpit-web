@@ -76,4 +76,5 @@ const LoginText = styled.p`
   line-height: 20px;
   color: #777777;
   white-space: pre;
+  cursor: pointer;
 `;
