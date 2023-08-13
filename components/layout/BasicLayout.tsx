@@ -20,4 +20,5 @@ export default BasicLayout;
 const Block = styled.main`
   max-width: 1080px;
   margin: auto;
+  padding-top: 120px;
 `;
