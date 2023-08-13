@@ -1,4 +1,5 @@
 import MainTopContent from '~/components/home/MainTopContent';
+import PositionRecommendation from '~/components/home/PositionRecommend';
 import ThemeZip from '~/components/home/ThemeZip';
 
 export default function Home() {
@@ -6,6 +7,7 @@ export default function Home() {
     <>
       <MainTopContent />
       <ThemeZip />
+      <PositionRecommendation />
     </>
   );
 }
