@@ -14,7 +14,7 @@ const noto = Noto_Sans_KR({
 });
 
 export const mont = Montserrat({
-  weight: '700',
+  weight: ['400', '700'],
   subsets: ['latin'],
 });
 

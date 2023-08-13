@@ -88,6 +88,7 @@ const Free = styled.span`
   top: 10px;
   right: -25px;
   font-size: 12px;
+  font-weight: 700;
   line-height: 16px;
   color: ${COLORS.primary};
 `;
