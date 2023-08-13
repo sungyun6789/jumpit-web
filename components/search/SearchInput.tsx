@@ -2,6 +2,8 @@ import styled from '@emotion/styled';
 import Image from 'next/image';
 import { useState } from 'react';
 
+import Button from '../common/Button';
+
 import type { ChangeEvent } from 'react';
 
 import COLORS from '~/constants/colors';
@@ -52,20 +54,14 @@ const Input = styled.input`
   }
 `;
 
-const SearchIcon = styled.button`
+const SearchIcon = styled(Button)`
   position: absolute;
   top: 8px;
   left: 16px;
-  background: none;
-  border: none;
-  cursor: pointer;
 `;
 
-const DeleteIcon = styled.button`
+const DeleteIcon = styled(Button)`
   position: absolute;
   top: 9px;
   right: 18px;
-  background: none;
-  border: none;
-  cursor: pointer;
 `;

@@ -1,5 +1,7 @@
 import styled from '@emotion/styled';
 
+import Button from '../common/Button';
+
 const ThemeZip = () => {
   return (
     <Block>
@@ -7,7 +9,7 @@ const ThemeZip = () => {
         <Title>테마별 모음.zip</Title>
 
         <ButtonBox>
-          <Button disabled>
+          <ArrowButton disabled>
             <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
               <g clip-path="url(#clip0_2450_17212)">
                 <path
@@ -27,8 +29,8 @@ const ThemeZip = () => {
                 </clipPath>
               </defs>
             </svg>
-          </Button>
-          <Button>
+          </ArrowButton>
+          <ArrowButton>
             <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
               <g clip-path="url(#clip0_2450_17215)">
                 <path
@@ -48,7 +50,7 @@ const ThemeZip = () => {
                 </clipPath>
               </defs>
             </svg>
-          </Button>
+          </ArrowButton>
         </ButtonBox>
       </TitleBox>
 
@@ -83,12 +85,9 @@ const ButtonBox = styled.div`
   gap: 6px;
 `;
 
-const Button = styled.button`
-  border: none;
-  background: none;
+const ArrowButton = styled(Button)`
   padding: 0.3px;
   font-size: inherit;
-  cursor: pointer;
 
   svg {
     width: 32px;
