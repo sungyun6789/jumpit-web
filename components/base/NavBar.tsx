@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 import Link from 'next/link';
 
 import COLORS from '~/constants/colors';
+import { mont } from '~/pages/_app';
 
 const ITEMS_1 = [
   { title: '직무 탐색', url: '/positions' },
@@ -27,7 +28,7 @@ const NavBar = () => {
           <li key={item.title}>
             <NavLink href={item.url}>
               {item.title}
-              {index + 1 === ITEMS_1.length && <Free>Free</Free>}
+              {index + 1 === ITEMS_1.length && <Free className={mont.className}>Free</Free>}
             </NavLink>
           </li>
         ))}
@@ -82,14 +83,11 @@ const NavLink = styled(Link)`
   }
 `;
 
-// TODO: 폰트 변경 필요 (Montserrat)
 const Free = styled.span`
   position: absolute;
   top: 10px;
   right: -25px;
   font-size: 12px;
-  font-weight: 800;
-  font-family: initial;
   line-height: 16px;
   color: ${COLORS.primary};
 `;

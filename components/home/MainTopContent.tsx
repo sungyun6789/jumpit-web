@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 import Image from 'next/image';
 
 import COLORS from '~/constants/colors';
+import { mont } from '~/pages/_app';
 
 const SOCIALS = ['naver', 'google', 'github', 'apple'];
 
@@ -29,7 +30,7 @@ const MainTopContent = () => {
             </AuthBoxContent>
           </AuthBox>
           <NoticeBox>
-            <NoticeTitle>Notice</NoticeTitle>
+            <NoticeTitle className={mont.className}>Notice</NoticeTitle>
             <NoticeList>
               <NoticeContent>[공지] 개인정보 처리방침 개정에 대해 안내드립니다.(20230822)</NoticeContent>
               <NoticeDate>2023-08</NoticeDate>
@@ -125,7 +126,6 @@ const NoticeBox = styled.div`
   margin-top: 20px;
 `;
 
-// TODO: 폰트 변경 필요 (Montserrat)
 const NoticeTitle = styled.h1`
   color: ${COLORS.primary};
   font-size: 13px;
