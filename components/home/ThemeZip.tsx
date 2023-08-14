@@ -65,6 +65,7 @@ const ThemeZip = () => {
 export default ThemeZip;
 
 const Block = styled.section`
+  max-width: 1080px;
   margin: 64px auto;
 `;
 
