@@ -33,6 +33,7 @@ const Block = styled.header`
   right: 0;
   width: 100%;
   border-bottom: 1px solid #e4e4e4;
+  background-color: #fff;
 `;
 
 const HeaderLayout = styled.div`
