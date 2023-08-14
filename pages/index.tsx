@@ -1,3 +1,4 @@
+import EmploymentEventBanner from '~/components/home/EmploymentEventBanner';
 import MainTopContent from '~/components/home/MainTopContent';
 import PositionRecommendation from '~/components/home/PositionRecommend';
 import ThemeZip from '~/components/home/ThemeZip';
@@ -10,6 +11,7 @@ export default function Home() {
       <ThemeZip />
       <PositionRecommendation />
       <WeeklyPickPosition />
+      <EmploymentEventBanner />
     </>
   );
 }
