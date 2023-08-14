@@ -1,6 +1,7 @@
 import MainTopContent from '~/components/home/MainTopContent';
 import PositionRecommendation from '~/components/home/PositionRecommend';
 import ThemeZip from '~/components/home/ThemeZip';
+import WeeklyPickPosition from '~/components/home/WeeklyPickPosition';
 
 export default function Home() {
   return (
@@ -8,6 +9,7 @@ export default function Home() {
       <MainTopContent />
       <ThemeZip />
       <PositionRecommendation />
+      <WeeklyPickPosition />
     </>
   );
 }
