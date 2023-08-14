@@ -15,31 +15,12 @@ const NAV_LINK_LIST2 = [
 ];
 
 const SNS_LIST = [
-  {
-    icon: 'https://cdn.jumpit.co.kr/jumpit/personal/v-footer-sns-instagram.svg',
-    url: 'https://www.instagram.com/jumpit.official',
-  },
-  {
-    icon: 'https://cdn.jumpit.co.kr/jumpit/personal/v-footer-sns-kakao.svg',
-    url: 'https://pf.kakao.com/_BPpJs',
-  },
-  {
-    icon: 'https://cdn.jumpit.co.kr/jumpit/personal/v-footer-sns-youtube.svg',
-    url: 'https://www.youtube.com/channel/UCo8N6hfw4a5PDaiPaeBr4UQ/featured',
-  },
-
-  {
-    icon: 'https://cdn.jumpit.co.kr/jumpit/personal/v-footer-sns-facebook.svg',
-    url: 'https://www.facebook.com/jumpit.ITjump',
-  },
-  {
-    icon: 'https://cdn.jumpit.co.kr/jumpit/personal/v-footer-sns-google.svg',
-    url: 'https://play.google.com/store/apps/details?id=kr.co.saramin.jumpit',
-  },
-  {
-    icon: 'https://cdn.jumpit.co.kr/jumpit/personal/v-footer-sns-apple.svg',
-    url: 'https://apps.apple.com/app/id1552125375',
-  },
+  { name: 'instagram', url: 'https://www.instagram.com/jumpit.official' },
+  { name: 'kakao', url: 'https://pf.kakao.com/_BPpJs' },
+  { name: 'youtube', url: 'https://www.youtube.com/channel/UCo8N6hfw4a5PDaiPaeBr4UQ/featured' },
+  { name: 'facebook', url: 'https://www.facebook.com/jumpit.ITjump' },
+  { name: 'google', url: 'https://play.google.com/store/apps/details?id=kr.co.saramin.jumpit' },
+  { name: 'apple', url: 'https://apps.apple.com/app/id1552125375' },
 ];
 
 const Footer = () => {
@@ -67,8 +48,13 @@ const Footer = () => {
 
             <SNSBox>
               {SNS_LIST.map((sns) => (
-                <Link key={sns.icon} href={sns.url} target="_blank">
-                  <Image src={sns.icon} width={36} height={36} alt="sns" />
+                <Link key={sns.name} href={sns.url} target="_blank">
+                  <Image
+                    src={`https://cdn.jumpit.co.kr/jumpit/personal/v-footer-sns-${sns.name}.svg`}
+                    width={36}
+                    height={36}
+                    alt={sns.name}
+                  />
                 </Link>
               ))}
             </SNSBox>
