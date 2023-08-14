@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 import Image from 'next/image';
 
 import Button from '../common/Button';
+import PositionCardList from '../common/PositionCardList';
 
 import COLORS from '~/constants/colors';
 
@@ -25,22 +26,7 @@ const PositionRecommend = () => {
         </RecommendAlarmButton>
       </TitleBox>
 
-      <RecommendList>
-        {LIST.map((value) => (
-          <RecommendItem key={value}>
-            <RecommendBanner />
-            <RecommendDescriptionBox>
-              <RecommendCompanyName>회사 이름 {value}</RecommendCompanyName>
-              <RecommendTitle>공고 제목 {value}</RecommendTitle>
-              <RecommendTechStack>기술 스택 {value}</RecommendTechStack>
-              <RecommendLocationBox>
-                <RecommendLocation>지역</RecommendLocation>
-                <RecommendLocation>경력</RecommendLocation>
-              </RecommendLocationBox>
-            </RecommendDescriptionBox>
-          </RecommendItem>
-        ))}
-      </RecommendList>
+      <PositionCardList data={LIST} />
     </Block>
   ) : (
     <UnLoginBlock>
@@ -166,66 +152,4 @@ const RecommendAlarmButton = styled(Button)`
   border-radius: 100px;
   background-color: ${COLORS.primary};
   border: 1px solid ${COLORS.primary};
-`;
-
-const RecommendList = styled.div`
-  max-width: 1080px;
-  margin: auto;
-  display: flex;
-  flex-wrap: wrap;
-`;
-
-const RecommendItem = styled.div`
-  width: calc(25% -20px);
-  max-width: 270px;
-  padding: 10px;
-  cursor: pointer;
-
-  :hover {
-    h2 {
-      text-decoration: underline;
-    }
-  }
-`;
-
-const RecommendDescriptionBox = styled.div`
-  padding: 12px 0px 36px;
-`;
-
-const RecommendBanner = styled.div`
-  width: 256px;
-  height: 166px;
-  border-radius: 4px;
-  background-color: #f0f0f0;
-`;
-
-const RecommendCompanyName = styled.span`
-  font-size: 14px;
-  line-height: 24px;
-  letter-spacing: -0.5px;
-  color: #444444;
-`;
-
-const RecommendTitle = styled.h2`
-  margin-top: 6px;
-  font-size: 17px;
-  font-weight: 500;
-  line-height: 1.4em;
-`;
-
-const RecommendTechStack = styled.p`
-  font-size: 13px;
-  line-height: 18px;
-  letter-spacing: -0.5px;
-  color: #999999;
-  margin-top: 8px;
-`;
-
-const RecommendLocationBox = styled.div`
-  display: flex;
-  gap: 10px;
-`;
-
-const RecommendLocation = styled(RecommendTechStack)`
-  margin-top: 4px;
 `;
