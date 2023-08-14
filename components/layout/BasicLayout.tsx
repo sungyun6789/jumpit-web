@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 
+import Footer from '../base/Footer';
 import Header from '../base/Header';
 
 interface Props {
@@ -11,6 +12,7 @@ const BasicLayout = ({ children }: Props) => {
     <>
       <Header />
       <Block>{children}</Block>
+      <Footer />
     </>
   );
 };
