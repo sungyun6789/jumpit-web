@@ -18,9 +18,9 @@ const SearchInput = () => {
   return (
     <Block>
       <Input placeholder="검색어를 입력해주세요" maxLength={50} type="text" value={searchKeyword} onChange={onChange} />
-      <SearchIcon>
-        <Image width={24} height={24} src="/searchIcon.svg" alt="search" />
-      </SearchIcon>
+      <SearchColorIcon>
+        <Image width={24} height={24} src="/searchColorIcon.svg" alt="search" />
+      </SearchColorIcon>
       {searchKeyword && (
         <DeleteIcon>
           <Image width={24} height={24} src="/deleteIcon.svg" alt="delete" />
@@ -54,7 +54,7 @@ const Input = styled.input`
   }
 `;
 
-const SearchIcon = styled(Button)`
+const SearchColorIcon = styled(Button)`
   position: absolute;
   top: 8px;
   left: 16px;
