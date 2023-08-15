@@ -1,10 +1,14 @@
 import styled from '@emotion/styled';
+import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import SearchInput from '../search/SearchInput';
+// import SearchInput from '../search/SearchInput';
 
-import NavBar from './NavBar';
+// import NavBar from './NavBar';
+
+const NavBar = dynamic(() => import('./NavBar'), { ssr: false });
+const SearchInput = dynamic(() => import('../search/SearchInput'), { ssr: false });
 
 const Header = () => {
   return (
