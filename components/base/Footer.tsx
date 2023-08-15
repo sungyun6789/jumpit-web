@@ -27,9 +27,31 @@ const Footer = () => {
   return (
     <Block>
       <Inner>
-        <Image src="/enLogo.svg" width={68} height={24} alt="logo" />
+        <LogoImage src="/enLogo.svg" width={68} height={24} alt="logo" />
 
         <Content>
+          <Nav>
+            <StyledUl>
+              {NAV_LINK_LIST1.map((link) => (
+                <li key={link.title}>
+                  <StyledLink href={link.url} target="_blank">
+                    {link.title}
+                  </StyledLink>
+                </li>
+              ))}
+            </StyledUl>
+
+            <StyledUl>
+              {NAV_LINK_LIST2.map((link) => (
+                <li key={link.title}>
+                  <StyledLink href={link.url} target="_blank">
+                    {link.title === '개인정보처리방침' ? <b>{link.title}</b> : link.title}
+                  </StyledLink>
+                </li>
+              ))}
+            </StyledUl>
+          </Nav>
+
           <DescriptionBox>
             <Description>
               점핏 고객센터 : 02-2025-2733 (평일 09:00 - 18:00, 점심시간 12:00 - 13:00, 주말·공휴일 휴무)
@@ -59,28 +81,6 @@ const Footer = () => {
               ))}
             </SNSBox>
           </DescriptionBox>
-
-          <Nav>
-            <StyledUl>
-              {NAV_LINK_LIST1.map((link) => (
-                <li key={link.title}>
-                  <StyledLink href={link.url} target="_blank">
-                    {link.title}
-                  </StyledLink>
-                </li>
-              ))}
-            </StyledUl>
-
-            <StyledUl>
-              {NAV_LINK_LIST2.map((link) => (
-                <li key={link.title}>
-                  <StyledLink href={link.url} target="_blank">
-                    {link.title === '개인정보처리방침' ? <b>{link.title}</b> : link.title}
-                  </StyledLink>
-                </li>
-              ))}
-            </StyledUl>
-          </Nav>
         </Content>
       </Inner>
     </Block>
@@ -101,16 +101,36 @@ const Inner = styled.div`
   max-width: 1060px;
   margin: auto;
   padding: 24px 0px 60px;
+
+  @media (max-width: 1080px) {
+    display: block;
+  }
+`;
+
+const LogoImage = styled(Image)`
+  @media (max-width: 1080px) {
+    margin-left: 20px;
+  }
 `;
 
 const Content = styled.div`
   display: flex;
+  flex-direction: row-reverse;
   gap: 135px;
+
+  @media (max-width: 1080px) {
+    display: block;
+    padding: 20px 20px 0px;
+  }
 `;
 
 const DescriptionBox = styled.div`
   display: flex;
   flex-direction: column;
+
+  @media (max-width: 1080px) {
+    margin-top: 20px;
+  }
 `;
 
 const Description = styled.span`
