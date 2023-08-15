@@ -4,9 +4,12 @@ import AuthProfile from '../auth/AuthProfile';
 
 import COLORS from '~/constants/colors';
 import { mont } from '~/pages/_app';
+import getDeviceType from '~/utils/getDeviceType';
 
 const MainTopContent = () => {
-  return (
+  const isDesktop = getDeviceType() === 'desktop';
+
+  return isDesktop ? (
     <>
       <Block>
         <SlideBox />
@@ -26,6 +29,8 @@ const MainTopContent = () => {
       </Block>
       <MiniSlide />
     </>
+  ) : (
+    <SlideBox />
   );
 };
 
@@ -41,8 +46,18 @@ const Block = styled.section`
 const SlideBox = styled.div`
   width: 700px;
   height: 340px;
-  border: 1px solid #e4e4e4;
+  background-color: #e4e4e4;
   border-radius: 4px;
+
+  @media (max-width: 1080px) {
+    width: 100%;
+    height: 300px;
+    border-radius: 0;
+  }
+
+  @media (max-width: 600px) {
+    height: 252px;
+  }
 `;
 
 const MiniSlide = styled.div`
