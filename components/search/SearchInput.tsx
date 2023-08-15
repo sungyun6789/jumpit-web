@@ -7,15 +7,18 @@ import Button from '../common/Button';
 import type { ChangeEvent } from 'react';
 
 import COLORS from '~/constants/colors';
+import getDeviceType from '~/utils/getDeviceType';
 
 const SearchInput = () => {
   const [searchKeyword, setSearchKeyword] = useState<string>();
+
+  const isDesktop = getDeviceType() === 'desktop';
 
   const onChange = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchKeyword(e.target.value);
   };
 
-  return (
+  return isDesktop ? (
     <Block>
       <Input placeholder="검색어를 입력해주세요" maxLength={50} type="text" value={searchKeyword} onChange={onChange} />
       <SearchColorIcon>
@@ -27,6 +30,15 @@ const SearchInput = () => {
         </DeleteIcon>
       )}
     </Block>
+  ) : (
+    <MobileBlock>
+      <SearchIcon>
+        <Image width={24} height={24} src="/searchIcon.svg" alt="search" />
+      </SearchIcon>
+      <MobileIcon>
+        <Image width={24} height={24} src="/menuIcon.svg" alt="menu" />
+      </MobileIcon>
+    </MobileBlock>
   );
 };
 
@@ -64,4 +76,21 @@ const DeleteIcon = styled(Button)`
   position: absolute;
   top: 9px;
   right: 18px;
+`;
+
+const MobileBlock = styled.div`
+  display: flex;
+  gap: 20px;
+`;
+
+const MobileIcon = styled(Button)`
+  width: 24px;
+  height: 24px;
+`;
+
+const SearchIcon = styled(MobileIcon)`
+  :hover {
+    border-radius: 4px;
+    background-color: #f4f4f4;
+  }
 `;

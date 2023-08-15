@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <g fill="none" fill-rule="evenodd">
+    <g>
+      <g>
+        <path d="M0 0H24V24H0z" transform="translate(-316 -20) translate(316 20)"></path>
+        <g stroke="#000" stroke-width="2">
+          <path
+            d="M0 11.5L16 11.5M0 6L16 6M0 .5L16 .5"
+            transform="translate(-316 -20) translate(316 20) translate(4 6.5)"
+          ></path>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

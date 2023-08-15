@@ -3,6 +3,7 @@ import Link from 'next/link';
 
 import COLORS from '~/constants/colors';
 import { mont } from '~/pages/_app';
+import getDeviceType from '~/utils/getDeviceType';
 
 const ITEMS_1 = [
   { title: '직무 탐색', url: '/positions' },
@@ -21,27 +22,31 @@ const ITEMS_1 = [
 ];
 
 const NavBar = () => {
+  const isDesktop = getDeviceType() === 'desktop';
+
   return (
     <Block>
-      <UL gap={40}>
-        {ITEMS_1.map((item, index) => (
+      <UL gap={isDesktop ? 40 : 20}>
+        {ITEMS_1.map((item) => (
           <li key={item.title}>
             <NavLink href={item.url}>
               {item.title}
-              {index + 1 === ITEMS_1.length && <Free className={mont.className}>Free</Free>}
+              {item.title === '개취콘' && isDesktop && <Free className={mont.className}>Free</Free>}
             </NavLink>
           </li>
         ))}
       </UL>
 
-      <UL gap={24}>
-        <LI>회원가입/로그인</LI>
-        <LI>
-          <BlankLink href="https://biz.jumpit.co.kr/" target="_blank">
-            기업 서비스
-          </BlankLink>
-        </LI>
-      </UL>
+      {isDesktop && (
+        <UL gap={24}>
+          <LI>회원가입/로그인</LI>
+          <LI>
+            <BlankLink href="https://biz.jumpit.co.kr/" target="_blank">
+              기업 서비스
+            </BlankLink>
+          </LI>
+        </UL>
+      )}
     </Block>
   );
 };
@@ -53,6 +58,13 @@ const Block = styled.nav`
   justify-content: space-between;
   align-items: center;
   height: 56px;
+  overflow-x: scroll;
+  white-space: nowrap;
+  flex-wrap: nowrap;
+
+  @media (max-width: 1080px) {
+    padding: 0 16px;
+  }
 `;
 
 const UL = styled.ul<{ gap: number }>`

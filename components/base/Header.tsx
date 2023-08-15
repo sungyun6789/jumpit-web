@@ -34,6 +34,12 @@ const Block = styled.header`
   width: 100%;
   border-bottom: 1px solid #e4e4e4;
   background-color: #fff;
+
+  @media (max-width: 1080px) {
+    max-width: 1060px;
+    margin: auto;
+    border-bottom: unset;
+  }
 `;
 
 const HeaderLayout = styled.div`
@@ -43,11 +49,15 @@ const HeaderLayout = styled.div`
   flex-direction: column;
 `;
 
-const HeaderTop = styled.div`
+const HeaderTop = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 64px;
+
+  @media (max-width: 1080px) {
+    padding: 0 16px;
+  }
 `;
 
 const LogoLink = styled(Link)`
