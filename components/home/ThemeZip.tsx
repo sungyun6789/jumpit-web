@@ -116,23 +116,23 @@ const ArrowButton = styled(Button)`
 
   :disabled {
     cursor: default;
-    svg path:nth-child(1) {
+    svg path:nth-of-type(1) {
       fill: transparent;
       stroke: #c4c4c4;
     }
-    svg path:nth-child(2) {
+    svg path:nth-of-type(2) {
       fill: #c4c4c4;
     }
   }
 
   :not(:disabled) {
     :hover {
-      svg path:nth-child(1) {
+      svg path:nth-of-type(1) {
         fill: #444444;
         stroke: #444444;
         stroke-width: 0;
       }
-      svg path:nth-child(2) {
+      svg path:nth-of-type(2) {
         fill: #fff;
         stroke: #fff;
         stroke-width: 0;

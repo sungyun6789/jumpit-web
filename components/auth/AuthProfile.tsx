@@ -140,7 +140,7 @@ const LoginMenu = styled.div`
   padding: 20px 0px;
   background-color: #fff;
 
-  a:nth-child(1) {
+  a:nth-of-type(1) {
     border-right: 1px solid #d8d8d8;
   }
 `;
