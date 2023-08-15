@@ -1,10 +1,9 @@
 import styled from '@emotion/styled';
 import Image from 'next/image';
+import COLORS from '~/constants/colors';
 
 import Button from '../common/Button';
 import PositionCardList from '../common/PositionCardList';
-
-import COLORS from '~/constants/colors';
 
 const LIST = [1, 2, 3, 4, 5, 6, 7, 8];
 

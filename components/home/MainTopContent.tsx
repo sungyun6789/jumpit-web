@@ -1,10 +1,9 @@
 import styled from '@emotion/styled';
-
-import AuthProfile from '../auth/AuthProfile';
-
 import COLORS from '~/constants/colors';
 import { mont } from '~/pages/_app';
 import getDeviceType from '~/utils/getDeviceType';
+
+import AuthProfile from '../auth/AuthProfile';
 
 const MainTopContent = () => {
   const isDesktop = getDeviceType() === 'desktop';

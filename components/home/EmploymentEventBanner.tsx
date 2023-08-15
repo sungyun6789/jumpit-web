@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-
 import COLORS from '~/constants/colors';
 
 const EmploymentEventBanner = () => {

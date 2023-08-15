@@ -1,6 +1,5 @@
 import styled from '@emotion/styled';
 import Link from 'next/link';
-
 import COLORS from '~/constants/colors';
 import { mont } from '~/pages/_app';
 import getDeviceType from '~/utils/getDeviceType';

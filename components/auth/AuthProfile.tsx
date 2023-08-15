@@ -1,7 +1,6 @@
 import styled from '@emotion/styled';
 import Image from 'next/image';
 import Link from 'next/link';
-
 import { mont } from '~/pages/_app';
 
 const SOCIALS = ['naver', 'google', 'github', 'apple'];

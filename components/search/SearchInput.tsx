@@ -1,13 +1,12 @@
 import styled from '@emotion/styled';
 import Image from 'next/image';
 import { useState } from 'react';
+import COLORS from '~/constants/colors';
+import getDeviceType from '~/utils/getDeviceType';
 
 import Button from '../common/Button';
 
 import type { ChangeEvent } from 'react';
-
-import COLORS from '~/constants/colors';
-import getDeviceType from '~/utils/getDeviceType';
 
 const SearchInput = () => {
   const [searchKeyword, setSearchKeyword] = useState<string>();
