@@ -67,6 +67,17 @@ export default ThemeZip;
 const Block = styled.section`
   max-width: 1080px;
   margin: 64px auto;
+
+  @media (max-width: 1080px) {
+    overflow-x: scroll;
+    max-width: unset;
+    margin: 40px auto;
+    padding: 0 8px;
+
+    ::-webkit-scrollbar {
+      display: none;
+    }
+  }
 `;
 
 const TitleBox = styled.div`
@@ -74,6 +85,10 @@ const TitleBox = styled.div`
   justify-content: space-between;
   align-items: center;
   margin: 0px 10px 16px;
+
+  @media (max-width: 1080px) {
+    margin: 0px 8px 16px;
+  }
 `;
 
 const Title = styled.h1`
@@ -84,6 +99,10 @@ const ButtonBox = styled.div`
   display: flex;
   height: 37px;
   gap: 6px;
+
+  @media (max-width: 600px) {
+    display: none;
+  }
 `;
 
 const ArrowButton = styled(Button)`
@@ -124,8 +143,14 @@ const ArrowButton = styled(Button)`
 
 const SwiperList = styled.div`
   display: flex;
-  justify-content: space-between;
+  gap: 20px;
   padding: 0 10px;
+
+  @media (max-width: 1080px) {
+    width: 2884px;
+    gap: 16px;
+    padding: 0 8px;
+  }
 `;
 
 const SwiperItem = styled.div`
@@ -133,4 +158,12 @@ const SwiperItem = styled.div`
   height: 140px;
   background-color: #f0f0f0;
   border-radius: 8px;
+
+  @media (max-width: 1080px) {
+    width: 360px;
+  }
+
+  @media (max-width: 600px) {
+    width: 243px;
+  }
 `;
