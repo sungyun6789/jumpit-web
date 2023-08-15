@@ -3,9 +3,9 @@ const getDeviceType = () => {
 
   const width = window.innerWidth;
 
-  if (width < 600) {
+  if (width <= 600) {
     return 'mobile';
-  } else if (width < 1080) {
+  } else if (width <= 1080) {
     return 'tablet';
   } else {
     return 'desktop';
