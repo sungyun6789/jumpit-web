@@ -3,6 +3,8 @@ import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import Link from 'next/link';
 
+import Button from '../common/Button';
+
 // import SearchInput from '../search/SearchInput';
 
 // import NavBar from './NavBar';
@@ -19,7 +21,10 @@ const Header = () => {
             <Image src="/koLogo.svg" width={72} height={32} alt="logo" />
           </LogoLink>
 
-          <SearchInput />
+          <LoginTextBox>
+            <LoginButton>회원가입/로그인</LoginButton>
+            <SearchInput />
+          </LoginTextBox>
         </HeaderTop>
 
         <NavBar />
@@ -61,6 +66,22 @@ const HeaderTop = styled.nav`
 
   @media (max-width: 1080px) {
     padding: 0 16px;
+  }
+`;
+
+const LoginTextBox = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 19px;
+`;
+
+const LoginButton = styled(Button)`
+  display: none;
+
+  @media (max-width: 1080px) {
+    display: inline-block;
+    font-weight: 500;
+    line-height: 24px;
   }
 `;
 
