@@ -38,11 +38,11 @@ const Block = styled.header`
   width: 100%;
   border-bottom: 1px solid #e4e4e4;
   background-color: #fff;
+  z-index: 1;
 
   @media (max-width: 1080px) {
-    max-width: 1060px;
-    margin: auto;
     border-bottom: unset;
+    background-color: #fff;
   }
 `;
 
