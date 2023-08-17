@@ -2,7 +2,6 @@ import styled from '@emotion/styled';
 import Image from 'next/image';
 import { useState } from 'react';
 import COLORS from '~/constants/colors';
-import getDeviceType from '~/utils/getDeviceType';
 
 import Button from '../common/Button';
 
@@ -11,33 +10,39 @@ import type { ChangeEvent } from 'react';
 const SearchInput = () => {
   const [searchKeyword, setSearchKeyword] = useState<string>();
 
-  const isDesktop = getDeviceType() === 'desktop';
-
   const onChange = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchKeyword(e.target.value);
   };
 
-  return isDesktop ? (
-    <Block>
-      <Input placeholder="검색어를 입력해주세요" maxLength={50} type="text" value={searchKeyword} onChange={onChange} />
-      <SearchColorIcon>
-        <Image width={24} height={24} src="/searchColorIcon.svg" alt="search" />
-      </SearchColorIcon>
-      {searchKeyword && (
-        <DeleteIcon>
-          <Image width={24} height={24} src="/deleteIcon.svg" alt="delete" />
-        </DeleteIcon>
-      )}
-    </Block>
-  ) : (
-    <MobileBlock>
-      <SearchIcon>
-        <Image width={24} height={24} src="/searchIcon.svg" alt="search" />
-      </SearchIcon>
-      <MobileIcon>
-        <Image width={24} height={24} src="/menuIcon.svg" alt="menu" />
-      </MobileIcon>
-    </MobileBlock>
+  return (
+    <>
+      <Block>
+        <Input
+          placeholder="검색어를 입력해주세요"
+          maxLength={50}
+          type="text"
+          value={searchKeyword}
+          onChange={onChange}
+        />
+        <SearchColorIcon>
+          <Image width={24} height={24} src="/searchColorIcon.svg" alt="search" />
+        </SearchColorIcon>
+        {searchKeyword && (
+          <DeleteIcon>
+            <Image width={24} height={24} src="/deleteIcon.svg" alt="delete" />
+          </DeleteIcon>
+        )}
+      </Block>
+
+      <MobileBlock>
+        <SearchIcon>
+          <Image width={24} height={24} src="/searchIcon.svg" alt="search" />
+        </SearchIcon>
+        <MobileIcon>
+          <Image width={24} height={24} src="/menuIcon.svg" alt="menu" />
+        </MobileIcon>
+      </MobileBlock>
+    </>
   );
 };
 
@@ -49,6 +54,10 @@ const Block = styled.div`
   box-sizing: content-box;
   border: 1.5px solid ${COLORS.primary};
   border-radius: 100px;
+
+  @media (max-width: 1080px) {
+    display: none;
+  }
 `;
 
 const Input = styled.input`
@@ -78,8 +87,12 @@ const DeleteIcon = styled(Button)`
 `;
 
 const MobileBlock = styled.div`
-  display: flex;
-  gap: 20px;
+  display: none;
+
+  @media (max-width: 1080px) {
+    display: flex;
+    gap: 20px;
+  }
 `;
 
 const MobileIcon = styled(Button)`

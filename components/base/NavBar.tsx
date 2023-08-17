@@ -2,7 +2,6 @@ import styled from '@emotion/styled';
 import Link from 'next/link';
 import COLORS from '~/constants/colors';
 import { mont } from '~/pages/_app';
-import getDeviceType from '~/utils/getDeviceType';
 
 const ITEMS_1 = [
   { title: '직무 탐색', url: '/positions' },
@@ -21,36 +20,40 @@ const ITEMS_1 = [
 ];
 
 const NavBar = () => {
-  const isDesktop = getDeviceType() === 'desktop';
-
   return (
     <Block>
-      <UL gap={isDesktop ? 40 : 20}>
+      <NavUL>
         {ITEMS_1.map((item) => (
           <li key={item.title}>
             <NavLink href={item.url}>
               {item.title}
-              {item.title === '개취콘' && isDesktop && <Free className={mont.className}>Free</Free>}
+              {item.title === '개취콘' && <Free className={mont.className}>Free</Free>}
             </NavLink>
           </li>
         ))}
-      </UL>
+      </NavUL>
 
-      {isDesktop && (
-        <UL gap={24}>
+      <PCView>
+        <AuthUL>
           <LI>회원가입/로그인</LI>
           <LI>
             <BlankLink href="https://biz.jumpit.co.kr/" target="_blank">
               기업 서비스
             </BlankLink>
           </LI>
-        </UL>
-      )}
+        </AuthUL>
+      </PCView>
     </Block>
   );
 };
 
 export default NavBar;
+
+const PCView = styled.div`
+  @media (max-width: 1080px) {
+    display: none;
+  }
+`;
 
 const Block = styled.nav`
   display: flex;
@@ -66,10 +69,9 @@ const Block = styled.nav`
   }
 `;
 
-const UL = styled.ul<{ gap: number }>`
+const UL = styled.ul`
   display: flex;
   align-items: center;
-  gap: ${(props) => props.gap}px;
   list-style-type: none;
   color: black;
   height: 44px;
@@ -80,6 +82,18 @@ const UL = styled.ul<{ gap: number }>`
       color: #888888;
     }
   }
+`;
+
+const NavUL = styled(UL)`
+  gap: 40px;
+
+  @media (max-width: 1080px) {
+    gap: 20px;
+  }
+`;
+
+const AuthUL = styled(UL)`
+  gap: 24px;
 `;
 
 const NavLink = styled(Link)`
@@ -102,15 +116,17 @@ const Free = styled.span`
   font-weight: 700;
   line-height: 16px;
   color: ${COLORS.primary};
+
+  @media (max-width: 1080px) {
+    display: none;
+  }
 `;
 
 const LI = styled.li`
   font-weight: 500;
   line-height: 24px;
   color: #222222;
-  font-family: 'Noto Sans KR', -apple-system, system-ui, 'Apple SD Gothic Neo', 'Malgun Gothic', 'Nanum Gothic',
-    sans-seriff;
-  letter-spacing: 0.5px;
+  letter-spacing: -0.5px;
   cursor: pointer;
 
   :hover {
