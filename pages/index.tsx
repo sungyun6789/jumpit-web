@@ -1,5 +1,6 @@
 import dynamic from 'next/dynamic';
 import MiniBanner from '~/components/home/MiniBanner';
+import Notice from '~/components/home/Notice';
 
 // import EmploymentEventBanner from '~/components/home/EmploymentEventBanner';
 // import MainTopContent from '~/components/home/MainTopContent';
@@ -22,6 +23,7 @@ export default function Home() {
       <WeeklyPickPosition />
       <EmploymentEventBanner />
       <MiniBanner />
+      <Notice />
     </>
   );
 }
