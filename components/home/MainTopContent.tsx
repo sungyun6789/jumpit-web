@@ -26,7 +26,6 @@ const MainTopContent = () => {
           </NoticeBox>
         </div>
       </Block>
-      <MiniSlide />
     </>
   ) : (
     <SlideBox />
@@ -57,17 +56,6 @@ const SlideBox = styled.div`
   @media (max-width: 600px) {
     height: 252px;
   }
-`;
-
-const MiniSlide = styled.div`
-  position: absolute;
-  top: 160px;
-  left: 50%;
-  width: 100px;
-  height: 148px;
-  margin-left: 549px;
-  border: 1px solid #e4e4e4;
-  border-radius: 4px;
 `;
 
 const NoticeBox = styled.div`

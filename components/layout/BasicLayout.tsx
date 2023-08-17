@@ -20,6 +20,8 @@ const BasicLayout = ({ children }: Props) => {
 export default BasicLayout;
 
 const Block = styled.main`
+  position: relative;
+  overflow-x: hidden;
   margin: auto;
   padding-top: 120px;
 `;
