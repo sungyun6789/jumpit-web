@@ -45,7 +45,7 @@ const Footer = () => {
               {NAV_LINK_LIST2.map((link) => (
                 <li key={link.title}>
                   <StyledLink href={link.url} target="_blank">
-                    {link.title === '개인정보처리방침' ? <b>{link.title}</b> : link.title}
+                    {link.title === '개인정보처리방침' ? <Bold>{link.title}</Bold> : link.title}
                   </StyledLink>
                 </li>
               ))}
@@ -152,6 +152,11 @@ const Nav = styled.nav`
   display: flex;
   justify-content: space-between;
   width: 250px;
+
+  @media (max-width: 600px) {
+    display: block;
+    width: 100%;
+  }
 `;
 
 const StyledUl = styled.ul`
@@ -159,6 +164,12 @@ const StyledUl = styled.ul`
   flex-direction: column;
   gap: 8px;
   list-style: none;
+
+  @media (max-width: 600px) {
+    flex-direction: row;
+    gap: 20px;
+    height: 32px;
+  }
 `;
 
 const StyledLink = styled(Link)`
@@ -166,4 +177,8 @@ const StyledLink = styled(Link)`
   color: #444444;
   line-height: 24px;
   letter-spacing: -0.5px;
+`;
+
+const Bold = styled.b`
+  font-size: 14px;
 `;
