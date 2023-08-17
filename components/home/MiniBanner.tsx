@@ -1,12 +1,19 @@
 import styled from '@emotion/styled';
 
 const MiniBanner = () => {
-  return <Block />;
+  return (
+    <>
+      <PCBanner />
+      <MobileBannerBox>
+        <MobileBanner />
+      </MobileBannerBox>
+    </>
+  );
 };
 
 export default MiniBanner;
 
-const Block = styled.div`
+const PCBanner = styled.div`
   position: absolute;
   top: 160px;
   left: 50%;
@@ -18,5 +25,25 @@ const Block = styled.div`
 
   @media (max-width: 1080px) {
     display: none;
+  }
+`;
+
+const MobileBannerBox = styled.div`
+  display: none;
+
+  @media (max-width: 1080px) {
+    display: inline-block;
+    width: 100%;
+    height: 84px;
+  }
+`;
+
+const MobileBanner = styled.div`
+  @media (max-width: 1080px) {
+    width: calc(100% - 32px);
+    height: 64px;
+    margin: 10px auto;
+    border: 1px solid #e4e4e4;
+    border-radius: 4px;
   }
 `;
