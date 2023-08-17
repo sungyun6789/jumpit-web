@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 import Image from 'next/image';
 import COLORS from '~/constants/colors';
+import getDeviceType from '~/utils/getDeviceType';
 
 import Button from '../common/Button';
 import PositionCardList from '../common/PositionCardList';
@@ -8,20 +9,20 @@ import PositionCardList from '../common/PositionCardList';
 const LIST = [1, 2, 3, 4, 5, 6, 7, 8];
 
 const PositionRecommend = () => {
-  const isLogin = true;
+  const isMobile = getDeviceType() === 'mobile';
+  const isLogin = false;
 
   return isLogin ? (
     <Block>
       <TitleBox>
         <Title>
           <ThumbsUpBox>
-            <Image src="/thumbsUpIcon.svg" width={16} height={16} alt="" />
+            <Image src="/thumbsUpIcon.svg" width={isMobile ? 12 : 16} height={isMobile ? 12 : 16} alt="" />
           </ThumbsUpBox>
           박성윤님을 위한 추천!
         </Title>
         <RecommendAlarmButton>
           <Image src="/alarmIcon.svg" width={18} height={18} alt="recommend alarm" />
-          추천 알림 받기
         </RecommendAlarmButton>
       </TitleBox>
 
@@ -34,13 +35,16 @@ const PositionRecommend = () => {
       <PositionRecommendBox>
         <PositionRecommendIconTextContainer>
           <Icon>🖐</Icon>
-          <PositionRecommendText>3초만에 회원가입/로그인하고 취향저격 포지션을 추천 받아보세요!</PositionRecommendText>
+          <PositionRecommendText>
+            <BreakTag>3초만에 회원가입/로그인하고 </BreakTag>
+            취향저격 포지션을 추천 받아보세요!
+          </PositionRecommendText>
         </PositionRecommendIconTextContainer>
 
         <LoginText>
           회원가입/로그인
           <svg xmlns="http://www.w3.org/2000/svg" width="7" height="12" viewBox="0 0 7 12" fill="none">
-            <path d="M1.33325 10.6668L5.99992 6.00016L1.33325 1.3335" stroke="#C4C4C4" stroke-width="1.2" />
+            <path d="M1.33325 10.6668L5.99992 6.00016L1.33325 1.3335" stroke="#C4C4C4" strokeWidth="1.2" />
           </svg>
         </LoginText>
       </PositionRecommendBox>
@@ -53,11 +57,24 @@ export default PositionRecommend;
 const UnLoginBlock = styled.section`
   width: 1060px;
   margin: 64px auto 0;
+
+  @media (max-width: 1080px) {
+    width: auto;
+    margin: 40px 16px 0px;
+  }
+
+  @media (max-width: 600px) {
+    margin: 40px 16px 0px;
+  }
 `;
 
 const UnLoginTitle = styled.h1`
   font-size: 24px;
   color: #222222;
+
+  @media (max-width: 600px) {
+    font-size: 20px;
+  }
 `;
 
 const PositionRecommendBox = styled.div`
@@ -70,6 +87,12 @@ const PositionRecommendBox = styled.div`
   background-color: #f5f5f8;
   border-radius: 4px;
   letter-spacing: -0.5px;
+
+  @media (max-width: 600px) {
+    display: block;
+    padding: 20px 16px;
+    height: 100%;
+  }
 `;
 
 const Icon = styled.p`
@@ -94,6 +117,12 @@ const PositionRecommendText = styled.p`
   color: #222222;
 `;
 
+const BreakTag = styled.span`
+  @media (max-width: 600px) {
+    display: block;
+  }
+`;
+
 const LoginText = styled.p`
   display: flex;
   align-items: center;
@@ -103,6 +132,11 @@ const LoginText = styled.p`
   color: #777777;
   white-space: pre;
   cursor: pointer;
+
+  @media (max-width: 600px) {
+    margin-left: 44px;
+    margin-top: 8px;
+  }
 `;
 
 const Block = styled.section`
@@ -113,6 +147,10 @@ const Block = styled.section`
   background-color: #f5fcfa;
   padding-top: 48px;
   padding-bottom: 18px;
+
+  @media (max-width: 1080px) {
+    padding-top: 40px;
+  }
 `;
 
 const TitleBox = styled.div`
@@ -120,6 +158,14 @@ const TitleBox = styled.div`
   justify-content: space-between;
   width: 1060px;
   margin: auto;
+
+  @media (max-width: 1080px) {
+    padding: 0 15px;
+  }
+
+  @media (max-width: 600px) {
+    padding: 0 18px;
+  }
 `;
 
 const Title = styled.h1`
@@ -128,6 +174,14 @@ const Title = styled.h1`
   gap: 8px;
   font-size: 24px;
   line-height: 40px;
+
+  @media (max-width: 1080px) {
+    letter-spacing: -0.5px;
+  }
+
+  @media (max-width: 600px) {
+    font-size: 20px;
+  }
 `;
 
 const ThumbsUpBox = styled.div`
@@ -138,17 +192,41 @@ const ThumbsUpBox = styled.div`
   height: 32px;
   background-color: #00dd6d;
   border-radius: 100%;
+
+  @media (max-width: 600px) {
+    width: 24px;
+    height: 24px;
+    padding: 3px;
+  }
 `;
 
 const RecommendAlarmButton = styled(Button)`
+  width: 129.05px;
+  height: 40px;
+  margin-top: 4.5px;
   display: flex;
+  justify-content: center;
   align-items: center;
   gap: 2px;
-  font-size: 14px;
+  font-size: 13px;
   line-height: 38px;
   color: #fff;
   padding: 0 16px;
   border-radius: 100px;
   background-color: ${COLORS.primary};
   border: 1px solid ${COLORS.primary};
+  ::after {
+    content: '추천 알림 받기';
+    font-size: 13px;
+  }
+
+  @media (max-width: 600px) {
+    width: 36px;
+    height: 36px;
+    padding: 0;
+
+    ::after {
+      content: none;
+    }
+  }
 `;

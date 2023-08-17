@@ -34,6 +34,11 @@ const Block = styled.section`
   flex-wrap: wrap;
   max-width: 1080px;
   margin: auto;
+
+  @media (max-width: 1080px) {
+    width: 100%;
+    padding: 0 8px;
+  }
 `;
 
 const Item = styled.div`
@@ -48,6 +53,12 @@ const Item = styled.div`
       text-decoration: underline;
     }
   }
+
+  @media (max-width: 1080px) {
+    max-width: 50%;
+    flex: 1 1 40%;
+    padding: 8px;
+  }
 `;
 
 const Banner = styled.div`
@@ -57,6 +68,11 @@ const Banner = styled.div`
   border: 1px solid #0000001a;
   border-radius: 4px;
   background-color: #f0f0f0;
+
+  @media (max-width: 1080px) {
+    width: 100%;
+    height: calc((((50vw - 16px) - 8px) / 3) * 2);
+  }
 `;
 
 const DescriptionBox = styled.div`
@@ -77,6 +93,10 @@ const PositionTitle = styled.h2`
   font-weight: 500;
   letter-spacing: -0.5px;
   line-height: 1.4em;
+
+  @media (max-width: 600px) {
+    font-size: 15px;
+  }
 `;
 
 const Description = styled.span`
@@ -88,10 +108,18 @@ const Description = styled.span`
 
 const TechStackBox = styled.div`
   margin-top: 8px;
+
+  @media (max-width: 600px) {
+    display: flex;
+  }
 `;
 
 const LocationCareerBox = styled.div`
   display: flex;
   gap: 10px;
   margin-top: 4px;
+
+  @media (max-width: 600px) {
+    display: none;
+  }
 `;
