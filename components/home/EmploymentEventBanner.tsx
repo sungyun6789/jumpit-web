@@ -5,7 +5,8 @@ const EmploymentEventBanner = () => {
   return (
     <Block>
       <Text>
-        점핏에서 지원하고 합격하면 <Bold>취업축하금 70만원</Bold>을 드려요 💰
+        <BreakTag>점핏에서 지원하고 합격하면 </BreakTag>
+        <Bold>취업축하금 70만원</Bold>을 드려요 💰
       </Text>
     </Block>
   );
@@ -45,6 +46,12 @@ const Text = styled.span`
   @media (max-width: 600px) {
     text-align: center;
     line-height: 34px;
+  }
+`;
+
+const BreakTag = styled(Text)`
+  @media (max-width: 600px) {
+    display: block;
   }
 `;
 
