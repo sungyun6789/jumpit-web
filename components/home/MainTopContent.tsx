@@ -1,25 +1,27 @@
 import styled from '@emotion/styled';
-import getDeviceType from '~/utils/getDeviceType';
+import { DesktopView, TabletView } from '~/styles/breakpoint';
 
 import AuthProfile from '../auth/AuthProfile';
 
 import Notice from './Notice';
 
 const MainTopContent = () => {
-  const isDesktop = getDeviceType() === 'desktop';
-
-  return isDesktop ? (
+  return (
     <>
-      <Block>
+      <DesktopView>
+        <Block>
+          <SlideBox />
+          <div>
+            <AuthProfile />
+            <Notice />
+          </div>
+        </Block>
+      </DesktopView>
+
+      <TabletView>
         <SlideBox />
-        <div>
-          <AuthProfile />
-          <Notice />
-        </div>
-      </Block>
+      </TabletView>
     </>
-  ) : (
-    <SlideBox />
   );
 };
 

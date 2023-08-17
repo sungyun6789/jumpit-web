@@ -1,7 +1,6 @@
 import styled from '@emotion/styled';
 import Image from 'next/image';
 import COLORS from '~/constants/colors';
-import getDeviceType from '~/utils/getDeviceType';
 
 import Button from '../common/Button';
 import PositionCardList from '../common/PositionCardList';
@@ -9,7 +8,6 @@ import PositionCardList from '../common/PositionCardList';
 const LIST = [1, 2, 3, 4, 5, 6, 7, 8];
 
 const PositionRecommend = () => {
-  const isMobile = getDeviceType() === 'mobile';
   const isLogin = false;
 
   return isLogin ? (
@@ -17,7 +15,7 @@ const PositionRecommend = () => {
       <TitleBox>
         <Title>
           <ThumbsUpBox>
-            <Image src="/thumbsUpIcon.svg" width={isMobile ? 12 : 16} height={isMobile ? 12 : 16} alt="" />
+            <Image src="/thumbsUpIcon.svg" width={16} height={16} alt="" />
           </ThumbsUpBox>
           박성윤님을 위한 추천!
         </Title>
@@ -197,6 +195,11 @@ const ThumbsUpBox = styled.div`
     width: 24px;
     height: 24px;
     padding: 3px;
+
+    img {
+      width: 12px;
+      height: 12px;
+    }
   }
 `;
 
