@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { DesktopView, TabletView } from '~/styles/breakpoint';
 
 const MiniBanner = () => {
   return (
@@ -13,7 +14,7 @@ const MiniBanner = () => {
 
 export default MiniBanner;
 
-const PCBanner = styled.div`
+const PCBanner = styled(DesktopView)`
   position: absolute;
   top: 160px;
   left: 50%;
@@ -22,17 +23,10 @@ const PCBanner = styled.div`
   margin-left: 549px;
   border: 1px solid #e4e4e4;
   border-radius: 4px;
-
-  @media (max-width: 1080px) {
-    display: none;
-  }
 `;
 
-const MobileBannerBox = styled.div`
-  display: none;
-
+const MobileBannerBox = styled(TabletView)`
   @media (max-width: 1080px) {
-    display: inline-block;
     width: 100%;
     height: 84px;
   }

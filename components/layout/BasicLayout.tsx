@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { TabletView } from '~/styles/breakpoint';
 
 import Footer from '../base/Footer';
 import Header from '../base/Header';
@@ -13,9 +14,9 @@ const BasicLayout = ({ children }: Props) => {
     <>
       <Header />
       <Block>{children}</Block>
-      <NoticeView>
+      <TabletView>
         <Notice />
-      </NoticeView>
+      </TabletView>
       <Footer />
     </>
   );
@@ -28,12 +29,4 @@ const Block = styled.main`
   overflow-x: hidden;
   margin: auto;
   padding-top: 120px;
-`;
-
-const NoticeView = styled.div`
-  display: none;
-
-  @media (max-width: 1080px) {
-    display: block;
-  }
 `;

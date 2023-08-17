@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 import Link from 'next/link';
 import COLORS from '~/constants/colors';
 import { mont } from '~/pages/_app';
+import { DesktopView } from '~/styles/breakpoint';
 
 const ITEMS_1 = [
   { title: '직무 탐색', url: '/positions' },
@@ -33,7 +34,7 @@ const NavBar = () => {
         ))}
       </NavUL>
 
-      <PCView>
+      <DesktopView>
         <AuthUL>
           <LI>회원가입/로그인</LI>
           <LI>
@@ -42,18 +43,12 @@ const NavBar = () => {
             </BlankLink>
           </LI>
         </AuthUL>
-      </PCView>
+      </DesktopView>
     </Block>
   );
 };
 
 export default NavBar;
-
-const PCView = styled.div`
-  @media (max-width: 1080px) {
-    display: none;
-  }
-`;
 
 const Block = styled.nav`
   display: flex;

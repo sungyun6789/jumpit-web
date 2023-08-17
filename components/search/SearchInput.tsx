@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 import Image from 'next/image';
 import { useState } from 'react';
 import COLORS from '~/constants/colors';
+import { DesktopView, TabletView } from '~/styles/breakpoint';
 
 import Button from '../common/Button';
 
@@ -48,16 +49,12 @@ const SearchInput = () => {
 
 export default SearchInput;
 
-const Block = styled.div`
+const Block = styled(DesktopView)`
   position: relative;
   width: 520px;
   box-sizing: content-box;
   border: 1.5px solid ${COLORS.primary};
   border-radius: 100px;
-
-  @media (max-width: 1080px) {
-    display: none;
-  }
 `;
 
 const Input = styled.input`
@@ -86,9 +83,7 @@ const DeleteIcon = styled(Button)`
   right: 18px;
 `;
 
-const MobileBlock = styled.div`
-  display: none;
-
+const MobileBlock = styled(TabletView)`
   @media (max-width: 1080px) {
     display: flex;
     gap: 20px;
