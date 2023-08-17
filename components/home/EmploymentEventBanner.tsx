@@ -5,9 +5,8 @@ const EmploymentEventBanner = () => {
   return (
     <Block>
       <Text>
-        점핏에서 지원하고 합격하면 <Bold>취업축하금 70만원</Bold>
+        점핏에서 지원하고 합격하면 <Bold>취업축하금 70만원</Bold>을 드려요 💰
       </Text>
-      <Text>을 드려요 💰</Text>
     </Block>
   );
 };
@@ -24,6 +23,16 @@ const Block = styled.section`
   background-image: url('/employmentEventBanner.svg');
   background-color: ${COLORS.primary};
   border-radius: 8px;
+
+  @media (max-width: 1080px) {
+    border-radius: unset;
+    margin-bottom: 54px;
+    background: ${COLORS.primary};
+  }
+
+  @media (max-width: 600px) {
+    height: 116px;
+  }
 `;
 
 const Text = styled.span`
@@ -32,6 +41,11 @@ const Text = styled.span`
   line-height: 40px;
   letter-spacing: -0.5px;
   color: #fff;
+
+  @media (max-width: 600px) {
+    text-align: center;
+    line-height: 34px;
+  }
 `;
 
 const Bold = styled.b`
