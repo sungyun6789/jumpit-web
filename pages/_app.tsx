@@ -22,6 +22,7 @@ const queryClient = new QueryClient();
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <QueryClientProvider client={queryClient}>
+      <title>점핏 | 개발자 커리어 점프</title>
       <div className={noto.className}>
         <BasicLayout>
           <Component {...pageProps} />
