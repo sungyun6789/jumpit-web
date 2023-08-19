@@ -5,6 +5,8 @@ import Footer from '../base/Footer';
 import Header from '../base/Header';
 import Notice from '../home/Notice';
 
+import AppDownload from './AppDownload';
+
 interface Props {
   children: React.ReactNode;
 }
@@ -14,6 +16,7 @@ const BasicLayout = ({ children }: Props) => {
     <>
       <Header />
       <Block>{children}</Block>
+      <AppDownload />
       <TabletView>
         <Notice />
       </TabletView>
