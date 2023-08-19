@@ -54,10 +54,12 @@ const ThemeZip = () => {
         </ButtonBox>
       </TitleBox>
 
-      <SwiperList>
-        <SwiperItem />
-        <SwiperItem />
-      </SwiperList>
+      <SwiperBox>
+        <SwiperList>
+          <SwiperItem />
+          <SwiperItem />
+        </SwiperList>
+      </SwiperBox>
     </Block>
   );
 };
@@ -69,14 +71,10 @@ const Block = styled.section`
   margin: 64px auto;
 
   @media (max-width: 1080px) {
-    overflow-x: scroll;
+    width: 100%;
     max-width: unset;
     margin: 40px auto;
     padding: 0 8px;
-
-    ::-webkit-scrollbar {
-      display: none;
-    }
   }
 `;
 
@@ -141,15 +139,29 @@ const ArrowButton = styled(Button)`
   }
 `;
 
+const SwiperBox = styled.div`
+  @media (max-width: 1080px) {
+    overflow-x: scroll;
+
+    ::-webkit-scrollbar {
+      display: none;
+    }
+  }
+`;
+
 const SwiperList = styled.div`
   display: flex;
   gap: 20px;
   padding: 0 10px;
 
   @media (max-width: 1080px) {
-    width: 2884px;
+    width: 6640px;
     gap: 16px;
     padding: 0 8px;
+  }
+
+  @media (max-width: 600px) {
+    width: 3296px;
   }
 `;
 
