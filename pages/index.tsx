@@ -4,9 +4,11 @@ import { createContext } from 'react';
 import EmploymentEventBanner from '~/components/home/EmploymentEventBanner';
 import MainTopContent from '~/components/home/MainTopContent';
 import MiniBanner from '~/components/home/MiniBanner';
+import Notice from '~/components/home/Notice';
 import PositionRecommendation from '~/components/home/PositionRecommend';
 import ThemeZip from '~/components/home/ThemeZip';
 import WeeklyPickPosition from '~/components/home/WeeklyPickPosition';
+import { TabletView } from '~/styles/breakpoint';
 
 import type { HomeResponse } from './api/home';
 import type { ThemeBannerResponse } from './api/themes/banners/home';
@@ -34,6 +36,10 @@ export default function Home() {
         <WeeklyPickPosition />
         <EmploymentEventBanner />
         <MiniBanner />
+
+        <TabletView>
+          <Notice />
+        </TabletView>
       </ThemeBannerContext.Provider>
     </HomeDataContext.Provider>
   );

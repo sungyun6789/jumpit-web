@@ -1,9 +1,7 @@
 import styled from '@emotion/styled';
-import { TabletView } from '~/styles/breakpoint';
 
 import Footer from '../base/Footer';
 import Header from '../base/Header';
-import Notice from '../home/Notice';
 
 import AppDownload from './AppDownload';
 
@@ -17,9 +15,6 @@ const BasicLayout = ({ children }: Props) => {
       <Header />
       <Block>{children}</Block>
       <AppDownload />
-      <TabletView>
-        <Notice />
-      </TabletView>
       <Footer />
     </>
   );
