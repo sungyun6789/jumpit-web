@@ -17,7 +17,13 @@ export const mont = Montserrat({
   subsets: ['latin'],
 });
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: Infinity,
+    },
+  },
+});
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
