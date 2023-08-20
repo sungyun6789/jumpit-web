@@ -9,23 +9,32 @@ import ThemeZip from '~/components/home/ThemeZip';
 import WeeklyPickPosition from '~/components/home/WeeklyPickPosition';
 
 import type { HomeResponse } from './api/home';
+import type { ThemeBannerResponse } from './api/themes/banners/home';
 
 export const HomeDataContext = createContext<HomeResponse['result'] | undefined>(undefined);
+export const ThemeBannerContext = createContext<ThemeBannerResponse['result'] | undefined>(undefined);
 
 export default function Home() {
   const { data } = useQuery(['/api/home'], async () => {
     const { data } = await axios.get<HomeResponse>('/api/home');
-    return data;
+    return data.result;
+  });
+
+  const { data: themeBanner } = useQuery(['/api/themes/banners/home'], async () => {
+    const { data } = await axios.get<ThemeBannerResponse>('/api/themes/banners/home');
+    return data.result;
   });
 
   return (
-    <HomeDataContext.Provider value={data?.result}>
-      <MainTopContent />
-      <ThemeZip />
-      <PositionRecommendation />
-      <WeeklyPickPosition />
-      <EmploymentEventBanner />
-      <MiniBanner />
+    <HomeDataContext.Provider value={data}>
+      <ThemeBannerContext.Provider value={themeBanner}>
+        <MainTopContent />
+        <ThemeZip />
+        <PositionRecommendation />
+        <WeeklyPickPosition />
+        <EmploymentEventBanner />
+        <MiniBanner />
+      </ThemeBannerContext.Provider>
     </HomeDataContext.Provider>
   );
 }
