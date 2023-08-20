@@ -1,11 +1,13 @@
 import styled from '@emotion/styled';
 import Link from 'next/link';
+import { useContext } from 'react';
+import { HomeDataContext } from '~/pages';
 
 import PositionCardList from '../common/PositionCardList';
 
-const LIST = [1, 2, 3, 4, 5, 6, 7, 8];
-
 const WeeklyPickPosition = () => {
+  const data = useContext(HomeDataContext);
+
   return (
     <Block>
       <TitleBox>
@@ -16,7 +18,7 @@ const WeeklyPickPosition = () => {
         <ViewAllLink href="/positions">전체 보기</ViewAllLink>
       </TitleBox>
 
-      <PositionCardList data={LIST} />
+      <PositionCardList data={data?.weeklyPositions.positions} />
     </Block>
   );
 };

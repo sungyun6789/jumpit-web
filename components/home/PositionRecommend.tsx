@@ -1,14 +1,15 @@
 import styled from '@emotion/styled';
 import Image from 'next/image';
+import { useContext } from 'react';
 import COLORS from '~/constants/colors';
+import { HomeDataContext } from '~/pages';
 
 import Button from '../common/Button';
 import PositionCardList from '../common/PositionCardList';
 
-const LIST = [1, 2, 3, 4, 5, 6, 7, 8];
-
 const PositionRecommend = () => {
-  const isLogin = false;
+  const data = useContext(HomeDataContext);
+  const isLogin = true;
 
   return isLogin ? (
     <Block>
@@ -24,7 +25,7 @@ const PositionRecommend = () => {
         </RecommendAlarmButton>
       </TitleBox>
 
-      <PositionCardList data={LIST} />
+      <PositionCardList data={data?.newlyPositions.positions} />
     </Block>
   ) : (
     <UnLoginBlock>
