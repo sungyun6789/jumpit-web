@@ -1,24 +1,36 @@
 import styled from '@emotion/styled';
+import Image from 'next/image';
+
+import type { Position } from '~/pages/api/home';
 
 interface Props {
-  data: any[];
+  data: Position[] | undefined;
 }
 
 const PositionCardList = ({ data }: Props) => {
   return (
     <Block>
-      {data.map((value) => (
-        <Item key={value}>
-          <Banner />
+      {data?.map((value) => (
+        <Item key={value.id}>
+          <BannerBox>
+            <Image src={value.imagePath} width={250} height={166} alt="banner" />
+          </BannerBox>
           <DescriptionBox>
-            <CompanyName>회사 이름 {value}</CompanyName>
-            <PositionTitle>공고 제목 {value}</PositionTitle>
+            <CompanyName>{value.companyName}</CompanyName>
+            <PositionTitle>{value.title}</PositionTitle>
             <TechStackBox>
-              <Description>기술 스택 {value}</Description>
+              {value.techStacks.map((stack) => (
+                <Description key={stack}>{stack}</Description>
+              ))}
             </TechStackBox>
             <LocationCareerBox>
-              <Description>지역</Description>
-              <Description>경력</Description>
+              {value.locations.map((location) => (
+                <Description key={location}>{location}</Description>
+              ))}
+              <Description>
+                {value.minCareer === 0 ? '신입' : '경력 ' + value.minCareer}
+                {value.maxCareer !== 1 && `~${value.maxCareer}년`}
+              </Description>
             </LocationCareerBox>
           </DescriptionBox>
         </Item>
@@ -61,17 +73,21 @@ const Item = styled.div`
   }
 `;
 
-const Banner = styled.div`
+const BannerBox = styled.div`
   box-sizing: content-box;
   width: 250px;
   height: 166px;
   border: 1px solid #0000001a;
   border-radius: 4px;
-  background-color: #f0f0f0;
 
   @media (max-width: 1080px) {
     width: 100%;
     height: calc((((50vw - 16px) - 8px) / 3) * 2);
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
   }
 `;
 
@@ -107,11 +123,12 @@ const Description = styled.span`
 `;
 
 const TechStackBox = styled.div`
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  overflow: hidden;
+  height: 18px;
   margin-top: 8px;
-
-  @media (max-width: 600px) {
-    display: flex;
-  }
 `;
 
 const LocationCareerBox = styled.div`
