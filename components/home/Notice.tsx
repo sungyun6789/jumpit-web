@@ -1,15 +1,26 @@
 import styled from '@emotion/styled';
+import Link from 'next/link';
+import { useContext } from 'react';
 import COLORS from '~/constants/colors';
+import { HomeDataContext } from '~/pages';
 import { mont } from '~/pages/_app';
 
 const Notice = () => {
+  const data = useContext(HomeDataContext);
+  const noticeBanner = data?.noticeBanners[0];
+  const noticeDate = noticeBanner?.createAt.slice(0, -3);
+
   return (
     <Block>
       <NoticeBox>
         <Title className={mont.className}>Notice</Title>
         <List>
-          <Content>[공지] 개인정보 처리방침 개정에 대해 안내드립니다.(20230822)</Content>
-          <NoticeDate>2023-08</NoticeDate>
+          <Content>
+            <Link href={noticeBanner?.url ?? '/'} target="_blank">
+              {noticeBanner?.title}
+            </Link>
+          </Content>
+          <NoticeDate>{noticeDate}</NoticeDate>
         </List>
       </NoticeBox>
     </Block>
