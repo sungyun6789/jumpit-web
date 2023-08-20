@@ -96,7 +96,8 @@ const DescriptionBox = styled.div`
   width: calc(100% - 7px);
 `;
 
-const CompanyName = styled.span`
+const CompanyName = styled.p`
+  height: 24px;
   font-size: 14px;
   line-height: 24px;
   letter-spacing: -0.5px;
