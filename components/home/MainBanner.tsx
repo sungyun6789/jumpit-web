@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 import Link from 'next/link';
 import { useContext, useRef } from 'react';
+import React from 'react';
 import Slider from 'react-slick';
 import { HomeDataContext } from '~/pages';
 
@@ -14,10 +15,10 @@ const MainBanner = () => {
   const next = () => slickRef.current?.slickNext();
 
   return (
-    <StyledSlider speed={300} autoplay ref={slickRef}>
-      {data?.mainBanners.map((banner) => (
-        <Block key={banner.bannerId}>
-          <Link href={banner.link}>
+    <Block>
+      <StyledSlider speed={300} autoplay ref={slickRef}>
+        {data?.mainBanners.map((banner) => (
+          <Link key={banner.bannerId} href={banner.link}>
             <Banner url={banner.imagePath}>
               <BannerDescription>
                 {banner.title}
@@ -26,12 +27,12 @@ const MainBanner = () => {
               </BannerDescription>
             </Banner>
           </Link>
+        ))}
+      </StyledSlider>
 
-          <LeftArrowButton onClick={prev} />
-          <RightArrowButton onClick={next} />
-        </Block>
-      ))}
-    </StyledSlider>
+      <LeftArrowButton onClick={prev} />
+      <RightArrowButton onClick={next} />
+    </Block>
   );
 };
 
