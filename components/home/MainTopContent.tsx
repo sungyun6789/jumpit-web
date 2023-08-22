@@ -3,6 +3,7 @@ import { DesktopView, TabletView } from '~/styles/breakpoint';
 
 import AuthProfile from '../auth/AuthProfile';
 
+import MainBanner from './MainBanner';
 import Notice from './Notice';
 
 const MainTopContent = () => {
@@ -10,7 +11,7 @@ const MainTopContent = () => {
     <>
       <DesktopView>
         <Block>
-          <SlideBox />
+          <MainBanner />
           <div>
             <AuthProfile />
             <Notice />
@@ -19,7 +20,7 @@ const MainTopContent = () => {
       </DesktopView>
 
       <TabletView>
-        <SlideBox />
+        <MainBanner />
       </TabletView>
     </>
   );
@@ -32,21 +33,4 @@ const Block = styled.section`
   justify-content: space-between;
   width: 1060px;
   margin: 40px auto 0;
-`;
-
-const SlideBox = styled.div`
-  width: 700px;
-  height: 340px;
-  background-color: #e4e4e4;
-  border-radius: 4px;
-
-  @media (max-width: 1080px) {
-    width: 100%;
-    height: 300px;
-    border-radius: 0;
-  }
-
-  @media (max-width: 600px) {
-    height: 252px;
-  }
 `;
