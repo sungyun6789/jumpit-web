@@ -1,15 +1,51 @@
 import styled from '@emotion/styled';
+import { useContext, useRef, useState } from 'react';
+import Slider from 'react-slick';
+import { ThemeBannerContext } from '~/pages';
+import getDeviceType from '~/utils/getDeviceType';
 
 import Button from '../common/Button';
 
+const MOBILE_SETTING = {
+  className: 'center',
+  centerMode: true,
+  centerPadding: '60px',
+  slidesToShow: 3,
+  speed: 500,
+};
+
+const DESKTOP_SETTING = {
+  slidesToScroll: 2,
+  slidesToShow: 2,
+  speed: 500,
+};
+
 const ThemeZip = () => {
+  const [currentIndex, setCurrentIndex] = useState(1);
+  const slickRef = useRef<Slider>(null);
+  const data = useContext(ThemeBannerContext);
+
+  const isDesktop = getDeviceType() === 'desktop';
+
+  const settings = isDesktop ? DESKTOP_SETTING : MOBILE_SETTING;
+
+  const prev = () => {
+    slickRef.current?.slickPrev();
+    setCurrentIndex(currentIndex - 1);
+  };
+
+  const next = () => {
+    slickRef.current?.slickNext();
+    setCurrentIndex(currentIndex + 1);
+  };
+
   return (
     <Block>
       <TitleBox>
         <Title>테마별 모음.zip</Title>
 
         <ButtonBox>
-          <ArrowButton disabled>
+          <ArrowButton disabled={currentIndex === 1} onClick={prev}>
             <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
               <g clipPath="url(#clip0_2450_17212)">
                 <path
@@ -30,7 +66,7 @@ const ThemeZip = () => {
               </defs>
             </svg>
           </ArrowButton>
-          <ArrowButton>
+          <ArrowButton disabled={(data?.length ?? 0) / 2 === currentIndex} onClick={next}>
             <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
               <g clipPath="url(#clip0_2450_17215)">
                 <path
@@ -54,17 +90,27 @@ const ThemeZip = () => {
         </ButtonBox>
       </TitleBox>
 
-      <SwiperBox>
-        <SwiperList>
-          <SwiperItem />
-          <SwiperItem />
-        </SwiperList>
-      </SwiperBox>
+      <StyledSlider {...settings} ref={slickRef}>
+        {data?.map((value) => (
+          <Banner key={value.title} url={value.themeBanner.pc}>
+            <BannerDescription>{value.title}</BannerDescription>
+          </Banner>
+        ))}
+      </StyledSlider>
     </Block>
   );
 };
 
 export default ThemeZip;
+
+const StyledSlider = styled(Slider)`
+  .slick-slide {
+    div {
+      display: flex;
+      margin: auto;
+    }
+  }
+`;
 
 const Block = styled.section`
   max-width: 1080px;
@@ -139,43 +185,21 @@ const ArrowButton = styled(Button)`
   }
 `;
 
-const SwiperBox = styled.div`
-  @media (max-width: 1080px) {
-    overflow-x: scroll;
-
-    ::-webkit-scrollbar {
-      display: none;
-    }
-  }
-`;
-
-const SwiperList = styled.div`
-  display: flex;
-  gap: 20px;
-  padding: 0 10px;
-
-  @media (max-width: 1080px) {
-    width: 6640px;
-    gap: 16px;
-    padding: 0 8px;
-  }
-
-  @media (max-width: 600px) {
-    width: 3296px;
-  }
-`;
-
-const SwiperItem = styled.div`
-  width: 520px;
+const Banner = styled.div<{ url: string }>`
+  position: relative;
+  width: 520px !important;
   height: 140px;
-  background-color: #f0f0f0;
-  border-radius: 8px;
+  background: url(${(props) => props.url}) center center / cover no-repeat;
+  cursor: pointer;
+`;
 
-  @media (max-width: 1080px) {
-    width: 360px;
-  }
-
-  @media (max-width: 600px) {
-    width: 243px;
-  }
+const BannerDescription = styled.span`
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 30px;
+  color: #000;
+  white-space: pre-wrap;
 `;
