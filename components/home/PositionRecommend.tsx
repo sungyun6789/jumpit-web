@@ -141,6 +141,7 @@ const LoginText = styled.p`
 const Block = styled.section`
   width: 100%;
   display: flex;
+  flex-direction: column;
   gap: 6px;
   flex-wrap: wrap;
   background-color: #f5fcfa;
@@ -149,6 +150,7 @@ const Block = styled.section`
 
   @media (max-width: 1080px) {
     padding-top: 40px;
+    flex-direction: initial;
   }
 `;
 
