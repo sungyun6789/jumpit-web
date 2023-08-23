@@ -2,32 +2,28 @@ import styled from '@emotion/styled';
 import { useContext, useRef, useState } from 'react';
 import Slider from 'react-slick';
 import { ThemeBannerContext } from '~/pages';
-import getDeviceType from '~/utils/getDeviceType';
 
 import Button from '../common/Button';
 
-const MOBILE_SETTING = {
-  className: 'center',
-  centerMode: true,
-  centerPadding: '60px',
-  slidesToShow: 3,
-  speed: 500,
-};
-
-const DESKTOP_SETTING = {
+const SETTING = {
   slidesToScroll: 2,
   slidesToShow: 2,
   speed: 500,
+  responsive: [
+    {
+      breakpoint: 1080,
+      settings: {
+        slidesToScroll: 1,
+        slidesToShow: 1,
+      },
+    },
+  ],
 };
 
 const ThemeZip = () => {
   const [currentIndex, setCurrentIndex] = useState(1);
   const slickRef = useRef<Slider>(null);
   const data = useContext(ThemeBannerContext);
-
-  const isDesktop = getDeviceType() === 'desktop';
-
-  const settings = isDesktop ? DESKTOP_SETTING : MOBILE_SETTING;
 
   const prev = () => {
     slickRef.current?.slickPrev();
@@ -90,7 +86,8 @@ const ThemeZip = () => {
         </ButtonBox>
       </TitleBox>
 
-      <StyledSlider {...settings} ref={slickRef}>
+      {/** 실제 서비스와 동일하게 변경 필요 */}
+      <StyledSlider {...SETTING} ref={slickRef}>
         {data?.map((value) => (
           <Banner key={value.title} url={value.themeBanner.pc}>
             <BannerDescription>{value.title}</BannerDescription>
