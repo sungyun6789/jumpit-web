@@ -8,6 +8,8 @@ import SearchInput from '../search/SearchInput';
 import NavBar from './NavBar';
 
 const Header = () => {
+  const isLogin = false;
+
   return (
     <Block>
       <HeaderLayout>
@@ -17,7 +19,7 @@ const Header = () => {
           </LogoLink>
 
           <LoginTextBox>
-            <LoginButton>회원가입/로그인</LoginButton>
+            {!isLogin && <LoginButton>회원가입/로그인</LoginButton>}
             <SearchInput />
           </LoginTextBox>
         </HeaderTop>
