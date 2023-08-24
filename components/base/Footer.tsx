@@ -146,6 +146,7 @@ const SNSBox = styled.div`
   display: flex;
   gap: 8px;
   margin-top: 14px;
+  padding-bottom: 16px;
 `;
 
 const Nav = styled.nav`
