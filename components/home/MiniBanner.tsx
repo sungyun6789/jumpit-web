@@ -4,28 +4,30 @@ import Link from 'next/link';
 import Slider from 'react-slick';
 import { DesktopView, TabletView } from '~/styles/breakpoint';
 
+const prefixPath = 'https://cdn.jumpit.co.kr/jumpit/personal/main_banner/';
+
 const BANNERS = [
   {
-    pcImagePath: 'https://cdn.jumpit.co.kr/jumpit/personal/main_banner/event_qna2.webp',
-    mobileImagePath: 'https://cdn.jumpit.co.kr/jumpit/personal/main_banner/event_qna2_t.webp',
+    pcImage: 'event_qna2.webp',
+    mobileImage: 'event_qna2_t.webp',
     url: '/event/career-qna',
     isNewTab: false,
   },
   {
-    pcImagePath: 'https://cdn.jumpit.co.kr/jumpit/personal/main_banner/awesome_resume_banner.webp',
-    mobileImagePath: 'https://cdn.jumpit.co.kr/jumpit/personal/main_banner/awesome_resume_banner_t.webp',
+    pcImage: 'awesome_resume_banner.webp',
+    mobileImage: 'awesome_resume_banner_t.webp',
     url: '/event/awesome/resume',
     isNewTab: false,
   },
   {
-    pcImagePath: 'https://cdn.jumpit.co.kr/jumpit/personal/main_banner/event_for_develop_banner.png',
-    mobileImagePath: 'https://cdn.jumpit.co.kr/jumpit/personal/main_banner/event_for_develop_banner_t.png',
+    pcImage: 'event_for_develop_banner.png',
+    mobileImage: 'event_for_develop_banner_t.png',
     url: '/event/for-develop',
     isNewTab: false,
   },
   {
-    pcImagePath: 'https://cdn.jumpit.co.kr/jumpit/personal/main_banner/kyobo_readITzine_seven.webp',
-    mobileImagePath: 'https://cdn.jumpit.co.kr/jumpit/personal/main_banner/kyobo_readITzine_seven_t.webp',
+    pcImage: 'kyobo_readITzine_seven.webp',
+    mobileImage: 'kyobo_readITzine_seven_t.webp',
     url: 'https://event.kyobobook.co.kr/detail/208116',
     isNewTab: true,
   },
@@ -37,8 +39,8 @@ const MiniBanner = () => {
       <PCBanner>
         <StyledSlider autoplay speed={300} infinite dots dotsClass="dots_custom">
           {BANNERS.map((banner) => (
-            <Link key={banner.pcImagePath} href={banner.url} target={banner.isNewTab ? '_blank' : '_self'}>
-              <Image src={banner.pcImagePath} width={100} height={148} alt="banner" />
+            <Link key={banner.url} href={banner.url} target={banner.isNewTab ? '_blank' : '_self'}>
+              <Image src={prefixPath + banner.pcImage} width={100} height={148} alt="banner" />
             </Link>
           ))}
         </StyledSlider>
@@ -46,8 +48,8 @@ const MiniBanner = () => {
       <MobileBannerBox>
         <StyledSlider autoplay speed={300} infinite dots dotsClass="dots_custom">
           {BANNERS.map((banner) => (
-            <Link key={banner.mobileImagePath} href={banner.url} target={banner.isNewTab ? '_blank' : '_self'}>
-              <MobileBanner url={banner.mobileImagePath} />
+            <Link key={banner.url} href={banner.url} target={banner.isNewTab ? '_blank' : '_self'}>
+              <MobileBanner url={prefixPath + banner.mobileImage} />
             </Link>
           ))}
         </StyledSlider>
