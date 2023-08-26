@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import Link from 'next/link';
+import { useEffect } from 'react';
 import Slider from 'react-slick';
 import { setCookie } from '~/utils/cookie';
 
@@ -10,6 +11,14 @@ interface Props {
 }
 
 const EventModal = ({ close }: Props) => {
+  useEffect(() => {
+    document.body.style.overflow = 'hidden';
+
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, []);
+
   const todayClose = () => {
     const date = new Date();
     date.setDate(date.getDate() + 1);
