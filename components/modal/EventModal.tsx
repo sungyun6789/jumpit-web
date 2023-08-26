@@ -1,8 +1,9 @@
 import styled from '@emotion/styled';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Slider from 'react-slick';
+import { getCookie, setCookie } from '~/utils/cookie';
 
 import PortalModal from './PortalModal';
 
@@ -12,14 +13,22 @@ const EVENTS = [
 ];
 
 const EventModal = () => {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    if (getCookie('hide_event_fit_apply') !== 'true') {
+      setIsOpen(true);
+    }
+  }, []);
 
   if (!isOpen) return null;
 
   const close = () => setIsOpen(false);
 
   const todayClose = () => {
-    // 오늘 하루동안 보지 않기
+    const date = new Date();
+    date.setDate(date.getDate() + 1);
+    setCookie('hide_event_fit_apply', 'true', date);
     close();
   };
 
