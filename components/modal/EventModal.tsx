@@ -1,25 +1,15 @@
 import styled from '@emotion/styled';
-import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
 import Slider from 'react-slick';
-import { getCookie, setCookie } from '~/utils/cookie';
+import { setCookie } from '~/utils/cookie';
 
 import PortalModal from './PortalModal';
 
-const EventModal = () => {
-  const [isOpen, setIsOpen] = useState(false);
+interface Props {
+  close: () => void;
+}
 
-  useEffect(() => {
-    if (getCookie('hide_event_fit_apply') !== 'true') {
-      setIsOpen(true);
-    }
-  }, []);
-
-  if (!isOpen) return null;
-
-  const close = () => setIsOpen(false);
-
+const EventModal = ({ close }: Props) => {
   const todayClose = () => {
     const date = new Date();
     date.setDate(date.getDate() + 1);
