@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 import Image from 'next/image';
 import Link from 'next/link';
+import { CDN_PATH } from '~/constants/path';
 
 const NAV_LINK_LIST1 = [
   { title: '서비스 소개', url: '/hello' },
@@ -72,7 +73,7 @@ const Footer = () => {
               {SNS_LIST.map((sns) => (
                 <Link key={sns.name} href={sns.url} target="_blank">
                   <Image
-                    src={`https://cdn.jumpit.co.kr/jumpit/personal/v-footer-sns-${sns.name}.svg`}
+                    src={CDN_PATH + `personal/v-footer-sns-${sns.name}.svg`}
                     width={36}
                     height={36}
                     alt={sns.name}

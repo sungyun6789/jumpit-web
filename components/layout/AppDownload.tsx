@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
 import COLORS from '~/constants/colors';
+import { CDN_PATH } from '~/constants/path';
 
 import Button from '../common/Button';
 
@@ -19,12 +20,7 @@ const AppDownload = () => {
         <DownloadBox>
           <CloseIcon src="/closeIcon.svg" width={24} height={24} alt="close" onClick={close} />
 
-          <DownloadLogo
-            src="https://cdn.jumpit.co.kr/jumpit/personal/ic_app_download.png"
-            width={101}
-            height={100}
-            alt="app download"
-          />
+          <DownloadLogo src={CDN_PATH + 'personal/ic_app_download.png'} width={101} height={100} alt="app download" />
 
           <DescriptionBox>
             <Description>빠르고 편리한 점핏 앱!</Description>

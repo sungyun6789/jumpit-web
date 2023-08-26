@@ -1,10 +1,11 @@
 import { Html, Head, Main, NextScript } from 'next/document';
+import { CDN_PATH } from '~/constants/path';
 
 export default function Document() {
   return (
     <Html lang="en">
       <Head>
-        <link rel="icon" href="https://cdn.jumpit.co.kr/jumpit/favicon.png"></link>
+        <link rel="icon" href={CDN_PATH + 'favicon.png'}></link>
       </Head>
       <body>
         <Main />

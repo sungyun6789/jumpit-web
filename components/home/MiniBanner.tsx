@@ -2,9 +2,10 @@ import styled from '@emotion/styled';
 import Image from 'next/image';
 import Link from 'next/link';
 import Slider from 'react-slick';
+import { CDN_PATH } from '~/constants/path';
 import { DesktopView, TabletView } from '~/styles/breakpoint';
 
-const prefixPath = 'https://cdn.jumpit.co.kr/jumpit/personal/main_banner/';
+const prefixPath = CDN_PATH + 'personal/main_banner/';
 
 const BANNERS = [
   {

@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 import Link from 'next/link';
 import { useEffect } from 'react';
 import Slider from 'react-slick';
+import { CDN_PATH } from '~/constants/path';
 import { setCookie } from '~/utils/cookie';
 
 import PortalModal from './PortalModal';
@@ -33,26 +34,17 @@ const EventModal = ({ close }: Props) => {
           <StyledSlider dots dotsClass="dots_custom" arrows={false} initialSlide={1}>
             <Link href="/event/career-qna">
               <picture>
-                <source srcSet="https://cdn.jumpit.co.kr/jumpit/event/qna/qna_nudge_m.webp" media="(max-width:600px)" />
-                <source
-                  srcSet="https://cdn.jumpit.co.kr/jumpit/event/qna/qna_nudge_t.webp"
-                  media="(max-width:1080px)"
-                />
-                <img src="https://cdn.jumpit.co.kr/jumpit/event/qna/qna_nudge.webp" alt="event" width="100%" />
+                <source srcSet={CDN_PATH + 'event/qna/qna_nudge_m.webp'} media="(max-width:600px)" />
+                <source srcSet={CDN_PATH + 'event/qna/qna_nudge_t.webp'} media="(max-width:1080px)" />
+                <img src={CDN_PATH + 'event/qna/qna_nudge.webp'} alt="event" width="100%" />
               </picture>
             </Link>
 
             <Link href="/resumes">
               <picture>
-                <source
-                  srcSet="https://cdn.jumpit.co.kr/jumpit/event/resume/awesome_nudge_m.webp"
-                  media="(max-width:600px)"
-                />
-                <source
-                  srcSet="https://cdn.jumpit.co.kr/jumpit/event/resume/awesome_nudge_t.webp"
-                  media="(max-width:1080px)"
-                />
-                <img src="https://cdn.jumpit.co.kr/jumpit/event/resume/awesome_nudge.webp" alt="event" width="100%" />
+                <source srcSet={CDN_PATH + 'event/resume/awesome_nudge_m.webp'} media="(max-width:600px)" />
+                <source srcSet={CDN_PATH + 'event/resume/awesome_nudge_t.webp'} media="(max-width:1080px)" />
+                <img src={CDN_PATH + 'event/resume/awesome_nudge.webp'} alt="event" width="100%" />
               </picture>
             </Link>
           </StyledSlider>
