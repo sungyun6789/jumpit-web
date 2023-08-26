@@ -1,18 +1,30 @@
 import styled from '@emotion/styled';
 import Link from 'next/link';
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import { NUMBER_TO_JOB_CATEGORY } from '~/constants/jobCategory';
 import { HomeDataContext } from '~/pages';
 
 import PositionCardList from '../common/PositionCardList';
 
 const WeeklyPickPosition = () => {
+  const [selectedJob, setSelectedJob] = useState<string>();
   const data = useContext(HomeDataContext);
+
+  useEffect(() => {
+    const storageValue = window.localStorage.getItem('j_sr_job');
+    if (storageValue) {
+      // 선택한 직무는 로컬스토리지로 관리하는데 선택한 직무 중에서 랜덤한 직무를 setState
+      const jobs = JSON.parse(storageValue);
+      const randomIndex = Math.floor(Math.random() * jobs.length);
+      setSelectedJob(NUMBER_TO_JOB_CATEGORY[jobs[randomIndex]]);
+    }
+  }, []);
 
   return (
     <Block>
       <TitleBox>
         <Title>
-          <BreakTag>프론트엔드 개발자 </BreakTag>
+          {selectedJob && <BreakTag>{selectedJob} </BreakTag>}
           이번주 인기 포지션
         </Title>
         <ViewAllLink href="/positions">전체 보기</ViewAllLink>
