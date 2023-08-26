@@ -38,15 +38,14 @@ export default function Home() {
           <ThemeZip />
           <PositionRecommendation />
           <WeeklyPickPosition />
-          <EmploymentEventBanner />
-          <MiniBanner />
-
           <TabletView>
             <Notice />
           </TabletView>
         </ThemeBannerContext.Provider>
       </HomeDataContext.Provider>
 
+      <EmploymentEventBanner />
+      <MiniBanner />
       <EventModal />
     </>
   );
