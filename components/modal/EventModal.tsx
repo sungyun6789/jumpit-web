@@ -7,11 +7,6 @@ import { getCookie, setCookie } from '~/utils/cookie';
 
 import PortalModal from './PortalModal';
 
-const EVENTS = [
-  { image: 'https://cdn.jumpit.co.kr/jumpit/event/qna/qna_nudge.webp', url: '/event/career-qna' },
-  { image: 'https://cdn.jumpit.co.kr/jumpit/event/resume/awesome_nudge.webp', url: '/resumes' },
-];
-
 const EventModal = () => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -37,11 +32,30 @@ const EventModal = () => {
       <Block>
         <PositionBox>
           <StyledSlider dots dotsClass="dots_custom" arrows={false} initialSlide={1}>
-            {EVENTS.map((event) => (
-              <Link key={event.image} href={event.url}>
-                <Image src={event.image} width={450} height={450} alt="event" />
-              </Link>
-            ))}
+            <Link href="/event/career-qna">
+              <picture>
+                <source srcSet="https://cdn.jumpit.co.kr/jumpit/event/qna/qna_nudge_m.webp" media="(max-width:600px)" />
+                <source
+                  srcSet="https://cdn.jumpit.co.kr/jumpit/event/qna/qna_nudge_t.webp"
+                  media="(max-width:1080px)"
+                />
+                <img src="https://cdn.jumpit.co.kr/jumpit/event/qna/qna_nudge.webp" alt="event" width="100%" />
+              </picture>
+            </Link>
+
+            <Link href="/resumes">
+              <picture>
+                <source
+                  srcSet="https://cdn.jumpit.co.kr/jumpit/event/resume/awesome_nudge_m.webp"
+                  media="(max-width:600px)"
+                />
+                <source
+                  srcSet="https://cdn.jumpit.co.kr/jumpit/event/resume/awesome_nudge_t.webp"
+                  media="(max-width:1080px)"
+                />
+                <img src="https://cdn.jumpit.co.kr/jumpit/event/resume/awesome_nudge.webp" alt="event" width="100%" />
+              </picture>
+            </Link>
           </StyledSlider>
 
           <ButtonContainer>
@@ -107,6 +121,15 @@ const StyledSlider = styled(Slider)`
 
   .dots_custom li.slick-active button {
     background-color: #888888;
+  }
+
+  @media (max-width: 600px) {
+    width: 320px;
+    height: 320px;
+
+    .dots_custom {
+      height: 12px;
+    }
   }
 `;
 
