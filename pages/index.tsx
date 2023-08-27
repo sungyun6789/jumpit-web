@@ -21,16 +21,29 @@ export const HomeDataContext = createContext<HomeResponse['result'] | undefined>
 export const ThemeBannerContext = createContext<ThemeBannerResponse['result'] | undefined>(undefined);
 
 export default function Home() {
+  const [selectedJob, setSelectedJob] = useState<string>();
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     if (getCookie('hide_event_fit_apply') !== 'true') {
       setIsOpen(true);
     }
+
+    const storageValue = window.localStorage.getItem('j_sr_job');
+    if (storageValue) {
+      const jobs = JSON.parse(storageValue);
+      const randomIndex = Math.floor(Math.random() * jobs.length);
+      setSelectedJob(jobs[randomIndex]);
+    }
   }, []);
 
-  const { data } = useQuery(['/api/home'], async () => {
-    const { data } = await axios.get<HomeResponse>('/api/home');
+  const { data } = useQuery(['/api/home', selectedJob], async () => {
+    const { data } = await axios.get<HomeResponse>('/api/home', {
+      // 실제 서비스에서는 중복된 키(jobCategory)를 여러 개 보내고 서버에서 분기 처리하는데 해당 프로젝트에서는 클라이언트에서 분기 처리하고 단일 카테고리를 보냄
+      params: {
+        jobCategory: selectedJob,
+      },
+    });
     return data.result;
   });
 

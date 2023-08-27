@@ -69,8 +69,15 @@ export interface HomeResponse {
 }
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
+  /**
+   * req.query = { jobCategory?: number }
+   *
+   * jobCategory가 존재하지 않을 경우 서버에서 랜덤한 값을 보내줌
+   */
   if (req.method === 'GET') {
-    const { data } = await axios.get<HomeResponse>('https://api.jumpit.co.kr/api/home');
+    const { data } = await axios.get<HomeResponse>('https://api.jumpit.co.kr/api/home', {
+      params: req.query,
+    });
     return res.json(data);
   }
 };
