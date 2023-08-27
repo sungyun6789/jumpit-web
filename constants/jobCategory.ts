@@ -22,7 +22,7 @@ type CategoryType =
   | '블록체인'
   | '기술지원';
 
-export const JOB_CATEGORY_TO_NUMBER: Record<CategoryType, number> = {
+export const JOB_CATEGORY: Record<CategoryType, number> = {
   전체: 0,
   '서버/백엔드 개발자': 1,
   '프론트엔드 개발자': 2,
@@ -47,7 +47,7 @@ export const JOB_CATEGORY_TO_NUMBER: Record<CategoryType, number> = {
   기술지원: 21,
 };
 
-export const NUMBER_TO_JOB_CATEGORY: Record<number, CategoryType> = {
+export const JOB_NUMBER: Record<number, CategoryType> = {
   0: '전체',
   1: '서버/백엔드 개발자',
   2: '프론트엔드 개발자',
