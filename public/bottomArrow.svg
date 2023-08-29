@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" class="arrow">
+  <g fill="none" fill-rule="evenodd">
+    <g>
+      <g>
+        <g>
+          <g>
+            <path
+              d="M0 0H16V16H0z"
+              transform="translate(-316 -224) translate(20 216) translate(224) translate(72 8)"
+            ></path>
+            <path
+              stroke="#CCC"
+              stroke-width="1.2"
+              d="M3 6L8 11 13 6"
+              transform="translate(-316 -224) translate(20 216) translate(224) translate(72 8)"
+            ></path>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
