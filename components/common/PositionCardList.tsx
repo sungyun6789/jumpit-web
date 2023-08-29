@@ -13,7 +13,22 @@ const PositionCardList = ({ data }: Props) => {
       {data?.map((value) => (
         <Item key={value.id}>
           <BannerBox>
-            <Image src={value.imagePath} width={250} height={166} alt="banner" />
+            <div className="banner-overlay" />
+            <Image src={value.imagePath} width={250} height={166} alt="banner" className="banner" />
+
+            <HoverView className="counts">
+              <CountBox>
+                <Image src="/viewIcon.svg" width={16} height={16} alt="view count" />
+                <Count>{value.viewCount}</Count>
+              </CountBox>
+
+              <Image
+                src="https://www.jumpit.co.kr/App/build/static/media/ico_position_bookmark.b54fcd24.svg"
+                width={16}
+                height={16}
+                alt="bookmark"
+              />
+            </HoverView>
           </BannerBox>
           <DescriptionBox>
             <CompanyName>{value.companyName}</CompanyName>
@@ -60,7 +75,33 @@ const Item = styled.div`
   padding: 10px;
   cursor: pointer;
 
+  .counts {
+    display: none;
+  }
+
+  .banner {
+    transition: all 0.3s ease 0s;
+  }
+
   :hover {
+    .counts {
+      display: flex;
+      z-index: 2;
+    }
+
+    .banner {
+      transform: scale(1.2);
+    }
+
+    .banner-overlay {
+      background: #000;
+      opacity: 0.3;
+      position: absolute;
+      z-index: 1;
+      width: 100%;
+      height: 166px;
+    }
+
     h2 {
       text-decoration: underline;
     }
@@ -74,11 +115,13 @@ const Item = styled.div`
 `;
 
 const BannerBox = styled.div`
+  position: relative;
   box-sizing: content-box;
   width: 250px;
   height: 166px;
   border: 1px solid #0000001a;
   border-radius: 4px;
+  overflow: hidden;
 
   @media (max-width: 1080px) {
     width: 100%;
@@ -89,6 +132,24 @@ const BannerBox = styled.div`
       height: 100%;
     }
   }
+`;
+
+const HoverView = styled.div`
+  gap: 10px;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+`;
+
+const CountBox = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 4px;
+`;
+
+const Count = styled.span`
+  color: #fff;
+  font-size: 13px;
 `;
 
 const DescriptionBox = styled.div`
