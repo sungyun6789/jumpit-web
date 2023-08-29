@@ -5,7 +5,7 @@ import COLORS from '~/constants/colors';
 import { HomeDataContext } from '~/pages';
 
 import Button from '../common/Button';
-import PositionCardList from '../common/PositionCardList';
+import PositionCardList from '../position/PositionCardList';
 
 const PositionRecommend = () => {
   const data = useContext(HomeDataContext);

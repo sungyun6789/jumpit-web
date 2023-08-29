@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { useContext } from 'react';
 import { HomeDataContext } from '~/pages';
 
-import PositionCardList from '../common/PositionCardList';
+import PositionCardList from '../position/PositionCardList';
 
 const WeeklyPickPosition = () => {
   const data = useContext(HomeDataContext);
