@@ -1,9 +1,9 @@
 import styled from '@emotion/styled';
 import Image from 'next/image';
-import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import Slider from 'react-slick';
 import { BENEFIT_TAG, POSITION_TAG } from '~/constants/position';
+import useRepeatedQueryParamKeys from '~/hooks/useRepeatedQueryParamKeys';
 
 import { NextArrowButton, PrevArrowButton } from '../common/ArrowButton';
 
@@ -30,7 +30,7 @@ const NextArrow = (props: Settings) => {
 };
 
 const PositionSearchList = () => {
-  const { pathname, push } = useRouter();
+  const { push } = useRepeatedQueryParamKeys();
   const [selectedBenefit, setSelectedBenefit] = useState<string[]>([]);
 
   const settings = {
@@ -50,8 +50,7 @@ const PositionSearchList = () => {
   };
 
   useEffect(() => {
-    const queryParams = selectedBenefit.map((benefit, index) => (index === 0 ? '?' : '&') + `tag=${benefit}`).join('');
-    push(pathname + queryParams);
+    push('tag', selectedBenefit);
   }, [selectedBenefit]);
 
   return (

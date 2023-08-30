@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import COLORS from '~/constants/colors';
 import { JOB_CATEGORY } from '~/constants/jobCategory';
+import useRepeatedQueryParamKeys from '~/hooks/useRepeatedQueryParamKeys';
 
 const getStorageValue = (): number[] => {
   const storageValue = window.localStorage.getItem('j_sr_job');
@@ -18,14 +19,14 @@ interface Props {
 }
 
 const PositionTag = ({ title }: Props) => {
-  const { pathname, query, push } = useRouter();
+  const { push } = useRepeatedQueryParamKeys();
+  const { query } = useRouter();
 
   const queryCategory = query.jobCategory === '{}' ? undefined : (query.jobCategory as string[]);
 
   const queryPush = () => {
     const jobs = getStorageValue();
-    const queryParams = jobs.map((job, index) => (index === 0 ? '?' : '&') + `jobCategory=${job}`).join('');
-    push(pathname + queryParams);
+    push('jobCategory', jobs);
   };
 
   const onClick = (categoryNumber: number) => {
