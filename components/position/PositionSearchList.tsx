@@ -1,34 +1,11 @@
 import styled from '@emotion/styled';
 import Image from 'next/image';
 import Slider from 'react-slick';
+import { BENEFIT_TAG, POSITION_TAG } from '~/constants/position';
 
 import { NextArrowButton, PrevArrowButton } from '../common/ArrowButton';
 
 import type { Settings } from 'react-slick';
-
-const POSITION_TAG = ['기술스택', '경력', '지역'];
-const BENEFIT_TAG = [
-  '🍯 4.5일제',
-  '🏠 재택근무',
-  '⏰ 유연근무제',
-  '🕙 시차출근제',
-  '💸 내일채움공제',
-  '💵 인센티브',
-  '👾 코드리뷰',
-  '👖 반바지/슬리퍼 OK',
-  '👕 자유복장',
-  '☕ 맛있는간식냠냠',
-  '💻 맥북으로개발',
-  '👩‍ 닉네임사용',
-  '🙌 수평적조직',
-  '🐶 반려동물',
-  '💰 누적투자금100억이상',
-  '📈 스톡옵션제공',
-  '📗 도서구입비지원',
-  '🚕 택시비지원',
-  '👨 병역특례',
-  '🎓 전공우대',
-];
 
 const PrevArrow = (props: Settings) => {
   return (
