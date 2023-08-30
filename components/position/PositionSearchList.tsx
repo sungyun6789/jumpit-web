@@ -1,5 +1,7 @@
 import styled from '@emotion/styled';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
 import Slider from 'react-slick';
 import { BENEFIT_TAG, POSITION_TAG } from '~/constants/position';
 
@@ -28,6 +30,9 @@ const NextArrow = (props: Settings) => {
 };
 
 const PositionSearchList = () => {
+  const { pathname, push } = useRouter();
+  const [selectedBenefit, setSelectedBenefit] = useState<string[]>([]);
+
   const settings = {
     infinite: false,
     slidesToScroll: 3,
@@ -35,6 +40,19 @@ const PositionSearchList = () => {
     prevArrow: <PrevArrow />,
     nextArrow: <NextArrow />,
   };
+
+  const onClickBenefitTag = (value: string) => {
+    if (selectedBenefit.includes(value)) {
+      return setSelectedBenefit(selectedBenefit.filter((benefit) => benefit !== value));
+    }
+
+    setSelectedBenefit([...selectedBenefit, value]);
+  };
+
+  useEffect(() => {
+    const queryParams = selectedBenefit.map((benefit, index) => (index === 0 ? '?' : '&') + `tag=${benefit}`).join('');
+    push(pathname + queryParams);
+  }, [selectedBenefit]);
 
   return (
     <Block>
@@ -50,7 +68,13 @@ const PositionSearchList = () => {
 
         <StyledSlider {...settings}>
           {BENEFIT_TAG.map((tag) => (
-            <BenefitTag key={tag}>{tag}</BenefitTag>
+            <BenefitTag
+              key={tag.value}
+              onClick={() => onClickBenefitTag(tag.value)}
+              isSelected={selectedBenefit.includes(tag.value)}
+            >
+              {tag.label}
+            </BenefitTag>
           ))}
         </StyledSlider>
       </TagBlock>
@@ -152,14 +176,19 @@ const StyledSlider = styled(Slider)`
   }
 `;
 
-const BenefitTag = styled.button`
+const BenefitTag = styled.button<{ isSelected: boolean }>`
   letter-spacing: -0.5px;
   border-radius: 20px;
   padding: 7px 16px;
-  background-color: #eeeeee;
+  background-color: ${(props) => (props.isSelected ? '#3d3d3d' : '#eeeeee')};
   font-size: 15px;
   line-height: 24px;
   border: 1px solid #e4e4e4;
-  color: #222222;
+  color: ${(props) => (props.isSelected ? '#fff' : '#222222')};
   cursor: pointer;
+
+  ${(props) =>
+    props.isSelected && {
+      fontWeight: '500',
+    }}
 `;
