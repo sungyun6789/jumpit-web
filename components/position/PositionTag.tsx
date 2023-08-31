@@ -51,7 +51,7 @@ const PositionTag = ({ title }: Props) => {
   return (
     <Block>
       <Title>{title}</Title>
-      <TagBlock>
+      <TagListBlock>
         {Object.entries(JOB_CATEGORY).map(([key, value]) => (
           <Tag
             key={key}
@@ -62,7 +62,7 @@ const PositionTag = ({ title }: Props) => {
             {key}
           </Tag>
         ))}
-      </TagBlock>
+      </TagListBlock>
     </Block>
   );
 };
@@ -72,6 +72,10 @@ export default PositionTag;
 const Block = styled.section`
   max-width: 1060px;
   margin: 32px auto 50px;
+
+  @media (max-width: 1080px) {
+    margin: 32px auto 30px 16px;
+  }
 `;
 
 const Title = styled.h1`
@@ -79,13 +83,20 @@ const Title = styled.h1`
   line-height: 72px;
   letter-spacing: -0.5px;
   font-weight: bold;
+
+  @media (max-width: 1080px) {
+    font-size: 32px;
+    line-height: 32px;
+  }
 `;
 
-const TagBlock = styled.article`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
+const TagListBlock = styled.article`
   margin-top: 24px;
+
+  @media (max-width: 1080px) {
+    white-space: nowrap;
+    overflow-x: scroll;
+  }
 `;
 
 const Tag = styled.button<{ isSelected: boolean }>`
@@ -98,6 +109,7 @@ const Tag = styled.button<{ isSelected: boolean }>`
   border-radius: 20px;
   background-color: ${(props) => (props.isSelected ? COLORS.primary : '#fff')};
   cursor: pointer;
+  margin: 0px 10px 10px 0px;
 
   ${(props) =>
     props.isSelected && {
