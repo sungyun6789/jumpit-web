@@ -39,6 +39,14 @@ const PositionSearchList = () => {
     variableWidth: true,
     prevArrow: <PrevArrow />,
     nextArrow: <NextArrow />,
+    responsive: [
+      {
+        breakpoint: 600,
+        settings: {
+          arrows: false,
+        },
+      },
+    ],
   };
 
   const onClickBenefitTag = (value: string) => {
@@ -86,6 +94,10 @@ export default PositionSearchList;
 const Block = styled.section`
   padding: 40px 0 80px 0;
   background-color: #f7f7f7;
+
+  @media (max-width: 1080px) {
+    padding-top: 8px;
+  }
 `;
 
 const TagBlock = styled.div`
@@ -94,6 +106,12 @@ const TagBlock = styled.div`
   flex-direction: column;
   gap: 20px;
   margin: 0 auto;
+
+  @media (max-width: 1080px) {
+    white-space: nowrap;
+    margin: 12px 16px 0;
+    gap: 12px;
+  }
 `;
 
 const TechCareerRegionTagList = styled.div`
@@ -127,22 +145,20 @@ const TechCareerRegionTag = styled.button`
 const ArrowButtonOverlay = styled.div<{ type: 'prev' | 'next' }>`
   position: absolute;
   top: 0;
+  left: ${(props) => props.type === 'prev' && 0};
+  right: ${(props) => props.type === 'next' && '-12px'};
   display: flex;
   align-items: center;
   width: 80px;
   height: 40px;
   z-index: 2;
+  background-image: ${(props) =>
+    `linear-gradient(${props.type === 'prev' ? '270deg' : '90deg'}, rgba(255, 255, 255, 0), rgb(247, 247, 247) 50%)`};
 
-  ${(props) =>
-    props.type === 'prev'
-      ? {
-          left: 0,
-          backgroundImage: 'linear-gradient(270deg, rgba(255, 255, 255, 0), rgb(247, 247, 247) 50%)',
-        }
-      : {
-          right: '-12px',
-          backgroundImage: 'linear-gradient(90deg, rgba(255, 255, 255, 0), rgb(247, 247, 247) 50%)',
-        }}
+  @media (max-width: 1080px) {
+    width: 96px;
+    right: ${(props) => props.type === 'next' && '-1px'};
+  }
 `;
 
 const ArrowButtonWrapper = styled.div<{ type: 'prev' | 'next' }>`
