@@ -1,7 +1,5 @@
 import styled from '@emotion/styled';
 import Link from 'next/link';
-import COLORS from '~/constants/colors';
-import { mont } from '~/pages/_app';
 import { DesktopView } from '~/styles/breakpoint';
 
 const ITEMS_1 = [
@@ -15,8 +13,8 @@ const ITEMS_1 = [
     ],
   },
   { title: '이력서', url: '/rookie' },
-  { title: '개발자 인터뷰', url: '/job-interview' },
   { title: '취업 Q&A', url: '/career-qna' },
+  { title: '개발자 인터뷰', url: '/job-interview' },
   { title: '개취콘', url: '/book-concert/22' },
 ];
 
@@ -26,10 +24,7 @@ const NavBar = () => {
       <NavUL>
         {ITEMS_1.map((item) => (
           <li key={item.title}>
-            <NavLink href={item.url}>
-              {item.title}
-              {item.title === '개취콘' && <Free className={mont.className}>Free</Free>}
-            </NavLink>
+            <NavLink href={item.url}>{item.title}</NavLink>
           </li>
         ))}
       </NavUL>
@@ -100,20 +95,6 @@ const NavLink = styled(Link)`
 
   :hover {
     color: black !important;
-  }
-`;
-
-const Free = styled.span`
-  position: absolute;
-  top: 10px;
-  right: -25px;
-  font-size: 12px;
-  font-weight: 700;
-  line-height: 16px;
-  color: ${COLORS.primary};
-
-  @media (max-width: 1080px) {
-    display: none;
   }
 `;
 
