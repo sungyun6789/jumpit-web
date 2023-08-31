@@ -1,4 +1,4 @@
-export const POSITION_TAG = ['기술스택', '경력', '지역'];
+export const TECH_CAREER_REGION_TAG = ['기술스택', '경력', '지역'];
 
 export const BENEFIT_TAG = [
   { label: '🍯 4.5일제', value: 'FOUR_DOT_FIVE_DAYS' },

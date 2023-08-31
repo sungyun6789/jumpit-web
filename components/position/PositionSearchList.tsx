@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import Slider from 'react-slick';
-import { BENEFIT_TAG, POSITION_TAG } from '~/constants/position';
+import { BENEFIT_TAG, TECH_CAREER_REGION_TAG } from '~/constants/position';
 import useRepeatedQueryParamKeys from '~/hooks/useRepeatedQueryParamKeys';
 
 import { NextArrowButton, PrevArrowButton } from '../common/ArrowButton';
@@ -56,14 +56,14 @@ const PositionSearchList = () => {
   return (
     <Block>
       <TagBlock>
-        <PositionTagList>
-          {POSITION_TAG.map((tag) => (
-            <PositionTag key={tag}>
+        <TechCareerRegionTagList>
+          {TECH_CAREER_REGION_TAG.map((tag) => (
+            <TechCareerRegionTag key={tag}>
               <span>{tag}</span>
               <Image src="/bottomArrow.svg" width={16} height={16} alt="arrow" />
-            </PositionTag>
+            </TechCareerRegionTag>
           ))}
-        </PositionTagList>
+        </TechCareerRegionTagList>
 
         <StyledSlider {...settings}>
           {BENEFIT_TAG.map((tag) => (
@@ -96,12 +96,12 @@ const TagBlock = styled.div`
   margin: 0 auto;
 `;
 
-const PositionTagList = styled.div`
+const TechCareerRegionTagList = styled.div`
   display: flex;
   gap: 8px;
 `;
 
-const PositionTag = styled.button`
+const TechCareerRegionTag = styled.button`
   display: flex;
   gap: 2px;
   align-items: center;
