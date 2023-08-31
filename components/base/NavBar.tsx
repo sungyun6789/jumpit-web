@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { DesktopView } from '~/styles/breakpoint';
 
 const ITEMS_1 = [
@@ -19,12 +20,16 @@ const ITEMS_1 = [
 ];
 
 const NavBar = () => {
+  const { pathname } = useRouter();
+
   return (
     <Block>
       <NavUL>
         {ITEMS_1.map((item) => (
           <li key={item.title}>
-            <NavLink href={item.url}>{item.title}</NavLink>
+            <NavLink href={item.url} selected={pathname === item.url}>
+              {item.title}
+            </NavLink>
           </li>
         ))}
       </NavUL>
@@ -86,12 +91,13 @@ const AuthUL = styled(UL)`
   gap: 24px;
 `;
 
-const NavLink = styled(Link)`
+const NavLink = styled(Link)<{ selected: boolean }>`
   position: relative;
   font-size: 16px;
   line-height: 24px;
   letter-spacing: -0.5px;
   padding: 10px 4px;
+  font-weight: ${(props) => (props.selected ? 'bold' : '400')};
 
   :hover {
     color: black !important;
