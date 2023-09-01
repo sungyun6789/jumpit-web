@@ -33,7 +33,7 @@ const PositionSearchList = () => {
   const { push } = useRepeatedQueryParamKeys();
   const [selectedBenefit, setSelectedBenefit] = useState<string[]>([]);
 
-  const settings = {
+  const settings: Settings = {
     infinite: false,
     slidesToScroll: 3,
     variableWidth: true,
@@ -173,11 +173,11 @@ const ArrowButtonWrapper = styled.div<{ type: 'prev' | 'next' }>`
     ${(props) => (props.type === 'prev' ? { left: 0 } : { right: 0 })}
 
     :hover {
-      path:nth-child(1) {
+      path:nth-of-type(1) {
         fill: #444444;
       }
 
-      path:nth-child(2) {
+      path:nth-of-type(2) {
         fill: #fff;
       }
     }
