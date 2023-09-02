@@ -92,8 +92,6 @@ const PositionSearchList = () => {
 export default PositionSearchList;
 
 const Block = styled.section`
-  padding: 40px 0 80px 0;
-
   @media (max-width: 1080px) {
     padding-top: 8px;
   }
