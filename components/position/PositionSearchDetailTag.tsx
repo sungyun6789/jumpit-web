@@ -29,7 +29,7 @@ const NextArrow = (props: Settings) => {
   );
 };
 
-const PositionSearchList = () => {
+const PositionSearchDetailTag = () => {
   const { push } = useRepeatedQueryParamKeys();
   const { query } = useRouter();
   const selectedBenefits = query.tag ? (typeof query.tag === 'string' ? [query.tag] : (query.tag as string[])) : [];
@@ -89,7 +89,7 @@ const PositionSearchList = () => {
   );
 };
 
-export default PositionSearchList;
+export default PositionSearchDetailTag;
 
 const Block = styled.section`
   @media (max-width: 1080px) {
