@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 import Slider from 'react-slick';
 import { BENEFIT_TAG, TECH_CAREER_REGION_TAG } from '~/constants/position';
 import useRepeatedQueryParamKeys from '~/hooks/useRepeatedQueryParamKeys';
@@ -31,7 +31,8 @@ const NextArrow = (props: Settings) => {
 
 const PositionSearchList = () => {
   const { push } = useRepeatedQueryParamKeys();
-  const [selectedBenefit, setSelectedBenefit] = useState<string[]>([]);
+  const { query } = useRouter();
+  const selectedBenefits = query.tag ? (typeof query.tag === 'string' ? [query.tag] : (query.tag as string[])) : [];
 
   const settings: Settings = {
     infinite: false,
@@ -50,16 +51,14 @@ const PositionSearchList = () => {
   };
 
   const onClickBenefitTag = (value: string) => {
-    if (selectedBenefit.includes(value)) {
-      return setSelectedBenefit(selectedBenefit.filter((benefit) => benefit !== value));
+    if (selectedBenefits.includes(value)) {
+      const benefits = selectedBenefits.filter((benefit) => benefit !== value);
+      return push('tag', benefits);
     }
 
-    setSelectedBenefit([...selectedBenefit, value]);
+    const benefits = [...selectedBenefits, value];
+    push('tag', benefits);
   };
-
-  useEffect(() => {
-    push('tag', selectedBenefit);
-  }, [selectedBenefit]);
 
   return (
     <Block>
@@ -78,7 +77,7 @@ const PositionSearchList = () => {
             <BenefitTag
               key={tag.value}
               onClick={() => onClickBenefitTag(tag.value)}
-              isSelected={selectedBenefit.includes(tag.value)}
+              isSelected={selectedBenefits.includes(tag.value)}
             >
               {tag.label}
             </BenefitTag>
