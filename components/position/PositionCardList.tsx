@@ -82,6 +82,7 @@ const Item = styled.div`
 
   .banner {
     transition: all 0.3s ease 0s;
+    object-fit: cover;
   }
 
   :hover {
