@@ -63,6 +63,7 @@ const PositionSearchList = () => {
   return (
     <Block>
       <TagBlock>
+        {/** @todo select 구현 */}
         <TechCareerRegionTagList>
           {TECH_CAREER_REGION_TAG.map((tag) => (
             <TechCareerRegionTag key={tag}>

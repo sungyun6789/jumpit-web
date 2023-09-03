@@ -51,7 +51,7 @@ const ThemeZip = () => {
         </ButtonBox>
       </TitleBox>
 
-      {/** 실제 서비스와 동일하게 변경 필요 */}
+      {/** @todo 실제 서비스와 동일하게 변경 필요 */}
       <StyledSlider {...SETTING} ref={slickRef}>
         {data?.map((value) => (
           <Banner key={value.title} url={value.themeBanner.pc}>
