@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
+import { useState } from 'react';
 import Slider from 'react-slick';
 import { BENEFIT_TAG, TECH_CAREER_REGION_TAG } from '~/constants/position';
 import useRepeatedQueryParamKeys from '~/hooks/useRepeatedQueryParamKeys';
@@ -11,7 +12,7 @@ import type { Settings } from 'react-slick';
 
 const PrevArrow = (props: Settings) => {
   return (
-    <ArrowButtonOverlay type="prev">
+    <ArrowButtonOverlay type="prev" className="prev-arrow-overlay">
       <ArrowButtonWrapper type="prev">
         <PrevArrowButton {...props} />
       </ArrowButtonWrapper>
@@ -21,7 +22,7 @@ const PrevArrow = (props: Settings) => {
 
 const NextArrow = (props: Settings) => {
   return (
-    <ArrowButtonOverlay type="next">
+    <ArrowButtonOverlay type="next" className="next-arrow-overlay">
       <ArrowButtonWrapper type="next">
         <NextArrowButton {...props} />
       </ArrowButtonWrapper>
@@ -30,6 +31,7 @@ const NextArrow = (props: Settings) => {
 };
 
 const PositionSearchDetailTag = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
   const { push } = useRepeatedQueryParamKeys();
   const { query } = useRouter();
   const selectedBenefits = query.tag ? (typeof query.tag === 'string' ? [query.tag] : (query.tag as string[])) : [];
@@ -40,6 +42,8 @@ const PositionSearchDetailTag = () => {
     variableWidth: true,
     prevArrow: <PrevArrow />,
     nextArrow: <NextArrow />,
+    beforeChange: (value) => setCurrentIndex(value),
+    afterChange: (value) => setCurrentIndex(value),
     responsive: [
       {
         breakpoint: 600,
@@ -73,7 +77,7 @@ const PositionSearchDetailTag = () => {
           ))}
         </TechCareerRegionTagList>
 
-        <StyledSlider {...settings}>
+        <StyledSlider {...settings} currentIndex={currentIndex}>
           {BENEFIT_TAG.map((tag) => (
             <BenefitTag
               key={tag.value}
@@ -182,10 +186,18 @@ const ArrowButtonWrapper = styled.div<{ type: 'prev' | 'next' }>`
   }
 `;
 
-const StyledSlider = styled(Slider)`
+const StyledSlider = styled(Slider)<{ currentIndex: number }>`
   .slick-track {
     display: flex;
     gap: 8px;
+  }
+
+  .prev-arrow-overlay {
+    display: ${(props) => (props.currentIndex === 0 ? 'none' : 'block')};
+  }
+
+  .next-arrow-overlay {
+    display: ${(props) => (props.currentIndex === 15 ? 'none' : 'block')};
   }
 `;
 
