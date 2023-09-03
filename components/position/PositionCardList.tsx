@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import Image from 'next/image';
+import { mont } from '~/pages/_app';
 
 import type { Position } from '~/pages/api/home';
 
@@ -33,7 +34,7 @@ const PositionCardList = ({ data }: Props) => {
           <DescriptionBox>
             <CompanyName>{value.companyName}</CompanyName>
             <PositionTitle>{value.title}</PositionTitle>
-            <TechStackBox>
+            <TechStackBox className={mont.className}>
               {value.techStacks.map((stack) => (
                 <Description key={stack}>{stack}</Description>
               ))}

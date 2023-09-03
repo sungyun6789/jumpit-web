@@ -130,6 +130,7 @@ const TechCareerRegionTag = styled.button`
   border-radius: 100px;
   background-color: #fff;
   cursor: pointer;
+  font-family: inherit;
 
   :hover {
     border: 1px solid #000;
@@ -211,6 +212,7 @@ const BenefitTag = styled.button<{ isSelected: boolean }>`
   border: 1px solid #e4e4e4;
   color: ${(props) => (props.isSelected ? '#fff' : '#222222')};
   cursor: pointer;
+  font-family: inherit;
 
   ${(props) =>
     props.isSelected && {

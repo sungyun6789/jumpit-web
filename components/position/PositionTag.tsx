@@ -113,6 +113,7 @@ const Tag = styled.button<{ isSelected: boolean }>`
   background-color: ${(props) => (props.isSelected ? COLORS.primary : '#fff')};
   cursor: pointer;
   margin: 0px 10px 10px 0px;
+  font-family: inherit;
 
   ${(props) =>
     props.isSelected && {

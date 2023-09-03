@@ -53,11 +53,14 @@ const Block = styled.div`
 `;
 
 const Option = styled(Button)<{ isSelected: boolean }>`
-  color: #222222;
+  height: 20px;
+  color: #666666;
   font-size: 14px;
+  font-family: inherit;
 
   ${(props) =>
     props.isSelected && {
+      color: '#222222',
       fontWeight: 700,
     }}
 `;
