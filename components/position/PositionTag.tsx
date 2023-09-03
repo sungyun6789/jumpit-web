@@ -37,6 +37,11 @@ const PositionTag = ({ title }: Props) => {
     }
 
     const jobs = getStorageValue();
+
+    if (jobs.length === 5) {
+      return alert('직무는 5개까지 선택가능합니다');
+    }
+
     const updatedJobs = jobs.includes(categoryNumber)
       ? jobs.filter((job) => job !== categoryNumber)
       : [...jobs, categoryNumber];
