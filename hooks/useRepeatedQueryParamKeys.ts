@@ -1,5 +1,9 @@
 import { useRouter } from 'next/router';
 
+const createQueryParams = (key: 'jobCategory' | 'tag' | 'sort', values: unknown[]) => {
+  return values.map((value) => `&${key}=${value}`).join('');
+};
+
 /**
  * 중복되는 쿼리 키를 사용하기 위한 커스텀 훅
  * 일반적인 방식으로 쿼리를 추가할 경우 중복 키를 덮어쓰기 때문에 문자열로 가공해서 라우팅할 수 있도록 구현
@@ -18,24 +22,13 @@ const useRepeatedQueryParamKeys = () => {
   const querySort = q.sort ? [q.sort] : [];
 
   /*
-   * 쿼리 초기값 (이미 설정된 값)
+   * 쿼리 초기값 (이미 설정된 값으로 새로 입력받은 쿼리와 그 외에 쿼리를 합치기 위해 사용)
    * ex) &jobCategory=1&jobCategory=2
    * ex) &tag=FLEXIBLE_WORK
    */
-  let jobCategories = queryJobCategory
-    .map((category) => `jobCategory=${category}`)
-    .map((value) => `&${value}`)
-    .join('');
-
-  let tags = queryTag
-    .map((tag) => `tag=${tag}`)
-    .map((value) => `&${value}`)
-    .join('');
-
-  let sort = querySort
-    .map((srt) => `sort=${srt}`)
-    .map((value) => `&${value}`)
-    .join('');
+  let jobCategories = createQueryParams('jobCategory', queryJobCategory);
+  let tags = createQueryParams('tag', queryTag);
+  let sort = createQueryParams('sort', querySort);
 
   /**
    * @param key 변경할 쿼리 키
@@ -43,20 +36,11 @@ const useRepeatedQueryParamKeys = () => {
    */
   const push = (key: 'jobCategory' | 'tag' | 'sort', arr: unknown[]) => {
     if (key === 'jobCategory') {
-      jobCategories = arr
-        .map((category) => `jobCategory=${category}`)
-        .map((value) => `&${value}`)
-        .join('');
+      jobCategories = createQueryParams('jobCategory', arr);
     } else if (key === 'tag') {
-      tags = arr
-        .map((tag) => `tag=${tag}`)
-        .map((value) => `&${value}`)
-        .join('');
+      tags = createQueryParams('tag', arr);
     } else if (key === 'sort') {
-      sort = arr
-        .map((srt) => `sort=${srt}`)
-        .map((value) => `&${value}`)
-        .join('');
+      sort = createQueryParams('sort', arr);
     }
 
     const queries = (jobCategories + tags + sort).replace(/^./, '?');
