@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import { useRouter } from 'next/router';
+import useRepeatedQueryParamKeys from '~/hooks/useRepeatedQueryParamKeys';
 
 import Button from '../common/Button';
 
@@ -17,17 +18,12 @@ const SEARCH_TYPE_OPTIONS: SearchTypeOptionModel[] = [
 ];
 
 const PositionSearchSortType = () => {
-  const { pathname, query, push } = useRouter();
+  const { push } = useRepeatedQueryParamKeys();
+  const { query } = useRouter();
   const selectedOption = query.sort ?? 'rsp_rate';
 
   const onClickOption = (option: OptionType) => {
-    push({
-      pathname,
-      query: {
-        ...query,
-        sort: option,
-      },
-    });
+    push('sort', [option]);
   };
 
   return (
