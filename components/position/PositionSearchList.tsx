@@ -159,15 +159,16 @@ const ArrowButtonOverlay = styled.div<{ type: 'prev' | 'next' }>`
 `;
 
 const ArrowButtonWrapper = styled.div<{ type: 'prev' | 'next' }>`
+  padding: 7px 16px;
+
   svg {
     position: absolute;
-    right: 0;
     width: 32px;
     height: 32px;
     cursor: pointer;
     z-index: 1;
 
-    ${(props) => (props.type === 'prev' ? { left: 0 } : { right: 0 })}
+    ${(props) => (props.type === 'prev' ? { left: 0 } : { right: '12px' })}
 
     :hover {
       path:nth-of-type(1) {
