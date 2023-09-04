@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 import COLORS from '~/constants/colors';
 import { JOB_CATEGORY } from '~/constants/jobCategory';
 
@@ -54,6 +55,10 @@ const PositionTag = ({ title }: Props) => {
     setStorageValue(updatedJobs);
     queryPush();
   };
+
+  useEffect(() => {
+    queryPush();
+  }, []);
 
   return (
     <Block>
