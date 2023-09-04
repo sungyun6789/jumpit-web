@@ -2,7 +2,6 @@ import styled from '@emotion/styled';
 import { useRouter } from 'next/router';
 import COLORS from '~/constants/colors';
 import { JOB_CATEGORY } from '~/constants/jobCategory';
-import useRepeatedQueryParamKeys from '~/hooks/useRepeatedQueryParamKeys';
 
 const getStorageValue = (): number[] => {
   const storageValue = window.localStorage.getItem('j_sr_job');
@@ -21,14 +20,18 @@ interface Props {
  * @todo 직무 선택시 관련 기술 스택 태그 추가
  */
 const PositionTag = ({ title }: Props) => {
-  const { push } = useRepeatedQueryParamKeys();
-  const { query } = useRouter();
-
+  const { pathname, query, push } = useRouter();
   const queryCategory = query.jobCategory === '{}' ? undefined : (query.jobCategory as string[]);
 
   const queryPush = () => {
     const jobs = getStorageValue();
-    push('jobCategory', jobs);
+    push({
+      pathname,
+      query: {
+        ...query,
+        jobCategory: jobs,
+      },
+    });
   };
 
   const onClick = (categoryNumber: number) => {
