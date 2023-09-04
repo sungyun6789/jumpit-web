@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import { useRouter } from 'next/router';
+import usePositionQueryPush from '~/hooks/usePositionQueryPush';
 
 import Button from '../common/Button';
 
@@ -17,17 +18,12 @@ const SEARCH_TYPE_OPTIONS: SearchTypeOptionModel[] = [
 ];
 
 const PositionSearchSortType = () => {
-  const { pathname, query, push } = useRouter();
+  const { query } = useRouter();
+  const { push } = usePositionQueryPush();
   const selectedOption = query.sort ?? 'rsp_rate';
 
   const onClickOption = (option: OptionType) => {
-    push({
-      pathname,
-      query: {
-        ...query,
-        sort: option,
-      },
-    });
+    push('sort', [option]);
   };
 
   return (

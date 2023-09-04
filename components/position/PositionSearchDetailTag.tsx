@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import { useState } from 'react';
 import Slider from 'react-slick';
 import { BENEFIT_TAG, TECH_CAREER_REGION_TAG } from '~/constants/position';
+import usePositionQueryPush from '~/hooks/usePositionQueryPush';
 
 import { NextArrowButton, PrevArrowButton } from '../common/ArrowButton';
 
@@ -31,7 +32,8 @@ const NextArrow = (props: Settings) => {
 
 const PositionSearchDetailTag = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const { pathname, query, push } = useRouter();
+  const { query } = useRouter();
+  const { push } = usePositionQueryPush();
   const selectedBenefits = query.tag ? (typeof query.tag === 'string' ? [query.tag] : (query.tag as string[])) : [];
 
   const settings: Settings = {
@@ -55,23 +57,11 @@ const PositionSearchDetailTag = () => {
   const onClickBenefitTag = (value: string) => {
     if (selectedBenefits.includes(value)) {
       const benefits = selectedBenefits.filter((benefit) => benefit !== value);
-      return push({
-        pathname,
-        query: {
-          ...query,
-          tag: benefits,
-        },
-      });
+      return push('tag', benefits);
     }
 
     const benefits = [...selectedBenefits, value];
-    return push({
-      pathname,
-      query: {
-        ...query,
-        tag: benefits,
-      },
-    });
+    return push('tag', benefits);
   };
 
   return (

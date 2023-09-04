@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import COLORS from '~/constants/colors';
 import { JOB_CATEGORY } from '~/constants/jobCategory';
+import usePositionQueryPush from '~/hooks/usePositionQueryPush';
 
 const getStorageValue = (): number[] => {
   const storageValue = window.localStorage.getItem('j_sr_job');
@@ -21,18 +22,13 @@ interface Props {
  * @todo 직무 선택시 관련 기술 스택 태그 추가
  */
 const PositionTag = ({ title }: Props) => {
-  const { pathname, query, push } = useRouter();
+  const { query } = useRouter();
+  const { push } = usePositionQueryPush();
   const queryCategory = query.jobCategory === '{}' ? undefined : (query.jobCategory as string[]);
 
   const queryPush = () => {
     const jobs = getStorageValue();
-    push({
-      pathname,
-      query: {
-        ...query,
-        jobCategory: jobs,
-      },
-    });
+    push('jobCategory', jobs);
   };
 
   const onClick = (categoryNumber: number) => {
