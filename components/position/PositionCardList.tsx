@@ -30,6 +30,8 @@ const PositionCardList = ({ data }: Props) => {
                 alt="bookmark"
               />
             </HoverView>
+
+            <BookmarkButton />
           </BannerBox>
           <DescriptionBox>
             <CompanyName>{value.companyName}</CompanyName>
@@ -152,6 +154,29 @@ const CountBox = styled.div`
 const Count = styled.span`
   color: #fff;
   font-size: 13px;
+`;
+
+const BookmarkButton = styled.button`
+  @media (max-width: 1080px) {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    min-width: 28px;
+    height: 28px;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 3px;
+    border: none;
+
+    ::before {
+      color: #fff;
+      content: '';
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      background: url('https://www.jumpit.co.kr/App/build/static/media/ico_position_bookmark.b54fcd24.svg') center
+        center no-repeat;
+    }
+  }
 `;
 
 const DescriptionBox = styled.div`
