@@ -63,9 +63,9 @@ const PositionTag = ({ title }: Props) => {
         {Object.entries(JOB_CATEGORY).map(([key, value]) => (
           <Tag
             key={key}
-            isSelected={(queryCategory ?? ['0']).includes(value.toString())}
+            isSelected={(queryCategory ?? ['0']).includes(value.no.toString())}
             type="button"
-            onClick={() => onClick(value)}
+            onClick={() => onClick(value.no)}
           >
             {key}
           </Tag>
