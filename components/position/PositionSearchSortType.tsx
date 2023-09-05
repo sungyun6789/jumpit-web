@@ -28,6 +28,7 @@ const PositionSearchSortType = () => {
 
   return (
     <Block>
+      {/** @todo 모바일인 경우 도움말 추가 */}
       {SEARCH_TYPE_OPTIONS.map((option) => (
         <Option
           key={option.label}
@@ -47,9 +48,19 @@ const Block = styled.div`
   display: flex;
   justify-content: flex-end;
   gap: 20px;
-  width: 1060px;
+  max-width: 1060px;
   margin: auto;
   padding: 36px 0 6px 0;
+
+  @media (max-width: 1080px) {
+    padding: 24px 16px 6px;
+  }
+
+  @media (max-width: 600px) {
+    position: relative;
+    margin-top: 8px;
+    right: 5px;
+  }
 `;
 
 const Option = styled(Button)<{ isSelected: boolean }>`

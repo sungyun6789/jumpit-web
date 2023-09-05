@@ -13,4 +13,8 @@ export default PositionLayout;
 const Block = styled.div`
   background-color: #f7f7f7;
   padding: 40px 0 80px 0;
+
+  @media (max-width: 1080px) {
+    padding: 0;
+  }
 `;
