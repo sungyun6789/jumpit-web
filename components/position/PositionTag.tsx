@@ -29,6 +29,7 @@ const PositionTag = ({ title }: Props) => {
   const { query } = useRouter();
   const { push } = usePositionQueryPush();
   const [selectedJobTechStacks, setSelectedJobTechStacks] = useState<TechStacks['techStacks']>([]);
+  const [selectedTechStacks, setSelectedTechStacks] = useState<string[]>();
 
   const queryCategory = query.jobCategory === '{}' ? undefined : (query.jobCategory as string[]);
 
@@ -37,7 +38,7 @@ const PositionTag = ({ title }: Props) => {
     push('jobCategory', jobs);
   };
 
-  const onClick = (categoryNumber: number) => {
+  const onJobCategoryClick = (categoryNumber: number) => {
     if (categoryNumber === 0) {
       setStorageValue([]);
       queryPush();
@@ -58,9 +59,32 @@ const PositionTag = ({ title }: Props) => {
     queryPush();
   };
 
+  const onTechStackClick = (stack: string) => {
+    if (selectedTechStacks?.includes(stack)) {
+      return setSelectedTechStacks(selectedTechStacks.filter((techStack) => techStack !== stack));
+    }
+
+    return setSelectedTechStacks([...(selectedTechStacks ?? []), stack]);
+  };
+
   useEffect(() => {
     queryPush();
   }, []);
+
+  useEffect(() => {
+    push('techStack', selectedTechStacks ?? []);
+  }, [selectedTechStacks]);
+
+  useEffect(() => {
+    if (query.techStack) {
+      const queryTechStack = query?.techStack
+        ? typeof query.techStack === 'string'
+          ? [query.techStack]
+          : query.techStack
+        : [];
+      setSelectedTechStacks(queryTechStack);
+    }
+  }, [query]);
 
   useEffect(() => {
     if (queryCategory) {
@@ -85,7 +109,7 @@ const PositionTag = ({ title }: Props) => {
             key={key}
             isSelected={(queryCategory ?? ['0']).includes(value.no.toString())}
             type="button"
-            onClick={() => onClick(value.no)}
+            onClick={() => onJobCategoryClick(value.no)}
           >
             {key}
           </Tag>
@@ -94,7 +118,12 @@ const PositionTag = ({ title }: Props) => {
 
       <TechStackListBlock>
         {selectedJobTechStacks.map((stack) => (
-          <TechStackTag key={stack.name} isSelected={false} className={mont.className}>
+          <TechStackTag
+            key={stack.name}
+            isSelected={(selectedTechStacks ?? []).includes(stack.name)}
+            className={mont.className}
+            onClick={() => onTechStackClick(stack.name)}
+          >
             <TechStackLogo src={stack.logo} width={20} height={20} alt="logo" />
             {stack.name}
           </TechStackTag>
@@ -166,6 +195,12 @@ const TechStackTag = styled(Tag)`
   line-height: 16px;
   font-size: 15px;
   font-weight: 500;
+
+  ${(props) =>
+    props.isSelected && {
+      fontWeight: 'bold',
+      backgroundColor: COLORS.primary,
+    }}
 `;
 
 const TechStackLogo = styled(Image)`

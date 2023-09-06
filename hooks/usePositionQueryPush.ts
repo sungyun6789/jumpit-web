@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 
-const QUERY_KEYS = ['jobCategory', 'tag', 'sort'] as const;
+const QUERY_KEYS = ['jobCategory', 'techStack', 'tag', 'sort'] as const;
 
 /**
  * 쿼리 입력 순서와 상관없이 동일한 쿼리 키 순서를 유지하기 위한 커스텀 훅
@@ -8,7 +8,7 @@ const QUERY_KEYS = ['jobCategory', 'tag', 'sort'] as const;
 const usePositionQueryPush = () => {
   const { pathname, isReady, query: q, push: p } = useRouter();
 
-  const push = (key: 'jobCategory' | 'tag' | 'sort', values: unknown[]) => {
+  const push = (key: 'jobCategory' | 'techStack' | 'tag' | 'sort', values: unknown[]) => {
     // 쿼리가 준비되지 않고 실행해서 "쿼리에 값이 존재하지 않는 경우"로 빠지는 것을 방지
     if (isReady) {
       const query = Object.fromEntries(
