@@ -6,6 +6,7 @@ import COLORS from '~/constants/colors';
 import { JOB_CATEGORY, JOB_NUMBER } from '~/constants/jobCategory';
 import usePositionQueryPush from '~/hooks/usePositionQueryPush';
 import { mont } from '~/pages/_app';
+import generateDuplicateQueryKeys from '~/utils/generateDuplicateQueryKeys';
 
 import type { TechStacks } from '~/constants/jobCategory';
 
@@ -26,7 +27,7 @@ interface Props {
  * @todo 직무 선택시 관련 기술 스택 태그 추가
  */
 const PositionTag = ({ title }: Props) => {
-  const { query } = useRouter();
+  const { query, isReady } = useRouter();
   const { push } = usePositionQueryPush();
   const [selectedJobTechStacks, setSelectedJobTechStacks] = useState<TechStacks['techStacks']>([]);
   const [selectedTechStacks, setSelectedTechStacks] = useState<string[]>();
@@ -77,14 +78,10 @@ const PositionTag = ({ title }: Props) => {
 
   useEffect(() => {
     if (query.techStack) {
-      const queryTechStack = query?.techStack
-        ? typeof query.techStack === 'string'
-          ? [query.techStack]
-          : query.techStack
-        : [];
+      const queryTechStack = generateDuplicateQueryKeys(query, 'techStack', true) as string[];
       setSelectedTechStacks(queryTechStack);
     }
-  }, [query]);
+  }, [isReady]);
 
   useEffect(() => {
     if (queryCategory) {

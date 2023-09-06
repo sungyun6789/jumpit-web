@@ -1,4 +1,5 @@
 import axios from 'axios';
+import generateDuplicateQueryKeys from '~/utils/generateDuplicateQueryKeys';
 
 import type { NextApiRequest, NextApiResponse } from 'next';
 
@@ -38,21 +39,9 @@ export interface PositionResponse {
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const query = req.query;
 
-  const jobCategory = (
-    query?.jobCategory ? (typeof query.jobCategory === 'string' ? [query.jobCategory] : query.jobCategory) : []
-  )
-    .map((value) => `&jobCategory=${value}`)
-    .join('');
-
-  const techStack = (
-    query?.techStack ? (typeof query.techStack === 'string' ? [query.techStack] : query.techStack) : []
-  )
-    .map((value) => `&techStack=${value}`)
-    .join('');
-
-  const tag = (query?.tag ? (typeof query.tag === 'string' ? [query.tag] : query.tag) : [])
-    .map((value) => `&tag=${value}`)
-    .join('');
+  const jobCategory = generateDuplicateQueryKeys(query, 'jobCategory');
+  const techStack = generateDuplicateQueryKeys(query, 'techStack');
+  const tag = generateDuplicateQueryKeys(query, 'tag');
 
   const url =
     'https://api.jumpit.co.kr/api/positions' +
