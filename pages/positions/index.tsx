@@ -15,15 +15,29 @@ const PositionsPage = () => {
   const [page, setPage] = useState(1);
 
   const sort = query?.sort ?? 'rsp_rate';
+  const techStack = query?.techStack;
 
-  const { data } = useQuery(['/api/positions', page], async () => {
-    const { data } = await axios.get<PositionResponse>('/api/positions', {
-      params: {
-        page,
-        sort,
-        highlight: false,
-      },
-    });
+  const queryJobCategory = (
+    query?.jobCategory ? (typeof query.jobCategory === 'string' ? [query.jobCategory] : query.jobCategory) : []
+  )
+    .map((value) => `&jobCategory=${value}`)
+    .join('');
+
+  const queryTechStack = (
+    query?.techStack ? (typeof query.techStack === 'string' ? [query.techStack] : query.techStack) : []
+  )
+    .map((value) => `&techStack=${value}`)
+    .join('');
+
+  const queryTag = (query?.tag ? (typeof query.tag === 'string' ? [query.tag] : query.tag) : [])
+    .map((value) => `&tag=${value}`)
+    .join('');
+
+  const url =
+    `/api/positions?page=${page}` + queryJobCategory + queryTechStack + queryTag + `&sort=${sort}` + `&highlight=false`;
+
+  const { data } = useQuery(['/api/positions', page, sort, techStack], async () => {
+    const { data } = await axios.get<PositionResponse>(url);
     return data.result;
   });
 

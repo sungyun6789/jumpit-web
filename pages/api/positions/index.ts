@@ -38,14 +38,33 @@ export interface PositionResponse {
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const query = req.query;
 
+  const jobCategory = (
+    query?.jobCategory ? (typeof query.jobCategory === 'string' ? [query.jobCategory] : query.jobCategory) : []
+  )
+    .map((value) => `&jobCategory=${value}`)
+    .join('');
+
+  const techStack = (
+    query?.techStack ? (typeof query.techStack === 'string' ? [query.techStack] : query.techStack) : []
+  )
+    .map((value) => `&techStack=${value}`)
+    .join('');
+
+  const tag = (query?.tag ? (typeof query.tag === 'string' ? [query.tag] : query.tag) : [])
+    .map((value) => `&tag=${value}`)
+    .join('');
+
+  const url =
+    'https://api.jumpit.co.kr/api/positions' +
+    `?page=${query.page}` +
+    jobCategory +
+    techStack +
+    tag +
+    `&sort=${query.sort}` +
+    `&highlight=false`;
+
   if (req.method === 'GET') {
-    const { data } = await axios.get<PositionResponse>('https://api.jumpit.co.kr/api/positions', {
-      params: {
-        page: query.page ?? null,
-        sort: query.sort ?? null,
-        highlight: query.highlight ?? null,
-      },
-    });
+    const { data } = await axios.get<PositionResponse>(url);
     return res.json(data);
   }
 };
