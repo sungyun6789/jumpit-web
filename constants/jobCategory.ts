@@ -22,7 +22,7 @@ type CategoryType =
   | '블록체인'
   | '기술지원';
 
-interface TechStacks {
+export interface TechStacks {
   no: number;
   techStacks: {
     name: string;
