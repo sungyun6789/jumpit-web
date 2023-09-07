@@ -23,9 +23,6 @@ interface Props {
   title: string;
 }
 
-/**
- * @todo 직무 선택시 관련 기술 스택 태그 추가
- */
 const PositionTag = ({ title }: Props) => {
   const { query, isReady } = useRouter();
   const { push } = usePositionQueryPush();
