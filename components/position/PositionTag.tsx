@@ -29,20 +29,21 @@ interface Props {
 const PositionTag = ({ title }: Props) => {
   const { query, isReady } = useRouter();
   const { push } = usePositionQueryPush();
-  const [selectedJobTechStacks, setSelectedJobTechStacks] = useState<TechStacks['techStacks']>([]);
+  const [techStacks, setTechStacks] = useState<TechStacks['techStacks']>([]);
   const [selectedTechStacks, setSelectedTechStacks] = useState<string[]>();
 
   const queryCategory = query.jobCategory === '{}' ? undefined : (query.jobCategory as string[]);
 
-  const queryPush = () => {
+  const jobCategoryQueryPush = () => {
     const jobs = getStorageValue();
     push('jobCategory', jobs);
   };
 
   const onJobCategoryClick = (categoryNumber: number) => {
+    // "전체" 카테고리 선택
     if (categoryNumber === 0) {
       setStorageValue([]);
-      queryPush();
+      jobCategoryQueryPush();
       return;
     }
 
@@ -57,7 +58,7 @@ const PositionTag = ({ title }: Props) => {
     }
 
     setStorageValue(updatedJobs);
-    queryPush();
+    jobCategoryQueryPush();
   };
 
   const onTechStackClick = (stack: string) => {
@@ -69,7 +70,7 @@ const PositionTag = ({ title }: Props) => {
   };
 
   useEffect(() => {
-    queryPush();
+    jobCategoryQueryPush();
   }, []);
 
   useEffect(() => {
@@ -93,7 +94,7 @@ const PositionTag = ({ title }: Props) => {
       const uniqueNames = Array.from(new Set(techStacks.map((stack) => stack.name)));
       const uniqueObjects = uniqueNames.map((name) => techStacks.find((stack) => stack.name === name)!);
 
-      setSelectedJobTechStacks(uniqueObjects);
+      setTechStacks(uniqueObjects);
     }
   }, [queryCategory]);
 
@@ -114,7 +115,7 @@ const PositionTag = ({ title }: Props) => {
       </TagListBlock>
 
       <TechStackListBlock>
-        {selectedJobTechStacks.map((stack) => (
+        {techStacks.map((stack) => (
           <TechStackTag
             key={stack.name}
             isSelected={(selectedTechStacks ?? []).includes(stack.name)}
