@@ -44,6 +44,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["next", "virtual:0147e901ac5cc9633cbed952cf5dab488e44813b6eaaf1a588821cce4368d41489625542c320d5b20d234b9e9fd47e45b10e81ad901e7c3adb64d05cfd7754ab#npm:13.4.13"],\
             ["react", "npm:18.2.0"],\
             ["react-dom", "virtual:0147e901ac5cc9633cbed952cf5dab488e44813b6eaaf1a588821cce4368d41489625542c320d5b20d234b9e9fd47e45b10e81ad901e7c3adb64d05cfd7754ab#npm:18.2.0"],\
+            ["react-intersection-observer", "virtual:0147e901ac5cc9633cbed952cf5dab488e44813b6eaaf1a588821cce4368d41489625542c320d5b20d234b9e9fd47e45b10e81ad901e7c3adb64d05cfd7754ab#npm:9.5.2"],\
             ["react-slick", "virtual:0147e901ac5cc9633cbed952cf5dab488e44813b6eaaf1a588821cce4368d41489625542c320d5b20d234b9e9fd47e45b10e81ad901e7c3adb64d05cfd7754ab#npm:0.29.0"],\
             ["slick-carousel", "virtual:0147e901ac5cc9633cbed952cf5dab488e44813b6eaaf1a588821cce4368d41489625542c320d5b20d234b9e9fd47e45b10e81ad901e7c3adb64d05cfd7754ab#npm:1.8.1"],\
             ["typescript", "patch:typescript@npm%3A5.0.4#~builtin<compat/typescript>::version=5.0.4&hash=85af82"]\
@@ -2905,6 +2906,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["next", "virtual:0147e901ac5cc9633cbed952cf5dab488e44813b6eaaf1a588821cce4368d41489625542c320d5b20d234b9e9fd47e45b10e81ad901e7c3adb64d05cfd7754ab#npm:13.4.13"],\
             ["react", "npm:18.2.0"],\
             ["react-dom", "virtual:0147e901ac5cc9633cbed952cf5dab488e44813b6eaaf1a588821cce4368d41489625542c320d5b20d234b9e9fd47e45b10e81ad901e7c3adb64d05cfd7754ab#npm:18.2.0"],\
+            ["react-intersection-observer", "virtual:0147e901ac5cc9633cbed952cf5dab488e44813b6eaaf1a588821cce4368d41489625542c320d5b20d234b9e9fd47e45b10e81ad901e7c3adb64d05cfd7754ab#npm:9.5.2"],\
             ["react-slick", "virtual:0147e901ac5cc9633cbed952cf5dab488e44813b6eaaf1a588821cce4368d41489625542c320d5b20d234b9e9fd47e45b10e81ad901e7c3adb64d05cfd7754ab#npm:0.29.0"],\
             ["slick-carousel", "virtual:0147e901ac5cc9633cbed952cf5dab488e44813b6eaaf1a588821cce4368d41489625542c320d5b20d234b9e9fd47e45b10e81ad901e7c3adb64d05cfd7754ab#npm:1.8.1"],\
             ["typescript", "patch:typescript@npm%3A5.0.4#~builtin<compat/typescript>::version=5.0.4&hash=85af82"]\
@@ -3468,6 +3470,28 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["loose-envify", "npm:1.4.0"],\
             ["react", "npm:18.2.0"],\
             ["scheduler", "npm:0.23.0"]\
+          ],\
+          "packagePeers": [\
+            "@types/react",\
+            "react"\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["react-intersection-observer", [\
+        ["npm:9.5.2", {\
+          "packageLocation": "./.yarn/cache/react-intersection-observer-npm-9.5.2-2c006290a0-cdbe405449.zip/node_modules/react-intersection-observer/",\
+          "packageDependencies": [\
+            ["react-intersection-observer", "npm:9.5.2"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:0147e901ac5cc9633cbed952cf5dab488e44813b6eaaf1a588821cce4368d41489625542c320d5b20d234b9e9fd47e45b10e81ad901e7c3adb64d05cfd7754ab#npm:9.5.2", {\
+          "packageLocation": "./.yarn/__virtual__/react-intersection-observer-virtual-27ec54bb5f/0/cache/react-intersection-observer-npm-9.5.2-2c006290a0-cdbe405449.zip/node_modules/react-intersection-observer/",\
+          "packageDependencies": [\
+            ["react-intersection-observer", "virtual:0147e901ac5cc9633cbed952cf5dab488e44813b6eaaf1a588821cce4368d41489625542c320d5b20d234b9e9fd47e45b10e81ad901e7c3adb64d05cfd7754ab#npm:9.5.2"],\
+            ["@types/react", "npm:18.2.20"],\
+            ["react", "npm:18.2.0"]\
           ],\
           "packagePeers": [\
             "@types/react",\
