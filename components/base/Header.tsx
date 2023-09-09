@@ -40,7 +40,7 @@ const Block = styled.header`
   width: 100%;
   border-bottom: 1px solid #e4e4e4;
   background-color: #fff;
-  z-index: 1;
+  z-index: 2;
 
   @media (max-width: 1080px) {
     border-bottom: unset;
