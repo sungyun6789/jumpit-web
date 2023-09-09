@@ -4,11 +4,14 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import COLORS from '~/constants/colors';
 import { JOB_CATEGORY, JOB_NUMBER } from '~/constants/jobCategory';
+import { CDN_PATH } from '~/constants/path';
 import usePositionQueryPush from '~/hooks/usePositionQueryPush';
 import { mont } from '~/pages/_app';
 import generateDuplicateQueryKeys from '~/utils/generateDuplicateQueryKeys';
 
 import type { TechStacks } from '~/constants/jobCategory';
+
+const IMAGE_PATH = CDN_PATH + '/images/stacks';
 
 const getStorageValue = (): number[] => {
   const storageValue = window.localStorage.getItem('j_sr_job');
@@ -118,7 +121,7 @@ const PositionTag = ({ title }: Props) => {
             className={mont.className}
             onClick={() => onTechStackClick(stack.name)}
           >
-            <TechStackLogo src={stack.logo} width={20} height={20} alt="logo" />
+            <TechStackLogo src={IMAGE_PATH + stack.logo} width={20} height={20} alt="logo" />
             {stack.name}
           </TechStackTag>
         ))}
