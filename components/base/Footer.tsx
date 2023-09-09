@@ -73,7 +73,7 @@ const Footer = () => {
               {SNS_LIST.map((sns) => (
                 <Link key={sns.name} href={sns.url} target="_blank">
                   <Image
-                    src={CDN_PATH + `personal/v-footer-sns-${sns.name}.svg`}
+                    src={CDN_PATH + `/jumpit/personal/v-footer-sns-${sns.name}.svg`}
                     width={36}
                     height={36}
                     alt={sns.name}

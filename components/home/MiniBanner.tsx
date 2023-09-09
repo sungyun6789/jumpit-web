@@ -5,7 +5,7 @@ import Slider from 'react-slick';
 import { CDN_PATH } from '~/constants/path';
 import { DesktopView, TabletView } from '~/styles/breakpoint';
 
-const prefixPath = CDN_PATH + 'personal/main_banner/';
+const prefixPath = CDN_PATH + '/jumpit/personal/main_banner/';
 
 const BANNERS = [
   {

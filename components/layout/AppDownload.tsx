@@ -20,7 +20,12 @@ const AppDownload = () => {
         <DownloadBox>
           <CloseIcon src="/closeIcon.svg" width={24} height={24} alt="close" onClick={close} />
 
-          <DownloadLogo src={CDN_PATH + 'personal/ic_app_download.png'} width={101} height={100} alt="app download" />
+          <DownloadLogo
+            src={CDN_PATH + '/jumpit/personal/ic_app_download.png'}
+            width={101}
+            height={100}
+            alt="app download"
+          />
 
           <DescriptionBox>
             <Description>빠르고 편리한 점핏 앱!</Description>

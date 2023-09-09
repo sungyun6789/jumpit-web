@@ -5,7 +5,7 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>
-        <link rel="icon" href={CDN_PATH + 'favicon.png'}></link>
+        <link rel="icon" href={CDN_PATH + '/jumpit/favicon.png'}></link>
       </Head>
       <body>
         <Main />
