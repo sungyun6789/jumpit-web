@@ -1,7 +1,8 @@
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import { useRouter } from 'next/router';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useInView } from 'react-intersection-observer';
 import PositionLayout from '~/components/layout/PositionLayout';
 import PositionCardList from '~/components/position/PositionCardList';
 import PositionSearchDetailTag from '~/components/position/PositionSearchDetailTag';
@@ -14,9 +15,10 @@ import type { PositionResponse } from '../api/positions';
 const PositionsPage = () => {
   const { query } = useRouter();
   const [page, setPage] = useState(1);
+  const [positionList, setPositionList] = useState<PositionResponse['result']['positions']>([]);
+  const [ref, inView] = useInView();
 
   const sort = query?.sort ?? 'rsp_rate';
-  const techStack = query?.techStack;
 
   const queryJobCategory = generateDuplicateQueryKeys(query, 'jobCategory');
   const queryTechStack = generateDuplicateQueryKeys(query, 'techStack');
@@ -30,13 +32,26 @@ const PositionsPage = () => {
     return data.result;
   });
 
+  useEffect(() => {
+    if (data) {
+      setPositionList([...positionList, ...data.positions]);
+    }
+  }, [data]);
+
+  useEffect(() => {
+    if (inView && positionList.length !== 0) {
+      setPage(page + 1);
+    }
+  }, [inView]);
+
   return (
     <>
       <PositionTag title="직무 탐색" />
       <PositionLayout>
         <PositionSearchDetailTag />
         <PositionSearchSortType />
-        <PositionCardList data={data?.positions} />
+        <PositionCardList data={positionList} />
+        <div ref={ref} />
       </PositionLayout>
     </>
   );
