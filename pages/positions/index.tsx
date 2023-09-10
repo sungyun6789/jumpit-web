@@ -13,7 +13,7 @@ import generateDuplicateQueryKeys from '~/utils/generateDuplicateQueryKeys';
 import type { PositionResponse } from '../api/positions';
 
 const PositionsPage = () => {
-  const { query } = useRouter();
+  const { query, isReady } = useRouter();
   const [page, setPage] = useState(1);
   const [positionList, setPositionList] = useState<PositionResponse['result']['positions']>([]);
   const [ref, inView] = useInView();
@@ -27,10 +27,14 @@ const PositionsPage = () => {
   const url =
     `/api/positions?page=${page}` + queryJobCategory + queryTechStack + queryTag + `&sort=${sort}` + `&highlight=false`;
 
-  const { data } = useQuery([url], async () => {
-    const { data } = await axios.get<PositionResponse>(url);
-    return data.result;
-  });
+  const { data } = useQuery(
+    [url],
+    async () => {
+      const { data } = await axios.get<PositionResponse>(url);
+      return data.result;
+    },
+    { enabled: isReady }
+  );
 
   useEffect(() => {
     if (data) {
