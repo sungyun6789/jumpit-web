@@ -4,10 +4,12 @@ import { useRouter } from 'next/router';
 import { useCallback, useEffect, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import PositionLayout from '~/components/layout/PositionLayout';
+import TagLayout from '~/components/layout/TagLayout';
 import PositionCardList from '~/components/position/PositionCardList';
 import PositionSearchDetailTag from '~/components/position/PositionSearchDetailTag';
 import PositionSearchSortType from '~/components/position/PositionSearchSortType';
-import PositionTag from '~/components/position/PositionTag';
+import JobCategoryTag from '~/components/tag/JobCategoryTag';
+import TechStackTag from '~/components/tag/TechStackTag';
 import generateDuplicateQueryKeys from '~/utils/generateDuplicateQueryKeys';
 
 import type { PositionResponse } from '../api/positions';
@@ -52,7 +54,10 @@ const PositionsPage = () => {
 
   return (
     <>
-      <PositionTag title="직무 탐색" resetPage={resetPage} />
+      <TagLayout>
+        <JobCategoryTag title="직무 탐색" resetPage={resetPage} />
+        <TechStackTag resetPage={resetPage} />
+      </TagLayout>
       <PositionLayout>
         <PositionSearchDetailTag />
         <PositionSearchSortType />
