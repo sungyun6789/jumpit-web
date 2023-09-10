@@ -44,8 +44,10 @@ const TechStackTag = ({ resetPage }: Props) => {
       const uniqueNames = Array.from(new Set(techStacks.map((stack) => stack.name)));
       const uniqueObjects = uniqueNames.map((name) => techStacks.find((stack) => stack.name === name)!);
 
-      setTechStacks(uniqueObjects);
+      return setTechStacks(uniqueObjects);
     }
+
+    return setTechStacks([]);
   }, [queryCategory]);
 
   return (
