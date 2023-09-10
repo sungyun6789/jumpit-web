@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import PositionLayout from '~/components/layout/PositionLayout';
 import PositionCardList from '~/components/position/PositionCardList';
@@ -48,9 +48,11 @@ const PositionsPage = () => {
     }
   }, [inView]);
 
+  const resetPage = useCallback(() => setPage(1), []);
+
   return (
     <>
-      <PositionTag title="직무 탐색" />
+      <PositionTag title="직무 탐색" resetPage={resetPage} />
       <PositionLayout>
         <PositionSearchDetailTag />
         <PositionSearchSortType />

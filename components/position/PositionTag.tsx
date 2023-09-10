@@ -24,9 +24,10 @@ const setStorageValue = (jobs: number[]) => {
 
 interface Props {
   title: string;
+  resetPage: () => void;
 }
 
-const PositionTag = ({ title }: Props) => {
+const PositionTag = ({ title, resetPage }: Props) => {
   const { query, isReady } = useRouter();
   const { push } = usePositionQueryPush();
   const [techStacks, setTechStacks] = useState<TechStacks['techStacks']>([]);
@@ -40,6 +41,9 @@ const PositionTag = ({ title }: Props) => {
   };
 
   const onJobCategoryClick = (categoryNumber: number) => {
+    // 초기화를 query 변경하는 시점(useEffect)으로 설정하면 쿼리 변경과 page 변경으로 인해 네트워크 요청이 2번 발생해서 여기서 처리해야 함
+    resetPage();
+
     // "전체" 카테고리 선택
     if (categoryNumber === 0) {
       setStorageValue([]);
@@ -62,6 +66,9 @@ const PositionTag = ({ title }: Props) => {
   };
 
   const onTechStackClick = (stack: string) => {
+    // 초기화를 query 변경하는 시점(useEffect)으로 설정하면 쿼리 변경과 page 변경으로 인해 네트워크 요청이 2번 발생해서 여기서 처리해야 함
+    resetPage();
+
     if (selectedTechStacks?.includes(stack)) {
       return setSelectedTechStacks(selectedTechStacks.filter((techStack) => techStack !== stack));
     }
