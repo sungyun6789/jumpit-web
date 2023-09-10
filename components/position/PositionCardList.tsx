@@ -11,8 +11,8 @@ interface Props {
 const PositionCardList = ({ data }: Props) => {
   return (
     <Block>
-      {data?.map((value) => (
-        <Item key={value.id}>
+      {data?.map((value, index) => (
+        <Item key={index}>
           <BannerBox>
             <div className="banner-overlay" />
             <Image src={value.imagePath} width={250} height={166} alt="banner" className="banner" />
