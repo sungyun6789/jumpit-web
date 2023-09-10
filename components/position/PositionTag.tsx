@@ -168,42 +168,41 @@ const TagListBlock = styled.article`
   }
 `;
 
-const Tag = styled.button<{ isSelected: boolean }>`
-  padding: 3px 16px;
-  font-size: 16px;
+const CommonTag = styled.button<{ isSelected: boolean }>`
   line-height: 32px;
   letter-spacing: -0.5px;
-  color: ${(props) => (props.isSelected ? '#fff' : '#444444')};
-  border: ${(props) => `1px solid ${props.isSelected ? COLORS.primary : '#e4e4e4'}`};
   border-radius: 20px;
   background-color: ${(props) => (props.isSelected ? COLORS.primary : '#fff')};
   cursor: pointer;
   margin: 0px 10px 10px 0px;
-  font-family: inherit;
 
   ${(props) =>
     props.isSelected && {
       fontWeight: 'bold',
     }}
+`;
+
+const Tag = styled(CommonTag)`
+  padding: 3px 16px;
+  color: ${(props) => (props.isSelected ? '#fff' : '#444444')};
+  border: ${(props) => `1px solid ${props.isSelected ? COLORS.primary : '#e4e4e4'}`};
+  background-color: ${(props) => (props.isSelected ? COLORS.primary : '#fff')};
+  font-size: 16px;
+  font-family: inherit;
 `;
 
 const TechStackListBlock = styled(TagListBlock)`
   margin: initial;
 `;
 
-const TechStackTag = styled(Tag)`
-  background-color: #e5f8ec;
+const TechStackTag = styled(CommonTag)`
+  color: ${(props) => (props.isSelected ? '#fff' : '#222222')};
+  background-color: ${(props) => (props.isSelected ? COLORS.primary : '#e5f8ec')};
   border: none;
   padding: 9px 16px;
   line-height: 16px;
   font-size: 15px;
-  font-weight: 500;
-
-  ${(props) =>
-    props.isSelected && {
-      fontWeight: 'bold',
-      backgroundColor: COLORS.primary,
-    }}
+  font-weight: ${(props) => (props.isSelected ? 'bold' : '500')};
 `;
 
 const TechStackLogo = styled(Image)`
