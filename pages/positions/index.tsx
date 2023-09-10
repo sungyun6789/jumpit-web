@@ -50,6 +50,10 @@ const PositionsPage = () => {
     }
   }, [inView]);
 
+  useEffect(() => {
+    setPositionList([]);
+  }, [query]);
+
   const resetPage = useCallback(() => setPage(1), []);
 
   return (
