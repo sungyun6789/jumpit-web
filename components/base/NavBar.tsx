@@ -141,21 +141,23 @@ const RookieNavLI = styled(LI)`
     display: none;
   }
 
-  :hover {
-    .sub-nav {
-      display: block;
-      position: absolute;
-      width: 175px;
-      padding: 8px 0;
-      margin: 10px 0;
-      border: 1px solid #e4e4e4;
-      border-radius: 4px;
-      background-color: #fff;
-      box-shadow: rgba(20, 20, 20, 0.12) 0px 8px 16px;
-    }
+  @media (min-width: 1081px) {
+    :hover {
+      .sub-nav {
+        display: block;
+        position: absolute;
+        width: 175px;
+        padding: 8px 0;
+        margin: 10px 0;
+        border: 1px solid #e4e4e4;
+        border-radius: 4px;
+        background-color: #fff;
+        box-shadow: rgba(20, 20, 20, 0.12) 0px 8px 16px;
+      }
 
-    a {
-      color: #000 !important;
+      a {
+        color: #000 !important;
+      }
     }
   }
 `;
