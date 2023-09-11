@@ -3,35 +3,51 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { DesktopView } from '~/styles/breakpoint';
 
-const ITEMS_1 = [
-  { title: '직무 탐색', url: '/positions' },
-  {
-    title: '더. 루키',
-    url: '/rookie',
-    subItems: [
-      { title: '절찬 채용중', url: '/rookie/position' },
-      { title: '취업꿀팁 대방출', url: '/rookie/content' },
-    ],
-  },
-  { title: '이력서', url: '/rookie' },
-  { title: '취업 Q&A', url: '/career-qna' },
-  { title: '개발자 인터뷰', url: '/job-interview' },
-  { title: '개취콘', url: '/book-concert/22' },
-];
-
 const NavBar = () => {
   const { pathname } = useRouter();
 
   return (
     <Block>
       <NavUL>
-        {ITEMS_1.map((item) => (
-          <li key={item.title}>
-            <NavLink href={item.url} selected={pathname === item.url}>
-              {item.title}
-            </NavLink>
-          </li>
-        ))}
+        <li>
+          <NavLink href="/positions" selected={pathname === '/positions'}>
+            직무 탐색
+          </NavLink>
+        </li>
+
+        <RookieNavLI>
+          <NavLink href="/rookie" selected={pathname === '/rookie'}>
+            더. 루키
+          </NavLink>
+          <div className="sub-nav">
+            <RookieSubNavLink href="/rookie/position">절찬 채용중 👀</RookieSubNavLink>
+            <RookieSubNavLink href="/rookie/content">취업꿀팁 대방출 🔥</RookieSubNavLink>
+          </div>
+        </RookieNavLI>
+
+        <li>
+          <NavLink href="/이력서" selected={pathname === '/이력서'}>
+            이력서
+          </NavLink>
+        </li>
+
+        <li>
+          <NavLink href="/career-qna" selected={pathname === '/career-qna'}>
+            취업 Q&A
+          </NavLink>
+        </li>
+
+        <li>
+          <NavLink href="/job-interview" selected={pathname === '/job-interview'}>
+            개발자 인터뷰
+          </NavLink>
+        </li>
+
+        <li>
+          <NavLink href="/book-concert/22" selected={pathname === '/book-concert/22'}>
+            개취콘
+          </NavLink>
+        </li>
       </NavUL>
 
       <DesktopView>
@@ -118,4 +134,40 @@ const LI = styled.li`
 
 const BlankLink = styled(Link)`
   color: black !important;
+`;
+
+const RookieNavLI = styled(LI)`
+  .sub-nav {
+    display: none;
+  }
+
+  :hover {
+    .sub-nav {
+      display: block;
+      position: absolute;
+      width: 175px;
+      padding: 8px 0;
+      margin: 10px 0;
+      border: 1px solid #e4e4e4;
+      border-radius: 4px;
+      background-color: #fff;
+      box-shadow: rgba(20, 20, 20, 0.12) 0px 8px 16px;
+    }
+
+    a {
+      color: #000 !important;
+    }
+  }
+`;
+
+const RookieSubNavLink = styled(Link)`
+  display: flex;
+  align-items: center;
+  padding: 0 23px;
+  height: 48px;
+  font-weight: normal;
+
+  :hover {
+    background-color: #f4f4f4;
+  }
 `;
