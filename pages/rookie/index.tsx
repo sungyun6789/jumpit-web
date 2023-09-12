@@ -1,5 +1,11 @@
+import RookieBanner from '~/components/rookie/RookieBanner';
+
 const RookiePage = () => {
-  return <div>더 루키</div>;
+  return (
+    <div>
+      <RookieBanner />
+    </div>
+  );
 };
 
 export default RookiePage;
