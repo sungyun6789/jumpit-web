@@ -1,5 +1,4 @@
 import axios from 'axios';
-import generateDuplicateQueryKeys from '~/utils/generateDuplicateQueryKeys';
 
 import type { NextApiRequest, NextApiResponse } from 'next';
 
@@ -37,24 +36,15 @@ export interface PositionResponse {
 }
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
-  const query = req.query;
-
-  const jobCategory = generateDuplicateQueryKeys(query, 'jobCategory');
-  const techStack = generateDuplicateQueryKeys(query, 'techStack');
-  const tag = generateDuplicateQueryKeys(query, 'tag');
-
-  const url =
-    'https://api.jumpit.co.kr/api/positions' +
-    `?page=${query.page}` +
-    jobCategory +
-    techStack +
-    tag +
-    `&sort=${query.sort}` +
-    `&highlight=false`;
-
-  if (req.method === 'GET') {
-    const { data } = await axios.get<PositionResponse>(url);
-    return res.json(data);
+  try {
+    if (req.method === 'GET') {
+      const query = new URLSearchParams(req.query as unknown as URLSearchParams).toString();
+      const { data } = await axios.get<PositionResponse>(`https://api.jumpit.co.kr/api/positions?${query}`);
+      return res.json(data);
+    }
+  } catch (error) {
+    console.log(error);
+    return res.status(500);
   }
 };
 
