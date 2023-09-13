@@ -11,7 +11,7 @@ export interface PositionResponse {
     page: number;
     positions: {
       alwaysOpen: boolean;
-      applied: number;
+      applied: boolean;
       celebration: number;
       closedAt: string;
       companyName: string;
