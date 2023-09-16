@@ -12,7 +12,7 @@ const PositionCardList = ({ data }: Props) => {
   return (
     <Block>
       {data?.map((value, index) => (
-        <Item key={index}>
+        <Item key={index} className="item">
           <BannerBox>
             <div className="banner-overlay" />
             <Image src={value.imagePath} width={250} height={166} alt="banner" className="banner" />
@@ -69,6 +69,10 @@ const Block = styled.section`
     width: 100%;
     padding: 0 8px;
   }
+
+  @media (max-width: 600px) {
+    padding: 0 6px;
+  }
 `;
 
 const Item = styled.div`
@@ -115,6 +119,10 @@ const Item = styled.div`
     max-width: 50%;
     flex: 1 1 40%;
     padding: 8px;
+  }
+
+  @media (max-width: 600px) {
+    padding: 0 6px;
   }
 `;
 
