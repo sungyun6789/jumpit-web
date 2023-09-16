@@ -56,7 +56,7 @@ const RookieCurationList = () => {
     afterChange: (value) => setCurrentIndex(value),
     responsive: [
       {
-        breakpoint: 600,
+        breakpoint: 601,
         settings: {
           arrows: false,
         },
@@ -72,7 +72,9 @@ const RookieCurationList = () => {
   return (
     <Block>
       <MaxWidthLayout>
-        <Title>{title} 관련 포지션을 모아봤어요.</Title>
+        <Title>
+          {title} <SubTitle>관련 포지션을 모아봤어요.</SubTitle>
+        </Title>
 
         <StyledSlider {...settings} currentIndex={currentIndex}>
           {CURATIONS.map((curation) => (
@@ -87,7 +89,9 @@ const RookieCurationList = () => {
         </StyledSlider>
       </MaxWidthLayout>
 
-      <PositionCardList data={data} />
+      <PositionCardListLayout>
+        <PositionCardList data={data} />
+      </PositionCardListLayout>
 
       <MaxWidthLayout>
         <MoreLink href="/rookie/position?curation=">더보기</MoreLink>
@@ -100,17 +104,46 @@ export default RookieCurationList;
 
 const Block = styled.section`
   margin: 72px auto;
+
+  @media (max-width: 1080px) {
+    margin: 48px 0 60px;
+  }
+
+  @media (max-width: 1080px) {
+    margin: 40px 0 56px;
+  }
 `;
 
 const MaxWidthLayout = styled.div`
   margin: auto;
   max-width: 1060px;
+
+  @media (max-width: 1080px) {
+    margin: 0 16px;
+  }
 `;
 
 const Title = styled.h1`
   font-size: 24px;
   line-height: 38px;
   letter-spacing: -0.5px;
+
+  @media (max-width: 600px) {
+    font-size: 20px;
+    line-height: 30px;
+  }
+`;
+
+const SubTitle = styled.span`
+  font-size: 24px;
+  line-height: 38px;
+  letter-spacing: -0.5px;
+
+  @media (max-width: 600px) {
+    display: block;
+    font-size: 20px;
+    line-height: 30px;
+  }
 `;
 
 const Tag = styled.button<{ isSelected: boolean }>`
@@ -139,6 +172,10 @@ const StyledSlider = styled(Slider)<{ currentIndex: number }>`
   .slick-track {
     display: flex;
     gap: 8px;
+
+    @media (max-width: 600px) {
+      padding-bottom: 10px;
+    }
   }
 
   .prev-arrow-overlay {
@@ -156,6 +193,17 @@ const StyledSlider = styled(Slider)<{ currentIndex: number }>`
 
     svg {
       fill: #fff;
+    }
+  }
+`;
+
+const PositionCardListLayout = styled.div`
+  /* 1080px 이하에서는 5,6,7,8번 index를 보여주지 않음 */
+  @media (max-width: 1080px) {
+    .item {
+      :nth-child(n + 5):nth-child(-n + 8) {
+        display: none;
+      }
     }
   }
 `;
@@ -178,5 +226,10 @@ const MoreLink = styled(Link)`
     color: #fff;
     background-color: #000;
     border-color: #fff;
+  }
+
+  @media (max-width: 600px) {
+    width: 160px;
+    height: 40px;
   }
 `;
