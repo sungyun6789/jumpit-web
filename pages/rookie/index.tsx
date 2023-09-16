@@ -4,6 +4,7 @@ import { createContext, useEffect } from 'react';
 import RookieBanner from '~/components/rookie/RookieBanner';
 import RookieCurationList from '~/components/rookie/RookieCurationList';
 import RookieFirstJob from '~/components/rookie/RookieFirstJob';
+import RookieTip from '~/components/rookie/RookieTip';
 
 import type { RookieHomeResponse } from '../api/rookie/home';
 
@@ -20,6 +21,7 @@ const RookiePage = () => {
       <RookieBanner />
       <RookieCurationList />
       <RookieFirstJob />
+      <RookieTip />
     </RookieHomeResultContext.Provider>
   );
 };
