@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useContext, useRef, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import Slider from 'react-slick';
 import COLORS from '~/constants/colors';
 import { RookieHomeResultContext } from '~/pages/rookie';
@@ -11,11 +11,28 @@ import Button from '../common/Button';
 
 import type { Settings } from 'react-slick';
 
-const SETTING: Settings = {
+const settings: Settings = {
   rows: 2,
-  infinite: false,
-  arrows: false,
   slidesPerRow: 3,
+  // infinite: false, false로 사용하는 경우 첫 페이지가 렌더링되지 않는 라이브러리 버그가 있음
+  responsive: [
+    {
+      breakpoint: 1081,
+      settings: {
+        slidesToScroll: 1,
+        rows: 1,
+      },
+    },
+    {
+      breakpoint: 601,
+      settings: {
+        slidesPerRow: 2,
+        slidesToScroll: 1,
+        slidesToShow: 1,
+        rows: 1,
+      },
+    },
+  ],
 };
 
 const RookieFirstJob = () => {
@@ -32,6 +49,12 @@ const RookieFirstJob = () => {
     slickRef.current?.slickNext();
     setCurrentIndex(currentIndex + 1);
   };
+
+  useEffect(() => {
+    if (slickRef.current) {
+      slickRef.current.slickGoTo(3);
+    }
+  }, [slickRef]);
 
   return (
     <Block>
@@ -52,7 +75,7 @@ const RookieFirstJob = () => {
           </FlexBox>
         </TitleContainer>
 
-        <StyledSlider {...SETTING} ref={slickRef}>
+        <StyledSlider {...settings} ref={slickRef}>
           {data?.contents.map((content) => (
             <Card key={content.id} onClick={() => window.open(content.url)}>
               {/* @todo: 임시 아이콘 사용, 실서비스와 동일한 이미지로 변경이 필요한데 api 응답과 이미지가 따로 관리되는 거 같아서 확인이 필요함 */}
@@ -85,16 +108,33 @@ const Layout = styled.div`
   max-width: 1060px;
   margin: 0 auto;
   padding: 64px 0;
+
+  @media (max-width: 1080px) {
+    margin: 0 16px;
+  }
+
+  @media (max-width: 600px) {
+    padding: 48px 0;
+  }
 `;
 
 const TitleContainer = styled.div`
   display: flex;
   justify-content: space-between;
   margin-bottom: 16px;
+
+  @media (max-width: 600px) {
+    align-items: flex-end;
+  }
 `;
 
 const Title = styled.h1`
   font-size: 24px;
+
+  @media (max-width: 600px) {
+    width: 180px;
+    line-height: 30px;
+  }
 `;
 
 const FlexBox = styled.div`
@@ -107,6 +147,12 @@ const StyledSlider = styled(Slider)`
   .slick-slide {
     div {
       display: flex;
+    }
+  }
+
+  .slick-track {
+    @media (max-width: 1080px) {
+      transform: translate3d(0px, 0px, 0px);
     }
   }
 `;
@@ -179,6 +225,13 @@ const Card = styled.div`
       text-decoration: underline;
     }
   }
+
+  @media (max-width: 600px) {
+    width: 230px !important;
+    height: 154px;
+    margin: 0 16px 16px 0;
+    padding: 20px;
+  }
 `;
 
 const AllLink = styled(Link)`
@@ -187,11 +240,19 @@ const AllLink = styled(Link)`
   letter-spacing: -0.5px;
   color: #888888;
   font-size: 16px;
+
+  @media (max-width: 1080px) {
+    text-decoration: none;
+  }
+
+  @media (max-width: 600px) {
+    font-size: 14px;
+  }
 `;
 
 const Icon = styled.div`
-  width: 36px;
-  height: 36px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
   background-color: ${COLORS.primary};
 `;
@@ -206,6 +267,10 @@ const CardTitle = styled.h2`
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+
+  @media (max-width: 600px) {
+    width: 230px;
+  }
 `;
 
 const TagBlock = styled.div`
