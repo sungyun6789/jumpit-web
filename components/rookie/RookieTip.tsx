@@ -2,6 +2,37 @@ import styled from '@emotion/styled';
 import Image from 'next/image';
 import Link from 'next/link';
 
+const ITEMS = [
+  {
+    icon: 'https://cdn.jumpit.co.kr/jumpit/personal/ico_resume.svg',
+    url: '/event/for-develop',
+    isNewTab: true,
+    title: '이력서.',
+    subTitle: '제일 눈에 띄는 방법.',
+  },
+  {
+    icon: 'https://cdn.jumpit.co.kr/jumpit/personal/ico_coding.svg',
+    url: '/rookie/content?tag=8',
+    isNewTab: false,
+    title: '코딩테스트 후기.',
+    subTitle: '합격자가 알려주는 꿀팁.',
+  },
+  {
+    icon: 'https://cdn.jumpit.co.kr/jumpit/personal/ico_book.svg',
+    url: '/rookie/content?tag=7',
+    isNewTab: false,
+    title: '개발추천도서.',
+    subTitle: '읽다보면 빠져들어요.',
+  },
+  {
+    icon: 'https://cdn.jumpit.co.kr/jumpit/personal/ico_counsel.svg',
+    url: '/rookie/content?tag=5',
+    isNewTab: false,
+    title: '개발자 고민 상담소.',
+    subTitle: '무엇이든 물어보세요.',
+  },
+];
+
 const RookieTip = () => {
   return (
     <Block>
@@ -11,41 +42,17 @@ const RookieTip = () => {
       </TitleLayout>
 
       <CardLayout>
-        <Card href="/event/for-develop" target="_blank">
-          <Image src="https://cdn.jumpit.co.kr/jumpit/personal/ico_resume.svg" width={40} height={40} alt="" />
-          <CardDescription>
-            이력서. <br />
-            제일 눈에 띄는 방법.
-          </CardDescription>
-          <SeeLink>보기</SeeLink>
-        </Card>
-
-        <Card href="/rookie/content?tag=8">
-          <Image src="https://cdn.jumpit.co.kr/jumpit/personal/ico_coding.svg" width={40} height={40} alt="" />
-          <CardDescription>
-            코딩테스트 후기. <br />
-            합격자가 알려주는 꿀팁.
-          </CardDescription>
-          <SeeLink>보기</SeeLink>
-        </Card>
-
-        <Card href="/rookie/content?tag=7">
-          <Image src="https://cdn.jumpit.co.kr/jumpit/personal/ico_book.svg" width={40} height={40} alt="" />
-          <CardDescription>
-            개발추천도서. <br />
-            읽다보면 빠져들어요.
-          </CardDescription>
-          <SeeLink>보기</SeeLink>
-        </Card>
-
-        <Card href="/rookie/content?tag=5">
-          <Image src="https://cdn.jumpit.co.kr/jumpit/personal/ico_counsel.svg" width={40} height={40} alt="" />
-          <CardDescription>
-            개발자 고민 상담소. <br />
-            무엇이든 물어보세요.
-          </CardDescription>
-          <SeeLink>보기</SeeLink>
-        </Card>
+        {ITEMS.map((item) => (
+          <Card key={item.title} href={item.url} target={item.isNewTab ? '_blank' : '_self'}>
+            <Image src={item.icon} width={40} height={40} alt="" />
+            <CardDescription>
+              {item.title}
+              <br />
+              {item.subTitle}
+            </CardDescription>
+            <SeeLink>보기</SeeLink>
+          </Card>
+        ))}
       </CardLayout>
     </Block>
   );
