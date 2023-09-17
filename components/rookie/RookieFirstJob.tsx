@@ -2,13 +2,14 @@ import styled from '@emotion/styled';
 import Link from 'next/link';
 import { useContext, useEffect, useRef, useState } from 'react';
 import Slider from 'react-slick';
-import COLORS from '~/constants/colors';
 import { RookieHomeResultContext } from '~/pages/rookie';
 
 import { NextArrowButton, PrevArrowButton } from '../common/ArrowButton';
 import Button from '../common/Button';
 
 import type { Settings } from 'react-slick';
+
+const ICONS = ['👀', '📖', '🤔', '📝', '🔍', '📂', '✍️', '💡', '👆', '😉', '✏️', '🧐'];
 
 const settings: Settings = {
   rows: 2,
@@ -75,10 +76,9 @@ const RookieFirstJob = () => {
         </TitleContainer>
 
         <StyledSlider {...settings} ref={slickRef}>
-          {data?.contents.map((content) => (
+          {data?.contents.map((content, index) => (
             <Card key={content.id} onClick={() => window.open(content.url)}>
-              {/* @todo: 임시 아이콘 사용, 실서비스와 동일한 이미지로 변경이 필요한데 api 응답과 이미지가 따로 관리되는 거 같아서 확인이 필요함 */}
-              <Icon />
+              <Icon>{ICONS[index]}</Icon>
               <CardTitle>{content.title}</CardTitle>
               <TagBlock>
                 {content.tags.map((tag) => (
@@ -250,10 +250,9 @@ const AllLink = styled(Link)`
 `;
 
 const Icon = styled.div`
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background-color: ${COLORS.primary};
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 24px;
 `;
 
 const CardTitle = styled.h2`
