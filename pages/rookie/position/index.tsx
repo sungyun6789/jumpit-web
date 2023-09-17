@@ -1,9 +1,24 @@
+import { useQuery } from '@tanstack/react-query';
+import axios from 'axios';
 import { useRouter } from 'next/router';
-import { useEffect } from 'react';
+import { createContext, useEffect } from 'react';
 import RookiePositionTag from '~/components/rookie/RookiePositionTag';
+
+import type { CodeInitializeResponse } from '~/pages/api/rookie/code-initialize';
+
+export const RookieCodeInitializeContext = createContext<CodeInitializeResponse['result'] | undefined>(undefined);
 
 const RookiePositionPage = () => {
   const { pathname, push } = useRouter();
+
+  const { data } = useQuery(
+    ['/rookie/code-initialize'],
+    async () => {
+      const { data } = await axios.get<CodeInitializeResponse>('/api/rookie/code-initialize');
+      return data;
+    },
+    { select: (data) => data.result }
+  );
 
   useEffect(() => {
     push({
@@ -15,9 +30,9 @@ const RookiePositionPage = () => {
   }, []);
 
   return (
-    <>
+    <RookieCodeInitializeContext.Provider value={data}>
       <RookiePositionTag />
-    </>
+    </RookieCodeInitializeContext.Provider>
   );
 };
 
