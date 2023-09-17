@@ -30,13 +30,9 @@ const RookiePositionTag = () => {
       </TitleTagUl>
 
       <TagLayout>
-        {TAGS.map((tag) => (
-          <Tag
-            key={tag.label}
-            isSelected={tag.value === selectedCuration}
-            onClick={() => push({ query: { curation: tag.value } })}
-          >
-            {tag.label}
+        {TAGS.map(({ label, value }) => (
+          <Tag key={label} isSelected={value === selectedCuration} onClick={() => push({ query: { curation: value } })}>
+            {label}
           </Tag>
         ))}
       </TagLayout>
