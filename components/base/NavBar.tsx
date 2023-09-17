@@ -16,7 +16,7 @@ const NavBar = () => {
         </li>
 
         <RookieNavLI>
-          <NavLink href="/rookie" selected={pathname === '/rookie'}>
+          <NavLink href="/rookie" selected={pathname.includes('/rookie')}>
             더. 루키
           </NavLink>
           <div className="sub-nav">
