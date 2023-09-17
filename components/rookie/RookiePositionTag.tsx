@@ -10,7 +10,7 @@ const RookiePositionTag = () => {
   const allCuration = {
     emoticon: '',
     explain: '신입개발자를 위한 포지션을 확인하세요.',
-    id: '',
+    id: 0,
     name: '전체',
     tags: ['#신입', '#경력1~3년', '#개발자', '#첫취업', '#첫이직'],
   };
@@ -20,8 +20,8 @@ const RookiePositionTag = () => {
   const queryCuration = query.curation;
   const selectedCurationInfo = curations.find((value) => value.id.toString() === queryCuration);
 
-  const onClickTag = (id: number | string) => {
-    push({ query: { curation: id } });
+  const onClickTag = (id: number) => {
+    push({ query: { curation: id === 0 ? '' : id } });
   };
 
   return (
@@ -34,13 +34,36 @@ const RookiePositionTag = () => {
         ))}
       </TitleTagUl>
 
-      <TagLayout>
+      <PCTagLayout>
         {curations.map(({ id, emoticon, name }) => (
           <Tag key={name} isSelected={id.toString() === queryCuration} onClick={() => onClickTag(id)}>
             {emoticon + ' ' + name}
           </Tag>
         ))}
-      </TagLayout>
+      </PCTagLayout>
+
+      <MTagLayout>
+        <MTagRow>
+          {curations.slice(0, 5).map(({ id, emoticon, name }) => (
+            <Tag key={name} isSelected={id.toString() === queryCuration} onClick={() => onClickTag(id)}>
+              {emoticon + ' ' + name}
+            </Tag>
+          ))}
+        </MTagRow>
+
+        <MTagRow>
+          {curations.slice(5, curations.length).map(({ id, emoticon, name }) => (
+            <Tag key={name} isSelected={id.toString() === queryCuration} onClick={() => onClickTag(id)}>
+              {emoticon + ' ' + name}
+            </Tag>
+          ))}
+        </MTagRow>
+      </MTagLayout>
+
+      <MLayout>
+        <EmptyBlock />
+        <AllText>전체보기</AllText>
+      </MLayout>
     </Block>
   );
 };
@@ -50,12 +73,25 @@ export default RookiePositionTag;
 const Block = styled.section`
   max-width: 1060px;
   margin: 32px auto 60px;
+
+  @media (max-width: 1080px) {
+    margin: 28px 16px 48px;
+  }
+
+  @media (max-width: 600px) {
+    margin: 32px 16px;
+  }
 `;
 
 const Title = styled.h1`
   font-size: 40px;
   line-height: 72px;
   letter-spacing: -0.5px;
+
+  @media (max-width: 600px) {
+    font-size: 28px;
+    line-height: 38px;
+  }
 `;
 
 const SubTitle = styled.h3`
@@ -64,6 +100,12 @@ const SubTitle = styled.h3`
   font-weight: normal;
   line-height: 23px;
   letter-spacing: -0.5px;
+
+  @media (max-width: 600px) {
+    margin-top: 12px;
+    font-size: 15px;
+    line-height: 22px;
+  }
 `;
 
 const TitleTagUl = styled.ul`
@@ -72,6 +114,10 @@ const TitleTagUl = styled.ul`
   list-style: none;
   gap: 8px;
   margin-bottom: 24px;
+
+  @media (max-width: 1080px) {
+    margin-bottom: 28px;
+  }
 `;
 
 const TitleTagLi = styled.li`
@@ -79,12 +125,56 @@ const TitleTagLi = styled.li`
   font-size: 14px;
   line-height: 24px;
   letter-spacing: -0.5px;
+
+  @media (max-width: 600px) {
+    font-size: 13px;
+  }
 `;
 
-const TagLayout = styled.div`
+const PCTagLayout = styled.div`
   display: flex;
   flex-wrap: wrap;
   max-width: 947px;
+
+  @media (max-width: 1080px) {
+    max-width: 660px;
+  }
+
+  @media (max-width: 600px) {
+    display: none;
+  }
+`;
+
+const MTagLayout = styled.div`
+  display: none;
+
+  @media (max-width: 600px) {
+    display: list-item;
+    overflow-x: scroll;
+  }
+`;
+
+const MTagRow = styled.div`
+  display: flex;
+  white-space: nowrap;
+`;
+
+const MLayout = styled.div`
+  display: none;
+  @media (max-width: 600px) {
+    display: block;
+  }
+`;
+
+const EmptyBlock = styled.div`
+  margin: 0px 10px 10px 0px;
+`;
+
+const AllText = styled.span`
+  color: #888888;
+  font-size: 14px;
+  line-height: 16px;
+  letter-spacing: -0.5px;
 `;
 
 const Tag = styled.button<{ isSelected: boolean }>`
@@ -103,5 +193,16 @@ const Tag = styled.button<{ isSelected: boolean }>`
 
   :hover {
     background-color: #f4f4f4;
+  }
+
+  @media (max-width: 1080px) {
+    margin: 0 7px 10px 0;
+  }
+
+  @media (max-width: 600px) {
+    margin: 0 8px 8px 0;
+    font-size: 15px;
+    line-height: 22px;
+    padding: 6px 16px;
   }
 `;
