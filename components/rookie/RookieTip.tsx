@@ -37,7 +37,10 @@ const RookieTip = () => {
   return (
     <Block>
       <TitleLayout>
-        <Title>미리미리 준비해둬요, 언제 도움될지 모르니까.</Title>
+        <Title>
+          미리미리 준비해둬요, <br />
+          언제 도움될지 모르니까.
+        </Title>
         <AllLink href="/rookie/content?tag=11">전체보기</AllLink>
       </TitleLayout>
 
@@ -46,8 +49,7 @@ const RookieTip = () => {
           <Card key={item.title} href={item.url} target={item.isNewTab ? '_blank' : '_self'}>
             <Image src={item.icon} width={40} height={40} alt="" />
             <CardDescription>
-              {item.title}
-              <br />
+              {item.title} <br />
               {item.subTitle}
             </CardDescription>
             <SeeLink>보기</SeeLink>
@@ -64,17 +66,44 @@ const Block = styled.section`
   max-width: 1060px;
   margin: 0 auto;
   padding: 64px 0;
+
+  @media (max-width: 1080px) {
+    margin: 0 16px;
+  }
+
+  @media (max-width: 600px) {
+    padding: 48px 0;
+  }
 `;
 
 const TitleLayout = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media (max-width: 600px) {
+    align-items: flex-end;
+  }
 `;
 
 const Title = styled.h1`
   font-size: 24px;
   line-height: 40px;
+
+  br {
+    display: none;
+  }
+
+  @media (max-width: 600px) {
+    width: 240px;
+    font-size: 20px;
+    line-height: 30px;
+    letter-spacing: -0.5px;
+
+    br {
+      display: block;
+    }
+  }
 `;
 
 const AllLink = styled(Link)`
@@ -83,12 +112,21 @@ const AllLink = styled(Link)`
   letter-spacing: -0.5px;
   color: #888888;
   font-size: 16px;
+
+  @media (max-width: 600px) {
+    text-decoration: none;
+    font-size: 14px;
+  }
 `;
 
 const CardLayout = styled.div`
   margin-top: 24px;
   display: flex;
   justify-content: space-between;
+
+  @media (max-width: 1080px) {
+    flex-wrap: wrap;
+  }
 `;
 
 const Card = styled(Link)`
@@ -118,6 +156,17 @@ const Card = styled(Link)`
       text-decoration: underline;
     }
   }
+
+  @media (max-width: 1080px) {
+    margin: 0 16px 16px 0;
+    flex: 1 1 40%;
+  }
+
+  @media (max-width: 600px) {
+    padding: 20px;
+    height: 154px;
+    flex: 1 1 30%;
+  }
 `;
 
 const CardDescription = styled.h3`
@@ -126,6 +175,18 @@ const CardDescription = styled.h3`
   font-size: 17px;
   line-height: 24px;
   letter-spacing: -0.5px;
+  white-space: pre;
+
+  @media (max-width: 600px) {
+    max-width: 110px;
+    font-size: 15px;
+    line-height: 22px;
+    white-space: unset;
+
+    br {
+      display: none;
+    }
+  }
 `;
 
 const SeeLink = styled.span`
