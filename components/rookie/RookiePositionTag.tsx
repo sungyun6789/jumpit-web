@@ -1,38 +1,43 @@
 import styled from '@emotion/styled';
 import { useRouter } from 'next/router';
-
-const TITLE_TAGS = ['신입', '경력1~3년', '개발자', '첫취업', '첫이직'];
-
-const TAGS = [
-  { label: '전체', value: '' },
-  { label: '⌨️ Java로 웹개발', value: '1' },
-  { label: '⚙️ Python으로 웹개발', value: '15' },
-  { label: '🖥️ Javascript로 웹개발', value: '16' },
-  { label: '📱 나도 할래 앱개발자', value: '4' },
-  { label: '🚀 누적 투자금 100억↑ 스타트업', value: '18' },
-  { label: '🏠 일하는 곳이 곧 회사', value: '6' },
-  { label: '🧢 뭘입지 고민 NO, 자유복장', value: '7' },
-];
+import { useContext } from 'react';
+import { RookieCodeInitializeContext } from '~/pages/rookie/position';
 
 const RookiePositionTag = () => {
   const { query, push } = useRouter();
+  const data = useContext(RookieCodeInitializeContext);
 
-  const selectedCuration = query.curation;
+  const allCuration = {
+    emoticon: '',
+    explain: '신입개발자를 위한 포지션을 확인하세요.',
+    id: '',
+    name: '전체',
+    tags: ['#신입', '#경력1~3년', '#개발자', '#첫취업', '#첫이직'],
+  };
+
+  const curations = [allCuration, ...(data?.curation ?? [])];
+
+  const queryCuration = query.curation;
+  const selectedCurationInfo = curations.find((value) => value.id.toString() === queryCuration);
+
+  const onClickTag = (id: number | string) => {
+    push({ query: { curation: id } });
+  };
 
   return (
     <Block>
-      <Title>전체</Title>
+      <Title>{selectedCurationInfo?.name}</Title>
       <SubTitle>신입개발자를 위한 포지션을 확인하세요.</SubTitle>
       <TitleTagUl>
-        {TITLE_TAGS.map((titleTag) => (
-          <TitleTagLi key={titleTag}>#{titleTag}</TitleTagLi>
+        {selectedCurationInfo?.tags.map((tag) => (
+          <TitleTagLi key={tag}>{tag}</TitleTagLi>
         ))}
       </TitleTagUl>
 
       <TagLayout>
-        {TAGS.map(({ label, value }) => (
-          <Tag key={label} isSelected={value === selectedCuration} onClick={() => push({ query: { curation: value } })}>
-            {label}
+        {curations.map(({ id, emoticon, name }) => (
+          <Tag key={name} isSelected={id.toString() === queryCuration} onClick={() => onClickTag(id)}>
+            {emoticon + ' ' + name}
           </Tag>
         ))}
       </TagLayout>
