@@ -1,27 +1,34 @@
 import styled from '@emotion/styled';
 import { useRouter } from 'next/router';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { RookieCodeInitializeContext } from '~/pages/rookie/position';
 
+import RookieMobileCurationSelectModal from '../modal/RookieMobileCurationSelectModal';
+
 const RookiePositionTag = () => {
+  const [isMCurationView, setIsMCurationView] = useState(false);
   const { query, push } = useRouter();
   const data = useContext(RookieCodeInitializeContext);
 
   const allCuration = {
     emoticon: '',
     explain: '신입개발자를 위한 포지션을 확인하세요.',
-    id: 0,
+    id: '',
     name: '전체',
     tags: ['#신입', '#경력1~3년', '#개발자', '#첫취업', '#첫이직'],
   };
 
   const curations = [allCuration, ...(data?.curation ?? [])];
 
-  const queryCuration = query.curation;
+  const queryCuration = (query.curation ?? '') as string;
   const selectedCurationInfo = curations.find((value) => value.id.toString() === queryCuration);
 
-  const onClickTag = (id: number) => {
-    push({ query: { curation: id === 0 ? '' : id } });
+  const onClickTag = (id: number | string) => {
+    push({ query: { curation: id ?? '' } });
+  };
+
+  const close = () => {
+    setIsMCurationView(false);
   };
 
   return (
@@ -36,7 +43,7 @@ const RookiePositionTag = () => {
 
       <PCTagLayout>
         {curations.map(({ id, emoticon, name }) => (
-          <Tag key={name} isSelected={id.toString() === queryCuration} onClick={() => onClickTag(id)}>
+          <Tag key={name} isSelected={id === +queryCuration} onClick={() => onClickTag(id)}>
             {emoticon + ' ' + name}
           </Tag>
         ))}
@@ -45,7 +52,7 @@ const RookiePositionTag = () => {
       <MTagLayout>
         <MTagRow>
           {curations.slice(0, 5).map(({ id, emoticon, name }) => (
-            <Tag key={name} isSelected={id.toString() === queryCuration} onClick={() => onClickTag(id)}>
+            <Tag key={name} isSelected={id === +queryCuration} onClick={() => onClickTag(id)}>
               {emoticon + ' ' + name}
             </Tag>
           ))}
@@ -53,7 +60,7 @@ const RookiePositionTag = () => {
 
         <MTagRow>
           {curations.slice(5, curations.length).map(({ id, emoticon, name }) => (
-            <Tag key={name} isSelected={id.toString() === queryCuration} onClick={() => onClickTag(id)}>
+            <Tag key={name} isSelected={id === +queryCuration} onClick={() => onClickTag(id)}>
               {emoticon + ' ' + name}
             </Tag>
           ))}
@@ -62,8 +69,17 @@ const RookiePositionTag = () => {
 
       <MLayout>
         <EmptyBlock />
-        <AllText>전체보기</AllText>
+        <AllText onClick={() => setIsMCurationView(true)}>전체보기</AllText>
       </MLayout>
+
+      {isMCurationView && (
+        <RookieMobileCurationSelectModal
+          queryCuration={queryCuration}
+          curations={curations}
+          close={close}
+          click={onClickTag}
+        />
+      )}
     </Block>
   );
 };
