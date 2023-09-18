@@ -9,7 +9,7 @@ import type { CodeInitializeResponse } from '~/pages/api/rookie/code-initialize'
 export const RookieCodeInitializeContext = createContext<CodeInitializeResponse['result'] | undefined>(undefined);
 
 const RookiePositionPage = () => {
-  const { pathname, push } = useRouter();
+  const { isReady, pathname, query, push } = useRouter();
 
   const { data } = useQuery(
     ['/rookie/code-initialize'],
@@ -21,13 +21,15 @@ const RookiePositionPage = () => {
   );
 
   useEffect(() => {
-    push({
-      pathname,
-      query: {
-        curation: undefined,
-      },
-    });
-  }, []);
+    if (isReady && !query.curation) {
+      push({
+        pathname,
+        query: {
+          curation: undefined,
+        },
+      });
+    }
+  }, [isReady]);
 
   return (
     <RookieCodeInitializeContext.Provider value={data}>
