@@ -68,18 +68,17 @@ const RookiePositionTag = () => {
       </MTagLayout>
 
       <MLayout>
-        <EmptyBlock />
         <AllText onClick={() => setIsMCurationView(true)}>전체보기</AllText>
-      </MLayout>
 
-      {isMCurationView && (
-        <RookieMobileCurationSelectModal
-          queryCuration={queryCuration}
-          curations={curations}
-          close={close}
-          click={onClickTag}
-        />
-      )}
+        {isMCurationView && (
+          <RookieMobileCurationSelectModal
+            queryCuration={queryCuration}
+            curations={curations}
+            close={close}
+            click={onClickTag}
+          />
+        )}
+      </MLayout>
     </Block>
   );
 };
@@ -167,6 +166,26 @@ const MTagLayout = styled.div`
   @media (max-width: 600px) {
     display: list-item;
     overflow-x: scroll;
+
+    /* 전체 스크롤바 */
+    ::-webkit-scrollbar {
+      width: 7px;
+      height: 7px;
+    }
+
+    /* 드래그 가능한 스크롤바, 현재 위치를 보여주는 스크롤바 */
+    ::-webkit-scrollbar-thumb {
+      background-color: rgb(221, 221, 221);
+      border-radius: 10px;
+      background-clip: padding-box;
+      border: 2px solid transparent;
+    }
+
+    /* 스크롤바가 움직일 수 있는 영역 전체 */
+    ::-webkit-scrollbar-track {
+      background-color: rgb(250, 250, 250);
+      border-radius: 10px;
+    }
   }
 `;
 
@@ -182,15 +201,13 @@ const MLayout = styled.div`
   }
 `;
 
-const EmptyBlock = styled.div`
-  margin: 0px 10px 10px 0px;
-`;
-
 const AllText = styled.span`
   color: #888888;
   font-size: 14px;
   line-height: 16px;
   letter-spacing: -0.5px;
+  position: relative;
+  bottom: -5px;
 `;
 
 const Tag = styled.button<{ isSelected: boolean }>`
