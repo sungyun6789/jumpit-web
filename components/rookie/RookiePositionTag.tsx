@@ -34,7 +34,7 @@ const RookiePositionTag = () => {
   return (
     <Block>
       <Title>{selectedCurationInfo?.name}</Title>
-      <SubTitle>신입개발자를 위한 포지션을 확인하세요.</SubTitle>
+      <SubTitle>{selectedCurationInfo?.explain}</SubTitle>
       <TitleTagUl>
         {selectedCurationInfo?.tags.map((tag) => (
           <TitleTagLi key={tag}>{tag}</TitleTagLi>
