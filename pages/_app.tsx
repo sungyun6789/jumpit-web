@@ -9,7 +9,7 @@ import BasicLayout from '~/components/layout/BasicLayout';
 
 import type { AppProps } from 'next/app';
 
-const noto = Noto_Sans_KR({
+export const noto = Noto_Sans_KR({
   weight: ['400', '500', '700'],
   subsets: ['latin'],
 });
