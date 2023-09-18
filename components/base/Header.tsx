@@ -43,7 +43,6 @@ const Block = styled.header`
   z-index: 2;
 
   @media (max-width: 1080px) {
-    border-bottom: unset;
     background-color: #fff;
   }
 `;
