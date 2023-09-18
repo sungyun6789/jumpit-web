@@ -20,7 +20,7 @@ const RookiePositionTag = () => {
 
   const curations = [allCuration, ...(data?.curation ?? [])];
 
-  const queryCuration = (query.curation ?? '') as string;
+  const queryCuration = query.curation;
   const selectedCurationInfo = curations.find((value) => value.id.toString() === queryCuration);
 
   const onClickTag = (id: number | string) => {
@@ -43,7 +43,7 @@ const RookiePositionTag = () => {
 
       <PCTagLayout>
         {curations.map(({ id, emoticon, name }) => (
-          <Tag key={name} isSelected={id === +queryCuration} onClick={() => onClickTag(id)}>
+          <Tag key={name} isSelected={id == queryCuration} onClick={() => onClickTag(id)}>
             {emoticon + ' ' + name}
           </Tag>
         ))}
@@ -52,7 +52,7 @@ const RookiePositionTag = () => {
       <MTagLayout>
         <MTagRow>
           {curations.slice(0, 5).map(({ id, emoticon, name }) => (
-            <Tag key={name} isSelected={id === +queryCuration} onClick={() => onClickTag(id)}>
+            <Tag key={name} isSelected={id == queryCuration} onClick={() => onClickTag(id)}>
               {emoticon + ' ' + name}
             </Tag>
           ))}
@@ -60,7 +60,7 @@ const RookiePositionTag = () => {
 
         <MTagRow>
           {curations.slice(5, curations.length).map(({ id, emoticon, name }) => (
-            <Tag key={name} isSelected={id === +queryCuration} onClick={() => onClickTag(id)}>
+            <Tag key={name} isSelected={id == queryCuration} onClick={() => onClickTag(id)}>
               {emoticon + ' ' + name}
             </Tag>
           ))}

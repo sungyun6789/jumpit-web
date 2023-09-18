@@ -5,7 +5,7 @@ import { noto } from '~/pages/_app';
 import PortalModal from './PortalModal';
 
 interface Props {
-  queryCuration: string;
+  queryCuration: string | string[] | undefined;
   curations: {
     emoticon: string;
     explain: string;
