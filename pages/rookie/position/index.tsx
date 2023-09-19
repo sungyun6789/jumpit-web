@@ -26,6 +26,7 @@ const RookiePositionPage = () => {
       push({
         pathname,
         query: {
+          ...query,
           curation: undefined,
         },
       });
