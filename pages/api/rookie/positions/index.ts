@@ -8,8 +8,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     if (req.method === 'GET') {
       const { data } = await axios.get<PositionResponse>('https://api.jumpit.co.kr/api/rookie/positions', {
         params: {
-          curation: req.query.curation,
-          page: req.query.page,
+          ...req.query,
         },
       });
       return res.json(data);
