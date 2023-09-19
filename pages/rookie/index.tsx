@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
-import { createContext, useEffect } from 'react';
+import { createContext } from 'react';
 import RookieBanner from '~/components/rookie/RookieBanner';
 import RookieCurationList from '~/components/rookie/RookieCurationList';
 import RookieFirstJob from '~/components/rookie/RookieFirstJob';
