@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useRouter } from 'next/router';
 import { createContext, useEffect } from 'react';
 import RookiePositionTag from '~/components/rookie/RookiePositionTag';
+import RookieSearchPositionList from '~/components/rookie/RookieSearchPositionList';
 import RookieSearchTypeSelector from '~/components/rookie/RookieSearchTypeSelector';
 
 import type { CodeInitializeResponse } from '~/pages/api/rookie/code-initialize';
@@ -37,6 +38,7 @@ const RookiePositionPage = () => {
     <RookieCodeInitializeContext.Provider value={data}>
       <RookiePositionTag />
       <RookieSearchTypeSelector />
+      <RookieSearchPositionList />
     </RookieCodeInitializeContext.Provider>
   );
 };
