@@ -31,7 +31,7 @@ export interface CodeInitializeResponse {
     };
     sort: {
       default: boolean;
-      id: string;
+      id: 'rsp_rate' | 'reg_dt' | 'popular';
       name: string;
       searchDefault: boolean;
     }[];
