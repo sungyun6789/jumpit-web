@@ -42,6 +42,13 @@ const RookieSearchPositionList = () => {
     }
   }, [data]);
 
+  // 쿼리가 변경되면 저장된 데이터 초기화
+  useEffect(() => {
+    if (isReady && positionList.length !== 0) {
+      setPositionList(data?.result.positions ?? []);
+    }
+  }, [query]);
+
   return (
     <Block>
       <PositionCardList data={positionList} />
