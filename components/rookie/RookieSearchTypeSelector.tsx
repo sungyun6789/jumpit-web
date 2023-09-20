@@ -1,7 +1,8 @@
 import styled from '@emotion/styled';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
+import { useContext, useState } from 'react';
+import { RookieCodeInitializeContext } from '~/pages/rookie/position';
 
 type SortType = 'rsp_rate' | 'reg_dt' | 'popular';
 
@@ -17,6 +18,7 @@ const SORT_TYPE: Record<SortType, string> = {
 const RookieSearchTypeSelector = () => {
   const { pathname, query, push } = useRouter();
   const [isSortTypeSelected, setIsSortTypeSelected] = useState(false);
+  const data = useContext(RookieCodeInitializeContext);
   const selectedSortType = query.sort ? (query.sort as SortType) : 'rsp_rate';
 
   const onClickSortType = (type: SortType) => {
@@ -59,9 +61,11 @@ const RookieSearchTypeSelector = () => {
             {SORT_TYPE[selectedSortType]} <Image src="/bottomArrow.svg" width={16} height={16} alt="more" />
             {isSortTypeSelected && (
               <SortTypeSelector>
-                <SortTypeSelectorOption onClick={() => onClickSortType('rsp_rate')}>응답률순</SortTypeSelectorOption>
-                <SortTypeSelectorOption onClick={() => onClickSortType('reg_dt')}>최신순</SortTypeSelectorOption>
-                <SortTypeSelectorOption onClick={() => onClickSortType('popular')}>인기순</SortTypeSelectorOption>
+                {data?.sort.map((value) => (
+                  <SortTypeSelectorOption key={value.id} onClick={() => onClickSortType(value.id)}>
+                    {value.name}
+                  </SortTypeSelectorOption>
+                ))}
               </SortTypeSelector>
             )}
           </SelecredSortType>
