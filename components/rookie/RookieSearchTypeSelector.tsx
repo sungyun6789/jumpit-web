@@ -21,7 +21,18 @@ const RookieSearchTypeSelector = () => {
   const data = useContext(RookieCodeInitializeContext);
   const selectedSortType = query.sort ? (query.sort as SortType) : 'rsp_rate';
 
-  const onClickSortType = (type: SortType) => {
+  const onSelectOpen = () => {
+    // 옵션을 선택하는 경우도 <SelecredSortType /> 가 클릭되는 것이기 때문에 조건을 설정하지 않을 경우 계속 열림
+    if (isSortTypeSelected === false) {
+      setIsSortTypeSelected(true);
+    }
+  };
+
+  const onSelectClose = () => {
+    setIsSortTypeSelected(false);
+  };
+
+  const onSelectOption = (type: SortType) => {
     push({
       pathname,
       query: {
@@ -54,15 +65,12 @@ const RookieSearchTypeSelector = () => {
         <SelectedSortTypeLayout>
           <QuestionMark />
 
-          <SelecredSortType
-            onClick={() => !isSortTypeSelected && setIsSortTypeSelected(true)}
-            onBlur={() => setIsSortTypeSelected(false)}
-          >
+          <SelecredSortType onClick={onSelectOpen} onBlur={onSelectClose}>
             {SORT_TYPE[selectedSortType]} <Image src="/bottomArrow.svg" width={16} height={16} alt="more" />
             {isSortTypeSelected && (
               <SortTypeSelector>
                 {data?.sort.map((value) => (
-                  <SortTypeSelectorOption key={value.id} onClick={() => onClickSortType(value.id)}>
+                  <SortTypeSelectorOption key={value.id} onClick={() => onSelectOption(value.id)}>
                     {value.name}
                   </SortTypeSelectorOption>
                 ))}
