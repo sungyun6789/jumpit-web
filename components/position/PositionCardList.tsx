@@ -37,18 +37,18 @@ const PositionCardList = ({ data }: Props) => {
             <CompanyName>{value.companyName}</CompanyName>
             <PositionTitle>{value.title}</PositionTitle>
             <TechStackBox className={mont.className}>
-              {value.techStacks.map((stack) => (
-                <Description key={stack}>{stack}</Description>
+              {value.techStacks.map((stack, index) => (
+                <Description key={stack}>{(index === 0 ? '' : '· ') + stack}</Description>
               ))}
             </TechStackBox>
             <LocationCareerBox>
               {value.locations.map((location) => (
                 <Description key={location}>{location}</Description>
               ))}
-              <Description>
+              <CareerDescription>
                 {value.minCareer === 0 ? '신입' : '경력 ' + value.minCareer}
                 {value.maxCareer !== 1 && `~${value.maxCareer}년`}
-              </Description>
+              </CareerDescription>
             </LocationCareerBox>
           </DescriptionBox>
         </Item>
@@ -221,7 +221,7 @@ const Description = styled.span`
 
 const TechStackBox = styled.div`
   display: flex;
-  gap: 10px;
+  gap: 5px;
   flex-wrap: wrap;
   overflow: hidden;
   height: 18px;
@@ -230,10 +230,16 @@ const TechStackBox = styled.div`
 
 const LocationCareerBox = styled.div`
   display: flex;
-  gap: 10px;
+  gap: 5px;
   margin-top: 4px;
 
   @media (max-width: 600px) {
     display: none;
+  }
+`;
+
+const CareerDescription = styled(Description)`
+  ::before {
+    content: '· ';
   }
 `;
