@@ -3,8 +3,8 @@ import axios from 'axios';
 import { useRouter } from 'next/router';
 import { createContext, useEffect } from 'react';
 import RookiePositionTag from '~/components/rookie/RookiePositionTag';
+import RookieSearchTypeSelector from '~/components/rookie/RookieSearchCategorySelect';
 import RookieSearchPositionList from '~/components/rookie/RookieSearchPositionList';
-import RookieSearchTypeSelector from '~/components/rookie/RookieSearchTypeSelector';
 
 import type { CodeInitializeResponse } from '~/pages/api/rookie/code-initialize';
 

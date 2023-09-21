@@ -6,7 +6,7 @@ import RookieSearchListSortSelect from './RookieSearchListSortSelect';
 /**
  * @todo select 기능 구현 및 컴포넌트 분리
  */
-const RookieSearchTypeSelector = () => {
+const RookieSearchCategorySelect = () => {
   return (
     <Block>
       <SearchLayout>
@@ -32,7 +32,7 @@ const RookieSearchTypeSelector = () => {
   );
 };
 
-export default RookieSearchTypeSelector;
+export default RookieSearchCategorySelect;
 
 const Block = styled.section`
   background-color: #fbfbfd;
