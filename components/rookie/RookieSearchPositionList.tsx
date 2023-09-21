@@ -62,4 +62,12 @@ export default RookieSearchPositionList;
 const Block = styled.section`
   background-color: #fbfbfd;
   padding-bottom: 80px;
+
+  @media (max-width: 600px) {
+    padding: 0 4px;
+
+    .item {
+      padding: 6px;
+    }
+  }
 `;

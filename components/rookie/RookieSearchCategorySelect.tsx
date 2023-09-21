@@ -37,6 +37,10 @@ export default RookieSearchCategorySelect;
 const Block = styled.section`
   background-color: #fbfbfd;
   padding-top: 40px;
+
+  @media (max-width: 1080px) {
+    padding-top: 8px;
+  }
 `;
 
 const SearchLayout = styled.div`
@@ -45,6 +49,11 @@ const SearchLayout = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 0 0 6px;
+
+  @media (max-width: 1080px) {
+    max-width: 100%;
+    padding: 24px 16px 6px;
+  }
 `;
 
 const SelectLayout = styled.div`
@@ -70,5 +79,13 @@ const Select = styled.button`
 
   :hover {
     border: 1px solid #000;
+  }
+
+  @media (max-width: 1080px) {
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 600px) {
+    margin-bottom: 8px;
   }
 `;
