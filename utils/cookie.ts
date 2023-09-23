@@ -1,13 +1,13 @@
 /**
  * @see {@link https://ko.javascript.info/cookie#ref-346}
  */
-export function getCookie(name: string) {
+export function getCookie(cookieName: string) {
   let matches = document.cookie.match(
-    new RegExp('(?:^|; )' + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + '=([^;]*)')
+    new RegExp('(?:^|; )' + cookieName.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + '=([^;]*)')
   );
   return matches ? decodeURIComponent(matches[1]) : undefined;
 }
 
-export const setCookie = (cookieName: string, cookieValue: string, expired: Date) => {
-  document.cookie = `${cookieName}=${cookieValue}; Expires=${expired}`;
+export const setCookie = (cookieName: string, cookieValue: string, expires: Date) => {
+  document.cookie = `${cookieName}=${cookieValue}; path=/; expires=${expires.toUTCString()}`;
 };
