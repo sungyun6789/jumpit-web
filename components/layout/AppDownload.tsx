@@ -1,18 +1,31 @@
 import styled from '@emotion/styled';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import COLORS from '~/constants/colors';
 import { CDN_PATH } from '~/constants/path';
+import { setCookie } from '~/utils/cookie';
+import { getCookie } from '~/utils/cookie';
 
 import Button from '../common/Button';
 
 const AppDownload = () => {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    if (getCookie('jum_h_c_main_app_nudge') !== 'main_app_nudge') {
+      setIsOpen(true);
+    }
+  }, []);
+
+  const close = () => {
+    const date = new Date();
+    date.setDate(date.getDate() + 1);
+    setCookie('jum_h_c_main_app_nudge', 'main_app_nudge', date);
+    setIsOpen(false);
+  };
 
   if (!isOpen) return null;
-
-  const close = () => setIsOpen(false);
 
   return (
     <ViewBreakPoint>
