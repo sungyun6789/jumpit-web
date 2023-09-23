@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useContext, useState } from 'react';
-import { RookieCodeInitializeContext } from '~/pages/rookie/position';
+import { RookieCodeInitializeContext } from '~/context/RookieCodeInitializeProvider';
 
 type SortType = 'rsp_rate' | 'reg_dt' | 'popular';
 

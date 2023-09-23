@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { useContext, useRef } from 'react';
 import React from 'react';
 import Slider from 'react-slick';
-import { HomeDataContext } from '~/pages';
+import { HomeDataContext } from '~/context/HomeDataProvier';
 
 import Button from '../common/Button';
 

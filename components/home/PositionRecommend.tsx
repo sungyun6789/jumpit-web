@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import Image from 'next/image';
 import { useContext } from 'react';
 import COLORS from '~/constants/colors';
-import { HomeDataContext } from '~/pages';
+import { HomeDataContext } from '~/context/HomeDataProvier';
 
 import Button from '../common/Button';
 import PositionCardList from '../position/PositionCardList';

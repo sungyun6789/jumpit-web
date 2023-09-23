@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import Link from 'next/link';
 import { useContext } from 'react';
 import COLORS from '~/constants/colors';
-import { HomeDataContext } from '~/pages';
+import { HomeDataContext } from '~/context/HomeDataProvier';
 import { mont } from '~/pages/_app';
 
 const Notice = () => {

@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { useRouter } from 'next/router';
 import { useContext, useState } from 'react';
-import { RookieCodeInitializeContext } from '~/pages/rookie/position';
+import { RookieCodeInitializeContext } from '~/context/RookieCodeInitializeProvider';
 
 import RookieMobileCurationSelectModal from '../modal/RookieMobileCurationSelectModal';
 

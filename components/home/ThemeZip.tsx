@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { useContext, useRef, useState } from 'react';
 import Slider from 'react-slick';
-import { ThemeBannerContext } from '~/pages';
+import { ThemeBannerContext } from '~/context/ThemeBannerProvider';
 
 import { NextArrowButton, PrevArrowButton } from '../common/ArrowButton';
 import Button from '../common/Button';

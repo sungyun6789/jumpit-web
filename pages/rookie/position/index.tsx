@@ -1,26 +1,12 @@
-import { useQuery } from '@tanstack/react-query';
-import axios from 'axios';
 import { useRouter } from 'next/router';
-import { createContext, useEffect } from 'react';
+import { useEffect } from 'react';
 import RookiePositionTag from '~/components/rookie/RookiePositionTag';
 import RookieSearchTypeSelector from '~/components/rookie/RookieSearchCategorySelect';
 import RookieSearchPositionList from '~/components/rookie/RookieSearchPositionList';
-
-import type { CodeInitializeResponse } from '~/pages/api/rookie/code-initialize';
-
-export const RookieCodeInitializeContext = createContext<CodeInitializeResponse['result'] | undefined>(undefined);
+import RookieCodeInitializeProvider from '~/context/RookieCodeInitializeProvider';
 
 const RookiePositionPage = () => {
   const { isReady, pathname, query, push } = useRouter();
-
-  const { data } = useQuery(
-    ['/rookie/code-initialize'],
-    async () => {
-      const { data } = await axios.get<CodeInitializeResponse>('/api/rookie/code-initialize');
-      return data;
-    },
-    { select: (data) => data.result }
-  );
 
   useEffect(() => {
     if (isReady && !query.curation) {
@@ -35,11 +21,11 @@ const RookiePositionPage = () => {
   }, [isReady]);
 
   return (
-    <RookieCodeInitializeContext.Provider value={data}>
+    <RookieCodeInitializeProvider>
       <RookiePositionTag />
       <RookieSearchTypeSelector />
       <RookieSearchPositionList />
-    </RookieCodeInitializeContext.Provider>
+    </RookieCodeInitializeProvider>
   );
 };
 

@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import Link from 'next/link';
 import { useContext, useEffect, useRef, useState } from 'react';
 import Slider from 'react-slick';
-import { RookieHomeResultContext } from '~/pages/rookie';
+import { RookieHomeResultContext } from '~/context/RookieHomeResultProvider';
 
 import { NextArrowButton, PrevArrowButton } from '../common/ArrowButton';
 import Button from '../common/Button';
