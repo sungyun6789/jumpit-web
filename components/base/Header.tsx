@@ -73,6 +73,7 @@ const LoginTextBox = styled.div`
 
 const LoginButton = styled(Button)`
   display: none;
+  font-family: inherit;
 
   @media (max-width: 1080px) {
     display: inline-block;
