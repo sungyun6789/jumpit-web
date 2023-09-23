@@ -8,7 +8,6 @@ import PositionRecommendation from '~/components/home/PositionRecommend';
 import ThemeZip from '~/components/home/ThemeZip';
 import WeeklyPickPosition from '~/components/home/WeeklyPickPosition';
 import HomeDataProvier from '~/context/HomeDataProvier';
-import ThemeBannerProvider from '~/context/ThemeBannerProvider';
 import { TabletView } from '~/styles/breakpoint';
 import { getCookie } from '~/utils/cookie';
 
@@ -28,15 +27,13 @@ export default function Home() {
   return (
     <>
       <HomeDataProvier>
-        <ThemeBannerProvider>
-          <MainTopContent />
-          <ThemeZip />
-          <PositionRecommendation />
-          <WeeklyPickPosition />
-          <TabletView>
-            <Notice />
-          </TabletView>
-        </ThemeBannerProvider>
+        <MainTopContent />
+        <ThemeZip />
+        <PositionRecommendation />
+        <WeeklyPickPosition />
+        <TabletView>
+          <Notice />
+        </TabletView>
       </HomeDataProvier>
 
       <EmploymentEventBanner />

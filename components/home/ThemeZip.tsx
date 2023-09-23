@@ -1,10 +1,13 @@
 import styled from '@emotion/styled';
-import { useContext, useRef, useState } from 'react';
+import { useQuery } from '@tanstack/react-query';
+import axios from 'axios';
+import { useRef, useState } from 'react';
 import Slider from 'react-slick';
-import { ThemeBannerContext } from '~/context/ThemeBannerProvider';
 
 import { NextArrowButton, PrevArrowButton } from '../common/ArrowButton';
 import Button from '../common/Button';
+
+import type { ThemeBannerResponse } from '~/pages/api/themes/banners/home';
 
 const SETTING = {
   slidesToScroll: 2,
@@ -24,7 +27,11 @@ const SETTING = {
 const ThemeZip = () => {
   const [currentIndex, setCurrentIndex] = useState(1);
   const slickRef = useRef<Slider>(null);
-  const data = useContext(ThemeBannerContext);
+
+  const { data } = useQuery(['/api/themes/banners/home'], async () => {
+    const { data } = await axios.get<ThemeBannerResponse>('/api/themes/banners/home');
+    return data.result;
+  });
 
   const prev = () => {
     slickRef.current?.slickPrev();

@@ -1,13 +1,15 @@
 import styled from '@emotion/styled';
+import { useQuery } from '@tanstack/react-query';
+import axios from 'axios';
 import Link from 'next/link';
-import { useContext, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Slider from 'react-slick';
-import { RookieHomeResultContext } from '~/context/RookieHomeResultProvider';
 
 import { NextArrowButton, PrevArrowButton } from '../common/ArrowButton';
 import Button from '../common/Button';
 
 import type { Settings } from 'react-slick';
+import type { RookieHomeResponse } from '~/pages/api/rookie/home';
 
 const ICONS = ['👀', '📖', '🤔', '📝', '🔍', '📂', '✍️', '💡', '👆', '😉', '✏️', '🧐'];
 
@@ -38,7 +40,15 @@ const settings: Settings = {
 const RookieFirstJob = () => {
   const [currentIndex, setCurrentIndex] = useState(1);
   const slickRef = useRef<Slider>(null);
-  const data = useContext(RookieHomeResultContext);
+
+  const { data } = useQuery(
+    ['/rookie/home'],
+    async () => {
+      const { data } = await axios.get<RookieHomeResponse>('/api/rookie/home');
+      return data;
+    },
+    { select: (data) => data.result }
+  );
 
   const prev = () => {
     slickRef.current?.slickPrev();
