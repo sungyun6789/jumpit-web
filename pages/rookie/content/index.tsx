@@ -1,5 +1,7 @@
+import RookieContentTag from '~/components/rookie/RookieContentTag';
+
 const RookieContentPage = () => {
-  return <div>index</div>;
+  return <RookieContentTag />;
 };
 
 export default RookieContentPage;
