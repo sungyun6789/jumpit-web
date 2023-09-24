@@ -1,8 +1,12 @@
 import styled from '@emotion/styled';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
+import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
+import { noto } from '~/pages/_app';
+
+import Button from '../common/Button';
 
 import type { ContentRookieTagResponse } from '~/pages/api/content/rookies/tags';
 
@@ -18,6 +22,7 @@ interface TagModel {
 
 const RookieContentTag = () => {
   const [selectedTag, setSelectedTag] = useState<TagModel>();
+  const [isOpen, setIsOpen] = useState(false);
   const { pathname, query, push } = useRouter();
 
   const { data } = useQuery(
@@ -46,13 +51,20 @@ const RookieContentTag = () => {
         <TitleDescription>콘텐츠는 여기 다 있어요.</TitleDescription>
       </TitleLayout>
 
-      <TagLayout>
-        {data?.result.map((value) => (
-          <Tag key={value.id} isSelected={value.id == selectedTag?.id} onClick={() => onClickTag(value)}>
-            {value.name}
-          </Tag>
-        ))}
-      </TagLayout>
+      <TagAndAllViewLayout>
+        <TagLayout isOpen={isOpen}>
+          {data?.result.map((value) => (
+            <Tag key={value.id} isSelected={value.id == selectedTag?.id} onClick={() => onClickTag(value)}>
+              {value.name}
+            </Tag>
+          ))}
+        </TagLayout>
+
+        <AllView className={noto.className} isOpen={isOpen}>
+          <AllViewText onClick={() => setIsOpen(!isOpen)}>{isOpen ? '접기' : '전체보기'}</AllViewText>
+          <Image src="/bottomArrow.svg" width={16} height={16} alt="all view" />
+        </AllView>
+      </TagAndAllViewLayout>
     </Block>
   );
 };
@@ -93,13 +105,16 @@ const TitleDescription = styled.span`
   letter-spacing: -0.5px;
 `;
 
-const TagLayout = styled.div`
+const TagAndAllViewLayout = styled.div`
   margin-top: 20px;
   position: relative;
+`;
+
+const TagLayout = styled.div<{ isOpen: boolean }>`
   display: flex;
   flex-wrap: wrap;
   max-width: 947px;
-  max-height: 40px;
+  max-height: ${(props) => (props.isOpen ? '100%' : '40px')};
   overflow-y: hidden;
 `;
 
@@ -124,4 +139,37 @@ const Tag = styled.button<{ isSelected: boolean }>`
     props.isSelected && {
       fontWeight: 'bold',
     }}
+`;
+
+const AllView = styled(Button)<{ isOpen: boolean }>`
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  position: absolute;
+  bottom: ${(props) => (props.isOpen ? '24px' : '15px')};
+  right: 0;
+  color: ${(props) => (props.isOpen ? '#222222' : '#888888')};
+
+  :hover {
+    span {
+      text-decoration: underline;
+    }
+  }
+
+  ${(props) =>
+    props.isOpen && {
+      img: {
+        transform: 'rotate(-180deg)',
+      },
+      span: {
+        textDecoration: 'underline',
+        textUnderlinePosition: 'under',
+      },
+    }}
+`;
+
+const AllViewText = styled.span`
+  font-size: 14px;
+  line-height: 16px;
+  letter-spacing: -0.5px;
 `;
