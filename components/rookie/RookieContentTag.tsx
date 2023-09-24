@@ -93,6 +93,10 @@ const Block = styled.section`
   @media (max-width: 1080px) {
     margin: 32px 16px 30px;
   }
+
+  @media (max-width: 600px) {
+    padding-bottom: 10px;
+  }
 `;
 
 const TitleLayout = styled.div`
@@ -240,8 +244,8 @@ const AllView = styled(Button)<{ isOpen: boolean }>`
     }}
 
   @media(max-width: 600px) {
-    bottom: -20px;
-    left: 7px;
+    bottom: -10px;
+    left: 5px;
     right: unset;
 
     img {
