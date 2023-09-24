@@ -3,6 +3,8 @@ import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import { useState } from 'react';
 
+import RookieContentCard from './RookieContentCard';
+
 import type { ContentRookieResponse } from '~/pages/api/content/rookies';
 
 const RookieContentList = () => {
@@ -19,7 +21,11 @@ const RookieContentList = () => {
 
   return (
     <div>
-      <Block>RookieContentList</Block>
+      <Block>
+        {data?.result.contents.map((content) => (
+          <RookieContentCard key={content.id} content={content} />
+        ))}
+      </Block>
     </div>
   );
 };
