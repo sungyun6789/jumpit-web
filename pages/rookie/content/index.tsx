@@ -1,7 +1,13 @@
+import RookieContentList from '~/components/rookie/RookieContentList';
 import RookieContentTag from '~/components/rookie/RookieContentTag';
 
 const RookieContentPage = () => {
-  return <RookieContentTag />;
+  return (
+    <>
+      <RookieContentTag />
+      <RookieContentList />
+    </>
+  );
 };
 
 export default RookieContentPage;
