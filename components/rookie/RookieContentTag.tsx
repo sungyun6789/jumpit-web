@@ -10,10 +10,7 @@ import Button from '../common/Button';
 
 import type { ContentRookieTagResponse } from '~/pages/api/content/rookies/tags';
 
-const defaultTag = {
-  id: '',
-  name: '전체',
-};
+const defaultTag = { id: '', name: '전체' };
 
 interface TagModel {
   id: string | number;
@@ -51,7 +48,7 @@ const RookieContentTag = () => {
         <TitleDescription>콘텐츠는 여기 다 있어요.</TitleDescription>
       </TitleLayout>
 
-      <TagAndAllViewLayout>
+      <PCLayout>
         <TagLayout isOpen={isOpen}>
           {data?.result.map((value) => (
             <Tag key={value.id} isSelected={value.id == selectedTag?.id} onClick={() => onClickTag(value)}>
@@ -59,12 +56,29 @@ const RookieContentTag = () => {
             </Tag>
           ))}
         </TagLayout>
+      </PCLayout>
 
-        <AllView className={noto.className} isOpen={isOpen}>
-          <AllViewText onClick={() => setIsOpen(!isOpen)}>{isOpen ? '접기' : '전체보기'}</AllViewText>
-          <Image src="/bottomArrow.svg" width={16} height={16} alt="all view" />
-        </AllView>
-      </TagAndAllViewLayout>
+      <MobileLayout>
+        <div>
+          {data?.result.slice(0, 5).map((value) => (
+            <Tag key={value.id} isSelected={value.id == selectedTag?.id} onClick={() => onClickTag(value)}>
+              {value.name}
+            </Tag>
+          ))}
+        </div>
+        <div>
+          {data?.result.slice(5, data.result.length).map((value) => (
+            <Tag key={value.id} isSelected={value.id == selectedTag?.id} onClick={() => onClickTag(value)}>
+              {value.name}
+            </Tag>
+          ))}
+        </div>
+      </MobileLayout>
+
+      <AllView className={noto.className} isOpen={isOpen}>
+        <AllViewText onClick={() => setIsOpen(!isOpen)}>{isOpen ? '접기' : '전체보기'}</AllViewText>
+        <Image src="/bottomArrow.svg" width={16} height={16} alt="all view" />
+      </AllView>
     </Block>
   );
 };
@@ -74,10 +88,19 @@ export default RookieContentTag;
 const Block = styled.section`
   max-width: 1060px;
   margin: 32px auto 44px;
+  position: relative;
+
+  @media (max-width: 1080px) {
+    margin: 32px 16px 30px;
+  }
 `;
 
 const TitleLayout = styled.div`
   display: flex;
+
+  @media (max-width: 1080px) {
+    flex-direction: column;
+  }
 `;
 
 const Title = styled.h1`
@@ -95,6 +118,24 @@ const Title = styled.h1`
     height: 2px;
     background-color: rgb(0, 0, 0);
   }
+
+  @media (max-width: 1080px) {
+    font-size: 36px;
+    line-height: 38px;
+    width: fit-content;
+
+    ::after {
+      bottom: -7px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    font-size: 28px;
+
+    ::after {
+      bottom: -3px;
+    }
+  }
 `;
 
 const TitleDescription = styled.span`
@@ -103,11 +144,26 @@ const TitleDescription = styled.span`
   font-weight: 700;
   line-height: 72px;
   letter-spacing: -0.5px;
+
+  @media (max-width: 1080px) {
+    margin: 8px 0px 0px;
+    font-size: 36px;
+    line-height: 38px;
+    width: fit-content;
+  }
+
+  @media (max-width: 600px) {
+    margin: 6px 0px 0px;
+    font-size: 28px;
+  }
 `;
 
-const TagAndAllViewLayout = styled.div`
+const PCLayout = styled.div`
   margin-top: 20px;
-  position: relative;
+
+  @media (max-width: 600px) {
+    display: none;
+  }
 `;
 
 const TagLayout = styled.div<{ isOpen: boolean }>`
@@ -116,6 +172,10 @@ const TagLayout = styled.div<{ isOpen: boolean }>`
   max-width: 947px;
   max-height: ${(props) => (props.isOpen ? '100%' : '40px')};
   overflow-y: hidden;
+
+  @media (max-width: 1080px) {
+    max-width: 660px;
+  }
 `;
 
 const Tag = styled.button<{ isSelected: boolean }>`
@@ -139,6 +199,18 @@ const Tag = styled.button<{ isSelected: boolean }>`
     props.isSelected && {
       fontWeight: 'bold',
     }}
+
+  @media(max-width: 1080px) {
+    margin: 0 7px 10px 0;
+    font-size: 16px;
+  }
+
+  @media (max-width: 600px) {
+    margin: 0px 8px 8px 0px;
+    font-size: 15px;
+    line-height: 22px;
+    padding: 6px 16px;
+  }
 `;
 
 const AllView = styled(Button)<{ isOpen: boolean }>`
@@ -166,10 +238,55 @@ const AllView = styled(Button)<{ isOpen: boolean }>`
         textUnderlinePosition: 'under',
       },
     }}
+
+  @media(max-width: 600px) {
+    bottom: -20px;
+    left: 7px;
+    right: unset;
+
+    img {
+      display: none;
+    }
+  }
 `;
 
 const AllViewText = styled.span`
   font-size: 14px;
   line-height: 16px;
   letter-spacing: -0.5px;
+`;
+
+const MobileLayout = styled.div`
+  display: none;
+
+  @media (max-width: 600px) {
+    margin-top: 20px;
+    white-space: nowrap;
+    display: flex;
+    flex-direction: column;
+    max-width: unset;
+    max-height: 100px;
+    overflow-x: scroll;
+    overflow-y: hidden;
+
+    /* 전체 스크롤바 */
+    ::-webkit-scrollbar {
+      width: 7px;
+      height: 7px;
+    }
+
+    /* 드래그 가능한 스크롤바, 현재 위치를 보여주는 스크롤바 */
+    ::-webkit-scrollbar-thumb {
+      background-color: rgb(221, 221, 221);
+      border-radius: 10px;
+      background-clip: padding-box;
+      border: 2px solid transparent;
+    }
+
+    /* 스크롤바가 움직일 수 있는 영역 전체 */
+    ::-webkit-scrollbar-track {
+      background-color: rgb(250, 250, 250);
+      border-radius: 10px;
+    }
+  }
 `;
