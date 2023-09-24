@@ -40,4 +40,8 @@ const Block = styled.section`
   padding: 0 8px 80px;
   position: relative;
   box-sizing: content-box;
+
+  @media (max-width: 600px) {
+    padding: 0 0 80px;
+  }
 `;
