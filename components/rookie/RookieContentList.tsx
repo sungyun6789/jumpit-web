@@ -1,31 +1,51 @@
 import styled from '@emotion/styled';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useInView } from 'react-intersection-observer';
 
 import RookieContentCard from './RookieContentCard';
 
-import type { ContentRookieResponse } from '~/pages/api/content/rookies';
+import type { Content, ContentRookieResponse } from '~/pages/api/content/rookies';
 
 const RookieContentList = () => {
+  const [contents, setContents] = useState<Content[]>([]);
   const [page, setPage] = useState(1);
+  const [ref, inView] = useInView();
 
-  const { data } = useQuery(['/api/content/rookies'], async () => {
-    const { data } = await axios.get<ContentRookieResponse>('/api/content/rookies', {
-      params: {
-        page,
-      },
-    });
-    return data;
-  });
+  const { data } = useQuery(
+    ['/api/content/rookies', page],
+    async () => {
+      const { data } = await axios.get<ContentRookieResponse>('/api/content/rookies', {
+        params: {
+          page,
+        },
+      });
+      return data;
+    },
+    { select: (data) => data.result.contents }
+  );
+
+  useEffect(() => {
+    if (inView && contents.length !== 0) {
+      setPage(page + 1);
+    }
+  }, [inView]);
+
+  useEffect(() => {
+    if (data) {
+      setContents([...contents, ...data]);
+    }
+  }, [data]);
 
   return (
     <div>
       <Block>
-        {data?.result.contents.map((content) => (
+        {contents?.map((content) => (
           <RookieContentCard key={content.id} content={content} />
         ))}
       </Block>
+      <RefBlock ref={ref} />
     </div>
   );
 };
@@ -44,4 +64,8 @@ const Block = styled.section`
   @media (max-width: 600px) {
     padding: 0 0 80px;
   }
+`;
+
+const RefBlock = styled.div`
+  margin-bottom: 100px;
 `;
