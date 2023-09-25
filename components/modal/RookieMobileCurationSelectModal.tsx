@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import Image from 'next/image';
+import { useEffect } from 'react';
 import { noto } from '~/pages/_app';
 
 import PortalModal from './PortalModal';
@@ -21,6 +22,15 @@ const RookieMobileCurationSelectModal = ({ queryCuration, curations, click, clos
   const reset = () => {
     click('');
   };
+
+  useEffect(() => {
+    document.body.style.overflow = 'hidden'; // 스크롤 고정
+    scrollTo(0, 0); // 스크롤 맨 위로 이동
+
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, []);
 
   return (
     <PortalModal>
