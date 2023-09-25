@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
+import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 
@@ -8,17 +9,23 @@ import RookieContentCard from './RookieContentCard';
 
 import type { Content, ContentRookieResponse } from '~/pages/api/content/rookies';
 
+/**
+ * @todo 로그인 하지 않은 유저인 경우 태그 선택했을 때 컨텐츠 일부만 노출되도록 기능 구현
+ */
 const RookieContentList = () => {
   const [contents, setContents] = useState<Content[]>([]);
   const [page, setPage] = useState(1);
   const [ref, inView] = useInView();
+  const { query } = useRouter();
+  const tag = query.tag;
 
   const { data } = useQuery(
-    ['/api/content/rookies', page],
+    ['/api/content/rookies', page, tag],
     async () => {
       const { data } = await axios.get<ContentRookieResponse>('/api/content/rookies', {
         params: {
           page,
+          tag,
         },
       });
       return data;
@@ -37,6 +44,13 @@ const RookieContentList = () => {
       setContents([...contents, ...data]);
     }
   }, [data]);
+
+  useEffect(() => {
+    if (data) {
+      setPage(1);
+      setContents(data);
+    }
+  }, [tag]);
 
   return (
     <div>
