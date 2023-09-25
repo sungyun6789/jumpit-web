@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react';
 import { noto } from '~/pages/_app';
 
 import Button from '../common/Button';
+import RookieMobileContentTagSelectModal from '../modal/RookieMobileContentTagSelectModal';
 
 import type { ContentRookieTagResponse } from '~/pages/api/content/rookies/tags';
 
@@ -81,11 +82,17 @@ const RookieContentTag = () => {
         </div>
 
         <AllView className={noto.className} isOpen={isOpen}>
-          <AllViewText onClick={() => setIsMobileModalOpen(!isMobileModalOpen)}>
-            {isMobileModalOpen ? '접기' : '전체보기'}
-          </AllViewText>
-          <Image src="/bottomArrow.svg" width={16} height={16} alt="all view" />
+          <AllViewText onClick={() => setIsMobileModalOpen(true)}>전체보기</AllViewText>
         </AllView>
+
+        {isMobileModalOpen && (
+          <RookieMobileContentTagSelectModal
+            tags={data?.result ?? []}
+            onClose={() => setIsMobileModalOpen(false)}
+            onClick={onClickTag}
+            currentId={selectedTag?.id}
+          />
+        )}
       </MobileLayout>
     </Block>
   );
@@ -202,8 +209,7 @@ const Tag = styled.button<{ isSelected: boolean }>`
   background-color: #fff;
   border: ${(props) => (props.isSelected ? '1px solid #7251f3' : '1px solid #e4e4e4')};
   cursor: pointer;
-
-  :hover {
+  6px 16px6px 16px :hover {
     background-color: #f4f4f4;
   }
 
@@ -255,10 +261,6 @@ const AllView = styled(Button)<{ isOpen: boolean }>`
     bottom: -10px;
     left: 5px;
     right: unset;
-
-    img {
-      display: none;
-    }
   }
 `;
 
