@@ -20,6 +20,7 @@ interface TagModel {
 const RookieContentTag = () => {
   const [selectedTag, setSelectedTag] = useState<TagModel>();
   const [isOpen, setIsOpen] = useState(false);
+  const [isMobileModalOpen, setIsMobileModalOpen] = useState(false);
   const { pathname, query, push } = useRouter();
 
   const { data } = useQuery(
@@ -56,6 +57,11 @@ const RookieContentTag = () => {
             </Tag>
           ))}
         </TagLayout>
+
+        <AllView className={noto.className} isOpen={isOpen}>
+          <AllViewText onClick={() => setIsOpen(!isOpen)}>{isOpen ? '접기' : '전체보기'}</AllViewText>
+          <Image src="/bottomArrow.svg" width={16} height={16} alt="all view" />
+        </AllView>
       </PCLayout>
 
       <MobileLayout>
@@ -73,12 +79,14 @@ const RookieContentTag = () => {
             </Tag>
           ))}
         </div>
-      </MobileLayout>
 
-      <AllView className={noto.className} isOpen={isOpen}>
-        <AllViewText onClick={() => setIsOpen(!isOpen)}>{isOpen ? '접기' : '전체보기'}</AllViewText>
-        <Image src="/bottomArrow.svg" width={16} height={16} alt="all view" />
-      </AllView>
+        <AllView className={noto.className} isOpen={isOpen}>
+          <AllViewText onClick={() => setIsMobileModalOpen(!isMobileModalOpen)}>
+            {isMobileModalOpen ? '접기' : '전체보기'}
+          </AllViewText>
+          <Image src="/bottomArrow.svg" width={16} height={16} alt="all view" />
+        </AllView>
+      </MobileLayout>
     </Block>
   );
 };
