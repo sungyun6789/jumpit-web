@@ -5,10 +5,7 @@ import { noto } from '~/pages/_app';
 
 import PortalModal from './PortalModal';
 
-interface TagModel {
-  id: string | number;
-  name: string;
-}
+import type { TagModel } from '~/pages/api/content/rookies';
 
 interface Props {
   tags: TagModel[];

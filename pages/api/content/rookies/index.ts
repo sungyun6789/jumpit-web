@@ -2,14 +2,16 @@ import axios from 'axios';
 
 import type { NextApiRequest, NextApiResponse } from 'next';
 
+export interface TagModel {
+  id: string | number;
+  name: string;
+}
+
 export interface Content {
   contentType: string;
   id: number;
   imagePath: string;
-  tags: {
-    id: number;
-    name: string;
-  }[];
+  tags: TagModel[];
   title: string;
   url: string;
 }

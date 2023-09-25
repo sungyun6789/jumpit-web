@@ -9,14 +9,10 @@ import { noto } from '~/pages/_app';
 import Button from '../common/Button';
 import RookieMobileContentTagSelectModal from '../modal/RookieMobileContentTagSelectModal';
 
+import type { TagModel } from '~/pages/api/content/rookies';
 import type { ContentRookieTagResponse } from '~/pages/api/content/rookies/tags';
 
 const defaultTag = { id: '', name: '전체' };
-
-interface TagModel {
-  id: string | number;
-  name: string;
-}
 
 const RookieContentTag = () => {
   const [selectedTag, setSelectedTag] = useState<TagModel>();
