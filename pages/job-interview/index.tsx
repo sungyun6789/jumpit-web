@@ -1,5 +1,11 @@
+import JobInterViewTag from '~/components/interview/JobInterViewTag';
+
 const JobInterViewPage = () => {
-  return <div>JobInterviewPage</div>;
+  return (
+    <>
+      <JobInterViewTag />
+    </>
+  );
 };
 
 export default JobInterViewPage;
