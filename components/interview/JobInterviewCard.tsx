@@ -17,8 +17,12 @@ const JobInterviewCard = ({ content }: Props) => {
 
       <FlexBox>
         <Info>{content.companyName}</Info>
-        <ViewCtn>{content.viewCnt}</ViewCtn>
-        <ReadingTime>{content.readingTime}분</ReadingTime>
+        <IconInfo iconPath="https://www.jumpit.co.kr/App/build/static/media/ico-content-viewcount.ce7147a1.svg">
+          {content.viewCnt}
+        </IconInfo>
+        <IconInfo iconPath="https://www.jumpit.co.kr/App/build/static/media/ico-content-readingtime.1374f689.svg">
+          {content.readingTime}분
+        </IconInfo>
       </FlexBox>
 
       <CategoryBox>
@@ -99,7 +103,7 @@ const Info = styled.span`
   }
 `;
 
-const ViewCtn = styled(Info)`
+const IconInfo = styled(Info)<{ iconPath: string }>`
   padding-left: 30px !important;
 
   ::before {
@@ -107,21 +111,7 @@ const ViewCtn = styled(Info)`
     position: absolute;
     left: 10px;
     top: 2px;
-    background: url('https://www.jumpit.co.kr/App/build/static/media/ico-content-viewcount.ce7147a1.svg');
-    width: 16px;
-    height: 16px;
-  }
-`;
-
-const ReadingTime = styled(Info)`
-  padding-left: 30px !important;
-
-  ::before {
-    content: '';
-    position: absolute;
-    left: 10px;
-    top: 2px;
-    background: url('https://www.jumpit.co.kr/App/build/static/media/ico-content-readingtime.1374f689.svg');
+    background: url(${(props) => props.iconPath});
     width: 16px;
     height: 16px;
   }
