@@ -76,6 +76,11 @@ const Block = styled.section`
   display: flex;
   flex-wrap: wrap;
   margin: 60px auto 50px;
+
+  @media (max-width: 1080px) {
+    width: calc(100% - 20px);
+    margin: 24px auto 0;
+  }
 `;
 
 const RefBlock = styled.div`

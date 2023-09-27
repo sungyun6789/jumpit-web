@@ -64,11 +64,47 @@ const Title = styled.h1`
   letter-spacing: -0.5px;
   max-width: 1060px;
   margin: 0 auto;
+
+  @media (max-width: 1080px) {
+    line-height: 58px;
+    margin-left: 16px;
+  }
+
+  @media (max-width: 600px) {
+    font-size: 32px;
+    line-height: 46px;
+  }
 `;
 
 const TagLayout = styled.section`
   margin: 24px auto 0;
   max-width: 1060px;
+
+  @media (max-width: 1080px) {
+    margin: 21px 0 0 16px;
+    overflow-x: scroll;
+    white-space: nowrap;
+
+    /* 전체 스크롤바 */
+    ::-webkit-scrollbar {
+      width: 7px;
+      height: 7px;
+    }
+
+    /* 드래그 가능한 스크롤바, 현재 위치를 보여주는 스크롤바 */
+    ::-webkit-scrollbar-thumb {
+      background-color: rgb(221, 221, 221);
+      border-radius: 10px;
+      background-clip: padding-box;
+      border: 2px solid transparent;
+    }
+
+    /* 스크롤바가 움직일 수 있는 영역 전체 */
+    ::-webkit-scrollbar-track {
+      background-color: rgb(250, 250, 250);
+      border-radius: 10px;
+    }
+  }
 `;
 
 const Tag = styled.button<{ isSelected: boolean }>`
@@ -88,4 +124,8 @@ const Tag = styled.button<{ isSelected: boolean }>`
     props.isSelected && {
       fontWeight: 'bold',
     }}
+
+  @media(max-width: 1080px) {
+    margin-right: 8px;
+  }
 `;
