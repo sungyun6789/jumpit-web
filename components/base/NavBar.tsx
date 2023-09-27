@@ -44,7 +44,7 @@ const NavBar = () => {
         </li>
 
         <li>
-          <NavLink href="/book-concert/22" selected={pathname === '/book-concert/22'}>
+          <NavLink href="/book-concert" selected={pathname === '/book-concert'}>
             개취콘
           </NavLink>
         </li>
