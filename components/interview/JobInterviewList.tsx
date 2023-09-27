@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
+import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 
@@ -15,19 +16,23 @@ const JobInterviewList = () => {
   const [hasNextPage, setHasNextPage] = useState(true);
   const [interviewContentList, setInterviewContentList] = useState<InterviewContent[]>([]);
   const [ref, inView] = useInView();
+  const { query, isReady } = useRouter();
+
+  const jobCategory = typeof query.jobCategory === 'string' ? query.jobCategory : null;
 
   const { data } = useQuery(
-    ['/api/content/interviews', page],
+    ['/api/content/interviews', page, jobCategory],
     async () => {
       const { data } = await axios.get<InterviewListResponse>('/api/content/interviews', {
         params: {
           page,
           size: PAGE_SIZE,
+          jobCategory,
         },
       });
       return data.result.contents;
     },
-    { enabled: hasNextPage }
+    { enabled: hasNextPage && isReady }
   );
 
   useEffect(() => {
@@ -45,6 +50,14 @@ const JobInterviewList = () => {
       setHasNextPage(false);
     }
   }, [data]);
+
+  useEffect(() => {
+    if (isReady) {
+      setPage(1);
+      setHasNextPage(true);
+      setInterviewContentList(data ?? []);
+    }
+  }, [query]);
 
   return (
     <Block>

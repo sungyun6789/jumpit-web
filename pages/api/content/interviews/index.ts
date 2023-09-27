@@ -35,6 +35,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         params: {
           page: req.query.page,
           size: req.query.size,
+          jobCategory: req.query.jobCategory,
         },
       });
       return res.json(data);
