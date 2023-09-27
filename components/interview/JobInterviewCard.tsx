@@ -62,6 +62,7 @@ const Block = styled(Link)`
 `;
 
 const Banner = styled(Image)`
+  display: block;
   width: 100%;
   height: 226px;
   border-radius: 4px;
