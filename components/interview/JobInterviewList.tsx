@@ -12,18 +12,23 @@ const PAGE_SIZE = 15;
 
 const JobInterviewList = () => {
   const [page, setPage] = useState(1);
+  const [hasNextPage, setHasNextPage] = useState(true);
   const [interviewContentList, setInterviewContentList] = useState<InterviewContent[]>([]);
   const [ref, inView] = useInView();
 
-  const { data } = useQuery(['/api/content/interviews', page], async () => {
-    const { data } = await axios.get<InterviewListResponse>('/api/content/interviews', {
-      params: {
-        page,
-        size: PAGE_SIZE,
-      },
-    });
-    return data.result.contents;
-  });
+  const { data } = useQuery(
+    ['/api/content/interviews', page],
+    async () => {
+      const { data } = await axios.get<InterviewListResponse>('/api/content/interviews', {
+        params: {
+          page,
+          size: PAGE_SIZE,
+        },
+      });
+      return data.result.contents;
+    },
+    { enabled: hasNextPage }
+  );
 
   useEffect(() => {
     if (inView && interviewContentList.length !== 0) {
@@ -34,6 +39,10 @@ const JobInterviewList = () => {
   useEffect(() => {
     if (data) {
       setInterviewContentList([...interviewContentList, ...data]);
+    }
+
+    if (data && data.length !== PAGE_SIZE) {
+      setHasNextPage(false);
     }
   }, [data]);
 
