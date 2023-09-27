@@ -7,7 +7,7 @@ import COLORS from '~/constants/colors';
 
 import type { InterviewJobCategoryResponse } from '~/pages/api/content/interviews/jobCategory';
 
-const JobInterViewTag = () => {
+const JobInterviewCategory = () => {
   const { query, push } = useRouter();
   const [selectedTagId, setSelectedTagId] = useState<number | string>();
 
@@ -51,7 +51,7 @@ const JobInterViewTag = () => {
   );
 };
 
-export default JobInterViewTag;
+export default JobInterviewCategory;
 
 const Block = styled.div`
   max-width: 1080px;

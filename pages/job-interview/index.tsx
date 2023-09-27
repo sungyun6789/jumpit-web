@@ -1,10 +1,10 @@
+import JobInterviewCategory from '~/components/interview/JobInterviewCategory';
 import JobInterviewList from '~/components/interview/JobInterviewList';
-import JobInterViewTag from '~/components/interview/JobInterViewTag';
 
 const JobInterViewPage = () => {
   return (
     <>
-      <JobInterViewTag />
+      <JobInterviewCategory />
       <JobInterviewList />
     </>
   );
