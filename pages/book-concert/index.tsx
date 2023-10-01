@@ -1,7 +1,12 @@
 import React from 'react';
+import BookConcertBanner from '~/components/concert/BookConcertBanner';
 
 const BookConcertPage = () => {
-  return <div>개취콘</div>;
+  return (
+    <>
+      <BookConcertBanner />
+    </>
+  );
 };
 
 export default BookConcertPage;
