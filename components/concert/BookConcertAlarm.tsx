@@ -2,6 +2,9 @@ import styled from '@emotion/styled';
 
 import Button from '../common/Button';
 
+/**
+ * @todo 로그인 기능 추가할 때 알림 기능 추가
+ */
 const BookConcertAlarm = () => {
   return (
     <Block>
