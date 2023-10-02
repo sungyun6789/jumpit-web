@@ -92,7 +92,6 @@ const Tags = styled.ul`
   flex-wrap: wrap;
   max-height: 60px;
   overflow-y: hidden;
-  list-style: none;
 `;
 
 const Tag = styled.li`

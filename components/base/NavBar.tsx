@@ -83,7 +83,6 @@ const Block = styled.nav`
 const UL = styled.ul`
   display: flex;
   align-items: center;
-  list-style-type: none;
   color: black;
   height: 44px;
 

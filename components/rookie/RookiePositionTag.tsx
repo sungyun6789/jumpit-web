@@ -126,7 +126,6 @@ const SubTitle = styled.h3`
 const TitleTagUl = styled.ul`
   display: flex;
   flex-wrap: wrap;
-  list-style: none;
   gap: 8px;
   margin-bottom: 24px;
 

@@ -92,7 +92,6 @@ const StyledSlider = styled(Slider)`
   }
 
   .dots_custom li {
-    list-style: none;
     cursor: pointer;
     display: inline-block;
     margin: 0;

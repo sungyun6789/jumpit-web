@@ -165,7 +165,6 @@ const StyledUl = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 8px;
-  list-style: none;
 
   @media (max-width: 600px) {
     flex-direction: row;

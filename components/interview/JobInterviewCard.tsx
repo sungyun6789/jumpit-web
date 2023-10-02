@@ -139,7 +139,6 @@ const CategoryBox = styled.ul`
   flex-wrap: wrap;
   max-height: 60px;
   overflow-y: hidden;
-  list-style: none;
 `;
 
 const Category = styled.li`
