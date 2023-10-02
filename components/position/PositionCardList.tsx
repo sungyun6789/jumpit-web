@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import Image from 'next/image';
+import Link from 'next/link';
 import { mont } from '~/pages/_app';
 
 import type { Position } from '~/pages/api/home';
@@ -12,7 +13,7 @@ const PositionCardList = ({ data }: Props) => {
   return (
     <Block>
       {data?.map((value, index) => (
-        <Item key={index} className="item">
+        <Item key={index} className="item" href={'/position/' + value.id}>
           <BannerBox>
             <div className="banner-overlay" />
             <Image src={value.imagePath} width={250} height={166} alt="banner" className="banner" />
@@ -75,7 +76,7 @@ const Block = styled.section`
   }
 `;
 
-const Item = styled.div`
+const Item = styled(Link)`
   width: calc(25% -20px);
   flex: 1 1 22%;
   max-width: 270px;
