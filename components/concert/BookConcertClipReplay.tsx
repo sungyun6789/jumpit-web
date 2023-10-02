@@ -22,18 +22,6 @@ const BookConcertClipReplay = () => {
 
         <ArticleLayout>
           <Article>
-            <Preview>
-              <Image
-                src={CDN_PATH + '/jumpit/event/developer_concert/img_replay_01.webp'}
-                alt="JUMPIT TO FRONT-END"
-                width={264}
-                height={176}
-              />
-              <ReplayLink href="https://www.youtube.com/watch?v=pN0O1AqZYYA" target="_blank" color="g">
-                다시보기
-              </ReplayLink>
-            </Preview>
-
             <ReplayTextWrap>
               <ReplayText color="g">REPLAY 1</ReplayText>
               <ReplayTitle>JUMPIT TO FRONT-END</ReplayTitle>
@@ -51,21 +39,21 @@ const BookConcertClipReplay = () => {
                 <li>• ‘타입스크립트로 FE개발 레벨업’ 강연자 장기효[캡틴판교]</li>
               </UL>
             </ReplayTextWrap>
-          </Article>
 
-          <Article>
             <Preview>
               <Image
-                src={CDN_PATH + '/jumpit/event/developer_concert/img_replay_be.webp'}
-                alt="JUMPIT TO BACK-END"
+                src={CDN_PATH + '/jumpit/event/developer_concert/img_replay_01.webp'}
+                alt="JUMPIT TO FRONT-END"
                 width={264}
                 height={176}
               />
-              <ReplayLink href="https://www.youtube.com/watch?v=qI4zF0GfEW0" target="_blank" color="g">
+              <ReplayLink href="https://www.youtube.com/watch?v=pN0O1AqZYYA" target="_blank" color="g">
                 다시보기
               </ReplayLink>
             </Preview>
+          </Article>
 
+          <Article>
             <ReplayTextWrap>
               <ReplayText color="g">REPLAY 2</ReplayText>
               <ReplayTitle>JUMPIT TO BACK-END</ReplayTitle>
@@ -81,6 +69,18 @@ const BookConcertClipReplay = () => {
                 <li>• ‘컨테이너 인프라의 필요 배경, 왜 지금 배워야 하는가?’ 강연자 심근우</li>
               </UL>
             </ReplayTextWrap>
+
+            <Preview>
+              <Image
+                src={CDN_PATH + '/jumpit/event/developer_concert/img_replay_be.webp'}
+                alt="JUMPIT TO BACK-END"
+                width={264}
+                height={176}
+              />
+              <ReplayLink href="https://www.youtube.com/watch?v=qI4zF0GfEW0" target="_blank" color="g">
+                다시보기
+              </ReplayLink>
+            </Preview>
           </Article>
 
           <ReplayContinueWrap>
@@ -93,26 +93,17 @@ const BookConcertClipReplay = () => {
       {/* 2022 */}
       <Block>
         <YearTitle color="b">2022 HOT CLIP REPLAY</YearTitle>
-        <Title>안보면 불리한 개발자 취업 전략</Title>
+        <Title>
+          안보면 불리한 <br className="br_mo" />
+          개발자 취업 전략
+        </Title>
         <Description>
           코로나 시국 도움받을 선배도 동기도 없어 고민이라면?
           <br />
-          선배 개발자에게 배우는 취업 노하우! 점핏에서 무료로 확인하세요
+          선배 개발자에게 배우는 취업 노하우! <br className="br_mo" /> 점핏에서 무료로 확인하세요
         </Description>
         <ArticleLayout>
           <Article>
-            <Preview>
-              <Image
-                src={CDN_PATH + '/jumpit/event/book_concert/img_replay_01.png'}
-                alt="신입 개발자로 살아남는 방책"
-                width={264}
-                height={176}
-              />
-              <ReplayLink href="https://www.youtube.com/watch?v=9M8ScqQvEzo" target="_blank" color="b">
-                다시보기
-              </ReplayLink>
-            </Preview>
-
             <ReplayTextWrap>
               <ReplayText color="b">REPLAY 1</ReplayText>
               <ReplayTitle>신입 개발자로 살아남는 방책</ReplayTitle>
@@ -124,9 +115,32 @@ const BookConcertClipReplay = () => {
                 <li>- ‘사람인HR IT 연구소’ 소장 남광현</li>
               </UL>
             </ReplayTextWrap>
+
+            <Preview>
+              <Image
+                src={CDN_PATH + '/jumpit/event/book_concert/img_replay_01.png'}
+                alt="신입 개발자로 살아남는 방책"
+                width={264}
+                height={176}
+              />
+              <ReplayLink href="https://www.youtube.com/watch?v=9M8ScqQvEzo" target="_blank" color="b">
+                다시보기
+              </ReplayLink>
+            </Preview>
           </Article>
 
           <Article>
+            <ReplayTextWrap>
+              <ReplayText color="b">REPLAY 2</ReplayText>
+              <ReplayTitle>신입 개발자의 커리어 방향성</ReplayTitle>
+              <ReplaySession>
+                개발자로서 슬럼프에 빠져, 가야 할 길을 잃고 어떻게 성장 맵을 그려나가야 할지 막막하다면?
+              </ReplaySession>
+              <UL>
+                <li>- ‘개발자 오디세이’ 저자 이경종</li>
+              </UL>
+            </ReplayTextWrap>
+
             <Preview>
               <Image
                 src={CDN_PATH + '/jumpit/event/book_concert/img_replay_02.png'}
@@ -138,32 +152,9 @@ const BookConcertClipReplay = () => {
                 다시보기
               </ReplayLink>
             </Preview>
-
-            <ReplayTextWrap>
-              <ReplayText color="b">REPLAY 2</ReplayText>
-              <ReplayTitle>신입 개발자의 커리어 방향성</ReplayTitle>
-              <ReplaySession>
-                개발자로서 슬럼프에 빠져, 가야 할 길을 잃고 어떻게 성장 맵을 그려나가야 할지 막막하다면?
-              </ReplaySession>
-              <UL>
-                <li>- ‘개발자 오디세이’ 저자 이경종</li>
-              </UL>
-            </ReplayTextWrap>
           </Article>
 
           <Article>
-            <Preview>
-              <Image
-                src={CDN_PATH + '/jumpit/event/book_concert/img_replay_03.png'}
-                alt="전공자, 개발자 취업 A to Z"
-                width={264}
-                height={176}
-              />
-              <ReplayLink href="https://www.youtube.com/watch?v=0NWVDO1Lmx4" target="_blank" color="b">
-                다시보기
-              </ReplayLink>
-            </Preview>
-
             <ReplayTextWrap>
               <ReplayText color="b">REPLAY 3</ReplayText>
               <ReplayTitle>전공자, 개발자 취업 A to Z</ReplayTitle>
@@ -175,9 +166,32 @@ const BookConcertClipReplay = () => {
                 <li>- 기업과 함께하는 소통 시간 : 팀오투, 클로봇, 아드리엘</li>
               </UL>
             </ReplayTextWrap>
+
+            <Preview>
+              <Image
+                src={CDN_PATH + '/jumpit/event/book_concert/img_replay_03.png'}
+                alt="전공자, 개발자 취업 A to Z"
+                width={264}
+                height={176}
+              />
+              <ReplayLink href="https://www.youtube.com/watch?v=0NWVDO1Lmx4" target="_blank" color="b">
+                다시보기
+              </ReplayLink>
+            </Preview>
           </Article>
 
           <Article>
+            <ReplayTextWrap>
+              <ReplayText color="b">REPLAY 4</ReplayText>
+              <ReplayTitle>비전공자, 개발자 취업 A to Z</ReplayTitle>
+              <ReplaySession>
+                비전공자가 가지는 개발자 취업의 장점 비전공 신입 개발자가 취업 시 고려해야 할 중요 포인트
+              </ReplaySession>
+              <UL>
+                <li>- ‘Node.JS 교과서’ ‘Let’s Get IT 자바스크립트 프로그래밍’ 저자 조현영</li>
+              </UL>
+            </ReplayTextWrap>
+
             <Preview>
               <Image
                 src={CDN_PATH + '/jumpit/event/book_concert/img_replay_04.png'}
@@ -189,20 +203,21 @@ const BookConcertClipReplay = () => {
                 다시보기
               </ReplayLink>
             </Preview>
-
-            <ReplayTextWrap>
-              <ReplayText color="b">REPLAY 4</ReplayText>
-              <ReplayTitle>비전공자, 개발자 취업 A to Z</ReplayTitle>
-              <ReplaySession>
-                비전공자가 가지는 개발자 취업의 장점 비전공 신입 개발자가 취업 시 고려해야 할 중요 포인트
-              </ReplaySession>
-              <UL>
-                <li>- ‘Node.JS 교과서’ ‘Let’s Get IT 자바스크립트 프로그래밍’ 저자 조현영</li>
-              </UL>
-            </ReplayTextWrap>
           </Article>
 
           <Article>
+            <ReplayTextWrap>
+              <ReplayText color="b">REPLAY 5</ReplayText>
+              <ReplayTitle>취준생을 위한 개발 분야 총 정리</ReplayTitle>
+              <ReplaySession>
+                IT분야 1위 유튜버 [조코딩]이 설명하는! 광범위한 개발 취업분야를 한 번에 이해하고 싶은 개발 취준생이 꼭
+                들어야 할 모든 것
+              </ReplaySession>
+              <UL>
+                <li>- ‘Do it! 조코딩의 프로그래밍 입문’ 저자 조코딩(조동근)</li>
+              </UL>
+            </ReplayTextWrap>
+
             <Preview>
               <Image
                 src={CDN_PATH + '/jumpit/event/book_concert/img_replay_05.png'}
@@ -218,18 +233,6 @@ const BookConcertClipReplay = () => {
                 다시보기
               </ReplayLink>
             </Preview>
-
-            <ReplayTextWrap>
-              <ReplayText color="b">REPLAY 5</ReplayText>
-              <ReplayTitle>취준생을 위한 개발 분야 총 정리</ReplayTitle>
-              <ReplaySession>
-                IT분야 1위 유튜버 [조코딩]이 설명하는! 광범위한 개발 취업분야를 한 번에 이해하고 싶은 개발 취준생이 꼭
-                들어야 할 모든 것
-              </ReplaySession>
-              <UL>
-                <li>- ‘Do it! 조코딩의 프로그래밍 입문’ 저자 조코딩(조동근)</li>
-              </UL>
-            </ReplayTextWrap>
           </Article>
         </ArticleLayout>
       </Block>
@@ -263,6 +266,19 @@ const Title = styled.h1`
   line-height: 70px;
   color: #333333;
   letter-spacing: -0.5px;
+
+  .br_mo {
+    display: none;
+  }
+
+  @media (max-width: 600px) {
+    font-size: 32px;
+    line-height: 46px;
+
+    .br_mo {
+      display: block;
+    }
+  }
 `;
 
 const Description = styled.div`
@@ -272,6 +288,12 @@ const Description = styled.div`
   line-height: 30px;
   letter-spacing: -0.5px;
   color: #333333;
+
+  @media (max-width: 600px) {
+    font-size: 15px;
+    line-height: 22px;
+    padding: 0 21px;
+  }
 `;
 
 const ArticleLayout = styled.div`
@@ -284,18 +306,45 @@ const ArticleLayout = styled.div`
   article:not(:first-child) {
     margin-top: 60px;
   }
+
+  @media (max-width: 1080px) {
+    width: calc(100% - 200px);
+    margin: 34px 100px 0;
+    padding: 60px 84px;
+  }
+
+  @media (max-width: 600px) {
+    width: calc(100% - 32px);
+    margin: 34px 16px 0;
+    padding: 40px 24px;
+  }
 `;
 
 const Article = styled.article`
   display: flex;
+  flex-direction: row-reverse;
   gap: 50px;
-  justify-content: flex-end;
+
+  @media (max-width: 1080px) {
+    display: block;
+  }
 `;
 
 const Preview = styled.div`
   display: flex;
   flex-direction: column;
   gap: 12px;
+
+  @media (max-width: 1080px) {
+    display: block;
+    margin: 32px 0 0;
+    width: 100%;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
 `;
 
 const ReplayLink = styled(Link)<{ color: 'g' | 'b' }>`
@@ -309,12 +358,22 @@ const ReplayLink = styled(Link)<{ color: 'g' | 'b' }>`
   color: #fff;
   font-size: 15px;
   line-height: 24px;
+
+  @media (max-width: 1080px) {
+    margin: 24px auto 0;
+    width: 264px;
+  }
 `;
 
 const ReplayTextWrap = styled.div`
   width: 400px;
   text-align: initial;
   white-space: break-spaces;
+
+  @media (max-width: 1080px) {
+    width: 100%;
+    text-align: center;
+  }
 `;
 
 const ReplayText = styled.h3<{ color: 'g' | 'b' }>`
@@ -332,6 +391,12 @@ const ReplayTitle = styled.h2`
   letter-spacing: -0.5px;
   color: #333333;
   white-space: nowrap;
+
+  @media (max-width: 600px) {
+    font-size: 24px;
+    line-height: 36px;
+    white-space: break-spaces;
+  }
 `;
 
 const ReplaySession = styled.em`
@@ -343,6 +408,12 @@ const ReplaySession = styled.em`
   line-height: 26px;
   letter-spacing: -0.5px;
   font-style: normal;
+
+  @media (max-width: 600px) {
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: -0.5px;
+  }
 `;
 
 const UL = styled.ul`
@@ -358,6 +429,16 @@ const UL = styled.ul`
 
   .sub_title {
     font-weight: 400;
+  }
+
+  @media (max-width: 600px) {
+    margin-top: 10px;
+
+    li {
+      font-size: 14px;
+      line-height: 20px;
+      white-space: break-spaces;
+    }
   }
 `;
 
@@ -380,4 +461,9 @@ const ReplayContinueText = styled.div`
   letter-spacing: -0.5px;
   color: #a4a4a4;
   text-align: center;
+
+  @media (max-width: 600px) {
+    font-size: 20px;
+    line-height: 30px;
+  }
 `;
