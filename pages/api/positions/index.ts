@@ -2,7 +2,7 @@ import axios from 'axios';
 
 import type { NextApiRequest, NextApiResponse } from 'next';
 
-export interface PositionResponse {
+export interface PositionListResponse {
   code: string;
   message: string;
   result: {
@@ -39,7 +39,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     if (req.method === 'GET') {
       const query = new URLSearchParams(req.query as unknown as URLSearchParams).toString();
-      const { data } = await axios.get<PositionResponse>(`https://api.jumpit.co.kr/api/positions?${query}`);
+      const { data } = await axios.get<PositionListResponse>(`https://api.jumpit.co.kr/api/positions?${query}`);
       return res.json(data);
     }
   } catch (error) {

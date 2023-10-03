@@ -1,12 +1,12 @@
 import axios from 'axios';
 
-import type { PositionResponse } from '../../positions';
+import type { PositionListResponse } from '../../positions';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     if (req.method === 'GET') {
-      const { data } = await axios.get<PositionResponse>('https://api.jumpit.co.kr/api/rookie/positions', {
+      const { data } = await axios.get<PositionListResponse>('https://api.jumpit.co.kr/api/rookie/positions', {
         params: {
           ...req.query,
         },

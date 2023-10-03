@@ -12,12 +12,12 @@ import JobCategoryTag from '~/components/tag/JobCategoryTag';
 import TechStackTag from '~/components/tag/TechStackTag';
 import generateDuplicateQueryKeys from '~/utils/generateDuplicateQueryKeys';
 
-import type { PositionResponse } from '../api/positions';
+import type { PositionListResponse } from '../api/positions';
 
 const PositionsPage = () => {
   const { query, isReady } = useRouter();
   const [page, setPage] = useState(1);
-  const [positionList, setPositionList] = useState<PositionResponse['result']['positions']>([]);
+  const [positionList, setPositionList] = useState<PositionListResponse['result']['positions']>([]);
   const [ref, inView] = useInView();
 
   const sort = query?.sort ?? 'rsp_rate';
@@ -32,7 +32,7 @@ const PositionsPage = () => {
   const { data } = useQuery(
     [url],
     async () => {
-      const { data } = await axios.get<PositionResponse>(url);
+      const { data } = await axios.get<PositionListResponse>(url);
       return data.result;
     },
     { enabled: isReady }

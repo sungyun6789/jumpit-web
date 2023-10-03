@@ -9,7 +9,7 @@ import { reactSlickCustomArrowSettings } from '../common/ReactSlickCustomArrowSe
 import PositionCardList from '../position/PositionCardList';
 
 import type { Settings } from 'react-slick';
-import type { PositionResponse } from '~/pages/api/positions';
+import type { PositionListResponse } from '~/pages/api/positions';
 
 interface Curation {
   label: string;
@@ -34,7 +34,7 @@ const RookieCurationList = () => {
   const { data } = useQuery(
     ['/positions', selectedCuration.value],
     async () => {
-      const { data } = await axios.get<PositionResponse>('/api/rookie/positions', {
+      const { data } = await axios.get<PositionListResponse>('/api/rookie/positions', {
         params: {
           curation: selectedCuration.value,
           size: 8,

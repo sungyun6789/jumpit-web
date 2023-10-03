@@ -7,18 +7,18 @@ import { useInView } from 'react-intersection-observer';
 
 import PositionCardList from '../position/PositionCardList';
 
-import type { PositionResponse } from '~/pages/api/positions';
+import type { PositionListResponse } from '~/pages/api/positions';
 
 const RookieSearchPositionList = () => {
   const [page, setPage] = useState(1);
-  const [positionList, setPositionList] = useState<PositionResponse['result']['positions']>([]);
+  const [positionList, setPositionList] = useState<PositionListResponse['result']['positions']>([]);
   const { isReady, query } = useRouter();
   const [ref, inView] = useInView();
 
   const { data } = useQuery(
     ['/positions', query, page],
     async () => {
-      const { data } = await axios.get<PositionResponse>('/api/rookie/positions', {
+      const { data } = await axios.get<PositionListResponse>('/api/rookie/positions', {
         params: {
           curation: query.curation ?? '',
           page,
