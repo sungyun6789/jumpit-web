@@ -26,8 +26,8 @@ const JobDescriptionServiceInfo = () => {
   };
 
   return (
-    <Section4>
-      <Section4Title>기업/서비스 소개</Section4Title>
+    <section>
+      <Title>기업/서비스 소개</Title>
       <CompanyImageLayout>
         <PrevImageButton onClick={prev} />
         <NextImageButton onClick={next} />
@@ -47,21 +47,17 @@ const JobDescriptionServiceInfo = () => {
           기업/서비스 소개 더보기
         </MoreInfoButton>
       </MoreInfoButtonWrap>
-    </Section4>
+    </section>
   );
 };
 
 export default JobDescriptionServiceInfo;
 
-const Section4 = styled.section`
+const Title = styled.h2`
   margin: 48px 0px 16px;
-`;
-
-const Section4Title = styled.h2`
   font-size: 18px;
   line-height: 28px;
   letter-spacing: -0.5px;
-  margin-bottom: 16px;
 `;
 
 const ServiceInfo = styled.pre`
