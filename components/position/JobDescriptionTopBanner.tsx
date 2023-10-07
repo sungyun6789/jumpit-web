@@ -16,7 +16,7 @@ const JobDescriptionTopBanner = () => {
         <EventDetailButton>
           이벤트 자세히 보기
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
-            <g fill="none" fill-rule="evenodd">
+            <g fill="none" fillRule="evenodd">
               <g>
                 <g>
                   <g>
@@ -27,7 +27,7 @@ const JobDescriptionTopBanner = () => {
                       ></path>
                       <path
                         stroke="#CCC"
-                        stroke-width="1.2"
+                        strokeWidth="1.2"
                         d="M3 6L8 11 13 6"
                         transform="translate(-316 -224) translate(20 216) translate(224) translate(72 8)"
                       ></path>
