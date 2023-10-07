@@ -122,6 +122,8 @@ const CompanyImageLayout = styled.div`
 `;
 
 const CompanyImage = styled(Image)`
+  width: 100%;
+  height: 100%;
   border-radius: 4px;
   object-fit: cover;
 `;

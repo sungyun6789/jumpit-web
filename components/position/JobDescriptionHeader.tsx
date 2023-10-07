@@ -21,6 +21,7 @@ const JobDescriptionHeader = () => {
           </li>
         ))}
       </Tags>
+      {/* @todo: 포지션 지원하기 카드 추가하고, 모바일 대응할 때 취업축하금 이 부분에 추가 */}
     </Block>
   );
 };
@@ -36,6 +37,10 @@ const Title = styled.h1`
   font-size: 40px;
   margin-bottom: 16px;
   line-height: 1.25;
+
+  @media (max-width: 600px) {
+    font-size: 32px;
+  }
 `;
 
 const CompanyNameLayout = styled.div`

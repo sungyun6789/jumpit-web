@@ -17,4 +17,12 @@ const Block = styled.div`
   padding: 60px 0 24px;
   max-width: 1060px;
   margin: 0 auto;
+
+  @media (max-width: 1080px) {
+    padding: 40px 0 110px;
+  }
+
+  @media (max-width: 600px) {
+    padding: 32px 0 80px;
+  }
 `;

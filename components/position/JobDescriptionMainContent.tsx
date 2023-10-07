@@ -72,6 +72,12 @@ const Block = styled.section`
   dl {
     margin-bottom: 56px;
   }
+
+  @media (max-width: 1080px) {
+    dl {
+      margin-bottom: 48px;
+    }
+  }
 `;
 
 const Title = styled.dt`

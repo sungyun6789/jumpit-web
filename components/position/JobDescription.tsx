@@ -21,4 +21,9 @@ export default JobDescription;
 const Block = styled.div`
   position: relative;
   width: 630px;
+
+  @media (max-width: 1080px) {
+    width: auto;
+    margin: 0 16px;
+  }
 `;
