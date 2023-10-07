@@ -15,49 +15,49 @@ const JobDescriptionMainContent = () => {
         <Title>기술스택</Title>
         <dd>
           {/* 실서비스와 높이가 달라서 임의로 높이 지정 */}
-          <Section2Pre style={{ height: '78px' }}>
+          <Content style={{ height: '78px' }}>
             {data.techStacks.map((value) => (
               <TechStack key={value.stack} className={mont.className}>
                 <TechStackImage src={value.imagePath} width={20} height={20} alt="tech stack" />
                 {value.stack}
               </TechStack>
             ))}
-          </Section2Pre>
+          </Content>
         </dd>
       </dl>
 
       <dl>
         <Title>주요업무</Title>
         <dd>
-          <Section2Pre className={noto.className}>{data.responsibility}</Section2Pre>
+          <Content className={noto.className}>{data.responsibility}</Content>
         </dd>
       </dl>
 
       <dl>
         <Title>자격요건</Title>
         <dd>
-          <Section2Pre className={noto.className}>{data.qualifications}</Section2Pre>
+          <Content className={noto.className}>{data.qualifications}</Content>
         </dd>
       </dl>
 
       <dl>
         <Title>우대사항</Title>
         <dd>
-          <Section2Pre className={noto.className}>{data.preferredRequirements}</Section2Pre>
+          <Content className={noto.className}>{data.preferredRequirements}</Content>
         </dd>
       </dl>
 
       <dl>
         <Title>복지 및 혜택</Title>
         <dd>
-          <Section2Pre className={noto.className}>{data.welfares}</Section2Pre>
+          <Content className={noto.className}>{data.welfares}</Content>
         </dd>
       </dl>
 
       <dl>
         <Title>채용절차 및 기타 지원 유의사항</Title>
         <dd>
-          <Section2Pre className={noto.className}>{data.recruitProcess}</Section2Pre>
+          <Content className={noto.className}>{data.recruitProcess}</Content>
         </dd>
       </dl>
     </Block>
@@ -83,7 +83,7 @@ const Title = styled.dt`
   font-weight: bold;
 `;
 
-const Section2Pre = styled.pre`
+const Content = styled.pre`
   white-space: pre-line;
   word-break: break-all;
   font-size: 16px;
