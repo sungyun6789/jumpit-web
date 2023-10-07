@@ -7,7 +7,7 @@ import Header from '../base/Header';
 import AppDownload from './AppDownload';
 
 /** footer가 없는 페이지 목록 */
-const FOOTER_FILTER_PATH = ['/rookie/position'];
+const FOOTER_FILTER_PATH = ['/rookie/position', '/position/[id]'];
 
 interface Props {
   children: React.ReactNode;
