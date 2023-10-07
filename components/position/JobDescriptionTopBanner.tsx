@@ -86,7 +86,6 @@ const EventDetailButton = styled(Button)`
   color: ${COLORS.primary};
   font-weight: 500;
   font-size: 14px;
-  font-family: inherit;
   position: relative;
 
   svg {
@@ -110,7 +109,6 @@ const SkipButton = styled(Button)`
   position: absolute;
   top: 0px;
   right: 20px;
-  font-family: inherit;
 
   ::after {
     content: '';

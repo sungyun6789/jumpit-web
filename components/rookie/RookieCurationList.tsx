@@ -150,7 +150,6 @@ const Tag = styled.button<{ isSelected: boolean }>`
   padding: 0 16px;
   min-height: 40px;
   font-size: 15px;
-  font-family: inherit;
   line-height: 22px;
   color: ${(props) => (props.isSelected ? '#7251f3' : '#444444')};
   background-color: #fff;

@@ -121,7 +121,6 @@ const Tag = styled.button<{ isSelected: boolean }>`
   border: ${(props) => (props.isSelected ? '1px solid #7251f3' : '1px solid #e4e4e4')};
   border-radius: 20px;
   letter-spacing: -0.5px;
-  font-family: inherit;
   flex: 0 0 auto;
   background-color: #fff;
   color: ${(props) => (props.isSelected ? '#7251f3' : '#444444')};
@@ -148,7 +147,6 @@ const Btn = styled.button`
   font-size: 15px;
   font-weight: 500;
   border-radius: 3px;
-  font-family: inherit;
 `;
 
 const ResetButton = styled(Btn)`

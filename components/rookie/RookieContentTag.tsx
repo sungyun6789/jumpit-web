@@ -197,7 +197,6 @@ const Tag = styled.button<{ isSelected: boolean }>`
   margin: 0px 10px 10px 0px;
   padding: 3px 16px;
   font-size: 16px;
-  font-family: inherit;
   letter-spacing: -0.5px;
   line-height: 32px;
   color: ${(props) => (props.isSelected ? '#7251f3' : '#444444')};

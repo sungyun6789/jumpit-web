@@ -67,7 +67,6 @@ const Option = styled(Button)<{ isSelected: boolean }>`
   height: 20px;
   color: #666666;
   font-size: 14px;
-  font-family: inherit;
 
   ${(props) =>
     props.isSelected && {

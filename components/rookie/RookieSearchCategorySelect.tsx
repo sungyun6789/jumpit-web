@@ -74,7 +74,6 @@ const Select = styled.button`
   line-height: 24px;
   letter-spacing: -0.5px;
   color: #222;
-  font-family: inherit;
   cursor: pointer;
 
   :hover {

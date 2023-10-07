@@ -102,7 +102,6 @@ const Button = styled.button`
   padding: 6px 14px 6px 10px;
   background: none;
   border: none;
-  font-family: inherit;
   cursor: pointer;
 `;
 

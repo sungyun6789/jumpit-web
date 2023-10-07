@@ -220,7 +220,6 @@ const Tag = styled.button<{ isSelected: boolean }>`
   color: ${(props) => (props.isSelected ? '#7251f3' : '#444444')};
   background-color: #fff;
   font-size: 16px;
-  font-family: inherit;
   cursor: pointer;
 
   :hover {
