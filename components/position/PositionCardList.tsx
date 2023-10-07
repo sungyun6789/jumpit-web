@@ -6,7 +6,11 @@ import { mont } from '~/pages/_app';
 import type { Position } from '~/pages/api/home';
 
 interface Props {
-  data: Position[] | undefined;
+  /**
+   * @description
+   * Partial을 사용한 이유는 실서버에서 사용되는 모든 포지션 타입이 동일하지 않기 때문임
+   */
+  data: Partial<Position>[] | undefined;
 }
 
 const PositionCardList = ({ data }: Props) => {
@@ -16,7 +20,7 @@ const PositionCardList = ({ data }: Props) => {
         <Item key={index} className="item" href={'/position/' + value.id}>
           <BannerBox>
             <div className="banner-overlay" />
-            <Image src={value.imagePath} width={250} height={166} alt="banner" className="banner" />
+            <Image src={value.imagePath ?? ''} width={250} height={166} alt="banner" className="banner" />
 
             <HoverView className="counts">
               <CountBox>
@@ -38,12 +42,12 @@ const PositionCardList = ({ data }: Props) => {
             <CompanyName>{value.companyName}</CompanyName>
             <PositionTitle>{value.title}</PositionTitle>
             <TechStackBox className={mont.className}>
-              {value.techStacks.map((stack, index) => (
+              {value.techStacks?.map((stack, index) => (
                 <Description key={stack}>{(index === 0 ? '' : '· ') + stack}</Description>
               ))}
             </TechStackBox>
             <LocationCareerBox>
-              {value.locations.map((location) => (
+              {value.locations?.map((location) => (
                 <Description key={location}>{location}</Description>
               ))}
               <CareerDescription>
