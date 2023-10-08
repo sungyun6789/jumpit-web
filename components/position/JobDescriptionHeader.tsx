@@ -13,6 +13,7 @@ const JobDescriptionHeader = () => {
       <Title>{data.title}</Title>
       <CompanyNameLayout>
         <CompanyName href="/">{data.companyName}</CompanyName>
+        <Celebration>💰 취업축하금 70만원</Celebration>
       </CompanyNameLayout>
       <Tags>
         {data.tags.map((tag) => (
@@ -21,7 +22,6 @@ const JobDescriptionHeader = () => {
           </li>
         ))}
       </Tags>
-      {/* @todo: 포지션 지원하기 카드 추가하고, 모바일 대응할 때 취업축하금 이 부분에 추가 */}
     </Block>
   );
 };
@@ -69,4 +69,20 @@ const Tag = styled(Link)`
   font-weight: 500;
   font-size: 13px;
   line-height: 20px;
+`;
+
+const Celebration = styled.span`
+  display: none;
+
+  @media (max-width: 1080px) {
+    display: inline;
+    margin-left: 16px;
+    padding: 0 12px;
+    background-color: #f4f4f4;
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 24px;
+    color: #444444;
+  }
 `;
