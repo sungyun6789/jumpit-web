@@ -1,5 +1,6 @@
 import JobDescriptionLayout from '~/components/layout/JobDescriptionLayout';
 import JobDescription from '~/components/position/JobDescription';
+import JobDescriptionAside from '~/components/position/JobDescriptionAside';
 import JobDescriptionTopBanner from '~/components/position/JobDescriptionTopBanner';
 import SimilarPositionList from '~/components/position/SimilarPositionList';
 import JobDescriptionProvier from '~/context/JobDescriptionProvider';
@@ -15,6 +16,7 @@ const PositionPage = () => {
         <JobDescriptionTopBanner />
         <JobDescriptionLayout>
           <JobDescription />
+          <JobDescriptionAside />
         </JobDescriptionLayout>
       </JobDescriptionProvier>
       <SimilarPositionList />
