@@ -28,6 +28,8 @@ const JobDescriptionAside = () => {
           <Image src="/right_arrow_blue.svg" width={20} height={20} alt="ai 면접 코치" />
         </AICoach>
       </Top>
+
+      {/* PC 환경 */}
       <Content>
         <Link href={`/company/${query.id}`}>
           <Logo src={data.logo} width={72} height={72} alt="기업 로고" />
@@ -61,6 +63,29 @@ const JobDescriptionAside = () => {
           alt="이벤트"
         />
       </Banner>
+
+      {/* 모바일 환경 */}
+      <MobileContent>
+        <IconList>
+          {/* @todo 로그인 기능 구현시 스크랩 기능 추가 */}
+          <Icon url="https://www.jumpit.co.kr/App/build/static/media/bookmark-bold.c7f2154f.svg" />
+          <Icon
+            url="https://www.jumpit.co.kr/App/build/static/media/ico_share.100efa38.svg"
+            onClick={copyUrlToClipboard}
+          />
+          {/* @todo ai 인터뷰 페이지 개발 후 주소 변경 필요 */}
+          <Link
+            href="https://www.jumpit.co.kr/ai-interview?url=https://www.jumpit.co.kr/position/19797"
+            target="_blank"
+          >
+            <ImageWrap>
+              <Image src="/ai_coach_white.svg" width={24} height={24} alt="ai coach" />
+            </ImageWrap>
+          </Link>
+        </IconList>
+        {/* @todo 로그인 기능 구현시 지원하기 기능 추가 */}
+        <MobileButton>지원하기</MobileButton>
+      </MobileContent>
     </Block>
   );
 };
@@ -72,6 +97,10 @@ const Block = styled.aside`
   right: calc((100% - 1060px) / 2);
   top: 219px;
   cursor: default;
+
+  @media (max-width: 1080px) {
+    inset: auto 0 0;
+  }
 `;
 
 const Top = styled.div`
@@ -87,6 +116,10 @@ const Top = styled.div`
   line-height: 20px;
   letter-spacing: -0.5px;
   color: #444444;
+
+  @media (max-width: 1080px) {
+    display: none;
+  }
 `;
 
 const AICoach = styled.span`
@@ -111,6 +144,10 @@ const Content = styled.div`
   border: 1px solid #e4e4e4;
   border-top: unset;
   border-radius: 0 0 4px 4px;
+
+  @media (max-width: 1080px) {
+    display: none;
+  }
 `;
 
 const Logo = styled(Image)`
@@ -203,4 +240,57 @@ const Banner = styled.div`
   height: 72px;
   margin-top: 16px;
   border-radius: 4px;
+
+  @media (max-width: 1080px) {
+    display: none;
+  }
+`;
+
+const MobileContent = styled.div`
+  @media (max-width: 1080px) {
+    width: 100%;
+    background-color: ${COLORS.primary};
+    display: flex;
+    height: 64px;
+  }
+`;
+
+const IconList = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding-left: 16px;
+
+  i {
+    width: 24px;
+    height: 24px;
+  }
+`;
+
+const ImageWrap = styled.div`
+  height: 24px;
+  position: relative;
+  padding-right: 32px;
+
+  ::after {
+    content: '';
+    position: absolute;
+    top: 4px;
+    right: 0;
+    width: 1px;
+    height: 18px;
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+`;
+
+const MobileButton = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
 `;
