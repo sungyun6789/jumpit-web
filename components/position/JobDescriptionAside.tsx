@@ -12,9 +12,9 @@ const JobDescriptionAside = () => {
   const data = useContext(JobDescriptionContext);
 
   /**
-   * @todo 스크롤이 끊기듯이 이동해서 컴포넌트가 자연스럽게 스크롤되지 않음, 개선 필요
+   * @todo 왼쪽 컨텐츠 높이에 맞춰서 scrollY 계산할 수 있도록 개선 필요
    */
-  const onScroll = () => setIsPassOver(scrollY > 2620);
+  const onScroll = () => setIsPassOver(window.scrollY > 3088);
 
   useEffect(() => {
     window.addEventListener('scroll', onScroll);
