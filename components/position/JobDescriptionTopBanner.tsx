@@ -1,13 +1,36 @@
 import styled from '@emotion/styled';
-import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
 import COLORS from '~/constants/colors';
+import { getCookie, setCookie } from '~/utils/cookie';
 
 import Button from '../common/Button';
 
+import type { MouseEvent } from 'react';
+
 const JobDescriptionTopBanner = () => {
+  const { push } = useRouter();
+  const [isOpen, setIsOpen] = useState(false);
+
+  const onClick = (event: MouseEvent<HTMLButtonElement>) => {
+    event.stopPropagation(); // Block onClick 이벤트 방지
+    const date = new Date();
+    date.setDate(date.getDate() + 1);
+    setCookie('hide-event-apply-banner', 'true', date);
+    setIsOpen(false);
+  };
+
+  useEffect(() => {
+    if (getCookie('hide-event-apply-banner') !== 'true') {
+      setIsOpen(true);
+    }
+  }, []);
+
+  if (!isOpen) return null;
+
   return (
-    <EventLink href="/contents/421">
-      <Block>
+    <Block onClick={() => push('/contents/421')}>
+      <Layout>
         <PrimaryText>입사지원</PrimaryText>
         <Text>하고</Text>
         &nbsp;
@@ -38,17 +61,17 @@ const JobDescriptionTopBanner = () => {
             </g>
           </svg>
         </EventDetailButton>
-        <SkipButton>
+        <SkipButton onClick={onClick}>
           <SkipText>나중에 할게요</SkipText>
         </SkipButton>
-      </Block>
-    </EventLink>
+      </Layout>
+    </Block>
   );
 };
 
 export default JobDescriptionTopBanner;
 
-const EventLink = styled(Link)`
+const Block = styled.div`
   background-color: #f5f5f8;
   color: #444444;
   position: relative;
@@ -57,9 +80,10 @@ const EventLink = styled(Link)`
   justify-content: center;
   align-items: center;
   height: 40px;
+  cursor: pointer;
 `;
 
-const Block = styled.div`
+const Layout = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
