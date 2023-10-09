@@ -2,14 +2,24 @@ import styled from '@emotion/styled';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import COLORS from '~/constants/colors';
 import { JobDescriptionContext } from '~/context/JobDescriptionProvider';
 
 const JobDescriptionAside = () => {
+  const [isPassOver, setIsPassOver] = useState(false);
   const { query } = useRouter();
-
   const data = useContext(JobDescriptionContext);
+
+  /**
+   * @todo 스크롤이 끊기듯이 이동해서 컴포넌트가 자연스럽게 스크롤되지 않음, 개선 필요
+   */
+  const onScroll = () => setIsPassOver(scrollY > 2620);
+
+  useEffect(() => {
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
   if (!data) return null;
 
@@ -19,7 +29,7 @@ const JobDescriptionAside = () => {
   };
 
   return (
-    <Block>
+    <Block isPassOver={isPassOver}>
       <Top>
         이 포지션 면접 질문이 궁금하다면?
         <AICoach>
@@ -92,14 +102,17 @@ const JobDescriptionAside = () => {
 
 export default JobDescriptionAside;
 
-const Block = styled.aside`
-  position: fixed;
+const Block = styled.aside<{ isPassOver: boolean }>`
+  position: ${(props) => (props.isPassOver ? 'absolute' : 'fixed')};
   right: calc((100% - 1060px) / 2);
-  top: 219px;
+  top: ${(props) => (props.isPassOver ? 'unset' : '219px')};
+  bottom: ${(props) => (props.isPassOver ? '80px' : 'unset')};
   cursor: default;
 
   @media (max-width: 1080px) {
+    position: fixed;
     inset: auto 0 0;
+    z-index: 2;
   }
 `;
 
@@ -247,6 +260,8 @@ const Banner = styled.div`
 `;
 
 const MobileContent = styled.div`
+  display: none;
+
   @media (max-width: 1080px) {
     width: 100%;
     background-color: ${COLORS.primary};
