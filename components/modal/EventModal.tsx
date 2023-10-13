@@ -1,3 +1,5 @@
+// 마지막 이벤트 업데이트 23.08.11
+
 import styled from '@emotion/styled';
 import Link from 'next/link';
 import { useEffect } from 'react';
