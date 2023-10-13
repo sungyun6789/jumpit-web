@@ -1,5 +1,3 @@
-// 마지막 이벤트 업데이트 23.08.11
-
 import styled from '@emotion/styled';
 import Link from 'next/link';
 import { useEffect } from 'react';
@@ -8,6 +6,16 @@ import { CDN_PATH } from '~/constants/path';
 import { setCookie } from '~/utils/cookie';
 
 import PortalModal from './PortalModal';
+
+/** 마지막 업데이트 23.10.13 */
+const EVENTS = [
+  {
+    link: 'contents/421',
+    mobile: CDN_PATH + '/jumpit/event/resume/apply_nudge_m.webp',
+    pc: CDN_PATH + '/jumpit/event/resume/apply_nudge_t.webp',
+    default: CDN_PATH + '/jumpit/event/resume/apply_nudge.webp',
+  },
+];
 
 interface Props {
   close: () => void;
@@ -34,21 +42,15 @@ const EventModal = ({ close }: Props) => {
       <Block>
         <PositionBox>
           <StyledSlider dots dotsClass="dots_custom" arrows={false} initialSlide={1}>
-            <Link href="/event/career-qna">
-              <picture>
-                <source srcSet={CDN_PATH + '/jumpit/event/qna/qna_nudge_m.webp'} media="(max-width:600px)" />
-                <source srcSet={CDN_PATH + '/jumpit/event/qna/qna_nudge_t.webp'} media="(max-width:1080px)" />
-                <img src={CDN_PATH + '/jumpit/event/qna/qna_nudge.webp'} alt="event" width="100%" />
-              </picture>
-            </Link>
-
-            <Link href="/resumes">
-              <picture>
-                <source srcSet={CDN_PATH + '/jumpit/event/resume/awesome_nudge_m.webp'} media="(max-width:600px)" />
-                <source srcSet={CDN_PATH + '/jumpit/event/resume/awesome_nudge_t.webp'} media="(max-width:1080px)" />
-                <img src={CDN_PATH + '/jumpit/event/resume/awesome_nudge.webp'} alt="event" width="100%" />
-              </picture>
-            </Link>
+            {EVENTS.map((event) => (
+              <Link key={event.link} href={event.link}>
+                <picture>
+                  <source srcSet={event.mobile} media="(max-width:600px)" />
+                  <source srcSet={event.pc} media="(max-width:1080px)" />
+                  <img src={event.default} alt="event" width="100%" />
+                </picture>
+              </Link>
+            ))}
           </StyledSlider>
 
           <ButtonContainer>
