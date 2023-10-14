@@ -69,6 +69,10 @@ const LeftArrowButton = styled(ArrowButton)`
   :hover {
     background-image: url(https://www.jumpit.co.kr/App/build/static/media/btn-prev-hover.9185b56c.svg);
   }
+
+  @media (max-width: 600px) {
+    display: none;
+  }
 `;
 
 const RightArrowButton = styled(ArrowButton)`
@@ -77,6 +81,10 @@ const RightArrowButton = styled(ArrowButton)`
 
   :hover {
     background-image: url(https://www.jumpit.co.kr/App/build/static/media/btn-next-hover.ed6f22cf.svg);
+  }
+
+  @media (max-width: 600px) {
+    display: none;
   }
 `;
 
