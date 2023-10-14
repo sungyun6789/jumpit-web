@@ -6,20 +6,30 @@ import { useContext, useEffect, useState } from 'react';
 import COLORS from '~/constants/colors';
 import { JobDescriptionContext } from '~/context/JobDescriptionProvider';
 
-const JobDescriptionAside = () => {
+interface Props {
+  contentHeight: number;
+}
+
+const JobDescriptionAside = ({ contentHeight }: Props) => {
   const [isPassOver, setIsPassOver] = useState(false);
   const { query } = useRouter();
   const data = useContext(JobDescriptionContext);
 
   /**
-   * @todo 왼쪽 컨텐츠 높이에 맞춰서 scrollY 계산할 수 있도록 개선 필요
+   * 536는 aside 높이인데 내용에 따라 값이 달라질 수 있음
+   * 스크롤의 높이가 컨텐츠 높이에서 aside 높이를 뺀 값보다 큰 경우 컨텐츠 높이 이상으로 스크롤 하는 것이기 때문에
+   * 스타일 상태를 변경해서 더 이상 스크롤 되지 않도록 스타일을 변경함
    */
-  const onScroll = () => setIsPassOver(window.scrollY > 3088);
+  const onScroll = () => {
+    setIsPassOver(window.scrollY > contentHeight - 536);
+  };
 
   useEffect(() => {
-    window.addEventListener('scroll', onScroll);
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
+    if (contentHeight) {
+      window.addEventListener('scroll', onScroll);
+      return () => window.removeEventListener('scroll', onScroll);
+    }
+  }, [contentHeight]);
 
   if (!data) return null;
 
