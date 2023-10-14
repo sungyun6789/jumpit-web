@@ -14,8 +14,7 @@ const JobDescriptionMainContent = () => {
       <dl>
         <Title>기술스택</Title>
         <dd>
-          {/* 실서비스와 높이가 달라서 임의로 높이 지정 */}
-          <Content style={{ height: '78px' }}>
+          <Content>
             {data.techStacks.map((value) => (
               <TechStack key={value.stack} className={mont.className}>
                 <TechStackImage src={value.imagePath} width={20} height={20} alt="tech stack" />
