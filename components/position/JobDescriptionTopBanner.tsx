@@ -119,7 +119,7 @@ const EventDetailButton = styled(Button)`
     transform: rotate(-90deg);
     right: -16px;
 
-    path:nth-child(2) {
+    path:nth-of-type(2) {
       stroke: #01d066;
     }
   }
