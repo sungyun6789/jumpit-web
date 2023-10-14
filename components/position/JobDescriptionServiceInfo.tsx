@@ -40,7 +40,9 @@ const JobDescriptionServiceInfo = () => {
         </IndexBox>
       </CompanyImageLayout>
 
-      <ServiceInfo className={noto.className}>{data.serviceInfo}</ServiceInfo>
+      <ServiceInfo className={noto.className} isMoreInfoOpen={isMoreInfoOpen}>
+        {data.serviceInfo}
+      </ServiceInfo>
       <MoreInfoButtonWrap>
         {!isMoreInfoOpen && <Empty />}
         <MoreInfoButton isMoreInfoOpen={isMoreInfoOpen} onClick={() => setIsMoreInfoOpen(!isMoreInfoOpen)}>
@@ -60,7 +62,7 @@ const Title = styled.h2`
   letter-spacing: -0.5px;
 `;
 
-const ServiceInfo = styled.pre`
+const ServiceInfo = styled.pre<{ isMoreInfoOpen: boolean }>`
   margin-top: 14px;
   font-size: 16px;
   color: #444444;
@@ -68,8 +70,12 @@ const ServiceInfo = styled.pre`
   letter-spacing: -0.5px;
   word-break: break-all;
   white-space: pre-line;
-  max-height: 168px;
-  overflow: hidden;
+
+  ${(props) =>
+    !props.isMoreInfoOpen && {
+      maxHeight: '168px',
+      overflow: 'hidden',
+    }}
 `;
 
 const MoreInfoButtonWrap = styled.div`
