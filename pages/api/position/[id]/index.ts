@@ -24,7 +24,18 @@ export interface PositionResponse {
     follow: boolean;
     graduate: boolean;
     id: number;
-    itCompanyStory: unknown[];
+    itCompanyStory:
+      | {
+          category: string;
+          classification: string;
+          id: number;
+          imagePath: string;
+          link: string;
+          memo: string;
+          publish: boolean;
+          title: string;
+        }[]
+      | [];
     jobPostingForSearchEngine: {
       url: string;
       title: string;

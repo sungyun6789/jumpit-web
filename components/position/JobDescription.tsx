@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 
 import JobDescriptionCareer from './JobDescriptionCareer';
+import JobDescriptionCompanyStory from './JobDescriptionCompanyStory';
 import JobDescriptionHeader from './JobDescriptionHeader';
 import JobDescriptionMainContent from './JobDescriptionMainContent';
 import JobDescriptionServiceInfo from './JobDescriptionServiceInfo';
@@ -12,6 +13,7 @@ const JobDescription = () => {
       <JobDescriptionMainContent />
       <JobDescriptionCareer />
       <JobDescriptionServiceInfo />
+      <JobDescriptionCompanyStory />
     </Block>
   );
 };
