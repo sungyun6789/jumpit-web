@@ -34,7 +34,7 @@ const JobDescriptionCareer = () => {
 
       <SectionDL>
         <Label>마감일</Label>
-        <dt>{dayjs(data.closedAt).format('YYYY-MM-DD')}</dt>
+        <dt>{data.alwaysOpen ? '상시' : dayjs(data.closedAt).format('YYYY-MM-DD')}</dt>
       </SectionDL>
 
       <SectionDL>
