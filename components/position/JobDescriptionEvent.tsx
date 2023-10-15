@@ -8,7 +8,7 @@ import Button from '../common/Button';
 
 import type { MouseEvent } from 'react';
 
-const JobDescriptionTopBanner = () => {
+const JobDescriptionEvent = () => {
   const { push } = useRouter();
   const [isOpen, setIsOpen] = useState(false);
 
@@ -69,7 +69,7 @@ const JobDescriptionTopBanner = () => {
   );
 };
 
-export default JobDescriptionTopBanner;
+export default JobDescriptionEvent;
 
 const Block = styled.div`
   background-color: #f5f5f8;
