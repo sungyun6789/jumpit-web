@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import JobDescriptionLayout from '~/components/layout/JobDescriptionLayout';
 import JobDescription from '~/components/position/JobDescription';
 import JobDescriptionAside from '~/components/position/JobDescriptionAside';
+import JobDescriptionHead from '~/components/position/JobDescriptionHead';
 import JobDescriptionTopBanner from '~/components/position/JobDescriptionTopBanner';
 import SimilarPositionList from '~/components/position/SimilarPositionList';
 import JobDescriptionProvier from '~/context/JobDescriptionProvider';
@@ -31,6 +32,7 @@ const PositionPage = () => {
   return (
     <>
       <JobDescriptionProvier>
+        <JobDescriptionHead />
         <JobDescriptionTopBanner />
         <JobDescriptionLayout>
           <div className="jd">
