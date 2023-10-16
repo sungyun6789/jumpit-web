@@ -5,6 +5,7 @@ import JobDescription from '~/components/position/JobDescription';
 import JobDescriptionAside from '~/components/position/JobDescriptionAside';
 import JobDescriptionEvent from '~/components/position/JobDescriptionEvent';
 import JobDescriptionHead from '~/components/position/JobDescriptionHead';
+import JobDescriptionMobileBanner from '~/components/position/JobDescriptionMobileBanner';
 import SimilarPositionList from '~/components/position/SimilarPositionList';
 import JobDescriptionProvier from '~/context/JobDescriptionProvider';
 
@@ -42,6 +43,7 @@ const PositionPage = () => {
         </JobDescriptionLayout>
       </JobDescriptionProvier>
       <SimilarPositionList />
+      <JobDescriptionMobileBanner />
     </>
   );
 };
