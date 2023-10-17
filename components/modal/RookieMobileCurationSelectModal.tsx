@@ -37,7 +37,7 @@ const RookieMobileCurationSelectModal = ({ queryCuration, curations, click, clos
       <Block className={noto.className}>
         <CloseLayout>
           <CloseButton onClick={close}>
-            <Image src="/closeIcon.svg" width={24} height={24} alt="close" />
+            <Image src="/close_icon.svg" width={24} height={24} alt="close" />
           </CloseButton>
         </CloseLayout>
 

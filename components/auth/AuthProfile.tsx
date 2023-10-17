@@ -42,7 +42,7 @@ const AuthProfile = () => {
           <SNSTitle>SNS로 3초만에 로그인</SNSTitle>
           {SOCIALS.map((social) => (
             <SNSButton key={social} type="button">
-              <Image src={social + 'Logo.svg'} width={32} height={44} alt={social + 'login'} />
+              <Image src={social + '_logo.svg'} width={32} height={44} alt={social + 'login'} />
             </SNSButton>
           ))}
         </SNSBox>

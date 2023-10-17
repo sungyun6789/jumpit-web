@@ -57,7 +57,7 @@ const RookieContentTag = () => {
 
         <AllView className={noto.className} isOpen={isOpen}>
           <AllViewText onClick={() => setIsOpen(!isOpen)}>{isOpen ? '접기' : '전체보기'}</AllViewText>
-          <Image src="/bottomArrow.svg" width={16} height={16} alt="all view" />
+          <Image src="/bottom_arrow.svg" width={16} height={16} alt="all view" />
         </AllView>
       </PCLayout>
 

@@ -16,12 +16,12 @@ const PositionRecommend = () => {
       <TitleBox>
         <Title>
           <ThumbsUpBox>
-            <Image src="/thumbsUpIcon.svg" width={16} height={16} alt="" />
+            <Image src="/thumbs_up_icon.svg" width={16} height={16} alt="" />
           </ThumbsUpBox>
           박성윤님을 위한 추천!
         </Title>
         <RecommendAlarmButton>
-          <Image src="/alarmIcon.svg" width={18} height={18} alt="recommend alarm" />
+          <Image src="/alarm_icon.svg" width={18} height={18} alt="recommend alarm" />
         </RecommendAlarmButton>
       </TitleBox>
 

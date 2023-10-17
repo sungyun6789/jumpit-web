@@ -24,7 +24,7 @@ const PositionCardList = ({ data }: Props) => {
 
             <HoverView className="counts">
               <CountBox>
-                <Image src="/viewIcon.svg" width={16} height={16} alt="view count" />
+                <Image src="/view_icon.svg" width={16} height={16} alt="view count" />
                 <Count>{value.viewCount}</Count>
               </CountBox>
 

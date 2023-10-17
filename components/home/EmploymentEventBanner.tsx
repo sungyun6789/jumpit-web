@@ -21,7 +21,7 @@ const Block = styled.section`
   max-width: 1060px;
   margin: 0px auto 100px;
   height: 100px;
-  background-image: url('/employmentEventBanner.svg');
+  background-image: url('/employment_event_banner.svg');
   background-color: ${COLORS.primary};
   border-radius: 8px;
 

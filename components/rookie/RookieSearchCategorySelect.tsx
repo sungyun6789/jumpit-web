@@ -13,16 +13,16 @@ const RookieSearchCategorySelect = () => {
         <SelectLayout>
           <Select>
             기술스택
-            <Image src="/bottomArrow.svg" width={16} height={16} alt="more" />
+            <Image src="/bottom_arrow.svg" width={16} height={16} alt="more" />
           </Select>
           <Select>
-            직무 <Image src="/bottomArrow.svg" width={16} height={16} alt="more" />
+            직무 <Image src="/bottom_arrow.svg" width={16} height={16} alt="more" />
           </Select>
           <Select>
-            경력 <Image src="/bottomArrow.svg" width={16} height={16} alt="more" />
+            경력 <Image src="/bottom_arrow.svg" width={16} height={16} alt="more" />
           </Select>
           <Select>
-            지역 <Image src="/bottomArrow.svg" width={16} height={16} alt="more" />
+            지역 <Image src="/bottom_arrow.svg" width={16} height={16} alt="more" />
           </Select>
         </SelectLayout>
 

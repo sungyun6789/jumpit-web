@@ -15,7 +15,7 @@ const Header = () => {
       <HeaderLayout>
         <HeaderTop>
           <LogoLink href="/">
-            <Image src="/koLogo.svg" width={72} height={32} alt="logo" />
+            <Image src="/jumpit_logo_ko.svg" width={72} height={32} alt="logo" />
           </LogoLink>
 
           <LoginTextBox>

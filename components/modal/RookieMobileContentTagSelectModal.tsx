@@ -33,7 +33,7 @@ const RookieMobileContentTagSelectModal = ({ tags, onClose, onClick, currentId }
       <Block>
         <CloseButtonLayout>
           <CloseButton onClick={onClose}>
-            <Image src="/closeIcon.svg" width={24} height={24} alt="close" />
+            <Image src="/close_icon.svg" width={24} height={24} alt="close" />
           </CloseButton>
         </CloseButtonLayout>
 

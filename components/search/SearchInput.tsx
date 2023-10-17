@@ -26,21 +26,21 @@ const SearchInput = () => {
           onChange={onChange}
         />
         <SearchColorIcon>
-          <Image width={24} height={24} src="/searchColorIcon.svg" alt="search" />
+          <Image width={24} height={24} src="/search_color_icon.svg" alt="search" />
         </SearchColorIcon>
         {searchKeyword && (
           <DeleteIcon>
-            <Image width={24} height={24} src="/deleteIcon.svg" alt="delete" />
+            <Image width={24} height={24} src="/delete_icon.svg" alt="delete" />
           </DeleteIcon>
         )}
       </Block>
 
       <MobileBlock>
         <SearchIcon>
-          <Image width={24} height={24} src="/searchIcon.svg" alt="search" />
+          <Image width={24} height={24} src="/search_icon.svg" alt="search" />
         </SearchIcon>
         <MobileIcon>
-          <Image width={24} height={24} src="/menuIcon.svg" alt="menu" />
+          <Image width={24} height={24} src="/menu_icon.svg" alt="menu" />
         </MobileIcon>
       </MobileBlock>
     </>

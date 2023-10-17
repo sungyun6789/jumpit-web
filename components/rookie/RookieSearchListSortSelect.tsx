@@ -49,7 +49,7 @@ const RookieSearchListSortSelect = () => {
       <QuestionMark />
 
       <Button onClick={onClick} onBlur={close}>
-        {SORT_TYPE[selectedSortType]} <Image src="/bottomArrow.svg" width={16} height={16} alt="more" />
+        {SORT_TYPE[selectedSortType]} <Image src="/bottom_arrow.svg" width={16} height={16} alt="more" />
         {isSortTypeSelected && (
           <Select>
             {data?.sort.map((value) => (

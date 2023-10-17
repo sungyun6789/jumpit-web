@@ -28,7 +28,7 @@ const Footer = () => {
   return (
     <Block>
       <Inner>
-        <LogoImage src="/enLogo.svg" width={68} height={24} alt="logo" />
+        <LogoImage src="/jumpit_logo_en.svg" width={68} height={24} alt="logo" />
 
         <Content>
           <Nav>

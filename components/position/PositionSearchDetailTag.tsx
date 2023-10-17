@@ -51,7 +51,7 @@ const PositionSearchDetailTag = () => {
           {TECH_CAREER_REGION_TAG.map((tag) => (
             <TechCareerRegionTag key={tag}>
               <span>{tag}</span>
-              <Image src="/bottomArrow.svg" width={16} height={16} alt="arrow" />
+              <Image src="/bottom_arrow.svg" width={16} height={16} alt="arrow" />
             </TechCareerRegionTag>
           ))}
         </TechCareerRegionTagList>

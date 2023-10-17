@@ -31,7 +31,7 @@ const AppDownload = () => {
     <ViewBreakPoint>
       <Block>
         <DownloadBox>
-          <CloseIcon src="/closeIcon.svg" width={24} height={24} alt="close" onClick={close} />
+          <CloseIcon src="/close_icon.svg" width={24} height={24} alt="close" onClick={close} />
 
           <DownloadLogo
             src={CDN_PATH + '/jumpit/personal/ic_app_download.png'}
