@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { useContext } from 'react';
 import COLORS from '~/constants/colors';
 import { HomeDataContext } from '~/context/HomeDataProvier';
+import { noto } from '~/pages/_app';
 
 import Button from '../common/Button';
 import PositionCardList from '../position/PositionCardList';
@@ -20,7 +21,7 @@ const PositionRecommend = () => {
           </ThumbsUpBox>
           박성윤님을 위한 추천!
         </Title>
-        <RecommendAlarmButton>
+        <RecommendAlarmButton className={noto.className}>
           <Image src="/alarm_icon.svg" width={18} height={18} alt="recommend alarm" />
         </RecommendAlarmButton>
       </TitleBox>
@@ -221,6 +222,7 @@ const RecommendAlarmButton = styled(Button)`
   border-radius: 100px;
   background-color: ${COLORS.primary};
   border: 1px solid ${COLORS.primary};
+  letter-spacing: -0.5px;
   ::after {
     content: '추천 알림 받기';
     font-size: 13px;
