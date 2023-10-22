@@ -1,66 +1,73 @@
 import styled from '@emotion/styled';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { useState } from 'react';
 import { DesktopView } from '~/styles/breakpoint';
+
+import AuthModal from '../modal/AuthModal';
 
 const NavBar = () => {
   const { pathname } = useRouter();
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <Block>
-      <NavUL>
-        <li>
-          <NavLink href="/positions" selected={pathname === '/positions'}>
-            직무 탐색
-          </NavLink>
-        </li>
+    <>
+      <Block>
+        <NavUL>
+          <li>
+            <NavLink href="/positions" selected={pathname === '/positions'}>
+              직무 탐색
+            </NavLink>
+          </li>
 
-        <RookieNavLI>
-          <NavLink href="/rookie" selected={pathname.includes('/rookie')}>
-            더. 루키
-          </NavLink>
-          <div className="sub-nav">
-            <RookieSubNavLink href="/rookie/position">절찬 채용중 👀</RookieSubNavLink>
-            <RookieSubNavLink href="/rookie/content">취업꿀팁 대방출 🔥</RookieSubNavLink>
-          </div>
-        </RookieNavLI>
+          <RookieNavLI>
+            <NavLink href="/rookie" selected={pathname.includes('/rookie')}>
+              더. 루키
+            </NavLink>
+            <div className="sub-nav">
+              <RookieSubNavLink href="/rookie/position">절찬 채용중 👀</RookieSubNavLink>
+              <RookieSubNavLink href="/rookie/content">취업꿀팁 대방출 🔥</RookieSubNavLink>
+            </div>
+          </RookieNavLI>
 
-        <li>
-          <NavLink href="/이력서" selected={pathname === '/이력서'}>
-            이력서
-          </NavLink>
-        </li>
+          <li>
+            <NavLink href="/이력서" selected={pathname === '/이력서'}>
+              이력서
+            </NavLink>
+          </li>
 
-        <li>
-          <NavLink href="/career-qna" selected={pathname === '/career-qna'}>
-            취업 Q&A
-          </NavLink>
-        </li>
+          <li>
+            <NavLink href="/career-qna" selected={pathname === '/career-qna'}>
+              취업 Q&A
+            </NavLink>
+          </li>
 
-        <li>
-          <NavLink href="/job-interview" selected={pathname === '/job-interview'}>
-            개발자 인터뷰
-          </NavLink>
-        </li>
+          <li>
+            <NavLink href="/job-interview" selected={pathname === '/job-interview'}>
+              개발자 인터뷰
+            </NavLink>
+          </li>
 
-        <li>
-          <NavLink href="/book-concert" selected={pathname === '/book-concert'}>
-            개취콘
-          </NavLink>
-        </li>
-      </NavUL>
+          <li>
+            <NavLink href="/book-concert" selected={pathname === '/book-concert'}>
+              개취콘
+            </NavLink>
+          </li>
+        </NavUL>
 
-      <DesktopView>
-        <AuthUL>
-          <LI>회원가입/로그인</LI>
-          <LI>
-            <BlankLink href="https://biz.jumpit.co.kr/" target="_blank">
-              기업 서비스
-            </BlankLink>
-          </LI>
-        </AuthUL>
-      </DesktopView>
-    </Block>
+        <DesktopView>
+          <AuthUL>
+            <LI onClick={() => setIsOpen(true)}>회원가입/로그인</LI>
+            <LI>
+              <BlankLink href="https://biz.jumpit.co.kr/" target="_blank">
+                기업 서비스
+              </BlankLink>
+            </LI>
+          </AuthUL>
+        </DesktopView>
+      </Block>
+      {isOpen && <AuthModal close={() => setIsOpen(false)} />}
+    </>
   );
 };
 

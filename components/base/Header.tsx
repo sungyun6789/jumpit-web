@@ -1,32 +1,38 @@
 import styled from '@emotion/styled';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useState } from 'react';
 
 import Button from '../common/Button';
+import AuthModal from '../modal/AuthModal';
 import SearchInput from '../search/SearchInput';
 
 import NavBar from './NavBar';
 
 const Header = () => {
   const isLogin = false;
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <Block>
-      <HeaderLayout>
-        <HeaderTop>
-          <LogoLink href="/">
-            <Image src="/jumpit_logo_ko.svg" width={72} height={32} alt="logo" />
-          </LogoLink>
+    <>
+      <Block>
+        <HeaderLayout>
+          <HeaderTop>
+            <LogoLink href="/">
+              <Image src="/jumpit_logo_ko.svg" width={72} height={32} alt="logo" />
+            </LogoLink>
 
-          <LoginTextBox>
-            {!isLogin && <LoginButton>회원가입/로그인</LoginButton>}
-            <SearchInput />
-          </LoginTextBox>
-        </HeaderTop>
+            <LoginTextBox>
+              {!isLogin && <LoginButton onClick={() => setIsOpen(true)}>회원가입/로그인</LoginButton>}
+              <SearchInput />
+            </LoginTextBox>
+          </HeaderTop>
 
-        <NavBar />
-      </HeaderLayout>
-    </Block>
+          <NavBar />
+        </HeaderLayout>
+      </Block>
+      {isOpen && <AuthModal close={() => setIsOpen(false)} />}
+    </>
   );
 };
 
