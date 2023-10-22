@@ -215,6 +215,7 @@ const SNSButton = styled.button`
   border: none;
   border-radius: 0;
   background: none;
+  cursor: pointer;
 `;
 
 const CompanyCustomerText = styled.p`
