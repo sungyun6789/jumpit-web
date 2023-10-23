@@ -1,10 +1,15 @@
 import styled from '@emotion/styled';
+import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { useFormik } from 'formik';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect } from 'react';
+import { useContext, useEffect } from 'react';
+import { AuthContext } from '~/context/AuthProvider';
+import { auth } from '~/pages/_app';
 
 import PortalModal from './PortalModal';
+
+import type { UserCredentialImpl } from '~/context/AuthProvider';
 
 const SOCIALS = ['naver', 'google', 'github', 'apple'];
 
@@ -13,6 +18,7 @@ interface Props {
 }
 
 const AuthModal = ({ close }: Props) => {
+  const context = useContext(AuthContext);
   const { values, handleChange } = useFormik({ initialValues: { email: '' }, onSubmit: () => undefined });
 
   useEffect(() => {
@@ -22,6 +28,17 @@ const AuthModal = ({ close }: Props) => {
       document.body.style.overflow = '';
     };
   }, []);
+
+  const login = async () => {
+    const provider = new GoogleAuthProvider();
+    try {
+      const data = (await signInWithPopup(auth, provider)) as UserCredentialImpl;
+      context?.setUserData(data);
+      close();
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <PortalModal>
@@ -57,7 +74,7 @@ const AuthModal = ({ close }: Props) => {
 
                 <LogoWrap>
                   {SOCIALS.map((social) => (
-                    <SNSButton key={social} type="button">
+                    <SNSButton key={social} type="button" onClick={login}>
                       <Image src={social + '_logo.svg'} width={44} height={44} alt={social + '로그인'} />
                     </SNSButton>
                   ))}

@@ -8,6 +8,7 @@ import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 import { Noto_Sans_KR, Montserrat } from 'next/font/google';
 import BasicLayout from '~/components/layout/BasicLayout';
+import AuthProvider from '~/context/AuthProvider';
 
 import type { AppProps } from 'next/app';
 
@@ -47,9 +48,11 @@ export default function App({ Component, pageProps }: AppProps) {
     <QueryClientProvider client={queryClient}>
       <title>점핏 | 개발자 커리어 점프</title>
       <div className={noto.className}>
-        <BasicLayout>
-          <Component {...pageProps} />
-        </BasicLayout>
+        <AuthProvider>
+          <BasicLayout>
+            <Component {...pageProps} />
+          </BasicLayout>
+        </AuthProvider>
       </div>
       <ReactQueryDevtools />
     </QueryClientProvider>
