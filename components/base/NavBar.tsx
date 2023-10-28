@@ -1,14 +1,17 @@
 import styled from '@emotion/styled';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { useSession } from 'next-auth/react';
 import { useState } from 'react';
 import { DesktopView } from '~/styles/breakpoint';
 
+import Button from '../common/Button';
 import AuthModal from '../modal/AuthModal';
 
 const NavBar = () => {
   const { pathname } = useRouter();
   const [isOpen, setIsOpen] = useState(false);
+  const { data } = useSession();
 
   return (
     <>
@@ -57,7 +60,14 @@ const NavBar = () => {
 
         <DesktopView>
           <AuthUL>
-            <LI onClick={() => setIsOpen(true)}>회원가입/로그인</LI>
+            {data?.user ? (
+              <LI>
+                <UserNameButton>{data.user.name}</UserNameButton>
+                <Nim>님</Nim>
+              </LI>
+            ) : (
+              <LI onClick={() => setIsOpen(true)}>회원가입/로그인</LI>
+            )}
             <LI>
               <BlankLink href="https://biz.jumpit.co.kr/" target="_blank">
                 기업 서비스
@@ -110,6 +120,7 @@ const NavUL = styled(UL)`
 `;
 
 const AuthUL = styled(UL)`
+  margin-right: -12px;
   gap: 24px;
 `;
 
@@ -127,6 +138,7 @@ const NavLink = styled(Link)<{ selected: boolean }>`
 `;
 
 const LI = styled.li`
+  padding: 0 12px;
   font-weight: 500;
   line-height: 24px;
   color: #222222;
@@ -136,6 +148,19 @@ const LI = styled.li`
   :hover {
     color: black !important;
   }
+`;
+
+const UserNameButton = styled(Button)`
+  width: 60px;
+  padding: 10px 0;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 24px;
+  color: #222222;
+`;
+
+const Nim = styled.span`
+  padding-bottom: 1px;
 `;
 
 const BlankLink = styled(Link)`

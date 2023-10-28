@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useSession } from 'next-auth/react';
 import { useState } from 'react';
 
 import Button from '../common/Button';
@@ -10,8 +11,8 @@ import SearchInput from '../search/SearchInput';
 import NavBar from './NavBar';
 
 const Header = () => {
-  const isLogin = false;
   const [isOpen, setIsOpen] = useState(false);
+  const { data } = useSession();
 
   return (
     <>
@@ -23,7 +24,11 @@ const Header = () => {
             </LogoLink>
 
             <LoginTextBox>
-              {!isLogin && <LoginButton onClick={() => setIsOpen(true)}>회원가입/로그인</LoginButton>}
+              {data?.user ? (
+                <UserName>{data.user.name}</UserName>
+              ) : (
+                <LoginButton onClick={() => setIsOpen(true)}>회원가입/로그인</LoginButton>
+              )}
               <SearchInput />
             </LoginTextBox>
           </HeaderTop>
@@ -75,6 +80,18 @@ const LoginTextBox = styled.div`
   display: flex;
   align-items: center;
   gap: 19px;
+`;
+
+const UserName = styled.div`
+  display: none;
+
+  @media (max-width: 1080px) {
+    padding: 10px 0;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 24px;
+    color: #222222;
+  }
 `;
 
 const LoginButton = styled(Button)`

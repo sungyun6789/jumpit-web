@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 import { useFormik } from 'formik';
 import Image from 'next/image';
 import Link from 'next/link';
+import { signIn } from 'next-auth/react';
 import { useEffect } from 'react';
 
 import PortalModal from './PortalModal';
@@ -22,10 +23,6 @@ const AuthModal = ({ close }: Props) => {
       document.body.style.overflow = '';
     };
   }, []);
-
-  const login = async () => {
-    // @todo 로그인
-  };
 
   return (
     <PortalModal>
@@ -61,7 +58,7 @@ const AuthModal = ({ close }: Props) => {
 
                 <LogoWrap>
                   {SOCIALS.map((social) => (
-                    <SNSButton key={social} type="button" onClick={login}>
+                    <SNSButton key={social} type="button" onClick={() => signIn('google')}>
                       <Image src={social + '_logo.svg'} width={44} height={44} alt={social + '로그인'} />
                     </SNSButton>
                   ))}
