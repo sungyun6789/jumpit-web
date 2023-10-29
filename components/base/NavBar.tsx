@@ -1,7 +1,8 @@
 import styled from '@emotion/styled';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useSession } from 'next-auth/react';
+import { signOut, useSession } from 'next-auth/react';
 import { useState } from 'react';
 import { DesktopView } from '~/styles/breakpoint';
 
@@ -10,7 +11,8 @@ import AuthModal from '../modal/AuthModal';
 
 const NavBar = () => {
   const { pathname } = useRouter();
-  const [isOpen, setIsOpen] = useState(false);
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { data } = useSession();
 
   return (
@@ -61,12 +63,30 @@ const NavBar = () => {
         <DesktopView>
           <AuthUL>
             {data?.user ? (
-              <LI>
-                <UserNameButton>{data.user.name}</UserNameButton>
-                <Nim>님</Nim>
-              </LI>
+              <SubMenuWrap onMouseOver={() => setIsMenuOpen(true)} onMouseOut={() => setIsMenuOpen(false)}>
+                <AuthNavLI isOpen={isMenuOpen}>
+                  <AuthNav>
+                    <UserNameButton>{data.user.name}</UserNameButton>
+                    <Nim>님</Nim>
+                    <Icon src="/bottom_arrow.svg" width={16} height={16} alt="자세히 보기" />
+                  </AuthNav>
+
+                  <div className="sub-nav">
+                    <SubMenu>
+                      <Link href="/myjumpit">마이점핏</Link>
+                    </SubMenu>
+                    <SubMenu>
+                      <Link href="/applications-status/applied">취업축하금 신청</Link>
+                    </SubMenu>
+                    <SubMenu>
+                      {/* @todo 로그아웃 */}
+                      <Button>로그아웃</Button>
+                    </SubMenu>
+                  </div>
+                </AuthNavLI>
+              </SubMenuWrap>
             ) : (
-              <LI onClick={() => setIsOpen(true)}>회원가입/로그인</LI>
+              <LI onClick={() => setIsLoginModalOpen(true)}>회원가입/로그인</LI>
             )}
             <LI>
               <BlankLink href="https://biz.jumpit.co.kr/" target="_blank">
@@ -76,7 +96,7 @@ const NavBar = () => {
           </AuthUL>
         </DesktopView>
       </Block>
-      {isOpen && <AuthModal close={() => setIsOpen(false)} />}
+      {isLoginModalOpen && <AuthModal close={() => setIsLoginModalOpen(false)} />}
     </>
   );
 };
@@ -88,11 +108,11 @@ const Block = styled.nav`
   justify-content: space-between;
   align-items: center;
   height: 56px;
-  overflow-x: scroll;
   white-space: nowrap;
   flex-wrap: nowrap;
 
   @media (max-width: 1080px) {
+    overflow-x: scroll;
     padding: 0 16px;
   }
 `;
@@ -121,7 +141,6 @@ const NavUL = styled(UL)`
 
 const AuthUL = styled(UL)`
   margin-right: -12px;
-  gap: 24px;
 `;
 
 const NavLink = styled(Link)<{ selected: boolean }>`
@@ -137,6 +156,11 @@ const NavLink = styled(Link)<{ selected: boolean }>`
   }
 `;
 
+const AuthNav = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
 const LI = styled.li`
   padding: 0 12px;
   font-weight: 500;
@@ -147,6 +171,10 @@ const LI = styled.li`
 
   :hover {
     color: black !important;
+
+    img {
+      transform: rotate(180deg);
+    }
   }
 `;
 
@@ -161,6 +189,26 @@ const UserNameButton = styled(Button)`
 
 const Nim = styled.span`
   padding-bottom: 1px;
+`;
+
+const Icon = styled(Image)`
+  margin-left: 5px;
+`;
+
+const SubMenuWrap = styled.div`
+  position: relative;
+`;
+
+const SubMenu = styled.li`
+  height: 48px;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  font-weight: normal;
+
+  :hover {
+    background-color: #f4f4f4;
+  }
 `;
 
 const BlankLink = styled(Link)`
@@ -189,6 +237,27 @@ const RookieNavLI = styled(LI)`
       a {
         color: #000 !important;
       }
+    }
+  }
+`;
+
+const AuthNavLI = styled(LI)<{ isOpen: boolean }>`
+  .sub-nav {
+    display: ${(props) => (props.isOpen ? 'block' : 'none')};
+
+    position: absolute;
+    width: 175px;
+    right: 0;
+    top: 45px;
+    border: 1px solid #e4e4e4;
+    box-shadow: rgba(20, 20, 20, 0.12) 0px 8px 16px;
+    border-radius: 4px;
+    padding: 8px 0;
+    background-color: #fff;
+    color: black !important;
+
+    a {
+      color: #222222 !important;
     }
   }
 `;
