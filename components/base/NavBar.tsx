@@ -199,7 +199,7 @@ const SubMenuWrap = styled.div`
   position: relative;
 `;
 
-const SubMenu = styled.li`
+const SubMenu = styled.div`
   height: 48px;
   display: flex;
   align-items: center;
