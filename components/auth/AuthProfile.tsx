@@ -21,12 +21,12 @@ const AuthProfile = () => {
 
         <LoginMenu>
           <MenuLink href="/resumes">
-            <p>📝</p>
-            <p>이력서 작성</p>
+            <MenuIcon>📝</MenuIcon>
+            <MenuItem>이력서 작성</MenuItem>
           </MenuLink>
           <MenuLink href="/myjumpit">
-            <p>😎</p>
-            <p>마이점핏</p>
+            <MenuIcon>😎</MenuIcon>
+            <MenuItem>마이점핏</MenuItem>
           </MenuLink>
         </LoginMenu>
       </LoginBoxContent>
@@ -140,7 +140,9 @@ const LoginMenu = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 20px 0px;
+  height: 50px;
   background-color: #fff;
+  box-sizing: content-box;
 
   a:nth-of-type(1) {
     border-right: 1px solid #d8d8d8;
@@ -152,8 +154,13 @@ const MenuLink = styled(Link)`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 10px;
-  height: 50px;
   width: 50%;
+`;
+
+const MenuIcon = styled.div`
+  margin-bottom: 10px;
+`;
+
+const MenuItem = styled.p`
   font-size: 16px;
 `;
