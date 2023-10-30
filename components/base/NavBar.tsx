@@ -72,16 +72,11 @@ const NavBar = () => {
                   </AuthNav>
 
                   <div className="sub-nav">
-                    <SubMenu>
-                      <Link href="/myjumpit">마이점핏</Link>
-                    </SubMenu>
-                    <SubMenu>
-                      <Link href="/applications-status/applied">취업축하금 신청</Link>
-                    </SubMenu>
-                    <SubMenu>
-                      {/* @todo 로그아웃 */}
-                      <Button>로그아웃</Button>
-                    </SubMenu>
+                    <Link href="/myjumpit">마이점핏</Link>
+                    <Link href="/applications-status/applied">취업축하금 신청</Link>
+                    <div className="logout" onClick={() => signOut()}>
+                      로그아웃
+                    </div>
                   </div>
                 </AuthNavLI>
               </SubMenuWrap>
@@ -197,17 +192,18 @@ const Icon = styled(Image)`
 
 const SubMenuWrap = styled.div`
   position: relative;
-`;
 
-const SubMenu = styled.div`
-  height: 48px;
-  display: flex;
-  align-items: center;
-  padding: 0 20px;
-  font-weight: normal;
+  .logout,
+  a {
+    height: 48px;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    font-weight: normal;
 
-  :hover {
-    background-color: #f4f4f4;
+    :hover {
+      background-color: #f4f4f4;
+    }
   }
 `;
 

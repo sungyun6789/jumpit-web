@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useSession } from 'next-auth/react';
+import { signIn, signOut, useSession } from 'next-auth/react';
 import { mont } from '~/pages/_app';
 
 const SOCIALS = ['naver', 'google', 'github', 'apple'];
@@ -14,7 +14,7 @@ const AuthProfile = () => {
       <LoginBoxContent>
         <GreetingMessageBox>
           <Greeting>{data.user.name}님 반가워요</Greeting>
-          <LogoutButton>로그아웃</LogoutButton>
+          <LogoutButton onClick={() => signOut()}>로그아웃</LogoutButton>
         </GreetingMessageBox>
 
         <Email className={mont.className}>{data.user.email}</Email>
@@ -37,12 +37,13 @@ const AuthProfile = () => {
         <UnLoginDescription>회원가입/로그인하고</UnLoginDescription>
         <UnLoginDescription>점핏의 다양한 혜택을 만나보세요.</UnLoginDescription>
 
-        <UnLoginButton>회원가입 / 로그인</UnLoginButton>
+        <UnLoginButton onClick={() => signIn('google')}>회원가입 / 로그인</UnLoginButton>
 
         <SNSBox>
           <SNSTitle>SNS로 3초만에 로그인</SNSTitle>
           {SOCIALS.map((social) => (
-            <SNSButton key={social} type="button">
+            // @todo 플랫폼별 로그인 지원
+            <SNSButton key={social} type="button" onClick={() => signIn('google')}>
               <Image src={social + '_logo.svg'} width={32} height={44} alt={social + 'login'} />
             </SNSButton>
           ))}
@@ -126,6 +127,7 @@ const LogoutButton = styled.button`
   color: #999999;
   border: none;
   background: none;
+  cursor: pointer;
 `;
 
 const Email = styled.p`
