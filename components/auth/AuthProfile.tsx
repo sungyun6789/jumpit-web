@@ -1,22 +1,23 @@
 import styled from '@emotion/styled';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useSession } from 'next-auth/react';
 import { mont } from '~/pages/_app';
 
 const SOCIALS = ['naver', 'google', 'github', 'apple'];
 
 const AuthProfile = () => {
-  const isLogin = false;
+  const { data } = useSession();
 
-  return isLogin ? (
+  return data?.user ? (
     <LoginBox>
       <LoginBoxContent>
         <GreetingMessageBox>
-          <Greeting>박성윤님 반가워요</Greeting>
+          <Greeting>{data.user.name}님 반가워요</Greeting>
           <LogoutButton>로그아웃</LogoutButton>
         </GreetingMessageBox>
 
-        <Email className={mont.className}>sungyun5423@gmail.com</Email>
+        <Email className={mont.className}>{data.user.email}</Email>
 
         <LoginMenu>
           <MenuLink href="/resumes">
