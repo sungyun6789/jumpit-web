@@ -19,3 +19,9 @@ input,
 button {
   font-family: inherit;
 }
+
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
