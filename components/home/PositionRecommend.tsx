@@ -5,7 +5,6 @@ import COLORS from '~/constants/colors';
 import { HomeDataContext } from '~/context/HomeDataProvier';
 import { noto } from '~/pages/_app';
 
-import Button from '../common/Button';
 import PositionCardList from '../position/PositionCardList';
 
 const PositionRecommend = () => {
@@ -207,7 +206,7 @@ const ThumbsUpBox = styled.div`
   }
 `;
 
-const RecommendAlarmButton = styled(Button)`
+const RecommendAlarmButton = styled.button`
   width: 129.05px;
   height: 40px;
   margin-top: 4.5px;

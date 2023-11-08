@@ -1,7 +1,5 @@
 import styled from '@emotion/styled';
 
-import Button from '../common/Button';
-
 /**
  * @todo 로그인 기능 추가할 때 알림 기능 추가
  */
@@ -70,7 +68,7 @@ const DefinitionDescription = styled.dd`
   }
 `;
 
-const AlarmButton = styled(Button)`
+const AlarmButton = styled.button`
   margin-top: 32px;
   width: 260px;
   height: 56px;

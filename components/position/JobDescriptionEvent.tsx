@@ -4,8 +4,6 @@ import { useEffect, useState } from 'react';
 import COLORS from '~/constants/colors';
 import { getCookie, setCookie } from '~/utils/cookie';
 
-import Button from '../common/Button';
-
 import type { MouseEvent } from 'react';
 
 const JobDescriptionEvent = () => {
@@ -104,7 +102,7 @@ const PrimaryText = styled(Text)`
   color: ${COLORS.primary};
 `;
 
-const EventDetailButton = styled(Button)`
+const EventDetailButton = styled.button`
   height: 20px;
   margin-left: 16px;
   color: ${COLORS.primary};
@@ -129,7 +127,7 @@ const EventDetailButton = styled(Button)`
   }
 `;
 
-const SkipButton = styled(Button)`
+const SkipButton = styled.button`
   position: absolute;
   top: 0px;
   right: 20px;

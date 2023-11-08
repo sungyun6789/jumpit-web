@@ -7,8 +7,6 @@ import { CDN_PATH } from '~/constants/path';
 import { setCookie } from '~/utils/cookie';
 import { getCookie } from '~/utils/cookie';
 
-import Button from '../common/Button';
-
 const AppDownload = () => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -141,7 +139,7 @@ const DownloadButton = styled(Link)`
   line-height: 32px;
 `;
 
-const SkipButton = styled(Button)`
+const SkipButton = styled.button`
   line-height: 32px;
   color: #888888;
   font-size: 14px;

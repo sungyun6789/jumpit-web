@@ -4,8 +4,6 @@ import { useContext, useState } from 'react';
 import { JobDescriptionContext } from '~/context/JobDescriptionProvider';
 import { mont, noto } from '~/pages/_app';
 
-import Button from '../common/Button';
-
 const JobDescriptionServiceInfo = () => {
   const [currentIndex, setCurrentIndex] = useState(0); // 기업 서비스 소개 이미지 번호
   const [isMoreInfoOpen, setIsMoreInfoOpen] = useState(false);
@@ -91,7 +89,7 @@ const Empty = styled.div`
   background: linear-gradient(rgba(255, 255, 255, 0.5) 0%, rgb(255, 255, 255) 100%);
 `;
 
-const MoreInfoButton = styled(Button)<{ isMoreInfoOpen: boolean }>`
+const MoreInfoButton = styled.button<{ isMoreInfoOpen: boolean }>`
   position: relative;
   font-size: 15px;
   font-weight: 500;
@@ -130,7 +128,7 @@ const CompanyImage = styled(Image)`
   object-fit: cover;
 `;
 
-const PrevImageButton = styled(Button)`
+const PrevImageButton = styled.button`
   position: absolute;
   top: 50%;
   left: 16px;
@@ -146,7 +144,7 @@ const PrevImageButton = styled(Button)`
   }
 `;
 
-const NextImageButton = styled(Button)`
+const NextImageButton = styled.button`
   position: absolute;
   top: 50%;
   right: 16px;

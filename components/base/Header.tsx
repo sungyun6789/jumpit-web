@@ -4,7 +4,6 @@ import Link from 'next/link';
 import { useSession } from 'next-auth/react';
 import { useState } from 'react';
 
-import Button from '../common/Button';
 import AuthModal from '../modal/AuthModal';
 import SearchInput from '../search/SearchInput';
 
@@ -94,7 +93,7 @@ const UserName = styled.div`
   }
 `;
 
-const LoginButton = styled(Button)`
+const LoginButton = styled.button`
   display: none;
 
   @media (max-width: 1080px) {

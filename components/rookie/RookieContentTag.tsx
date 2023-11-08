@@ -6,7 +6,6 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { noto } from '~/pages/_app';
 
-import Button from '../common/Button';
 import RookieMobileContentTagSelectModal from '../modal/RookieMobileContentTagSelectModal';
 
 import type { TagModel } from '~/pages/api/content/rookies';
@@ -226,7 +225,7 @@ const Tag = styled.button<{ isSelected: boolean }>`
   }
 `;
 
-const AllView = styled(Button)<{ isOpen: boolean }>`
+const AllView = styled.button<{ isOpen: boolean }>`
   display: flex;
   align-items: center;
   gap: 4px;

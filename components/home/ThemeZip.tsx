@@ -5,7 +5,6 @@ import { useRef, useState } from 'react';
 import Slider from 'react-slick';
 
 import { NextArrowButton, PrevArrowButton } from '../common/ArrowButton';
-import Button from '../common/Button';
 
 import type { ThemeBannerResponse } from '~/pages/api/themes/banners/home';
 
@@ -118,7 +117,7 @@ const ButtonBox = styled.div`
   }
 `;
 
-const ArrowButton = styled(Button)`
+const ArrowButton = styled.button`
   padding: 0.3px;
   font-size: inherit;
 

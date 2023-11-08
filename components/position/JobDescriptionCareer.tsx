@@ -5,8 +5,6 @@ import { useContext } from 'react';
 import COLORS from '~/constants/colors';
 import { JobDescriptionContext } from '~/context/JobDescriptionProvider';
 
-import Button from '../common/Button';
-
 const JobDescriptionCareer = () => {
   const data = useContext(JobDescriptionContext);
 
@@ -110,7 +108,7 @@ const BetweenIcon = styled.span`
   color: #222222;
 `;
 
-const CopyButton = styled(Button)`
+const CopyButton = styled.button`
   color: ${COLORS.primary};
   font-size: 16px;
 

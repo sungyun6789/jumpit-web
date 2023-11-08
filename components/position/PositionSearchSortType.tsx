@@ -2,8 +2,6 @@ import styled from '@emotion/styled';
 import { useRouter } from 'next/router';
 import usePositionQueryPush from '~/hooks/usePositionQueryPush';
 
-import Button from '../common/Button';
-
 type OptionType = 'rsp_rate' | 'reg_dt' | 'popular';
 
 interface SearchTypeOptionModel {
@@ -63,7 +61,7 @@ const Block = styled.div`
   }
 `;
 
-const Option = styled(Button)<{ isSelected: boolean }>`
+const Option = styled.button<{ isSelected: boolean }>`
   height: 20px;
   color: #666666;
   font-size: 14px;

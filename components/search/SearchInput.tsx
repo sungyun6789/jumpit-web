@@ -4,8 +4,6 @@ import { useState } from 'react';
 import COLORS from '~/constants/colors';
 import { DesktopView, TabletView } from '~/styles/breakpoint';
 
-import Button from '../common/Button';
-
 import type { ChangeEvent } from 'react';
 
 const SearchInput = () => {
@@ -70,13 +68,13 @@ const Input = styled.input`
   }
 `;
 
-const SearchColorIcon = styled(Button)`
+const SearchColorIcon = styled.button`
   position: absolute;
   top: 8px;
   left: 16px;
 `;
 
-const DeleteIcon = styled(Button)`
+const DeleteIcon = styled.button`
   position: absolute;
   top: 9px;
   right: 18px;
@@ -89,7 +87,7 @@ const MobileBlock = styled(TabletView)`
   }
 `;
 
-const MobileIcon = styled(Button)`
+const MobileIcon = styled.button`
   width: 24px;
   height: 24px;
 `;

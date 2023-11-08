@@ -5,8 +5,6 @@ import React from 'react';
 import Slider from 'react-slick';
 import { HomeDataContext } from '~/context/HomeDataProvier';
 
-import Button from '../common/Button';
-
 const MainBanner = () => {
   const slickRef = useRef<Slider>(null);
   const data = useContext(HomeDataContext);
@@ -50,7 +48,7 @@ const Block = styled.div`
   position: relative;
 `;
 
-const ArrowButton = styled(Button)`
+const ArrowButton = styled.button`
   display: block;
   position: absolute;
   bottom: 40px;

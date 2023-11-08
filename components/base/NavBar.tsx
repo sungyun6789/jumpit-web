@@ -6,7 +6,6 @@ import { signOut, useSession } from 'next-auth/react';
 import { useState } from 'react';
 import { DesktopView } from '~/styles/breakpoint';
 
-import Button from '../common/Button';
 import AuthModal from '../modal/AuthModal';
 
 const NavBar = () => {
@@ -173,7 +172,7 @@ const LI = styled.li`
   }
 `;
 
-const UserNameButton = styled(Button)`
+const UserNameButton = styled.button`
   width: 60px;
   padding: 10px 0;
   font-size: 15px;
