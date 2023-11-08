@@ -191,7 +191,7 @@ const ThumbsUpBox = styled.div`
   align-items: center;
   width: 32px;
   height: 32px;
-  background-color: #00dd6d;
+  background-color: ${COLORS.primary};
   border-radius: 100%;
 
   @media (max-width: 600px) {
