@@ -3,8 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Fragment } from 'react';
 import COLORS from '~/constants/colors';
-
-import { _2022_CLIP, _2023_CLIP } from './BookConcertClipReplay.data';
+import { _2022_CLIP, _2023_CLIP } from '~/mock/clip';
 
 const BookConcertClipReplay = () => {
   return (
