@@ -62,10 +62,10 @@ const ArrowButton = styled.button`
 
 const LeftArrowButton = styled(ArrowButton)`
   left: 50px;
-  background-image: url(https://www.jumpit.co.kr/App/build/static/media/btn-prev.85cf9174.svg);
+  background-image: url(https://www.jumpit.co.kr/assets/images/btn-prev.svg);
 
   :hover {
-    background-image: url(https://www.jumpit.co.kr/App/build/static/media/btn-prev-hover.9185b56c.svg);
+    background-image: url(https://www.jumpit.co.kr/assets/images/btn-prev-hover.svg);
   }
 
   @media (max-width: 600px) {
@@ -75,10 +75,10 @@ const LeftArrowButton = styled(ArrowButton)`
 
 const RightArrowButton = styled(ArrowButton)`
   left: 110px;
-  background-image: url(https://www.jumpit.co.kr/App/build/static/media/btn-next.6acd9890.svg);
+  background-image: url(https://www.jumpit.co.kr/assets/images/btn-next.svg);
 
   :hover {
-    background-image: url(https://www.jumpit.co.kr/App/build/static/media/btn-next-hover.ed6f22cf.svg);
+    background-image: url(https://www.jumpit.co.kr/assets/images/btn-next-hover.svg);
   }
 
   @media (max-width: 600px) {
