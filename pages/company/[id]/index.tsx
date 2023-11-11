@@ -1,7 +1,14 @@
 import styled from '@emotion/styled';
+import CompanyInfoProvier from '~/context/CompanyInfoProvider';
 
 const CompanyPage = () => {
-  return <Block>회사 상세 페이지</Block>;
+  return (
+    <Block>
+      <CompanyInfoProvier>
+        <div>회사 상세 페이지</div>
+      </CompanyInfoProvier>
+    </Block>
+  );
 };
 
 export default CompanyPage;
