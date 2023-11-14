@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import CompanyOverview from '~/components/company/CompanyOverview';
 import CompanyPositionCardList from '~/components/company/CompanyPositionCardList';
 import CompanyTitle from '~/components/company/CompanyTitle';
 import CompanyInfoProvier from '~/context/CompanyInfoProvider';
@@ -10,6 +11,7 @@ const CompanyPage = () => {
         <Content>
           <CompanyTitle />
           <CompanyPositionCardList />
+          <CompanyOverview />
         </Content>
       </CompanyInfoProvier>
     </Block>
