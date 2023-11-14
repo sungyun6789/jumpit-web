@@ -48,6 +48,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react", "npm:18.2.0"],\
             ["react-dom", "virtual:0147e901ac5cc9633cbed952cf5dab488e44813b6eaaf1a588821cce4368d41489625542c320d5b20d234b9e9fd47e45b10e81ad901e7c3adb64d05cfd7754ab#npm:18.2.0"],\
             ["react-intersection-observer", "virtual:0147e901ac5cc9633cbed952cf5dab488e44813b6eaaf1a588821cce4368d41489625542c320d5b20d234b9e9fd47e45b10e81ad901e7c3adb64d05cfd7754ab#npm:9.5.2"],\
+            ["react-simple-image-viewer", "virtual:0147e901ac5cc9633cbed952cf5dab488e44813b6eaaf1a588821cce4368d41489625542c320d5b20d234b9e9fd47e45b10e81ad901e7c3adb64d05cfd7754ab#npm:1.2.2"],\
             ["react-slick", "virtual:0147e901ac5cc9633cbed952cf5dab488e44813b6eaaf1a588821cce4368d41489625542c320d5b20d234b9e9fd47e45b10e81ad901e7c3adb64d05cfd7754ab#npm:0.29.0"],\
             ["slick-carousel", "virtual:0147e901ac5cc9633cbed952cf5dab488e44813b6eaaf1a588821cce4368d41489625542c320d5b20d234b9e9fd47e45b10e81ad901e7c3adb64d05cfd7754ab#npm:1.8.1"],\
             ["typescript", "patch:typescript@npm%3A5.0.4#~builtin<compat/typescript>::version=5.0.4&hash=85af82"]\
@@ -3007,6 +3008,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react", "npm:18.2.0"],\
             ["react-dom", "virtual:0147e901ac5cc9633cbed952cf5dab488e44813b6eaaf1a588821cce4368d41489625542c320d5b20d234b9e9fd47e45b10e81ad901e7c3adb64d05cfd7754ab#npm:18.2.0"],\
             ["react-intersection-observer", "virtual:0147e901ac5cc9633cbed952cf5dab488e44813b6eaaf1a588821cce4368d41489625542c320d5b20d234b9e9fd47e45b10e81ad901e7c3adb64d05cfd7754ab#npm:9.5.2"],\
+            ["react-simple-image-viewer", "virtual:0147e901ac5cc9633cbed952cf5dab488e44813b6eaaf1a588821cce4368d41489625542c320d5b20d234b9e9fd47e45b10e81ad901e7c3adb64d05cfd7754ab#npm:1.2.2"],\
             ["react-slick", "virtual:0147e901ac5cc9633cbed952cf5dab488e44813b6eaaf1a588821cce4368d41489625542c320d5b20d234b9e9fd47e45b10e81ad901e7c3adb64d05cfd7754ab#npm:0.29.0"],\
             ["slick-carousel", "virtual:0147e901ac5cc9633cbed952cf5dab488e44813b6eaaf1a588821cce4368d41489625542c320d5b20d234b9e9fd47e45b10e81ad901e7c3adb64d05cfd7754ab#npm:1.8.1"],\
             ["typescript", "patch:typescript@npm%3A5.0.4#~builtin<compat/typescript>::version=5.0.4&hash=85af82"]\
@@ -3756,6 +3758,32 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/react-is-npm-16.13.1-a9b9382b4f-f7a19ac349.zip/node_modules/react-is/",\
           "packageDependencies": [\
             ["react-is", "npm:16.13.1"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["react-simple-image-viewer", [\
+        ["npm:1.2.2", {\
+          "packageLocation": "./.yarn/cache/react-simple-image-viewer-npm-1.2.2-9a70c9f352-2e5e41d0f7.zip/node_modules/react-simple-image-viewer/",\
+          "packageDependencies": [\
+            ["react-simple-image-viewer", "npm:1.2.2"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:0147e901ac5cc9633cbed952cf5dab488e44813b6eaaf1a588821cce4368d41489625542c320d5b20d234b9e9fd47e45b10e81ad901e7c3adb64d05cfd7754ab#npm:1.2.2", {\
+          "packageLocation": "./.yarn/__virtual__/react-simple-image-viewer-virtual-5a57c9429f/0/cache/react-simple-image-viewer-npm-1.2.2-9a70c9f352-2e5e41d0f7.zip/node_modules/react-simple-image-viewer/",\
+          "packageDependencies": [\
+            ["react-simple-image-viewer", "virtual:0147e901ac5cc9633cbed952cf5dab488e44813b6eaaf1a588821cce4368d41489625542c320d5b20d234b9e9fd47e45b10e81ad901e7c3adb64d05cfd7754ab#npm:1.2.2"],\
+            ["@types/react", "npm:18.2.20"],\
+            ["@types/react-dom", "npm:18.2.7"],\
+            ["react", "npm:18.2.0"],\
+            ["react-dom", "virtual:0147e901ac5cc9633cbed952cf5dab488e44813b6eaaf1a588821cce4368d41489625542c320d5b20d234b9e9fd47e45b10e81ad901e7c3adb64d05cfd7754ab#npm:18.2.0"]\
+          ],\
+          "packagePeers": [\
+            "@types/react-dom",\
+            "@types/react",\
+            "react-dom",\
+            "react"\
           ],\
           "linkType": "HARD"\
         }]\
