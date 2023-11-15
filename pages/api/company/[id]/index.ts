@@ -30,13 +30,14 @@ export interface CompanyInfoResponse {
       serviceUrl: string;
       description: string;
     };
-    companyTags: [
-      {
-        id: string;
-        name: string;
-      }
-    ];
-    techStacks: [];
+    companyTags: {
+      id: string;
+      name: string;
+    }[];
+    techStacks: {
+      imagePath: string;
+      stack: string;
+    }[];
     itCompanyStories: [];
     profileImages: {
       imagePath: string;
