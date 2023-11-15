@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import CompanyBenefit from '~/components/company/CompanyBenefit';
 import CompanyHead from '~/components/company/CompanyHead';
 import CompanyOverview from '~/components/company/CompanyOverview';
 import CompanyPositionCardList from '~/components/company/CompanyPositionCardList';
@@ -16,6 +17,7 @@ const CompanyPage = () => {
           <CompanyPositionCardList />
           <CompanyTechStack />
           <CompanyOverview />
+          <CompanyBenefit />
         </Content>
       </Block>
     </CompanyInfoProvier>
