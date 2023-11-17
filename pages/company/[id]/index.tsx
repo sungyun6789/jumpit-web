@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import CompanyAddress from '~/components/company/CompanyAddress';
 import CompanyBenefit from '~/components/company/CompanyBenefit';
 import CompanyHead from '~/components/company/CompanyHead';
 import CompanyOverview from '~/components/company/CompanyOverview';
@@ -18,6 +19,7 @@ const CompanyPage = () => {
           <CompanyTechStack />
           <CompanyOverview />
           <CompanyBenefit />
+          <CompanyAddress />
         </Content>
       </Block>
     </CompanyInfoProvier>
