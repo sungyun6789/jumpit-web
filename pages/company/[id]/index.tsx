@@ -4,6 +4,7 @@ import CompanyBenefit from '~/components/company/CompanyBenefit';
 import CompanyHead from '~/components/company/CompanyHead';
 import CompanyOverview from '~/components/company/CompanyOverview';
 import CompanyPositionCardList from '~/components/company/CompanyPositionCardList';
+import CompanyRecommendTagList from '~/components/company/CompanyRecommendTagList';
 import CompanyTechStack from '~/components/company/CompanyTechStack';
 import CompanyTitle from '~/components/company/CompanyTitle';
 import CompanyInfoProvier from '~/context/CompanyInfoProvider';
@@ -22,6 +23,7 @@ const CompanyPage = () => {
           <CompanyAddress />
         </Content>
       </Block>
+      <CompanyRecommendTagList />
     </CompanyInfoProvier>
   );
 };
