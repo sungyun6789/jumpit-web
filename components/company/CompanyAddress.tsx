@@ -59,6 +59,7 @@ const LI = styled.li`
 const MAPView = styled(Link)`
   color: #888888;
   line-height: 24px;
+  font-size: 16px;
 
   ::before {
     content: '';
