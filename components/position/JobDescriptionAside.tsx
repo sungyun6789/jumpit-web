@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 import { useContext, useEffect, useState } from 'react';
 import COLORS from '~/constants/colors';
 import { JobDescriptionContext } from '~/context/JobDescriptionProvider';
+import copyUrlToClipboard from '~/utils/copyUrlToClipboard';
 
 interface Props {
   contentHeight: number;
@@ -24,6 +25,10 @@ const JobDescriptionAside = ({ contentHeight }: Props) => {
     setIsPassOver(window.scrollY > contentHeight - 536);
   };
 
+  const onClick = () => {
+    copyUrlToClipboard(location.href, 'URL이 복사되었습니다. 많이 공유해주세요:)');
+  };
+
   useEffect(() => {
     if (contentHeight) {
       window.addEventListener('scroll', onScroll);
@@ -32,11 +37,6 @@ const JobDescriptionAside = ({ contentHeight }: Props) => {
   }, [contentHeight]);
 
   if (!data) return null;
-
-  const copyUrlToClipboard = async () => {
-    await window.navigator.clipboard.writeText(location.href);
-    alert('URL이 복사되었습니다. 많이 공유해주세요:)');
-  };
 
   return (
     <Block isPassOver={isPassOver}>
@@ -62,7 +62,7 @@ const JobDescriptionAside = ({ contentHeight }: Props) => {
         {/* @todo 로그인 기능 구현시 지원하기 기능 추가 */}
         <Button>지원하기</Button>
         <StyledUL>
-          <StyledLI onClick={copyUrlToClipboard}>
+          <StyledLI onClick={onClick}>
             <Icon url="https://www.jumpit.co.kr/App/build/static/media/ic_share.8dfaacd7.svg" />
             <IconText>공유</IconText>
           </StyledLI>
@@ -89,10 +89,7 @@ const JobDescriptionAside = ({ contentHeight }: Props) => {
         <IconList>
           {/* @todo 로그인 기능 구현시 스크랩 기능 추가 */}
           <Icon url="https://www.jumpit.co.kr/App/build/static/media/bookmark-bold.c7f2154f.svg" />
-          <Icon
-            url="https://www.jumpit.co.kr/App/build/static/media/ico_share.100efa38.svg"
-            onClick={copyUrlToClipboard}
-          />
+          <Icon url="https://www.jumpit.co.kr/App/build/static/media/ico_share.100efa38.svg" onClick={onClick} />
           {/* @todo ai 인터뷰 페이지 개발 후 주소 변경 필요 */}
           <Link
             href="https://www.jumpit.co.kr/ai-interview?url=https://www.jumpit.co.kr/position/19797"

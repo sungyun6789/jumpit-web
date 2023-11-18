@@ -3,17 +3,11 @@ import Link from 'next/link';
 import { useContext } from 'react';
 import COLORS from '~/constants/colors';
 import { CompanyInfoContext } from '~/context/CompanyInfoProvider';
+import copyUrlToClipboard from '~/utils/copyUrlToClipboard';
 
 const CompanyAddress = () => {
   const data = useContext(CompanyInfoContext);
   const companyAddress = data?.companyAddress;
-
-  const copyUrlToClipboard = async () => {
-    if (companyAddress) {
-      await window.navigator.clipboard.writeText(companyAddress);
-      alert('주소가 복사되었습니다');
-    }
-  };
 
   return (
     <Block>
@@ -25,7 +19,9 @@ const CompanyAddress = () => {
             지도보기
           </MAPView>
           <Spot>·</Spot>
-          <CopyAddress onClick={copyUrlToClipboard}>주소복사</CopyAddress>
+          <CopyAddress onClick={() => copyUrlToClipboard(companyAddress, '주소가 복사되었습니다')}>
+            주소복사
+          </CopyAddress>
         </LI>
       </UL>
     </Block>
