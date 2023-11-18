@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import CompanyAddress from '~/components/company/CompanyAddress';
+import CompanyAside from '~/components/company/CompanyAside';
 import CompanyBenefit from '~/components/company/CompanyBenefit';
 import CompanyHead from '~/components/company/CompanyHead';
 import CompanyOverview from '~/components/company/CompanyOverview';
@@ -21,6 +22,7 @@ const CompanyPage = () => {
           <CompanyOverview />
           <CompanyBenefit />
           <CompanyAddress />
+          <CompanyAside />
         </Content>
       </Block>
       <CompanyRecommendTagList />
