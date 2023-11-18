@@ -46,6 +46,10 @@ const Layout = styled.div`
   max-width: 1080px;
   margin: 0 auto;
   padding: 40px 0 56px;
+
+  @media (max-width: 1080px) {
+    padding: 40px 16px 56px;
+  }
 `;
 
 const Title = styled.h2`

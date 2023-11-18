@@ -34,6 +34,10 @@ const Block = styled.section`
   border-top: 1px solid #e4e4e4;
   padding-top: 40px;
   margin-bottom: 56px;
+
+  @media (max-width: 1080px) {
+    padding-top: 56px;
+  }
 `;
 
 const Title = styled.h2`

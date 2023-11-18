@@ -1,20 +1,35 @@
 import styled from '@emotion/styled';
 import Image from 'next/image';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import ImageViewer from 'react-simple-image-viewer';
 import { CompanyInfoContext } from '~/context/CompanyInfoProvider';
+import getDeviceType from '~/utils/getDeviceType';
 
 /** 뷰어를 사용하지 않고 처음 화면에 보여줄 이미지 목록 길이 */
-const IMAGE_LENGTH = 3;
+const IMAGE_LENGTH = {
+  desktop: 3,
+  tablet: 4,
+  mobile: null,
+};
 
 const CompanyOverview = () => {
+  const [deviceType, setDeviceType] = useState<'mobile' | 'tablet' | 'desktop'>('desktop');
   const [isDescriptionOpen, setIsDescriptionOpen] = useState(false);
   const [isViewerOpen, setIsViewerOpen] = useState(false);
   const [currentImage, setCurrentImage] = useState(0);
 
   const data = useContext(CompanyInfoContext);
-  const images = data?.profileImages.slice(0, IMAGE_LENGTH);
-  const allImages = (data?.profileImages ?? []).map((profile) => profile.imagePath);
+
+  const onResize = () => setDeviceType(getDeviceType() ?? 'desktop');
+
+  useEffect(() => {
+    onResize();
+
+    window.addEventListener('resize', onResize);
+    return () => {
+      window.removeEventListener('resize', onResize);
+    };
+  }, []);
 
   const openImageViewer = (index: number) => {
     setCurrentImage(index);
@@ -25,6 +40,11 @@ const CompanyOverview = () => {
     setCurrentImage(0);
     setIsViewerOpen(false);
   };
+
+  if (!data) return null;
+
+  const images = deviceType === 'mobile' ? data.profileImages : data.profileImages.slice(0, IMAGE_LENGTH[deviceType]);
+  const allImages = data.profileImages.map((profile) => profile.imagePath);
 
   return (
     <>
@@ -48,10 +68,10 @@ const CompanyOverview = () => {
         </ButtonWrap>
 
         <CompanyImageWrap>
-          {images?.map((profile, index) => (
+          {images.map((profile, index) => (
             <PositionBlock key={profile.imagePath} onClick={() => openImageViewer(index)}>
               <CompanyImage src={profile.imagePath} width={202} height={134} alt="회사 이미지" />
-              {index + 1 === IMAGE_LENGTH && <MoreCnt>+ {allImages.length - images.length}</MoreCnt>}
+              {index + 1 === IMAGE_LENGTH[deviceType] && <MoreCnt>+ {allImages.length - images.length}</MoreCnt>}
             </PositionBlock>
           ))}
         </CompanyImageWrap>
@@ -152,18 +172,36 @@ const Icon = styled(Image)<{ open: boolean }>`
 `;
 
 const CompanyImageWrap = styled.div`
+  position: relative;
   display: flex;
   gap: 12px;
   margin-top: 24px;
+
+  @media (max-width: 600px) {
+    overflow-x: scroll;
+    gap: 10px;
+  }
 `;
 
 const CompanyImage = styled(Image)`
   object-fit: cover;
   border-radius: 4px;
   cursor: pointer;
+
+  @media (max-width: 1080px) {
+    width: 100%;
+    flex: 1;
+    height: 114px;
+  }
+
+  @media (max-width: 600px) {
+    width: 150px;
+    height: 98px;
+  }
 `;
 
 const PositionBlock = styled.div`
+  width: 100%;
   position: relative;
 `;
 

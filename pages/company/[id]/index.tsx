@@ -21,8 +21,8 @@ const CompanyPage = () => {
           <CompanyTechStack />
           <CompanyOverview />
           <CompanyBenefit />
-          <CompanyAddress />
           <CompanyAside />
+          <CompanyAddress />
         </Content>
       </Block>
       <CompanyRecommendTagList />
@@ -37,8 +37,22 @@ const Block = styled.section`
   padding: 60px 0 80px;
   max-width: 1060px;
   margin: 0 auto;
+
+  @media (max-width: 1080px) {
+    padding: 40px 0 100px;
+  }
+
+  @media (max-width: 600px) {
+    padding: 32px 0 44px;
+  }
 `;
 
 const Content = styled.div`
   width: 630px;
+
+  @media (max-width: 1080px) {
+    width: 100%;
+    max-width: calc(100% - 32px);
+    margin: 0 16px;
+  }
 `;

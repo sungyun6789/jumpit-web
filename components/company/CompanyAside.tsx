@@ -11,36 +11,65 @@ const CompanyAside = () => {
   if (!data) return null;
 
   return (
-    <Block>
-      <FlexBox>
-        <Logo src={data.companyLogo} width={74} height={74} alt="로고" />
-        <Title>{data.companyName}</Title>
-        <UL>
-          <LI>
-            <LikeButton>좋아요</LikeButton>
-          </LI>
-          <LI>
-            <ShareButton>공유</ShareButton>
-          </LI>
-        </UL>
-      </FlexBox>
-      <CompanyInfo>
-        <DT>업력</DT>
-        <DD>{data.companyPeriod} 년차</DD>
-        <DT>주요 서비스</DT>
-        <DD>
-          <ServiceLink href={data.companyService.serviceUrl} target="_blank">
-            {data.companyService.serviceName}
-          </ServiceLink>
-        </DD>
-      </CompanyInfo>
-    </Block>
+    <>
+      <PCBlock>
+        <FlexBox>
+          <Logo src={data.companyLogo} width={74} height={74} alt="로고" />
+          <Title>{data.companyName}</Title>
+          <UL>
+            <LI>
+              <LikeButton>좋아요</LikeButton>
+            </LI>
+            <LI>
+              <ShareButton>공유</ShareButton>
+            </LI>
+          </UL>
+        </FlexBox>
+        <CompanyInfo>
+          <DT>업력</DT>
+          <DD>{data.companyPeriod} 년차</DD>
+          <DT>주요 서비스</DT>
+          <DD>
+            <ServiceLink href={data.companyService.serviceUrl} target="_blank">
+              {data.companyService.serviceName}
+            </ServiceLink>
+          </DD>
+        </CompanyInfo>
+      </PCBlock>
+
+      <MobileBlock>
+        <FlexBox>
+          <Logo src={data.companyLogo} width={74} height={74} alt="로고" />
+          <MobileFlexBox>
+            <Title>{data.companyName}</Title>
+            <UL>
+              <LI>
+                <LikeButton>좋아요</LikeButton>
+              </LI>
+              <LI>
+                <ShareButton>공유</ShareButton>
+              </LI>
+            </UL>
+          </MobileFlexBox>
+        </FlexBox>
+        <CompanyInfo>
+          <DT>업력</DT>
+          <DD>{data.companyPeriod} 년차</DD>
+          <DT>주요 서비스</DT>
+          <DD>
+            <ServiceLink href={data.companyService.serviceUrl} target="_blank">
+              {data.companyService.serviceName}
+            </ServiceLink>
+          </DD>
+        </CompanyInfo>
+      </MobileBlock>
+    </>
   );
 };
 
 export default CompanyAside;
 
-const Block = styled.aside`
+const PCBlock = styled.aside`
   width: 340px;
   position: fixed;
   right: calc((100% - 1060px) / 2);
@@ -48,6 +77,20 @@ const Block = styled.aside`
   border: 1px solid #e4e4e4;
   border-radius: 4px;
   padding: 32px;
+
+  @media (max-width: 1080px) {
+    display: none;
+  }
+`;
+
+const MobileBlock = styled.div`
+  display: none;
+
+  @media (max-width: 1080px) {
+    display: block;
+    padding-top: 24px;
+    border-top: 1px solid #eaeaea;
+  }
 `;
 
 const FlexBox = styled.div`
@@ -55,11 +98,35 @@ const FlexBox = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  @media (max-width: 1080px) {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    width: 100%;
+  }
+`;
+
+const MobileFlexBox = styled.div`
+  display: flex;
+  align-items: center;
+  width: 100%;
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+    align-items: unset;f
+  }
 `;
 
 const Logo = styled(Image)`
   border-radius: 100px;
   border: 1px solid #e4e4e4;
+
+  @media (max-width: 1080px) {
+    margin-right: 24px;
+    width: 64px;
+    height: 64px;
+  }
 `;
 
 const Title = styled.h2`
@@ -68,6 +135,10 @@ const Title = styled.h2`
   font-size: 20px;
   line-height: 32px;
   letter-spacing: -0.5px;
+
+  @media (max-width: 1080px) {
+    margin: 0 auto 4px 0;
+  }
 `;
 
 const UL = styled.ul`
@@ -82,11 +153,21 @@ const UL = styled.ul`
     height: 10px;
     background: #eaeaea;
   }
+
+  @media (max-width: 1080px) {
+    margin-top: 12px;
+  }
 `;
 
 const LI = styled.li`
   position: relative;
   padding: 0 16px;
+
+  @media (max-width: 1080px) {
+    :first-of-type {
+      padding: 0 16px 0 0;
+    }
+  }
 `;
 
 const Button = styled.button`
@@ -129,6 +210,11 @@ const CompanyInfo = styled.dl`
   border-top: 1px solid #e4e4e4;
   margin-top: 24px;
   padding-top: 24px;
+
+  @media (max-width: 1080px) {
+    width: 100%;
+    padding: 26px 0 24px;
+  }
 `;
 
 const DT = styled.dt`
@@ -138,6 +224,15 @@ const DT = styled.dt`
   font-size: 15px;
   line-height: 24px;
   letter-spacing: -0.5px;
+
+  @media (max-width: 1080px) {
+    flex: 1 1 11%;
+    margin: 6px 0;
+  }
+
+  @media (max-width: 600px) {
+    flex: 1 1 33%;
+  }
 `;
 
 const DD = styled.dd`
@@ -147,6 +242,15 @@ const DD = styled.dd`
   font-size: 15px;
   line-height: 24px;
   letter-spacing: -0.5px;
+
+  @media (max-width: 1080px) {
+    flex: 1 1 80%;
+    margin: 6px 0;
+  }
+
+  @media (max-width: 600px) {
+    flex: 1 1 67%;
+  }
 `;
 
 const ServiceLink = styled(Link)`

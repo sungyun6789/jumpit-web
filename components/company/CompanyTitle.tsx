@@ -32,6 +32,10 @@ const Title = styled.h1`
   font-weight: 700;
   font-size: 40px;
   line-height: 1.25;
+
+  @media (max-width: 600px) {
+    font-size: 32px;
+  }
 `;
 
 const Tag = styled(Link)`

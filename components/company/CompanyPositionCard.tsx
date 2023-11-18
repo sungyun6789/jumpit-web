@@ -54,6 +54,17 @@ const Block = styled.div`
   width: 100%;
   margin-bottom: 16px;
   border: 1px solid #e4e4e4;
+
+  @media (max-width: 1080px) {
+    max-width: calc(50% - 6px);
+    margin: 0 0 16px;
+  }
+
+  @media (max-width: 600px) {
+    max-width: unset;
+    min-height: 158px;
+    margin: 0 0 12px;
+  }
 `;
 
 const CardHeader = styled.div`
