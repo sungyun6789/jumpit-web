@@ -23,7 +23,7 @@ const WeeklyPickPosition = () => {
 export default WeeklyPickPosition;
 
 const Block = styled.section`
-  margin: 100px auto 0px;
+  margin: 64px auto 0px;
   max-width: 1080px;
 
   @media (max-width: 1080px) {
@@ -36,6 +36,7 @@ const TitleBox = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 0 10px;
+  margin-bottom: 6px;
 
   @media (max-width: 1080px) {
     padding: 0 16px;
