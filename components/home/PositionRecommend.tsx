@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import Image from 'next/image';
+import { useSession } from 'next-auth/react';
 import { useContext } from 'react';
 import COLORS from '~/constants/colors';
 import { HomeDataContext } from '~/context/HomeDataProvier';
@@ -8,24 +9,24 @@ import { noto } from '~/pages/_app';
 import PositionCardList from '../position/PositionCardList';
 
 const PositionRecommend = () => {
-  const data = useContext(HomeDataContext);
-  const isLogin = true;
+  const context = useContext(HomeDataContext);
+  const { data } = useSession();
 
-  return isLogin ? (
+  return data?.user ? (
     <Block>
       <TitleBox>
         <Title>
           <ThumbsUpBox>
             <Image src="/thumbs_up_icon.svg" width={16} height={16} alt="" />
           </ThumbsUpBox>
-          박성윤님을 위한 추천!
+          {data.user.name}님을 위한 추천!
         </Title>
         <RecommendAlarmButton className={noto.className}>
           <Image src="/alarm_icon.svg" width={18} height={18} alt="recommend alarm" />
         </RecommendAlarmButton>
       </TitleBox>
 
-      <PositionCardList data={data?.newlyPositions.positions} />
+      <PositionCardList data={context?.newlyPositions.positions} />
     </Block>
   ) : (
     <UnLoginBlock>
