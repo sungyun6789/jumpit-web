@@ -20,7 +20,7 @@ const NavBar = () => {
         <NavUL>
           <li>
             <NavLink href="/positions" selected={pathname === '/positions'}>
-              직무 탐색
+              개발자 채용
             </NavLink>
           </li>
 
@@ -135,6 +135,10 @@ const NavUL = styled(UL)`
 
 const AuthUL = styled(UL)`
   margin-right: -12px;
+
+  li {
+    margin: 0 12px;
+  }
 `;
 
 const NavLink = styled(Link)<{ selected: boolean }>`
@@ -156,7 +160,6 @@ const AuthNav = styled.div`
 `;
 
 const LI = styled.li`
-  padding: 0 12px;
   font-weight: 500;
   line-height: 24px;
   color: #222222;

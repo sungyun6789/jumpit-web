@@ -63,7 +63,7 @@ const PositionsPage = () => {
         <title>점핏 | 개발 직무 탐색</title>
       </Head>
       <TagLayout>
-        <JobCategoryTag title="직무 탐색" resetPage={resetPage} />
+        <JobCategoryTag title="개발 직무 탐색" resetPage={resetPage} />
         <TechStackTag resetPage={resetPage} />
       </TagLayout>
       <PositionLayout>
