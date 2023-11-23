@@ -59,6 +59,7 @@ const NoticeBox = styled.div`
 const Title = styled.h1`
   color: ${COLORS.primary};
   font-size: 13px;
+  line-height: 24px;
 
   @media (max-width: 1080px) {
     width: 70px;
@@ -68,7 +69,7 @@ const Title = styled.h1`
 const List = styled.div`
   display: flex;
   justify-content: space-between;
-  margin-top: 18px;
+  margin-top: 6px;
 
   @media (max-width: 1080px) {
     max-width: calc(100% - 50px);

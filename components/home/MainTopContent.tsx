@@ -32,5 +32,5 @@ const Block = styled.section`
   display: flex;
   justify-content: space-between;
   width: 1060px;
-  margin: 40px auto 0;
+  margin: 40px auto 64px;
 `;
