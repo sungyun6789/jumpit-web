@@ -4,7 +4,7 @@ import axios from 'axios';
 import { useRef, useState } from 'react';
 import Slider from 'react-slick';
 
-import { NextArrowButton, PrevArrowButton } from '../common/ArrowButton';
+import { PrevArrowButton } from '../common/ArrowButton';
 
 import type { ThemeBannerResponse } from '~/pages/api/themes/banners/home';
 
