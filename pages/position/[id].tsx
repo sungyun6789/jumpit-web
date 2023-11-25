@@ -1,6 +1,6 @@
+import styled from '@emotion/styled';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import JobDescriptionLayout from '~/components/layout/JobDescriptionLayout';
 import JobDescription from '~/components/position/JobDescription';
 import JobDescriptionAside from '~/components/position/JobDescriptionAside';
 import JobDescriptionEvent from '~/components/position/JobDescriptionEvent';
@@ -35,12 +35,12 @@ const PositionPage = () => {
       <JobDescriptionProvier>
         <JobDescriptionHead />
         <JobDescriptionEvent />
-        <JobDescriptionLayout>
+        <Block>
           <div className="jd">
             <JobDescription />
           </div>
           <JobDescriptionAside contentHeight={height} />
-        </JobDescriptionLayout>
+        </Block>
       </JobDescriptionProvier>
       <SimilarPositionList />
       <JobDescriptionMobileBanner />
@@ -49,3 +49,18 @@ const PositionPage = () => {
 };
 
 export default PositionPage;
+
+const Block = styled.div`
+  position: relative;
+  padding: 60px 0 24px;
+  max-width: 1060px;
+  margin: 0 auto;
+
+  @media (max-width: 1080px) {
+    padding: 40px 0 110px;
+  }
+
+  @media (max-width: 600px) {
+    padding: 32px 0 80px;
+  }
+`;

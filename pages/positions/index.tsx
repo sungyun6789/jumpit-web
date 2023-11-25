@@ -1,11 +1,10 @@
+import styled from '@emotion/styled';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useCallback, useEffect, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
-import PositionLayout from '~/components/layout/PositionLayout';
-import TagLayout from '~/components/layout/TagLayout';
 import PositionCardList from '~/components/position/PositionCardList';
 import PositionSearchDetailTag from '~/components/position/PositionSearchDetailTag';
 import PositionSearchSortType from '~/components/position/PositionSearchSortType';
@@ -77,3 +76,21 @@ const PositionsPage = () => {
 };
 
 export default PositionsPage;
+
+const TagLayout = styled.div`
+  max-width: 1060px;
+  margin: 32px auto 50px;
+
+  @media (max-width: 1080px) {
+    margin: 32px auto 30px 16px;
+  }
+`;
+
+const PositionLayout = styled.div`
+  background-color: #f7f7f7;
+  padding: 40px 0 80px 0;
+
+  @media (max-width: 1080px) {
+    padding: 0;
+  }
+`;
