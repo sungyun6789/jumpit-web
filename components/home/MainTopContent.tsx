@@ -1,8 +1,7 @@
 import styled from '@emotion/styled';
 import { DesktopView, TabletView } from '~/styles/breakpoint';
 
-import AuthProfile from '../auth/AuthProfile';
-
+import AuthProfile from './AuthProfile';
 import MainBanner from './MainBanner';
 import Notice from './Notice';
 
