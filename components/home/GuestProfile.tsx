@@ -1,27 +1,28 @@
 import styled from '@emotion/styled';
 import Image from 'next/image';
+import Link from 'next/link';
 import { signIn } from 'next-auth/react';
-
-const SOCIALS = ['naver', 'google', 'github', 'apple'];
 
 const GuestProfile = () => {
   return (
     <Block>
       <Content>
-        <Description>회원가입/로그인하고</Description>
-        <Description>점핏의 다양한 혜택을 만나보세요.</Description>
+        <Description>
+          점핏 앱 다운로드 하고
+          <br />
+          편리하게 이용해보세요.
+        </Description>
 
-        <Button onClick={() => signIn('google')}>회원가입 / 로그인</Button>
+        <Store>
+          <Image src="/app_store.svg" width={78} height={16} alt="앱 스토어" />
+          <Image src="/google_play.svg" width={92} height={16} alt="구글 플레이" />
+        </Store>
 
-        <SNSBox>
-          <SNSTitle>SNS로 3초만에 로그인</SNSTitle>
-          {SOCIALS.map((social) => (
-            // @todo 플랫폼별 로그인 지원
-            <SNSButton key={social} type="button" onClick={() => signIn('google')}>
-              <Image src={social + '_logo.svg'} width={32} height={44} alt={social + 'login'} />
-            </SNSButton>
-          ))}
-        </SNSBox>
+        <QRCode src="https://www.jumpit.co.kr/assets/ic_qr_code.svg" width={80} height={80} alt="큐알 코드" />
+
+        <Link href="/login">
+          <Button>회원가입 / 로그인</Button>
+        </Link>
       </Content>
     </Block>
   );
@@ -30,6 +31,7 @@ const GuestProfile = () => {
 export default GuestProfile;
 
 const Block = styled.div`
+  position: relative;
   width: 340px;
   padding: 32px 20px 20px;
   border: 1px solid #e4e4e4;
@@ -43,37 +45,40 @@ const Content = styled.div`
 
 const Description = styled.p`
   font-size: 17px;
+  font-weight: 500;
+  line-height: 24px;
   color: #222222;
   margin-bottom: 5px;
 `;
 
+const Store = styled.div`
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  gap: 17px;
+`;
+
+const QRCode = styled(Image)`
+  position: absolute;
+  top: 32px;
+  right: 20px;
+`;
+
 const Button = styled.button`
   width: 100%;
-  height: 48px;
-  margin-top: 15px;
-  color: #fff;
-  line-height: 46px;
+  margin-top: 28px;
   border: 1px solid #000;
-  border-radius: 3px;
   background-color: #000;
   cursor: pointer;
-`;
+  border-radius: 8px;
 
-const SNSBox = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 20px;
-`;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 46px;
 
-const SNSTitle = styled.h2`
-  color: #666666;
-  font-size: 14px;
-  font-weight: 500;
-`;
-
-const SNSButton = styled.button`
-  border: none;
-  background: none;
-  cursor: pointer;
+  :hover {
+    background-color: #333333;
+    border-color: #333333;
+  }
 `;
