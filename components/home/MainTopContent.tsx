@@ -1,9 +1,9 @@
 import styled from '@emotion/styled';
 import { DesktopView, TabletView } from '~/styles/breakpoint';
 
-import AuthProfile from './AuthProfile';
 import MainBanner from './MainBanner';
 import Notice from './Notice';
+import UserProfile from './UserProfile';
 
 const MainTopContent = () => {
   return (
@@ -12,7 +12,7 @@ const MainTopContent = () => {
         <Block>
           <MainBanner />
           <div>
-            <AuthProfile />
+            <UserProfile />
             <Notice />
           </div>
         </Block>
