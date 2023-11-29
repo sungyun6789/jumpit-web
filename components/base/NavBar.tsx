@@ -5,6 +5,15 @@ import { mont } from '~/pages/_app';
 
 import NavAuthBar from './NavAuthBar';
 
+const DATA = [
+  { label: '개발자 채용', url: '/positions', new: false },
+  { label: '이력서', url: '/이력서', new: false },
+  { label: '취업 Q&A', url: '/career-qna', new: false },
+  { label: '#꿀 피드', url: '/feed', new: true },
+  { label: '개발자 인터뷰', url: '/job-interview', new: false },
+  { label: '개취콘', url: '/book-concert', new: false },
+];
+
 /**
  * 네비게이션 왼쪽을 담당하는 컴포넌트
  */
@@ -12,50 +21,20 @@ const NavBar = () => {
   const { pathname } = useRouter();
 
   return (
-    <>
-      <Block>
-        <NavUL>
-          <li>
-            <NavLink href="/positions" selected={pathname === '/positions'}>
-              개발자 채용
+    <Block>
+      <NavUL>
+        {DATA.map((value) => (
+          <li key={value.url}>
+            <NavLink href={value.url} selected={pathname === value.url}>
+              {value.label}
+              {value.new && <NewTag className={mont.className}>N</NewTag>}
             </NavLink>
           </li>
+        ))}
+      </NavUL>
 
-          <li>
-            <NavLink href="/이력서" selected={pathname === '/이력서'}>
-              이력서
-            </NavLink>
-          </li>
-
-          <li>
-            <NavLink href="/career-qna" selected={pathname === '/career-qna'}>
-              취업 Q&A
-            </NavLink>
-          </li>
-
-          <li>
-            <NavLink href="/feed" selected={pathname === '/feed'}>
-              #꿀 피드
-              <Feed className={mont.className}>N</Feed>
-            </NavLink>
-          </li>
-
-          <li>
-            <NavLink href="/job-interview" selected={pathname === '/job-interview'}>
-              개발자 인터뷰
-            </NavLink>
-          </li>
-
-          <li>
-            <NavLink href="/book-concert" selected={pathname === '/book-concert'}>
-              개취콘
-            </NavLink>
-          </li>
-        </NavUL>
-
-        <NavAuthBar />
-      </Block>
-    </>
+      <NavAuthBar />
+    </Block>
   );
 };
 
@@ -113,7 +92,7 @@ const NavLink = styled(Link)<{ selected: boolean }>`
   }
 `;
 
-const Feed = styled.span`
+const NewTag = styled.span`
   position: absolute;
   top: 12px;
   bottom: 15px;
