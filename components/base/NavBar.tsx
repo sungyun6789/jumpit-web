@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { signOut, useSession } from 'next-auth/react';
 import { useState } from 'react';
+import { mont } from '~/pages/_app';
 import { DesktopView } from '~/styles/breakpoint';
 
 import AuthModal from '../modal/AuthModal';
@@ -24,16 +25,6 @@ const NavBar = () => {
             </NavLink>
           </li>
 
-          <RookieNavLI>
-            <NavLink href="/rookie" selected={pathname.includes('/rookie')}>
-              더. 루키
-            </NavLink>
-            <div className="sub-nav">
-              <RookieSubNavLink href="/rookie/position">절찬 채용중 👀</RookieSubNavLink>
-              <RookieSubNavLink href="/rookie/content">취업꿀팁 대방출 🔥</RookieSubNavLink>
-            </div>
-          </RookieNavLI>
-
           <li>
             <NavLink href="/이력서" selected={pathname === '/이력서'}>
               이력서
@@ -43,6 +34,13 @@ const NavBar = () => {
           <li>
             <NavLink href="/career-qna" selected={pathname === '/career-qna'}>
               취업 Q&A
+            </NavLink>
+          </li>
+
+          <li>
+            <NavLink href="/feed" selected={pathname === '/feed'}>
+              #꿀 피드
+              <Feed className={mont.className}>N</Feed>
             </NavLink>
           </li>
 
@@ -128,6 +126,12 @@ const UL = styled.ul`
 const NavUL = styled(UL)`
   gap: 40px;
 
+  li {
+    height: 44px;
+    display: flex;
+    align-items: center;
+  }
+
   @media (max-width: 1080px) {
     gap: 20px;
   }
@@ -145,6 +149,7 @@ const NavLink = styled(Link)<{ selected: boolean }>`
   position: relative;
   font-size: 16px;
   line-height: 24px;
+  height: 44px;
   letter-spacing: -0.5px;
   padding: 10px 4px;
   font-weight: ${(props) => (props.selected ? 'bold' : '400')};
@@ -213,32 +218,6 @@ const BlankLink = styled(Link)`
   color: black !important;
 `;
 
-const RookieNavLI = styled(LI)`
-  .sub-nav {
-    display: none;
-  }
-
-  @media (min-width: 1081px) {
-    :hover {
-      .sub-nav {
-        display: block;
-        position: absolute;
-        width: 175px;
-        padding: 8px 0;
-        margin: 10px 0;
-        border: 1px solid #e4e4e4;
-        border-radius: 4px;
-        background-color: #fff;
-        box-shadow: rgba(20, 20, 20, 0.12) 0px 8px 16px;
-      }
-
-      a {
-        color: #000 !important;
-      }
-    }
-  }
-`;
-
 const AuthNavLI = styled(LI)<{ isOpen: boolean }>`
   .sub-nav {
     display: ${(props) => (props.isOpen ? 'block' : 'none')};
@@ -260,14 +239,20 @@ const AuthNavLI = styled(LI)<{ isOpen: boolean }>`
   }
 `;
 
-const RookieSubNavLink = styled(Link)`
+const Feed = styled.span`
+  position: absolute;
+  top: 12px;
+  bottom: 15px;
+  right: -17px;
   display: flex;
+  justify-content: center;
   align-items: center;
-  padding: 0 23px;
-  height: 48px;
-  font-weight: normal;
-
-  :hover {
-    background-color: #f4f4f4;
-  }
+  width: 16px;
+  height: 16px;
+  background-color: #f04452;
+  color: #fff;
+  border-radius: 100%;
+  font-size: 8px;
+  font-weight: 800;
+  line-height: 10px;
 `;
