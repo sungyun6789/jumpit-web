@@ -94,7 +94,7 @@ const NavLink = styled(Link)<{ selected: boolean }>`
 
 const NewTag = styled.span`
   position: absolute;
-  top: 12px;
+  top: 15px;
   bottom: 15px;
   right: -17px;
   display: flex;

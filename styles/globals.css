@@ -4,6 +4,8 @@
   margin: 0;
   line-height: 1;
   font-size: 15px;
+  font-family: __Noto_Sans_KR_19e43e, __Noto_Sans_KR_Fallback_19e43e, -apple-system, system-ui, Apple SD Gothic Neo,
+    Malgun Gothic, Nanum Gothic, sans-serif;
 }
 
 a {
