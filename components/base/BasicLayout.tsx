@@ -7,7 +7,10 @@ import Header from '../base/Header';
 import AppDownload from './AppDownload';
 
 /** footer가 없는 페이지 목록 */
-const FOOTER_FILTER_PATH = ['/rookie/position', '/position/[id]', '/company/[id]'];
+const NO_FOOTER_PAGES = ['/rookie/position', '/position/[id]', '/company/[id]'];
+
+/** 아무것도 포함하지 않아야 하는 페이지 목록 */
+const NO_LAYOUT_PAGES = ['/login'];
 
 interface Props {
   children: React.ReactNode;
@@ -16,12 +19,26 @@ interface Props {
 const BasicLayout = ({ children }: Props) => {
   const { pathname } = useRouter();
 
+  if (NO_LAYOUT_PAGES.includes(pathname)) {
+    return <>{children}</>;
+  }
+
+  if (NO_FOOTER_PAGES.includes(pathname)) {
+    return (
+      <>
+        <Header />
+        <Block>{children}</Block>
+        <AppDownload />
+      </>
+    );
+  }
+
   return (
     <>
       <Header />
       <Block>{children}</Block>
       <AppDownload />
-      {!FOOTER_FILTER_PATH.includes(pathname) && <Footer />}
+      <Footer />
     </>
   );
 };
