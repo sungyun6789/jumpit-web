@@ -24,9 +24,9 @@ const Header = () => {
 
             <LoginTextBox>
               {data?.user ? (
-                <UserName>{data.user.name}</UserName>
+                <MobileUserName>{data.user.name}</MobileUserName>
               ) : (
-                <LoginButton onClick={() => setIsOpen(true)}>회원가입/로그인</LoginButton>
+                <MobileLoginButton onClick={() => setIsOpen(true)}>회원가입/로그인</MobileLoginButton>
               )}
               <SearchInput />
             </LoginTextBox>
@@ -81,7 +81,7 @@ const LoginTextBox = styled.div`
   gap: 19px;
 `;
 
-const UserName = styled.div`
+const MobileUserName = styled.div`
   display: none;
 
   @media (max-width: 1080px) {
@@ -93,7 +93,7 @@ const UserName = styled.div`
   }
 `;
 
-const LoginButton = styled.button`
+const MobileLoginButton = styled.button`
   display: none;
 
   @media (max-width: 1080px) {
