@@ -5,6 +5,7 @@ import Footer from '../base/Footer';
 import Header from '../base/Header';
 
 import AppDownload from './AppDownload';
+import LoginHeader from './LoginHeader';
 
 /** footer가 없는 페이지 목록 */
 const NO_FOOTER_PAGES = ['/rookie/position', '/position/[id]', '/company/[id]'];
@@ -20,7 +21,12 @@ const BasicLayout = ({ children }: Props) => {
   const { pathname } = useRouter();
 
   if (NO_LAYOUT_PAGES.includes(pathname)) {
-    return <>{children}</>;
+    return (
+      <>
+        <LoginHeader />
+        {children}
+      </>
+    );
   }
 
   if (NO_FOOTER_PAGES.includes(pathname)) {
