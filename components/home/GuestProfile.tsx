@@ -1,7 +1,6 @@
 import styled from '@emotion/styled';
 import Image from 'next/image';
 import Link from 'next/link';
-import { signIn } from 'next-auth/react';
 
 const GuestProfile = () => {
   return (
@@ -33,6 +32,7 @@ export default GuestProfile;
 const Block = styled.div`
   position: relative;
   width: 340px;
+  height: 220px;
   padding: 32px 20px 20px;
   border: 1px solid #e4e4e4;
   border-radius: 4px;
