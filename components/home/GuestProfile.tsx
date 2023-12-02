@@ -13,8 +13,18 @@ const GuestProfile = () => {
         </Description>
 
         <Store>
-          <Image src="/app_store.svg" width={78} height={16} alt="앱 스토어" />
-          <Image src="/google_play.svg" width={92} height={16} alt="구글 플레이" />
+          <Link
+            href="https://apps.apple.com/kr/app/%EC%A0%90%ED%95%8F-%EA%B0%9C%EB%B0%9C%EC%9E%90-%EC%BB%A4%EB%A6%AC%EC%96%B4-%EC%A0%90%ED%94%84/id1552125375"
+            target="_blank"
+          >
+            <Image src="/app_store.svg" width={78} height={16} alt="앱 스토어" />
+          </Link>
+          <Link
+            href="https://play.google.com/store/apps/details?id=kr.co.saramin.jumpit&pcampaignid=web_share&pli=1"
+            target="_blank"
+          >
+            <Image src="/google_play.svg" width={92} height={16} alt="구글 플레이" />
+          </Link>
         </Store>
 
         <QRCode src="https://www.jumpit.co.kr/assets/ic_qr_code.svg" width={80} height={80} alt="큐알 코드" />
