@@ -53,16 +53,16 @@ const ThemeZip = () => {
           </ArrowButton>
           <ArrowButton disabled={(data?.length ?? 0) / 2 === currentIndex} onClick={next}>
             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="none" viewBox="0 0 40 40">
-              <g clip-path="url(#a)">
+              <g clipPath="url(#a)">
                 <path
                   stroke="#444"
                   d="M39.5 20c0 10.77-8.73 19.5-19.5 19.5S.5 30.77.5 20 9.23.5 20 .5 39.5 9.23 39.5 20Z"
                 ></path>
                 <path
                   fill="#444"
-                  fill-rule="evenodd"
+                  fillRule="evenodd"
                   d="M16.911 13.16a.833.833 0 0 1 1.179 0l6.25 6.25a.833.833 0 0 1 0 1.18l-6.25 6.25a.833.833 0 1 1-1.179-1.18l5.66-5.66-5.66-5.66a.833.833 0 0 1 0-1.18Z"
-                  clip-rule="evenodd"
+                  clipRule="evenodd"
                 ></path>
               </g>
               <defs>

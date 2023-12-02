@@ -32,7 +32,7 @@ export default function App({ Component, pageProps: { session, ...pageProps } }:
   return (
     <QueryClientProvider client={queryClient}>
       <title>점핏 | 개발자 커리어 점프</title>
-      <div className={noto.className}>
+      <div>
         <SessionProvider session={session}>
           <BasicLayout>
             <Component {...pageProps} />
