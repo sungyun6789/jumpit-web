@@ -5,6 +5,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { Noto_Sans_KR, Montserrat } from 'next/font/google';
+import Head from 'next/head';
 import { SessionProvider } from 'next-auth/react';
 import BasicLayout from '~/components/base/BasicLayout';
 
@@ -31,7 +32,9 @@ const queryClient = new QueryClient({
 export default function App({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   return (
     <QueryClientProvider client={queryClient}>
-      <title>점핏 | 개발자 커리어 점프</title>
+      <Head>
+        <title>점핏 | 개발자 커리어 점프</title>
+      </Head>
       <div>
         <SessionProvider session={session}>
           <BasicLayout>
