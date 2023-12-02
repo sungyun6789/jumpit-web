@@ -4,13 +4,10 @@ import Link from 'next/link';
 import { signOut, useSession } from 'next-auth/react';
 import { useState } from 'react';
 
-import AuthModal from '../modal/AuthModal';
-
 /**
  * 네비게이션 오른쪽을 담당하는 컴포넌트
  */
 const NavAuthBar = () => {
-  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { data } = useSession();
 
@@ -37,7 +34,9 @@ const NavAuthBar = () => {
               </AuthNavLI>
             </SubMenuWrap>
           ) : (
-            <LI onClick={() => setIsLoginModalOpen(true)}>회원가입/로그인</LI>
+            <Link href="/login">
+              <LI>회원가입/로그인</LI>
+            </Link>
           )}
           <LI>
             <BlankLink href="https://biz.jumpit.co.kr/" target="_blank">
@@ -46,7 +45,6 @@ const NavAuthBar = () => {
           </LI>
         </AuthUL>
       </Block>
-      {isLoginModalOpen && <AuthModal close={() => setIsLoginModalOpen(false)} />}
     </>
   );
 };
