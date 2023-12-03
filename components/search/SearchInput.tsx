@@ -7,7 +7,7 @@ import { DesktopView, TabletView } from '~/styles/breakpoint';
 import type { ChangeEvent } from 'react';
 
 const SearchInput = () => {
-  const [searchKeyword, setSearchKeyword] = useState<string>();
+  const [searchKeyword, setSearchKeyword] = useState('');
 
   const onChange = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchKeyword(e.target.value);
