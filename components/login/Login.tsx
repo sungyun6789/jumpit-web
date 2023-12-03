@@ -25,12 +25,21 @@ export default Login;
 
 const Block = styled.main`
   margin-top: 60px;
+
+  @media (max-width: 600px) {
+    margin-top: 24px;
+  }
 `;
 
 const CommonTitle = css`
   font-size: 34px;
   line-height: 50px;
   text-align: center;
+
+  @media (max-width: 600px) {
+    font-size: 28px;
+    line-height: 40px;
+  }
 `;
 
 const Title = styled.h1`
@@ -47,4 +56,10 @@ const Form = styled.form`
   margin: 0 auto;
   padding: 16px 0 40px;
   margin-top: 24px;
+
+  @media (max-width: 600px) {
+    width: unset;
+    margin-top: 24px;
+    padding: 4px 16px 0 16px;
+  }
 `;
