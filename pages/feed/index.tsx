@@ -1,5 +1,11 @@
+import FeedTagList from '~/components/feed/FeedTagList';
+
 const FeedPage = () => {
-  return <div>피드 페이지</div>;
+  return (
+    <div>
+      <FeedTagList />
+    </div>
+  );
 };
 
 export default FeedPage;
