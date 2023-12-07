@@ -3,7 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import { useInView } from 'react-intersection-observer';
+import useInfiniteScroll from '~/hooks/useInfiniteScroll';
 
 import FeedCard from './FeedCard';
 
@@ -12,11 +12,9 @@ import type { Content, ContentRookieResponse } from '~/pages/api/content/rookies
 const PAGE_SIZE = 12; // 클라이언트에서 따로 파라미터를 전송하지 않고, 서버에서 12개로 정의해서 전달받고 있음
 
 const FeedCardList = () => {
-  const [page, setPage] = useState(1);
-  const [hasNextPage, setHasNextPage] = useState(true);
   const [contentList, setContentList] = useState<Content[]>([]);
-  const [ref, inView] = useInView();
   const router = useRouter();
+  const { page, hasNextPage, ref, inView, reset, changePage, disableNextPage } = useInfiniteScroll();
 
   const tag = router.query.tag;
 
@@ -36,7 +34,7 @@ const FeedCardList = () => {
 
   useEffect(() => {
     if (inView && contentList.length !== 0) {
-      setPage(page + 1);
+      changePage(page + 1);
     }
   }, [inView]);
 
@@ -46,14 +44,13 @@ const FeedCardList = () => {
     }
 
     if (data && data.length !== PAGE_SIZE) {
-      setHasNextPage(false);
+      disableNextPage();
     }
   }, [data]);
 
   useEffect(() => {
     if (router.isReady) {
-      setPage(1);
-      setHasNextPage(true);
+      reset();
       setContentList(data ?? []);
     }
   }, [router.query]);
