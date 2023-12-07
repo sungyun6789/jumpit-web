@@ -33,10 +33,10 @@ const FeedCardList = () => {
   );
 
   useEffect(() => {
-    if (inView && contentList.length !== 0) {
+    if (inView && data) {
       changePage(page + 1);
     }
-  }, [inView]);
+  }, [inView, data]);
 
   useEffect(() => {
     if (data) {
