@@ -108,4 +108,8 @@ const NewTag = styled.span`
   font-size: 8px;
   font-weight: 800;
   line-height: 10px;
+
+  @media (max-width: 1080px) {
+    display: none;
+  }
 `;
