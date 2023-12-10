@@ -41,9 +41,11 @@ const PositionCardList = ({ data }: Props) => {
           <DescriptionBox>
             <CompanyName>{value.companyName}</CompanyName>
             <PositionTitle>{value.title}</PositionTitle>
-            <TechStackBox className={mont.className}>
+            <TechStackBox>
               {value.techStacks?.map((stack, index) => (
-                <Description key={stack}>{(index === 0 ? '' : '· ') + stack}</Description>
+                <Description className={mont.className} key={stack}>
+                  {(index === 0 ? '' : '· ') + stack}
+                </Description>
               ))}
             </TechStackBox>
             <LocationCareerBox>

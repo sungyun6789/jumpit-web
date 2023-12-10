@@ -84,7 +84,7 @@ const TagBlock = styled.div`
   max-width: 1060px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 24px;
   margin: 0 auto;
 
   @media (max-width: 1080px) {
