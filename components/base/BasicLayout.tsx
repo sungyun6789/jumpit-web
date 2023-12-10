@@ -8,7 +8,7 @@ import AppDownload from './AppDownload';
 import LoginHeader from './LoginHeader';
 
 /** footer가 없는 페이지 목록 */
-const NO_FOOTER_PAGES = ['/rookie/position', '/position/[id]', '/company/[id]', '/feed'];
+const NO_FOOTER_PAGES = ['/rookie/position', '/position/[id]', '/company/[id]', '/feed', '/theme'];
 
 /** 아무것도 포함하지 않아야 하는 페이지 목록 */
 const NO_LAYOUT_PAGES = ['/login'];

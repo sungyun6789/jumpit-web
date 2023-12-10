@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
+import Link from 'next/link';
 import { useRef, useState } from 'react';
 import Slider from 'react-slick';
 
@@ -47,32 +48,36 @@ const ThemeZip = () => {
       <TitleBox>
         <Title>테마별 모음.zip</Title>
 
-        <ButtonBox>
-          <ArrowButton disabled={currentIndex === 1} onClick={prev}>
-            <PrevArrowButton />
-          </ArrowButton>
-          <ArrowButton disabled={(data?.length ?? 0) / 2 === currentIndex} onClick={next}>
-            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="none" viewBox="0 0 40 40">
-              <g clipPath="url(#a)">
-                <path
-                  stroke="#444"
-                  d="M39.5 20c0 10.77-8.73 19.5-19.5 19.5S.5 30.77.5 20 9.23.5 20 .5 39.5 9.23 39.5 20Z"
-                ></path>
-                <path
-                  fill="#444"
-                  fillRule="evenodd"
-                  d="M16.911 13.16a.833.833 0 0 1 1.179 0l6.25 6.25a.833.833 0 0 1 0 1.18l-6.25 6.25a.833.833 0 1 1-1.179-1.18l5.66-5.66-5.66-5.66a.833.833 0 0 1 0-1.18Z"
-                  clipRule="evenodd"
-                ></path>
-              </g>
-              <defs>
-                <clipPath id="a">
-                  <path fill="#fff" d="M0 0h40v40H0z"></path>
-                </clipPath>
-              </defs>
-            </svg>
-          </ArrowButton>
-        </ButtonBox>
+        <FlexBox>
+          <AllLink href="/theme">전체 보기</AllLink>
+
+          <ButtonBox>
+            <ArrowButton disabled={currentIndex === 1} onClick={prev}>
+              <PrevArrowButton />
+            </ArrowButton>
+            <ArrowButton disabled={(data?.length ?? 0) / 2 === currentIndex} onClick={next}>
+              <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="none" viewBox="0 0 40 40">
+                <g clipPath="url(#a)">
+                  <path
+                    stroke="#444"
+                    d="M39.5 20c0 10.77-8.73 19.5-19.5 19.5S.5 30.77.5 20 9.23.5 20 .5 39.5 9.23 39.5 20Z"
+                  ></path>
+                  <path
+                    fill="#444"
+                    fillRule="evenodd"
+                    d="M16.911 13.16a.833.833 0 0 1 1.179 0l6.25 6.25a.833.833 0 0 1 0 1.18l-6.25 6.25a.833.833 0 1 1-1.179-1.18l5.66-5.66-5.66-5.66a.833.833 0 0 1 0-1.18Z"
+                    clipRule="evenodd"
+                  ></path>
+                </g>
+                <defs>
+                  <clipPath id="a">
+                    <path fill="#fff" d="M0 0h40v40H0z"></path>
+                  </clipPath>
+                </defs>
+              </svg>
+            </ArrowButton>
+          </ButtonBox>
+        </FlexBox>
       </TitleBox>
 
       {/** @todo 실제 서비스와 동일하게 변경 필요 */}
@@ -188,4 +193,27 @@ const BannerDescription = styled.span`
   line-height: 30px;
   color: #000;
   white-space: pre-wrap;
+`;
+
+const FlexBox = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+const AllLink = styled(Link)`
+  text-decoration: underline;
+  line-height: 24px;
+  letter-spacing: -0.5px;
+  color: #888888;
+  margin-right: 12px;
+  font-size: 16px;
+
+  @media (max-width: 1080px) {
+    text-decoration: none;
+  }
+
+  @media (max-width: 600px) {
+    font-size: 14px;
+    margin-right: 0;
+  }
 `;
