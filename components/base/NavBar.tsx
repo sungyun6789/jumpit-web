@@ -7,7 +7,7 @@ import NavAuthBar from './NavAuthBar';
 
 const DATA = [
   { label: '개발자 채용', url: '/positions', new: false },
-  { label: '이력서', url: '/이력서', new: false },
+  { label: '이력서', url: '/resumes', new: false },
   { label: '취업 Q&A', url: '/career-qna', new: false },
   { label: '#꿀 피드', url: '/feed', new: true },
   { label: '개발자 인터뷰', url: '/job-interview', new: false },
