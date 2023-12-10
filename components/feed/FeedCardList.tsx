@@ -83,6 +83,10 @@ const Block = styled.section`
   flex-wrap: wrap;
   padding: 0 8px 0px;
   position: relative;
+
+  @media (max-width: 600px) {
+    padding: 0 0 80px;
+  }
 `;
 
 const RefBlock = styled.div`

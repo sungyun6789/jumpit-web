@@ -46,6 +46,10 @@ export default FeedTagList;
 const Block = styled.section`
   max-width: 1060px;
   margin: 32px auto 44px;
+
+  @media (max-width: 1080px) {
+    margin: 32px 16px 30px;
+  }
 `;
 
 const Title = styled.h1`
@@ -54,12 +58,25 @@ const Title = styled.h1`
   line-height: 72px;
   letter-spacing: -0.5px;
   color: #222;
+
+  @media (max-width: 600px) {
+    font-size: 32px;
+    line-height: 46px;
+  }
 `;
 
 const TagWrap = styled.div`
   margin-top: 20px;
   display: flex;
   flex-wrap: wrap;
+
+  @media (max-width: 600px) {
+    flex-wrap: nowrap;
+    max-width: unset;
+    height: 100%;
+    max-height: 50px;
+    overflow-x: scroll;
+  }
 `;
 
 const Tag = styled.button<{ isSelected: boolean }>`
@@ -88,4 +105,13 @@ const Tag = styled.button<{ isSelected: boolean }>`
       backgroundColor: COLORS.primary,
       fontWeight: 'bold',
     }};
+
+  @media (max-width: 1080px) {
+    margin: 0px 7px 10px 0px;
+  }
+
+  @media (max-width: 600px) {
+    margin: 0 8px 8px 0;
+    flex: 0 0 auto;
+  }
 `;

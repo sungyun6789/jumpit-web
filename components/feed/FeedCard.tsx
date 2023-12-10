@@ -52,6 +52,20 @@ const Block = styled(Link)`
       text-decoration: underline;
     }
   }
+
+  @media (max-width: 1080px) {
+    max-width: calc(50% - 16px);
+    flex: 1 1 40%;
+    margin: 8px 8px 32px;
+  }
+
+  @media (max-width: 600px) {
+    margin: 0 auto;
+    padding: 10px 0 18px;
+    width: calc(100% - 32px);
+    max-width: unset;
+    flex: unset;
+  }
 `;
 
 const BannerWrap = styled.div`
