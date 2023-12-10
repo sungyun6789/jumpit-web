@@ -12,7 +12,7 @@ const ThemeZipCard = ({ data }: Props) => {
   return (
     <Block href={'/'}>
       <BannerWrap>
-        <Banner src={data.image} width={340} height={226} alt="피드 배너 이미지" objectFit="cover" />
+        <Banner src={data.image} width={340} height={226} alt="피드 배너 이미지" />
       </BannerWrap>
       <Title>{data.title}</Title>
       <SubTitleWrap>
@@ -65,6 +65,7 @@ const Banner = styled(Image)`
   width: 100%;
   height: 100%;
   transition: all 0.3s ease 0s;
+  object-fit: cover;
 `;
 
 const Title = styled.h2`

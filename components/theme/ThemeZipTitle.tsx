@@ -17,6 +17,14 @@ const TitleWrap = styled.section`
   max-width: 1080px;
   margin: 32px auto 40px;
   padding: 0 8px;
+
+  @media (max-width: 1080px) {
+    padding: 0 16px;
+  }
+
+  @media (max-width: 600px) {
+    margin: 32px auto 14px;
+  }
 `;
 
 const Title = styled.h1`

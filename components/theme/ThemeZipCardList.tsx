@@ -22,4 +22,8 @@ const Block = styled.section`
   display: flex;
   flex-wrap: wrap;
   padding: 0 8px 34px;
+
+  @media (max-width: 600px) {
+    padding: 0 0 64px;
+  }
 `;
