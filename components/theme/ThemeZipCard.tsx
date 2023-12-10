@@ -10,7 +10,7 @@ interface Props {
 
 const ThemeZipCard = ({ data }: Props) => {
   return (
-    <Block href={'/'}>
+    <Block href={data.url}>
       <BannerWrap>
         <Banner src={data.image} width={340} height={226} alt="피드 배너 이미지" />
       </BannerWrap>
