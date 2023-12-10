@@ -2,10 +2,12 @@ import styled from '@emotion/styled';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import { useRouter } from 'next/router';
+import { useSession } from 'next-auth/react';
 import { useEffect, useState } from 'react';
 import useInfiniteScroll from '~/hooks/useInfiniteScroll';
 
 import FeedCard from './FeedCard';
+import OnlyJumpitContent from './OnlyJumpitContent';
 
 import type { Content, ContentRookieResponse } from '~/pages/api/content/rookies';
 
@@ -14,9 +16,11 @@ const PAGE_SIZE = 12; // 클라이언트에서 따로 파라미터를 전송하�
 const FeedCardList = () => {
   const [contentList, setContentList] = useState<Content[]>([]);
   const router = useRouter();
+  const { data: session } = useSession();
   const { page, hasNextPage, ref, inView, reset, changePage, disableNextPage } = useInfiniteScroll();
 
   const tag = router.query.tag;
+  const isOnlyJumpit = tag === '3';
 
   const { data } = useQuery(
     ['/api/content/rookies', page, tag],
@@ -33,7 +37,7 @@ const FeedCardList = () => {
   );
 
   useEffect(() => {
-    if (inView && data) {
+    if (inView && data && !isOnlyJumpit) {
       changePage(page + 1);
     }
   }, [inView, data]);
@@ -49,21 +53,23 @@ const FeedCardList = () => {
   }, [data]);
 
   useEffect(() => {
-    if (router.isReady) {
-      reset();
-      setContentList(data ?? []);
-    }
+    reset();
+    setContentList(data ?? []);
   }, [router.query]);
 
   return (
-    <>
-      <Block>
-        {contentList.map((content) => (
-          <FeedCard key={content.id} data={content} />
-        ))}
-      </Block>
-      <RefBlock ref={ref} />
-    </>
+    <Block>
+      {isOnlyJumpit && !session?.user ? (
+        <OnlyJumpitContent data={data} />
+      ) : (
+        <>
+          {contentList.map((content) => (
+            <FeedCard key={content.id} data={content} />
+          ))}
+          <RefBlock ref={ref} />
+        </>
+      )}
+    </Block>
   );
 };
 
@@ -75,7 +81,7 @@ const Block = styled.section`
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
-  padding: 0 8px 0;
+  padding: 0 8px 0px;
   position: relative;
 `;
 
