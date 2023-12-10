@@ -1,11 +1,11 @@
 import dynamic from 'next/dynamic';
 import { useEffect, useState } from 'react';
 import EmploymentEventBanner from '~/components/home/EmploymentEventBanner';
+import HomeThemeZip from '~/components/home/HomeThemeZip';
 import MainTopContent from '~/components/home/MainTopContent';
 import MiniBanner from '~/components/home/MiniBanner';
 import Notice from '~/components/home/Notice';
 import PositionRecommendation from '~/components/home/PositionRecommend';
-import ThemeZip from '~/components/home/ThemeZip';
 import WeeklyPickPosition from '~/components/home/WeeklyPickPosition';
 import HomeDataProvier from '~/context/HomeDataProvier';
 import { TabletView } from '~/styles/breakpoint';
@@ -28,7 +28,7 @@ export default function Home() {
     <>
       <HomeDataProvier>
         <MainTopContent />
-        <ThemeZip />
+        <HomeThemeZip />
         <PositionRecommendation />
         <WeeklyPickPosition />
         <TabletView>

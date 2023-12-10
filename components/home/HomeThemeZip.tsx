@@ -24,7 +24,7 @@ const SETTING = {
   ],
 };
 
-const ThemeZip = () => {
+const HomeThemeZip = () => {
   const [currentIndex, setCurrentIndex] = useState(1);
   const slickRef = useRef<Slider>(null);
 
@@ -92,7 +92,7 @@ const ThemeZip = () => {
   );
 };
 
-export default ThemeZip;
+export default HomeThemeZip;
 
 const StyledSlider = styled(Slider)`
   .slick-slide {
