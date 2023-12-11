@@ -167,7 +167,7 @@ const ArticleLayout = styled.div`
   border-radius: 16px;
   margin: 60px auto 0;
 
-  article:not(:first-child) {
+  article:not(:first-of-type) {
     margin-top: 60px;
   }
 
