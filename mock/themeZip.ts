@@ -1,5 +1,11 @@
 import { CDN_PATH } from '~/constants/path';
 
+export interface ResponsiveImageUrl {
+  pc: string;
+  tablet: string;
+  mobile: string;
+}
+
 export interface ThemeZipMock {
   image: string;
   title: string;
@@ -7,7 +13,8 @@ export interface ThemeZipMock {
   link: string;
   detail: {
     headTitle: string; // page head title
-    image: string;
+    image: ResponsiveImageUrl;
+    bgColor: string; // 이미지 배경색
   };
 }
 
@@ -20,7 +27,12 @@ export const THEME_ZIP_MOCK: ThemeZipMock[] = [
     link: '/theme/unicorns',
     detail: {
       headTitle: '유니콘 꿈나무',
-      image: CDN_PATH + '/jumpit/position/themes/unicorns/kv_unicorns_pc.webp',
+      image: {
+        pc: CDN_PATH + '/jumpit/position/themes/unicorns/kv_unicorns_pc.webp',
+        tablet: CDN_PATH + '/jumpit/position/themes/unicorns/kv_unicorns_ta.webp',
+        mobile: CDN_PATH + '/jumpit/position/themes/unicorns/kv_unicorns_mw.webp',
+      },
+      bgColor: '#ffe89f',
     },
   },
   {
@@ -31,7 +43,12 @@ export const THEME_ZIP_MOCK: ThemeZipMock[] = [
     link: '/theme/speed100',
     detail: {
       headTitle: '피드백 100%',
-      image: CDN_PATH + '/jumpit/position/themes/kv_speed100_pc.gif',
+      image: {
+        pc: CDN_PATH + '/jumpit/position/themes/kv_speed100_pc.gif',
+        tablet: CDN_PATH + '/jumpit/position/themes/kv_speed100_tab.webp',
+        mobile: CDN_PATH + '/jumpit/position/themes/kv_speed100_mw.webp',
+      },
+      bgColor: '#bdf0eb',
     },
   },
   {
@@ -42,7 +59,12 @@ export const THEME_ZIP_MOCK: ThemeZipMock[] = [
     link: '/theme/showmethemoney',
     detail: {
       headTitle: '연봉이 아쉬울 때',
-      image: CDN_PATH + '/jumpit/position/themes/kv_showmethemoney_pc.webp',
+      image: {
+        pc: CDN_PATH + '/jumpit/position/themes/kv_showmethemoney_pc.webp',
+        tablet: CDN_PATH + '/jumpit/position/themes/kv_showmethemoney_tab.webp',
+        mobile: CDN_PATH + '/jumpit/position/themes/kv_showmethemoney_mw.webp',
+      },
+      bgColor: '#dcf0ff',
     },
   },
   {
@@ -52,7 +74,12 @@ export const THEME_ZIP_MOCK: ThemeZipMock[] = [
     link: '/theme/hitmi',
     detail: {
       headTitle: '대규모 채용 기업',
-      image: CDN_PATH + '/jumpit/position/themes/kv_hitmi_pc.webp',
+      image: {
+        pc: CDN_PATH + '/jumpit/position/themes/kv_hitmi_pc.webp',
+        tablet: CDN_PATH + '/jumpit/position/themes/kv_hitmi_tab.webp',
+        mobile: CDN_PATH + '/jumpit/position/themes/kv_hitmi_mw.webp',
+      },
+      bgColor: '#caf6bc',
     },
   },
   {
@@ -63,7 +90,12 @@ export const THEME_ZIP_MOCK: ThemeZipMock[] = [
     link: '/theme/forthefuture',
     detail: {
       headTitle: '지구지킴이',
-      image: CDN_PATH + '/jumpit/position/themes/forthefuture/kv_forthefuture_pc.webp',
+      image: {
+        pc: CDN_PATH + '/jumpit/position/themes/forthefuture/kv_forthefuture_pc.webp',
+        tablet: CDN_PATH + '/jumpit/position/themes/forthefuture/kv_forthefuture_ta.webp',
+        mobile: CDN_PATH + '/jumpit/position/themes/forthefuture/kv_forthefuture_mw.webp',
+      },
+      bgColor: '#c7f8da',
     },
   },
   {
@@ -74,7 +106,12 @@ export const THEME_ZIP_MOCK: ThemeZipMock[] = [
     link: '/theme/rookie',
     detail: {
       headTitle: '신인개발자 모여라',
-      image: CDN_PATH + '/jumpit/position/themes/rookie/kv_rookie_pc.webp',
+      image: {
+        pc: CDN_PATH + '/jumpit/position/themes/rookie/kv_rookie_pc.webp',
+        tablet: CDN_PATH + '/jumpit/position/themes/rookie/kv_rookie_ta.webp',
+        mobile: CDN_PATH + '/jumpit/position/themes/rookie/kv_rookie_mw.webp',
+      },
+      bgColor: '#0e0e0e',
     },
   },
   {
@@ -85,7 +122,12 @@ export const THEME_ZIP_MOCK: ThemeZipMock[] = [
     link: '/theme/iamt',
     detail: {
       headTitle: '로봇 개발자.zip',
-      image: CDN_PATH + '/jumpit/position/themes/kv_iamt_pc.webp',
+      image: {
+        pc: CDN_PATH + '/jumpit/position/themes/kv_iamt_pc.webp',
+        tablet: CDN_PATH + '/jumpit/position/themes/kv_iamt_tab.webp',
+        mobile: CDN_PATH + '/jumpit/position/themes/kv_iamt_mw.webp',
+      },
+      bgColor: '#e7e3fe',
     },
   },
 
@@ -97,7 +139,12 @@ AI School 채용관`,
     link: '/theme/msaischool',
     detail: {
       headTitle: '점핏 x 마이크로소프트',
-      image: CDN_PATH + '/jumpit/position/themes/msaischool/kv_msaischool_pc.webp',
+      image: {
+        pc: CDN_PATH + '/jumpit/position/themes/msaischool/kv_msaischool_pc.webp',
+        tablet: CDN_PATH + '/jumpit/position/themes/msaischool/kv_msaischool_ta.webp',
+        mobile: CDN_PATH + '/jumpit/position/themes/msaischool/kv_msaischool_mw.webp',
+      },
+      bgColor: '#23bbfd',
     },
   },
   {
@@ -108,7 +155,12 @@ AI School 채용관`,
     link: '/theme/wecode',
     detail: {
       headTitle: '점핏 x 위코드',
-      image: CDN_PATH + '/jumpit/position/themes/kv_wecode_pc.webp',
+      image: {
+        pc: CDN_PATH + '/jumpit/position/themes/kv_wecode_pc.webp',
+        tablet: CDN_PATH + '/jumpit/position/themes/kv_wecode_tab.webp',
+        mobile: CDN_PATH + '/jumpit/position/themes/kv_wecode_mw.webp',
+      },
+      bgColor: '#590df3',
     },
   },
   {
@@ -119,7 +171,12 @@ AI School 채용관`,
     link: '/theme/krafton',
     detail: {
       headTitle: '점핏 x 크래프톤',
-      image: CDN_PATH + '/jumpit/position/themes/kv_krafton_pc.webp',
+      image: {
+        pc: CDN_PATH + '/jumpit/position/themes/kv_krafton_pc.webp',
+        tablet: CDN_PATH + '/jumpit/position/themes/kv_krafton_ta.webp',
+        mobile: CDN_PATH + '/jumpit/position/themes/kv_krafton_mw.webp',
+      },
+      bgColor: '#00d67a',
     },
   },
   {
@@ -130,7 +187,12 @@ AI School 채용관`,
     link: '/theme/wework',
     detail: {
       headTitle: '점핏 x 위워크',
-      image: CDN_PATH + '/jumpit/position/themes/wework/kv_wework_pc.webp',
+      image: {
+        pc: CDN_PATH + '/jumpit/position/themes/wework/kv_wework_pc.webp',
+        tablet: CDN_PATH + '/jumpit/position/themes/wework/kv_wework_ta.webp',
+        mobile: CDN_PATH + '/jumpit/position/themes/wework/kv_wework_mw.webp',
+      },
+      bgColor: '#232428',
     },
   },
 ];
