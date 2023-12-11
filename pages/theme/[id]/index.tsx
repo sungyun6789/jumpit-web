@@ -8,14 +8,14 @@ const WHITE_TITLE = ['/theme/rookie', '/theme/wework', '/theme/wecode', '/theme/
 const ThemeDetailPage = () => {
   const router = useRouter();
 
-  const data = THEME_ZIP_MOCK.find((value) => value.url === router.asPath);
+  const data = THEME_ZIP_MOCK.find((value) => value.link === router.asPath);
 
   if (!data) return null;
 
   return (
     <>
       <Head>
-        <title>점핏 | {data.detail.title}</title>
+        <title>점핏 | {data.detail.headTitle}</title>
       </Head>
       <Block url={data.detail.image}>
         <TitleWrap>
@@ -48,7 +48,7 @@ const Title = styled.h1<{ isWhite: boolean }>`
   font-weight: 700;
   font-size: 50px;
   line-height: 72px;
-  letter-spacing: -1px;
   word-break: keep-all;
   color: ${(props) => (props.isWhite ? '#fff' : '#000')};
+  white-space: pre-wrap;
 `;
