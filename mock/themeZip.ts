@@ -1,11 +1,5 @@
 import { CDN_PATH } from '~/constants/path';
 
-export interface ResponsiveImageUrl {
-  pc: string;
-  tablet: string;
-  mobile: string;
-}
-
 export interface ThemeZipMock {
   image: string;
   title: string;
@@ -13,10 +7,28 @@ export interface ThemeZipMock {
   link: string;
   detail: {
     headTitle: string; // page head title
-    image: ResponsiveImageUrl;
     bgColor: string; // 이미지 배경색
+    pcImageUrl: string;
+    tabletImageUrl: string;
+    mobileImageUrl: string;
   };
 }
+
+// 이미지 주소가 tab.webp로 설정된 경로, 반대의 경우는 ta.webp로 설정된 경우가 있음
+const TABS = ['/kv_speed100', '/kv_showmethemoney', '/kv_hitmi', '/kv_wecode'];
+
+// 이미지 형식이 gif인 경로
+const GIFS = ['/kv_speed100'];
+
+const createImageURL = (url: string) => {
+  const prefix = CDN_PATH + '/jumpit/position/themes' + url;
+
+  return {
+    pcImageUrl: prefix + 'pc' + (GIFS.includes(url) ? '.gifs' : '.webp'),
+    tabletImageUrl: prefix + (TABS.includes(url) ? 'tab' : 'ta' + '.webp'),
+    mobileImageUrl: prefix + 'mw.webp',
+  };
+};
 
 export const THEME_ZIP_MOCK: ThemeZipMock[] = [
   {
@@ -27,12 +39,8 @@ export const THEME_ZIP_MOCK: ThemeZipMock[] = [
     link: '/theme/unicorns',
     detail: {
       headTitle: '유니콘 꿈나무',
-      image: {
-        pc: CDN_PATH + '/jumpit/position/themes/unicorns/kv_unicorns_pc.webp',
-        tablet: CDN_PATH + '/jumpit/position/themes/unicorns/kv_unicorns_ta.webp',
-        mobile: CDN_PATH + '/jumpit/position/themes/unicorns/kv_unicorns_mw.webp',
-      },
       bgColor: '#ffe89f',
+      ...createImageURL('/unicorns/kv_unicorns_'),
     },
   },
   {
@@ -43,12 +51,8 @@ export const THEME_ZIP_MOCK: ThemeZipMock[] = [
     link: '/theme/speed100',
     detail: {
       headTitle: '피드백 100%',
-      image: {
-        pc: CDN_PATH + '/jumpit/position/themes/kv_speed100_pc.gif',
-        tablet: CDN_PATH + '/jumpit/position/themes/kv_speed100_tab.webp',
-        mobile: CDN_PATH + '/jumpit/position/themes/kv_speed100_mw.webp',
-      },
       bgColor: '#bdf0eb',
+      ...createImageURL('/kv_speed100'),
     },
   },
   {
@@ -59,12 +63,8 @@ export const THEME_ZIP_MOCK: ThemeZipMock[] = [
     link: '/theme/showmethemoney',
     detail: {
       headTitle: '연봉이 아쉬울 때',
-      image: {
-        pc: CDN_PATH + '/jumpit/position/themes/kv_showmethemoney_pc.webp',
-        tablet: CDN_PATH + '/jumpit/position/themes/kv_showmethemoney_tab.webp',
-        mobile: CDN_PATH + '/jumpit/position/themes/kv_showmethemoney_mw.webp',
-      },
       bgColor: '#dcf0ff',
+      ...createImageURL('/kv_showmethemoney'),
     },
   },
   {
@@ -74,12 +74,8 @@ export const THEME_ZIP_MOCK: ThemeZipMock[] = [
     link: '/theme/hitmi',
     detail: {
       headTitle: '대규모 채용 기업',
-      image: {
-        pc: CDN_PATH + '/jumpit/position/themes/kv_hitmi_pc.webp',
-        tablet: CDN_PATH + '/jumpit/position/themes/kv_hitmi_tab.webp',
-        mobile: CDN_PATH + '/jumpit/position/themes/kv_hitmi_mw.webp',
-      },
       bgColor: '#caf6bc',
+      ...createImageURL('/kv_hitmi'),
     },
   },
   {
@@ -90,12 +86,8 @@ export const THEME_ZIP_MOCK: ThemeZipMock[] = [
     link: '/theme/forthefuture',
     detail: {
       headTitle: '지구지킴이',
-      image: {
-        pc: CDN_PATH + '/jumpit/position/themes/forthefuture/kv_forthefuture_pc.webp',
-        tablet: CDN_PATH + '/jumpit/position/themes/forthefuture/kv_forthefuture_ta.webp',
-        mobile: CDN_PATH + '/jumpit/position/themes/forthefuture/kv_forthefuture_mw.webp',
-      },
       bgColor: '#c7f8da',
+      ...createImageURL('/kv_forthefuture'),
     },
   },
   {
@@ -106,12 +98,8 @@ export const THEME_ZIP_MOCK: ThemeZipMock[] = [
     link: '/theme/rookie',
     detail: {
       headTitle: '신인개발자 모여라',
-      image: {
-        pc: CDN_PATH + '/jumpit/position/themes/rookie/kv_rookie_pc.webp',
-        tablet: CDN_PATH + '/jumpit/position/themes/rookie/kv_rookie_ta.webp',
-        mobile: CDN_PATH + '/jumpit/position/themes/rookie/kv_rookie_mw.webp',
-      },
       bgColor: '#0e0e0e',
+      ...createImageURL('/kv_rookie'),
     },
   },
   {
@@ -122,12 +110,8 @@ export const THEME_ZIP_MOCK: ThemeZipMock[] = [
     link: '/theme/iamt',
     detail: {
       headTitle: '로봇 개발자.zip',
-      image: {
-        pc: CDN_PATH + '/jumpit/position/themes/kv_iamt_pc.webp',
-        tablet: CDN_PATH + '/jumpit/position/themes/kv_iamt_tab.webp',
-        mobile: CDN_PATH + '/jumpit/position/themes/kv_iamt_mw.webp',
-      },
       bgColor: '#e7e3fe',
+      ...createImageURL('/kv_iamt'),
     },
   },
 
@@ -139,12 +123,8 @@ AI School 채용관`,
     link: '/theme/msaischool',
     detail: {
       headTitle: '점핏 x 마이크로소프트',
-      image: {
-        pc: CDN_PATH + '/jumpit/position/themes/msaischool/kv_msaischool_pc.webp',
-        tablet: CDN_PATH + '/jumpit/position/themes/msaischool/kv_msaischool_ta.webp',
-        mobile: CDN_PATH + '/jumpit/position/themes/msaischool/kv_msaischool_mw.webp',
-      },
       bgColor: '#23bbfd',
+      ...createImageURL('/kv_msaischool'),
     },
   },
   {
@@ -155,12 +135,8 @@ AI School 채용관`,
     link: '/theme/wecode',
     detail: {
       headTitle: '점핏 x 위코드',
-      image: {
-        pc: CDN_PATH + '/jumpit/position/themes/kv_wecode_pc.webp',
-        tablet: CDN_PATH + '/jumpit/position/themes/kv_wecode_tab.webp',
-        mobile: CDN_PATH + '/jumpit/position/themes/kv_wecode_mw.webp',
-      },
       bgColor: '#590df3',
+      ...createImageURL('/kv_wecode'),
     },
   },
   {
@@ -171,12 +147,8 @@ AI School 채용관`,
     link: '/theme/krafton',
     detail: {
       headTitle: '점핏 x 크래프톤',
-      image: {
-        pc: CDN_PATH + '/jumpit/position/themes/kv_krafton_pc.webp',
-        tablet: CDN_PATH + '/jumpit/position/themes/kv_krafton_ta.webp',
-        mobile: CDN_PATH + '/jumpit/position/themes/kv_krafton_mw.webp',
-      },
       bgColor: '#00d67a',
+      ...createImageURL('/kv_krafton'),
     },
   },
   {
@@ -187,12 +159,8 @@ AI School 채용관`,
     link: '/theme/wework',
     detail: {
       headTitle: '점핏 x 위워크',
-      image: {
-        pc: CDN_PATH + '/jumpit/position/themes/wework/kv_wework_pc.webp',
-        tablet: CDN_PATH + '/jumpit/position/themes/wework/kv_wework_ta.webp',
-        mobile: CDN_PATH + '/jumpit/position/themes/wework/kv_wework_mw.webp',
-      },
       bgColor: '#232428',
+      ...createImageURL('/kv_wework'),
     },
   },
 ];

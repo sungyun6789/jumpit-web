@@ -3,7 +3,7 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { THEME_ZIP_MOCK } from '~/mock/themeZip';
 
-import type { ResponsiveImageUrl } from '~/mock/themeZip';
+import type { ThemeZipMock } from '~/mock/themeZip';
 
 const WHITE_TITLE = ['/theme/rookie', '/theme/wework', '/theme/wecode', '/theme/msaischool'];
 
@@ -19,7 +19,7 @@ const ThemeDetailPage = () => {
       <Head>
         <title>점핏 | {data.detail.headTitle}</title>
       </Head>
-      <Block url={data.detail.image} bgColor={data.detail.bgColor}>
+      <Block detail={data.detail} bgColor={data.detail.bgColor}>
         <TitleWrap>
           <Title isWhite={WHITE_TITLE.includes(router.asPath)}>{data.title}</Title>
         </TitleWrap>
@@ -30,21 +30,21 @@ const ThemeDetailPage = () => {
 
 export default ThemeDetailPage;
 
-const Block = styled.section<{ url: ResponsiveImageUrl; bgColor: string }>`
+const Block = styled.section<{ detail: ThemeZipMock['detail']; bgColor: string }>`
   position: relative;
   width: 100%;
   height: 300px;
-  background: url(${(props) => props.url.pc}) center center / auto 300px no-repeat;
+  background: url(${(props) => props.detail.pcImageUrl}) center center / auto 300px no-repeat;
   background-color: ${(props) => props.bgColor};
 
   @media (max-width: 1080px) {
     height: 260px;
-    background: url(${(props) => props.url.tablet}) center center / auto 260px no-repeat;
+    background: url(${(props) => props.detail.tabletImageUrl}) center center / auto 260px no-repeat;
     background-color: ${(props) => props.bgColor};
   }
 
   @media (max-width: 600px) {
-    background: url(${(props) => props.url.mobile}) center center / auto 260px no-repeat;
+    background: url(${(props) => props.detail.mobileImageUrl}) center center / auto 260px no-repeat;
     background-color: ${(props) => props.bgColor};
   }
 `;
