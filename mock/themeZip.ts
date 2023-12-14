@@ -30,6 +30,10 @@ const createImageURL = (url: string) => {
   };
 };
 
+/**
+ * 일부 데이터는 /api/themes/banners/home 를 통해서 사용할 수 있지만
+ * 대부분의 데이터는 다시 생성해야 사용할 수 있어서 굳이 재사용하지 않음
+ */
 export const THEME_ZIP_MOCK: ThemeZipMock[] = [
   {
     image: CDN_PATH + '/jumpit/position/themes/banners/home/pc_themes_unicorns.webp',
