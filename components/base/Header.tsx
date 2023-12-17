@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useSession } from 'next-auth/react';
 
+import MobileMenubar from './MobileMenubar';
 import NavBar from './NavBar';
 import SearchInput from './SearchInput';
 
@@ -27,9 +28,7 @@ const Header = () => {
                 </Link>
               )}
               <SearchInput />
-              <MobileIcon>
-                <Image width={24} height={24} src="/menu_icon.svg" alt="menu" />
-              </MobileIcon>
+              <MobileMenubar />
             </LoginTextBox>
           </HeaderTop>
 
@@ -105,13 +104,4 @@ const MobileLoginButton = styled.button`
 
 const LogoLink = styled(Link)`
   height: 33px;
-`;
-
-const MobileIcon = styled.button`
-  display: none;
-  @media (max-width: 1080px) {
-    display: block;
-    width: 24px;
-    height: 24px;
-  }
 `;
