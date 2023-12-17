@@ -15,16 +15,16 @@ export interface ThemeZipMock {
 }
 
 // 이미지 주소가 tab.webp로 설정된 경로, 반대의 경우는 ta.webp로 설정된 경우가 있음
-const TABS = ['/kv_speed100', '/kv_showmethemoney', '/kv_hitmi', '/kv_wecode'];
+const TABS = ['/kv_speed100_', '/kv_showmethemoney_', '/kv_hitmi_', '/kv_wecode_'];
 
 // 이미지 형식이 gif인 경로
-const GIFS = ['/kv_speed100'];
+const GIFS = ['/kv_speed100_'];
 
 const createImageURL = (url: string) => {
   const prefix = CDN_PATH + '/jumpit/position/themes' + url;
 
   return {
-    pcImageUrl: prefix + 'pc' + (GIFS.includes(url) ? '.gifs' : '.webp'),
+    pcImageUrl: prefix + 'pc' + (GIFS.includes(url) ? '.gif' : '.webp'),
     tabletImageUrl: prefix + (TABS.includes(url) ? 'tab' : 'ta' + '.webp'),
     mobileImageUrl: prefix + 'mw.webp',
   };
@@ -56,7 +56,7 @@ export const THEME_ZIP_MOCK: ThemeZipMock[] = [
     detail: {
       headTitle: '피드백 100%',
       bgColor: '#bdf0eb',
-      ...createImageURL('/kv_speed100'),
+      ...createImageURL('/kv_speed100_'),
     },
   },
   {
@@ -68,7 +68,7 @@ export const THEME_ZIP_MOCK: ThemeZipMock[] = [
     detail: {
       headTitle: '연봉이 아쉬울 때',
       bgColor: '#dcf0ff',
-      ...createImageURL('/kv_showmethemoney'),
+      ...createImageURL('/kv_showmethemoney_'),
     },
   },
   {
@@ -79,7 +79,7 @@ export const THEME_ZIP_MOCK: ThemeZipMock[] = [
     detail: {
       headTitle: '대규모 채용 기업',
       bgColor: '#caf6bc',
-      ...createImageURL('/kv_hitmi'),
+      ...createImageURL('/kv_hitmi_'),
     },
   },
   {
@@ -91,7 +91,7 @@ export const THEME_ZIP_MOCK: ThemeZipMock[] = [
     detail: {
       headTitle: '지구지킴이',
       bgColor: '#c7f8da',
-      ...createImageURL('/kv_forthefuture'),
+      ...createImageURL('/forthefuture/kv_forthefuture_'),
     },
   },
   {
@@ -103,7 +103,7 @@ export const THEME_ZIP_MOCK: ThemeZipMock[] = [
     detail: {
       headTitle: '신인개발자 모여라',
       bgColor: '#0e0e0e',
-      ...createImageURL('/kv_rookie'),
+      ...createImageURL('/rookie/kv_rookie_'),
     },
   },
   {
@@ -115,7 +115,7 @@ export const THEME_ZIP_MOCK: ThemeZipMock[] = [
     detail: {
       headTitle: '로봇 개발자.zip',
       bgColor: '#e7e3fe',
-      ...createImageURL('/kv_iamt'),
+      ...createImageURL('/kv_iamt_'),
     },
   },
 
@@ -128,7 +128,7 @@ AI School 채용관`,
     detail: {
       headTitle: '점핏 x 마이크로소프트',
       bgColor: '#23bbfd',
-      ...createImageURL('/kv_msaischool'),
+      ...createImageURL('/msaischool/kv_msaischool_'),
     },
   },
   {
@@ -140,7 +140,7 @@ AI School 채용관`,
     detail: {
       headTitle: '점핏 x 위코드',
       bgColor: '#590df3',
-      ...createImageURL('/kv_wecode'),
+      ...createImageURL('/kv_wecode_'),
     },
   },
   {
@@ -152,7 +152,7 @@ AI School 채용관`,
     detail: {
       headTitle: '점핏 x 크래프톤',
       bgColor: '#00d67a',
-      ...createImageURL('/kv_krafton'),
+      ...createImageURL('/kv_krafton_'),
     },
   },
   {
@@ -164,7 +164,7 @@ AI School 채용관`,
     detail: {
       headTitle: '점핏 x 위워크',
       bgColor: '#232428',
-      ...createImageURL('/kv_wework'),
+      ...createImageURL('/wework/kv_wework_'),
     },
   },
 ];
