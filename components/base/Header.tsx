@@ -2,15 +2,12 @@ import styled from '@emotion/styled';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useSession } from 'next-auth/react';
-import { useState } from 'react';
 
-import AuthModal from '../modal/AuthModal';
 import SearchInput from '../search/SearchInput';
 
 import NavBar from './NavBar';
 
 const Header = () => {
-  const [isOpen, setIsOpen] = useState(false);
   const { data } = useSession();
 
   return (
@@ -26,7 +23,9 @@ const Header = () => {
               {data?.user ? (
                 <MobileUserName>{data.user.name}</MobileUserName>
               ) : (
-                <MobileLoginButton onClick={() => setIsOpen(true)}>회원가입/로그인</MobileLoginButton>
+                <Link href="/login">
+                  <MobileLoginButton>회원가입/로그인</MobileLoginButton>
+                </Link>
               )}
               <SearchInput />
             </LoginTextBox>
@@ -35,7 +34,6 @@ const Header = () => {
           <NavBar />
         </HeaderLayout>
       </Block>
-      {isOpen && <AuthModal close={() => setIsOpen(false)} />}
     </>
   );
 };
