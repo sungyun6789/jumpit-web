@@ -83,9 +83,11 @@ const HomeThemeZip = () => {
       {/** @todo 실제 서비스와 동일하게 변경 필요 */}
       <StyledSlider {...SETTING} ref={slickRef}>
         {data?.map((value) => (
-          <Banner key={value.title} url={value.themeBanner.pc}>
-            <BannerDescription>{value.title}</BannerDescription>
-          </Banner>
+          <Link key={value.title} href={'/theme/' + value.theme}>
+            <Banner url={value.themeBanner.pc}>
+              <BannerDescription>{value.title}</BannerDescription>
+            </Banner>
+          </Link>
         ))}
       </StyledSlider>
     </Block>
