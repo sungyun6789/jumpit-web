@@ -11,15 +11,17 @@ const AppDownload = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
-    if (getCookie('jum_h_c_main_app_nudge') !== 'main_app_nudge') {
+    if (getCookie('jum_h_c') === undefined) {
       setIsOpen(true);
     }
   }, []);
 
-  const close = () => {
+  const close = () => setIsOpen(false);
+
+  const setCookieClose = () => {
     const date = new Date();
     date.setDate(date.getDate() + 1);
-    setCookie('jum_h_c_main_app_nudge', 'main_app_nudge', date);
+    setCookie('jum_h_c', 'true', date);
     setIsOpen(false);
   };
 
@@ -50,7 +52,7 @@ const AppDownload = () => {
               앱 이용하기
             </DownloadButton>
 
-            <SkipButton onClick={close}>오늘은 이대로 볼래요</SkipButton>
+            <SkipButton onClick={setCookieClose}>오늘은 이대로 볼래요</SkipButton>
           </ButtonBox>
         </DownloadBox>
       </Block>
@@ -110,6 +112,7 @@ const DescriptionBox = styled.div`
 const Description = styled.span`
   font-size: 16px;
   letter-spacing: -0.5px;
+  line-height: 26px;
 `;
 
 const Bold = styled.b`
