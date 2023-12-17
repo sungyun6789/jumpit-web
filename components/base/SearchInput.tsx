@@ -37,9 +37,6 @@ const SearchInput = () => {
         <SearchIcon>
           <Image width={24} height={24} src="/search_icon.svg" alt="search" />
         </SearchIcon>
-        <MobileIcon>
-          <Image width={24} height={24} src="/menu_icon.svg" alt="menu" />
-        </MobileIcon>
       </MobileBlock>
     </>
   );
@@ -87,12 +84,10 @@ const MobileBlock = styled(TabletView)`
   }
 `;
 
-const MobileIcon = styled.button`
+const SearchIcon = styled.button`
   width: 24px;
   height: 24px;
-`;
 
-const SearchIcon = styled(MobileIcon)`
   :hover {
     border-radius: 4px;
     background-color: #f4f4f4;
