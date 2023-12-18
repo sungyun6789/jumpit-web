@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { CDN_PATH } from '~/constants/path';
 
 const NAV_LINK_LIST1 = [
-  { title: '서비스 소개', url: '/hello' },
+  { title: '서비스 소개', url: 'https://www.jumpit.co.kr/hello' },
   { title: '기업 서비스', url: 'https://biz.jumpit.co.kr/' },
   { title: '점핏Team', url: 'https://team.jumpit.co.kr/' },
 ];
