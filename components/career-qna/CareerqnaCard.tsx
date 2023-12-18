@@ -41,10 +41,18 @@ const Card = styled.div`
       text-decoration: underline;
     }
   }
+
+  @media (max-width: 1080px) {
+    padding: 0 16px;
+  }
 `;
 
 const TagWrap = styled.div`
   padding-top: 24px;
+
+  @media (max-width: 1080px) {
+    padding-top: 16px;
+  }
 `;
 
 const Tag = styled.span`
@@ -63,7 +71,10 @@ const Title = styled.h2`
   font-size: 18px;
   line-height: 27px;
   letter-spacing: -0.5px;
-  max-height: 54px;
+
+  @media (max-width: 600px) {
+    padding-top: 8px;
+  }
 `;
 
 const Content = styled.div`
@@ -89,6 +100,10 @@ const ContentInfoWrap = styled.div`
   line-height: 20px;
   letter-spacing: -0.5px;
   border-bottom: 1px solid #e4e4e4;
+
+  @media (max-width: 1080px) {
+    padding: 12px 0 16px;
+  }
 `;
 
 const ID = styled.span`

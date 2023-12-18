@@ -15,10 +15,10 @@ const CareerQnAPage = () => {
       <Block>
         <Content>
           <CareerqnaListCategoryControl />
-          <div>
+          <ListWrap>
             <CareerqnaListOrderControl />
             <CareerqnaList />
-          </div>
+          </ListWrap>
         </Content>
       </Block>
     </>
@@ -30,6 +30,10 @@ export default CareerQnAPage;
 const Block = styled.section`
   padding: 158px 0 176px;
   background-color: #f5f5f8;
+
+  @media (max-width: 1080px) {
+    padding: 128px 0px 80px;
+  }
 `;
 
 const Content = styled.div`
@@ -37,4 +41,15 @@ const Content = styled.div`
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
+
+  @media (max-width: 1080px) {
+    display: block;
+    width: 100%;
+  }
+`;
+
+const ListWrap = styled.div`
+  @media (max-width: 1080px) {
+    padding: 0 16px;
+  }
 `;

@@ -43,11 +43,22 @@ const Block = styled.section`
   background-color: #fff;
   border-radius: 12px;
   box-shadow: rgba(0, 0, 0, 0.06) 0px 4px 36px;
+
+  @media (max-width: 1080px) {
+    width: 100%;
+    padding: 0 16px;
+    background-color: transparent;
+    box-shadow: none;
+  }
 `;
 
 const Question = styled.div`
   padding: 24px 24px 20px;
   border-bottom: 1px solid #f2f2f5;
+
+  @media (max-width: 1080px) {
+    display: none;
+  }
 `;
 
 const Button = styled.button`
@@ -69,6 +80,12 @@ const Button = styled.button`
 
 const OptionList = styled.ul`
   padding: 14px 0;
+
+  @media (max-width: 1080px) {
+    padding: 0 0 13px;
+    display: flex;
+    border-bottom: 1px solid #d4d4d4;
+  }
 `;
 
 const Option = styled.li<{ isSelected: boolean }>`
@@ -80,5 +97,10 @@ const Option = styled.li<{ isSelected: boolean }>`
 
   :hover {
     text-decoration: underline;
+  }
+
+  @media (max-width: 1080px) {
+    padding: 0;
+    margin-right: 24px;
   }
 `;

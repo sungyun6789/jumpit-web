@@ -37,6 +37,10 @@ export default CareerqnaListOrderControl;
 const Block = styled.ul`
   display: flex;
   gap: 20px;
+
+  @media (max-width: 1080px) {
+    padding: 24px 0 0;
+  }
 `;
 
 const Label = styled.li<{ isSelected: boolean }>`

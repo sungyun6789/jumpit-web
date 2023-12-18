@@ -43,4 +43,8 @@ const Block = styled.section`
   box-shadow: rgba(0, 0, 0, 0.06) 0px 4px 36px;
   border-radius: 12px;
   background-color: #fff;
+
+  @media (max-width: 1080px) {
+    width: 100%;
+  }
 `;
