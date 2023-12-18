@@ -2,26 +2,28 @@ import axios from 'axios';
 
 import type { NextApiRequest, NextApiResponse } from 'next';
 
+export type CareerqnaContent = {
+  category: {
+    id: number;
+    categoryName: string;
+    categoryEmoticon: string;
+  };
+  commentCount: number;
+  contents: string;
+  createdAt: string;
+  id: number;
+  like: boolean;
+  likeCount: number;
+  title: string;
+  writer: string;
+};
+
 export type CareerqnaRespone = {
   message: string;
   status: number;
   code: string;
   result: {
-    content: {
-      category: {
-        id: number;
-        categoryName: string;
-        categoryEmoticon: string;
-      };
-      commentCount: number;
-      contents: string;
-      createdAt: string;
-      id: number;
-      like: boolean;
-      likeCount: number;
-      title: string;
-      writer: string;
-    }[];
+    content: CareerqnaContent[];
     empty: boolean;
     first: boolean;
     last: boolean;
