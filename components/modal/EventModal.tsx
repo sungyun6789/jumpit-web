@@ -4,7 +4,6 @@ import { useEffect } from 'react';
 import Slider from 'react-slick';
 import { CDN_PATH } from '~/constants/path';
 import { setCookie } from '~/utils/cookie';
-
 import PortalModal from './PortalModal';
 
 /** 마지막 업데이트 23.10.13 */

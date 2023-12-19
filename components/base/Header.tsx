@@ -2,7 +2,6 @@ import styled from '@emotion/styled';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useSession } from 'next-auth/react';
-
 import MobileMenubar from './MobileMenubar';
 import NavBar from './NavBar';
 import SearchInput from './SearchInput';
@@ -99,6 +98,7 @@ const MobileLoginButton = styled.button`
     display: inline-block;
     font-weight: 500;
     line-height: 24px;
+    color: #222222;
   }
 `;
 

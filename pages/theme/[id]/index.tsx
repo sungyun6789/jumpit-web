@@ -2,7 +2,6 @@ import styled from '@emotion/styled';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { THEME_ZIP_MOCK } from '~/mock/themeZip';
-
 import type { ThemeZipMock } from '~/mock/themeZip';
 
 const WHITE_TITLE = ['/theme/rookie', '/theme/wework', '/theme/wecode', '/theme/msaischool'];

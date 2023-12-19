@@ -5,9 +5,7 @@ import { useState } from 'react';
 import Slider from 'react-slick';
 import { BENEFIT_TAG, TECH_CAREER_REGION_TAG } from '~/constants/position';
 import usePositionQueryPush from '~/hooks/usePositionQueryPush';
-
 import { reactSlickCustomArrowSettings } from '../common/ReactSlickCustomArrowSetting';
-
 import type { Settings } from 'react-slick';
 
 const PositionSearchDetailTag = () => {

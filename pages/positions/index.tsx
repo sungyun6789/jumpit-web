@@ -11,7 +11,6 @@ import PositionSearchSortType from '~/components/position/PositionSearchSortType
 import JobCategoryTag from '~/components/tag/JobCategoryTag';
 import TechStackTag from '~/components/tag/TechStackTag';
 import generateDuplicateQueryKeys from '~/utils/generateDuplicateQueryKeys';
-
 import type { PositionListResponse } from '../api/positions';
 
 const PositionsPage = () => {

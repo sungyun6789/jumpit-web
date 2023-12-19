@@ -8,7 +8,6 @@ import { Noto_Sans_KR, Montserrat } from 'next/font/google';
 import Head from 'next/head';
 import { SessionProvider } from 'next-auth/react';
 import BasicLayout from '~/components/base/BasicLayout';
-
 import type { AppProps } from 'next/app';
 
 export const noto = Noto_Sans_KR({

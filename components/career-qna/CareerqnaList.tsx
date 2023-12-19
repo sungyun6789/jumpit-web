@@ -2,9 +2,7 @@ import styled from '@emotion/styled';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import { useRouter } from 'next/router';
-
 import CareerqnaCard from './CareerqnaCard';
-
 import type { CareerqnaRespone } from '~/pages/api/content/career-qna/posts';
 
 const PAGE = 1;

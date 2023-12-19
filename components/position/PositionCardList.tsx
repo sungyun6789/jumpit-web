@@ -2,7 +2,6 @@ import styled from '@emotion/styled';
 import Image from 'next/image';
 import Link from 'next/link';
 import { mont } from '~/pages/_app';
-
 import type { Position } from '~/pages/api/home';
 
 interface Props {

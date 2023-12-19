@@ -4,10 +4,8 @@ import axios from 'axios';
 import Link from 'next/link';
 import { useState } from 'react';
 import Slider from 'react-slick';
-
 import { reactSlickCustomArrowSettings } from '../common/ReactSlickCustomArrowSetting';
 import PositionCardList from '../position/PositionCardList';
-
 import type { Settings } from 'react-slick';
 import type { PositionListResponse } from '~/pages/api/positions';
 

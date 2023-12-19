@@ -3,7 +3,6 @@ import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import { useRouter } from 'next/router';
 import COLORS from '~/constants/colors';
-
 import type { ContentRookieTagResponse } from '~/pages/api/content/rookies/tags';
 
 const FeedTagList = () => {

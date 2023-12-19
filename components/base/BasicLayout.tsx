@@ -1,9 +1,7 @@
 import styled from '@emotion/styled';
 import { useRouter } from 'next/router';
-
 import Footer from '../base/Footer';
 import Header from '../base/Header';
-
 import AppDownload from './AppDownload';
 import LoginHeader from './LoginHeader';
 

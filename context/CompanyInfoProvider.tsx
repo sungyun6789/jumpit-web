@@ -2,7 +2,6 @@ import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import { useRouter } from 'next/router';
 import { createContext } from 'react';
-
 import type { ReactNode } from 'react';
 import type { CompanyInfoResponse } from '~/pages/api/company/[id]';
 

@@ -5,9 +5,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { noto } from '~/pages/_app';
-
 import RookieMobileContentTagSelectModal from '../modal/RookieMobileContentTagSelectModal';
-
 import type { TagModel } from '~/pages/api/content/rookies';
 import type { ContentRookieTagResponse } from '~/pages/api/content/rookies/tags';
 

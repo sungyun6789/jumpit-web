@@ -2,7 +2,6 @@ import styled from '@emotion/styled';
 import Link from 'next/link';
 import { signOut, useSession } from 'next-auth/react';
 import { mont } from '~/pages/_app';
-
 import GuestProfile from './GuestProfile';
 
 const UserProfile = () => {

@@ -4,9 +4,7 @@ import axios from 'axios';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
-
 import JobInterviewCard from './JobInterviewCard';
-
 import type { InterviewContent, InterviewListResponse } from '~/pages/api/content/interviews';
 
 const PAGE_SIZE = 15;

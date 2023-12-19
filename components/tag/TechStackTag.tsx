@@ -6,7 +6,6 @@ import COLORS from '~/constants/colors';
 import { JOB_CATEGORY, JOB_NUMBER } from '~/constants/jobCategory';
 import { CDN_PATH } from '~/constants/path';
 import { mont } from '~/pages/_app';
-
 import type { TechStacks } from '~/constants/jobCategory';
 
 const IMAGE_PATH = CDN_PATH + '/images/stacks';

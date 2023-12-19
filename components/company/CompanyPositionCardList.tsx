@@ -5,9 +5,7 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import COLORS from '~/constants/colors';
 import getDeviceType from '~/utils/getDeviceType';
-
 import CompanyPositionCard from './CompanyPositionCard';
-
 import type { CompanyPositionResponse } from '~/pages/api/company/[id]/position';
 
 const CompanyPositionCardList = () => {

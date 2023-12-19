@@ -4,7 +4,6 @@ import axios from 'axios';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import COLORS from '~/constants/colors';
-
 import type { InterviewJobCategoryResponse } from '~/pages/api/content/interviews/jobCategory';
 
 const JobInterviewCategory = () => {

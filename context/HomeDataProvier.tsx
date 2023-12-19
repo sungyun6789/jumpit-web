@@ -1,7 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import { createContext, useEffect, useState } from 'react';
-
 import type { ReactNode } from 'react';
 import type { HomeResponse } from '~/pages/api/home';
 

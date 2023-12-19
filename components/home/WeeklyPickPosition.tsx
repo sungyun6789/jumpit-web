@@ -2,7 +2,6 @@ import styled from '@emotion/styled';
 import Link from 'next/link';
 import { useContext } from 'react';
 import { HomeDataContext } from '~/context/HomeDataProvier';
-
 import PositionCardList from '../position/PositionCardList';
 
 const WeeklyPickPosition = () => {

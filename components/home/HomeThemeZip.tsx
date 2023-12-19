@@ -4,9 +4,7 @@ import axios from 'axios';
 import Link from 'next/link';
 import { useRef, useState } from 'react';
 import Slider from 'react-slick';
-
 import { PrevArrowButton } from '../common/ArrowButton';
-
 import type { ThemeBannerResponse } from '~/pages/api/themes/banners/home';
 
 const SETTING = {

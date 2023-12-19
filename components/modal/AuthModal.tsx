@@ -4,7 +4,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { signIn } from 'next-auth/react';
 import { useEffect } from 'react';
-
 import PortalModal from './PortalModal';
 
 const SOCIALS = ['naver', 'google', 'github', 'apple'];

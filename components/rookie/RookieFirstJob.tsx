@@ -4,9 +4,7 @@ import axios from 'axios';
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 import Slider from 'react-slick';
-
 import { NextArrowButton, PrevArrowButton } from '../common/ArrowButton';
-
 import type { Settings } from 'react-slick';
 import type { RookieHomeResponse } from '~/pages/api/rookie/home';
 

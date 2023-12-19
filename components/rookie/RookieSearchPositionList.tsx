@@ -4,9 +4,7 @@ import axios from 'axios';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
-
 import PositionCardList from '../position/PositionCardList';
-
 import type { PositionListResponse } from '~/pages/api/positions';
 
 const RookieSearchPositionList = () => {

@@ -3,7 +3,6 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import COLORS from '~/constants/colors';
 import { getCookie, setCookie } from '~/utils/cookie';
-
 import type { MouseEvent } from 'react';
 
 const JobDescriptionEvent = () => {

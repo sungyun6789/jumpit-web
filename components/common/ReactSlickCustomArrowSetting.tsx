@@ -1,7 +1,5 @@
 import styled from '@emotion/styled';
-
 import { NextArrowButton, PrevArrowButton } from './ArrowButton';
-
 import type { Settings } from 'react-slick';
 
 const PrevArrow = (props: Settings) => {

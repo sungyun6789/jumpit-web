@@ -2,9 +2,7 @@ import styled from '@emotion/styled';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import { useRouter } from 'next/router';
-
 import PositionCardList from './PositionCardList';
-
 import type { PositionRecommendResponse } from '~/pages/api/position/[id]/recommend';
 
 const SimilarPositionList = () => {

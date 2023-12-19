@@ -3,7 +3,6 @@ import Image from 'next/image';
 import { useState } from 'react';
 import COLORS from '~/constants/colors';
 import { DesktopView, TabletView } from '~/styles/breakpoint';
-
 import type { ChangeEvent } from 'react';
 
 const SearchInput = () => {

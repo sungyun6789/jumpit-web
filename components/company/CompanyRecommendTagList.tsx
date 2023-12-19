@@ -3,7 +3,6 @@ import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-
 import type { CompanyServicePositionResponse } from '~/pages/api/company/[id]/service/position';
 
 const CompanyRecommendTagList = () => {

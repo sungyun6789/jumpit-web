@@ -1,6 +1,5 @@
 import styled from '@emotion/styled';
 import dayjs from 'dayjs';
-
 import type { CareerqnaContent } from '~/pages/api/content/career-qna/posts';
 
 const TODAY = dayjs(new Date()).format('YYYY-MM-DDTHH:mm:ss');

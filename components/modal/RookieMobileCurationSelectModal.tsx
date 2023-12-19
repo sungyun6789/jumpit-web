@@ -2,7 +2,6 @@ import styled from '@emotion/styled';
 import Image from 'next/image';
 import { useEffect } from 'react';
 import { noto } from '~/pages/_app';
-
 import PortalModal from './PortalModal';
 
 interface Props {

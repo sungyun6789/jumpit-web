@@ -1,6 +1,5 @@
 import styled from '@emotion/styled';
 import { THEME_ZIP_MOCK } from '~/mock/themeZip';
-
 import ThemeZipCard from './ThemeZipCard';
 
 const ThemeZipCardList = () => {

@@ -1,6 +1,5 @@
 import styled from '@emotion/styled';
 import { DesktopView, TabletView } from '~/styles/breakpoint';
-
 import MainBanner from './MainBanner';
 import Notice from './Notice';
 import UserProfile from './UserProfile';

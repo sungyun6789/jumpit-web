@@ -1,6 +1,5 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-
 import EmailLogin from './EmailLogin';
 import SocialLogin from './SocialLogin';
 

@@ -5,7 +5,6 @@ import { useContext } from 'react';
 import COLORS from '~/constants/colors';
 import { HomeDataContext } from '~/context/HomeDataProvier';
 import { noto } from '~/pages/_app';
-
 import PositionCardList from '../position/PositionCardList';
 
 const PositionRecommend = () => {

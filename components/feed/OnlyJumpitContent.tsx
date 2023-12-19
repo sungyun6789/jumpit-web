@@ -1,9 +1,7 @@
 import styled from '@emotion/styled';
 import Link from 'next/link';
 import COLORS from '~/constants/colors';
-
 import FeedCard from './FeedCard';
-
 import type { Content } from '~/pages/api/content/rookies';
 
 type Props = {

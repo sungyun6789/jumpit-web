@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-
 import JobDescriptionCareer from './JobDescriptionCareer';
 import JobDescriptionCompanyStory from './JobDescriptionCompanyStory';
 import JobDescriptionHeader from './JobDescriptionHeader';

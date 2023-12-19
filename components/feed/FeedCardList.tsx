@@ -5,10 +5,8 @@ import { useRouter } from 'next/router';
 import { useSession } from 'next-auth/react';
 import { useEffect, useState } from 'react';
 import useInfiniteScroll from '~/hooks/useInfiniteScroll';
-
 import FeedCard from './FeedCard';
 import OnlyJumpitContent from './OnlyJumpitContent';
-
 import type { Content, ContentRookieResponse } from '~/pages/api/content/rookies';
 
 const PAGE_SIZE = 12; // 클라이언트에서 따로 파라미터를 전송하지 않고, 서버에서 12개로 정의해서 전달받고 있음
