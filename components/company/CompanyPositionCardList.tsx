@@ -2,28 +2,19 @@ import styled from '@emotion/styled';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import COLORS from '~/constants/colors';
-import getDeviceType from '~/utils/getDeviceType';
 import CompanyPositionCard from './CompanyPositionCard';
 import type { CompanyPositionResponse } from '~/pages/api/company/[id]/position';
+import useDeviceType from '~/hooks/useDeviceType';
 
 const CompanyPositionCardList = () => {
-  const [isMobile, setIsMobile] = useState(false);
   const { query } = useRouter();
   const companyId = query.id as string;
   const [isPositionListOpen, setIsPositionListOpen] = useState(false);
+  const deviceType = useDeviceType();
 
-  const onResize = () => setIsMobile(getDeviceType() === 'mobile');
   const onClickPositionSeeMore = () => setIsPositionListOpen(!isPositionListOpen);
-
-  useEffect(() => {
-    onResize();
-    window.addEventListener('resize', onResize);
-    return () => {
-      window.removeEventListener('resize', onResize);
-    };
-  }, []);
 
   const { data } = useQuery(
     [`/company/${companyId}/position`],
@@ -34,7 +25,7 @@ const CompanyPositionCardList = () => {
     { enabled: !!companyId }
   );
 
-  const positionList = isPositionListOpen ? data : data?.slice(0, isMobile ? 1 : 4);
+  const positionList = isPositionListOpen ? data : data?.slice(0, deviceType === 'mobile' ? 1 : 4);
 
   return (
     <Block>

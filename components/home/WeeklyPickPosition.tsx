@@ -1,25 +1,16 @@
 import styled from '@emotion/styled';
 import Link from 'next/link';
-import { useContext, useEffect, useState } from 'react';
+import { useContext } from 'react';
 import { HomeDataContext } from '~/context/HomeDataProvier';
 import PositionCardList from '../position/PositionCardList';
-import getDeviceType from '~/utils/getDeviceType';
+import useDeviceType from '~/hooks/useDeviceType';
 
 const WeeklyPickPosition = () => {
   const data = useContext(HomeDataContext);
-  const [isDesktop, setIsDesktop] = useState(false);
+  const deviceType = useDeviceType();
 
-  const onResize = () => setIsDesktop(getDeviceType() === 'desktop');
-
-  useEffect(() => {
-    onResize();
-    window.addEventListener('resize', onResize);
-    return () => {
-      window.removeEventListener('resize', onResize);
-    };
-  }, []);
-
-  const positions = isDesktop ? data?.weeklyPositions.positions : data?.weeklyPositions.positions.slice(0, 4);
+  const positions =
+    deviceType === 'desktop' ? data?.weeklyPositions.positions : data?.weeklyPositions.positions.slice(0, 4);
 
   return (
     <Block>

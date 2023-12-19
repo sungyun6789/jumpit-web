@@ -1,9 +1,9 @@
 import styled from '@emotion/styled';
 import Image from 'next/image';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useState } from 'react';
 import ImageViewer from 'react-simple-image-viewer';
 import { CompanyInfoContext } from '~/context/CompanyInfoProvider';
-import getDeviceType from '~/utils/getDeviceType';
+import useDeviceType from '~/hooks/useDeviceType';
 
 /** 뷰어를 사용하지 않고 처음 화면에 보여줄 이미지 목록 길이 */
 const IMAGE_LENGTH = {
@@ -13,23 +13,12 @@ const IMAGE_LENGTH = {
 };
 
 const CompanyOverview = () => {
-  const [deviceType, setDeviceType] = useState<'mobile' | 'tablet' | 'desktop'>('desktop');
   const [isDescriptionOpen, setIsDescriptionOpen] = useState(false);
   const [isViewerOpen, setIsViewerOpen] = useState(false);
   const [currentImage, setCurrentImage] = useState(0);
 
   const data = useContext(CompanyInfoContext);
-
-  const onResize = () => setDeviceType(getDeviceType() ?? 'desktop');
-
-  useEffect(() => {
-    onResize();
-
-    window.addEventListener('resize', onResize);
-    return () => {
-      window.removeEventListener('resize', onResize);
-    };
-  }, []);
+  const deviceType = useDeviceType();
 
   const openImageViewer = (index: number) => {
     setCurrentImage(index);
