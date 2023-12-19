@@ -54,7 +54,7 @@ export default MiniBanner;
 
 const PCBanner = styled(DesktopView)`
   position: absolute;
-  top: 160px;
+  top: 40px;
   left: 50%;
   width: 100px;
   height: 148px;

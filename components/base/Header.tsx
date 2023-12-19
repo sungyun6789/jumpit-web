@@ -10,42 +10,35 @@ const Header = () => {
   const { data } = useSession();
 
   return (
-    <>
-      <Block>
-        <HeaderLayout>
-          <HeaderTop>
-            <LogoLink href="/">
-              <Image src="/jumpit_logo_ko.svg" width={72} height={32} alt="logo" />
-            </LogoLink>
+    <Block>
+      <HeaderLayout>
+        <HeaderTop>
+          <LogoLink href="/">
+            <Image src="/jumpit_logo_ko.svg" width={72} height={32} alt="logo" />
+          </LogoLink>
 
-            <LoginTextBox>
-              {data?.user ? (
-                <MobileUserName>{data.user.name}</MobileUserName>
-              ) : (
-                <Link href="/login">
-                  <MobileLoginButton>회원가입/로그인</MobileLoginButton>
-                </Link>
-              )}
-              <SearchInput />
-              <MobileMenubar />
-            </LoginTextBox>
-          </HeaderTop>
+          <LoginTextBox>
+            {data?.user ? (
+              <MobileUserName>{data.user.name}</MobileUserName>
+            ) : (
+              <Link href="/login">
+                <MobileLoginButton>회원가입/로그인</MobileLoginButton>
+              </Link>
+            )}
+            <SearchInput />
+            <MobileMenubar />
+          </LoginTextBox>
+        </HeaderTop>
 
-          <NavBar />
-        </HeaderLayout>
-      </Block>
-    </>
+        <NavBar />
+      </HeaderLayout>
+    </Block>
   );
 };
 
 export default Header;
 
 const Block = styled.header`
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  width: 100%;
   border-bottom: 1px solid #e4e4e4;
   background-color: #fff;
   z-index: 2;
