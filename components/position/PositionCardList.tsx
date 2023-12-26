@@ -19,7 +19,7 @@ const PositionCardList = ({ data }: Props) => {
         <Item key={index} className="item" href={'/position/' + value.id}>
           <BannerBox>
             <div className="banner-overlay" />
-            <Image src={value.imagePath ?? ''} width={250} height={166} alt="banner" className="banner" />
+            <Image src={value.imagePath ?? ''} alt="banner" className="banner" fill />
 
             <HoverView className="counts">
               <CountBox>
@@ -28,7 +28,7 @@ const PositionCardList = ({ data }: Props) => {
               </CountBox>
 
               <Image
-                src="https://www.jumpit.co.kr/App/build/static/media/ico_position_bookmark.b54fcd24.svg"
+                src="https://www.jumpit.co.kr/assets/images/ico_position_bookmark.svg"
                 width={16}
                 height={16}
                 alt="bookmark"
@@ -125,6 +125,14 @@ const Item = styled(Link)`
     max-width: 50%;
     flex: 1 1 40%;
     padding: 8px;
+
+    .counts {
+      display: none !important;
+    }
+
+    .banner-overlay {
+      display: none;
+    }
   }
 
   @media (max-width: 600px) {
@@ -157,6 +165,10 @@ const HoverView = styled.div`
   position: absolute;
   top: 16px;
   right: 16px;
+
+  @media (max-width: 1080px) {
+    display: none;
+  }
 `;
 
 const CountBox = styled.div`
@@ -187,8 +199,7 @@ const BookmarkButton = styled.button`
       display: inline-block;
       width: 16px;
       height: 16px;
-      background: url('https://www.jumpit.co.kr/App/build/static/media/ico_position_bookmark.b54fcd24.svg') center
-        center no-repeat;
+      background: url('https://www.jumpit.co.kr/assets/images/ico_position_bookmark.svg') center center no-repeat;
     }
   }
 `;

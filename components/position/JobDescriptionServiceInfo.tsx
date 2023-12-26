@@ -107,8 +107,7 @@ const MoreInfoButton = styled.button<{ isMoreInfoOpen: boolean }>`
     top: 18px;
     width: 12px;
     height: 12px;
-    background: url('https://www.jumpit.co.kr/App/build/static/media/arrow-down-black.29f49be1.svg') center center
-      no-repeat;
+    background: url('https://www.jumpit.co.kr/assets/images/arrow-down-black.svg') center center no-repeat;
 
     ${(props) =>
       props.isMoreInfoOpen && {
@@ -132,15 +131,13 @@ const PrevImageButton = styled.button`
   position: absolute;
   top: 50%;
   left: 16px;
-  background: url('https://www.jumpit.co.kr/App/build/static/media/btn-prev.85cf9174.svg') center center / 32px 32px
-    no-repeat;
+  background: url('https://www.jumpit.co.kr/assets/images/btn-prev.svg') center center / 32px 32px no-repeat;
   width: 32px;
   height: 32px;
   z-index: 1;
 
   :hover {
-    background: url('https://www.jumpit.co.kr/App/build/static/media/btn-prev-hover.9185b56c.svg') center center / 32px
-      32px no-repeat;
+    background: url('https://www.jumpit.co.kr/assets/images/btn-prev-hover.svg') center center / 32px 32px no-repeat;
   }
 `;
 
@@ -148,15 +145,13 @@ const NextImageButton = styled.button`
   position: absolute;
   top: 50%;
   right: 16px;
-  background: url('https://www.jumpit.co.kr/App/build/static/media/btn-next.6acd9890.svg') center center / 32px 32px
-    no-repeat;
+  background: url('https://www.jumpit.co.kr/assets/images/btn-next.svg') center center / 32px 32px no-repeat;
   width: 32px;
   height: 32px;
   z-index: 1;
 
   :hover {
-    background: url('https://www.jumpit.co.kr/App/build/static/media/btn-next-hover.ed6f22cf.svg') center center / 32px
-      32px no-repeat;
+    background: url('https://www.jumpit.co.kr/assets/images/btn-next-hover.svg') center center / 32px 32px no-repeat;
   }
 `;
 

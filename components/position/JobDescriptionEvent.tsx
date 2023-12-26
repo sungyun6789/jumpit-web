@@ -133,8 +133,7 @@ const SkipButton = styled.button`
 
   ::after {
     content: '';
-    background: url('https://www.jumpit.co.kr/App/build/static/media/top_banner_close.99b9ee8d.svg') center center /
-      100% no-repeat;
+    background: url('https://www.jumpit.co.kr/assets/images/top_banner_close.svg') center center / 100% no-repeat;
     position: absolute;
     width: 17px;
     height: 15px;

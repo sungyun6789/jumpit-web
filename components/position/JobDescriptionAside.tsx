@@ -63,12 +63,12 @@ const JobDescriptionAside = ({ contentHeight }: Props) => {
         <Button>지원하기</Button>
         <StyledUL>
           <StyledLI onClick={onClick}>
-            <Icon url="https://www.jumpit.co.kr/App/build/static/media/ic_share.8dfaacd7.svg" />
+            <Icon url="https://www.jumpit.co.kr/assets/images/ic_share.svg" />
             <IconText>공유</IconText>
           </StyledLI>
           <VerticalLine />
           <StyledLI>
-            <Icon url="https://www.jumpit.co.kr/App/build/static/media/ic_bookmark.26fed19a.svg" />
+            <Icon url="https://www.jumpit.co.kr/assets/images/ic_bookmark.svg" />
             {/* @todo 로그인 기능 구현시 스크랩 기능 추가 */}
             <IconText>스크랩</IconText>
           </StyledLI>
@@ -88,8 +88,8 @@ const JobDescriptionAside = ({ contentHeight }: Props) => {
       <MobileContent>
         <IconList>
           {/* @todo 로그인 기능 구현시 스크랩 기능 추가 */}
-          <Icon url="https://www.jumpit.co.kr/App/build/static/media/bookmark-bold.c7f2154f.svg" />
-          <Icon url="https://www.jumpit.co.kr/App/build/static/media/ico_share.100efa38.svg" onClick={onClick} />
+          <Icon url="https://www.jumpit.co.kr/assets/images/bookmark-bold.svg" />
+          <Icon url="https://www.jumpit.co.kr/assets/images/ico_share.svg" onClick={onClick} />
           {/* @todo ai 인터뷰 페이지 개발 후 주소 변경 필요 */}
           <Link
             href="https://www.jumpit.co.kr/ai-interview?url=https://www.jumpit.co.kr/position/19797"

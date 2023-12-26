@@ -16,10 +16,10 @@ const JobInterviewCard = ({ content }: Props) => {
 
       <FlexBox>
         <Info>{content.companyName}</Info>
-        <IconInfo iconPath="https://www.jumpit.co.kr/App/build/static/media/ico-content-viewcount.ce7147a1.svg">
+        <IconInfo iconPath="https://www.jumpit.co.kr/assets/images/ico-content-viewcount.svg">
           {content.viewCnt}
         </IconInfo>
-        <IconInfo iconPath="https://www.jumpit.co.kr/App/build/static/media/ico-content-readingtime.1374f689.svg">
+        <IconInfo iconPath="https://www.jumpit.co.kr/assets/images/ico-content-readingtime.svg">
           {content.readingTime}분
         </IconInfo>
       </FlexBox>
