@@ -38,6 +38,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/react-slick", "npm:0.23.10"],\
             ["@typescript-eslint/eslint-plugin", "virtual:0147e901ac5cc9633cbed952cf5dab488e44813b6eaaf1a588821cce4368d41489625542c320d5b20d234b9e9fd47e45b10e81ad901e7c3adb64d05cfd7754ab#npm:6.3.0"],\
             ["@typescript-eslint/parser", "virtual:0147e901ac5cc9633cbed952cf5dab488e44813b6eaaf1a588821cce4368d41489625542c320d5b20d234b9e9fd47e45b10e81ad901e7c3adb64d05cfd7754ab#npm:6.3.0"],\
+            ["@vercel/analytics", "npm:1.1.1"],\
             ["axios", "npm:1.4.0"],\
             ["dayjs", "npm:1.11.10"],\
             ["eslint", "npm:8.46.0"],\
@@ -988,6 +989,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@typescript-eslint/visitor-keys", "npm:6.3.0"],\
             ["@typescript-eslint/types", "npm:6.3.0"],\
             ["eslint-visitor-keys", "npm:3.4.2"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@vercel/analytics", [\
+        ["npm:1.1.1", {\
+          "packageLocation": "./.yarn/cache/@vercel-analytics-npm-1.1.1-b56890c746-25f0259a57.zip/node_modules/@vercel/analytics/",\
+          "packageDependencies": [\
+            ["@vercel/analytics", "npm:1.1.1"],\
+            ["server-only", "npm:0.0.1"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -2998,6 +3009,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/react-slick", "npm:0.23.10"],\
             ["@typescript-eslint/eslint-plugin", "virtual:0147e901ac5cc9633cbed952cf5dab488e44813b6eaaf1a588821cce4368d41489625542c320d5b20d234b9e9fd47e45b10e81ad901e7c3adb64d05cfd7754ab#npm:6.3.0"],\
             ["@typescript-eslint/parser", "virtual:0147e901ac5cc9633cbed952cf5dab488e44813b6eaaf1a588821cce4368d41489625542c320d5b20d234b9e9fd47e45b10e81ad901e7c3adb64d05cfd7754ab#npm:6.3.0"],\
+            ["@vercel/analytics", "npm:1.1.1"],\
             ["axios", "npm:1.4.0"],\
             ["dayjs", "npm:1.11.10"],\
             ["eslint", "npm:8.46.0"],\
@@ -3975,6 +3987,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["semver", "npm:7.5.4"],\
             ["lru-cache", "npm:6.0.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["server-only", [\
+        ["npm:0.0.1", {\
+          "packageLocation": "./.yarn/cache/server-only-npm-0.0.1-24bf42bde2-c432348956.zip/node_modules/server-only/",\
+          "packageDependencies": [\
+            ["server-only", "npm:0.0.1"]\
           ],\
           "linkType": "HARD"\
         }]\
