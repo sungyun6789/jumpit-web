@@ -2,6 +2,7 @@ import '~/styles/globals.css';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
+import { Analytics } from '@vercel/analytics/react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { Noto_Sans_KR, Montserrat } from 'next/font/google';
@@ -54,6 +55,7 @@ export default function App({ Component, pageProps: { session, ...pageProps } }:
         <SessionProvider session={session}>
           <BasicLayout>
             <Component {...pageProps} />
+            <Analytics />
           </BasicLayout>
         </SessionProvider>
       </div>
